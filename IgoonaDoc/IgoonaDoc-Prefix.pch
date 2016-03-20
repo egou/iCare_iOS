@@ -1,0 +1,29 @@
+//
+//  IgoonaDoc-Prefix.pch
+//  IgoonaDoc
+//
+//  Created by porco on 16/3/19.
+//  Copyright © 2016年 Porco. All rights reserved.
+//
+
+#ifndef IgoonaDoc_Prefix_pch
+#define IgoonaDoc_Prefix_pch
+
+#import <Availability.h>
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+#import "IGHTTPClient.h"
+#import "IGCommon/IGCommon.h"
+
+#import "MBProgressHUD.h"
+
+#import "UserInfo/IGDoctorInformation.h"
+#import "Masonry.h"
+#endif
+
+#endif /* IgoonaDoc_Prefix_pch */
