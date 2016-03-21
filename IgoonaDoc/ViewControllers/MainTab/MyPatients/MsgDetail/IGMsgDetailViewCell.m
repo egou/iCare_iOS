@@ -12,15 +12,52 @@
 
 +(CGFloat)heightForCellWithMsgText:(NSString *)text
 {
-    CGFloat baseHeight=48;
-    CGFloat width=280;
+    CGFloat baseHeight=88;
+    CGFloat width=230;
     
     CGFloat height=[text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
                                       options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin
                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]}
                                       context:nil].size.height;
     
+    height=height>0?height-20:0;
+    
     return baseHeight+ceilf(height);
 }
+
+@end
+
+
+
+@implementation IGMsgDetailViewCell_MyAudio
+
+
+
+@end
+
+
+
+@implementation IGMsgDetailViewCell_OtherText
++(CGFloat)heightForCellWithMsgText:(NSString *)text
+{
+    CGFloat baseHeight=88;
+    CGFloat width=230;
+    
+    CGFloat height=[text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                      options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin
+                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.0]}
+                                      context:nil].size.height;
+    
+    height=height>0?height-20:0;
+    
+    return baseHeight+ceilf(height);
+}
+
+
+@end
+
+@implementation IGMsgDetailViewCell_OtherAudio
+
+
 
 @end

@@ -10,7 +10,7 @@
 #import "IGMsgDetailViewCell.h"
 
 
-@interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -27,6 +27,8 @@
 
 @property (nonatomic,strong) NSArray<NSString *> *testMsgArray;
 
+@property (nonatomic,assign) NSInteger currentMsgType;  //0文本 1语音
+
 @end
 
 @implementation IGMsgDetailViewController
@@ -42,10 +44,15 @@
                         @"瑞哦呜饿哦我入围噢若无饿哦若瑞哦呜饿哦我入围噢若无饿哦若瑞哦呜饿哦我入围噢若无饿哦若",
                         @"若瑞哦呜饿哦我入围噢若无饿哦若瑞哦呜饿哦我入围",
                         @"哦若瑞哦呜饿哦我入",
+                        @"",
                         @"skj",
+                        @"",
                         @"哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入",
                         @"swer",
-                        @"哦若瑞哦呜饿哦我入s哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入"];
+                        @"",
+                        @"哦若瑞哦呜饿哦我入s哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入哦若瑞哦呜饿哦我入",
+                        @"",
+                        @""];
 }
 
 
@@ -62,9 +69,30 @@
     [self p_unregisterKeyboardAnimationNote];
 }
 
+#pragma mark - getter & setter
+-(void)setCurrentMsgType:(NSInteger)currentMsgType
+{
+    _currentMsgType=currentMsgType;
+    if(currentMsgType==0){
+        [self.msgTypeBtn setImage:[UIImage imageNamed: @"item_microphone"] forState:UIControlStateNormal];
+        self.msgTV.hidden=NO;
+        self.recordBtn.hidden=YES;
+    }else{
+        [self.msgTypeBtn setImage:[UIImage imageNamed:@"item_keyboard"] forState:UIControlStateNormal];
+        self.msgTV.hidden=YES;
+        self.recordBtn.hidden=NO;
+    }
+    
+    //发送状态
+    [self p_updateSendBtnStatus];
+}
+
+
 #pragma mark - events
 
 - (IBAction)onMsgTypeBtn:(id)sender {
+    
+    self.currentMsgType=self.currentMsgType^1;//0，1切换
 }
 
 - (IBAction)onSendBtn:(id)sender {
@@ -85,18 +113,54 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IGMsgDetailViewCell_MyText *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_MyText"];
+    NSString *msg=self.testMsgArray[indexPath.row];
     
-    cell.msgLabel.text=self.testMsgArray[indexPath.row];
-    cell.timeLabel.text=[[NSDate date] description];
-    
-    return cell;
+    if(msg.length>0)
+    {
+        if(arc4random()%2)
+        {
+            IGMsgDetailViewCell_MyText *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_MyText"];
+            
+            cell.msgLabel.text=msg;
+            cell.timeLabel.text=[[NSDate date] description];
+            return cell;
+        }else{
+            IGMsgDetailViewCell_OtherText *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_OtherText"];
+            
+            cell.msgLabel.text=msg;
+            cell.timeLabel.text=[[NSDate date] description];
+            return cell;
+        }
+        
+    }
+    else{
+        if(arc4random()%2){
+            IGMsgDetailViewCell_MyAudio *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_MyAudio"];
+            cell.timeLabel.text=[[NSDate date] description];
+            cell.audioDurationLabel.text=[NSString stringWithFormat:@"%d''",arc4random()%10];
+            return cell;
+        }else{
+            IGMsgDetailViewCell_OtherAudio *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_OtherAudio"];
+            cell.timeLabel.text=[[NSDate date] description];
+            cell.audioDurationLabel.text=[NSString stringWithFormat:@"%d''",arc4random()%10];
+            return cell;
+        }
+    }
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      return [IGMsgDetailViewCell_MyText heightForCellWithMsgText:self.testMsgArray[indexPath.row]];
 }
+
+#pragma mark - UITextViewDelegate
+-(void)textViewDidChange:(UITextView *)textView
+{
+    [self p_updateSendBtnStatus];
+}
+
+
 
 #pragma mark - private methods
 -(void)p_loadAdditionalView
@@ -106,7 +170,33 @@
     self.msgTV.layer.borderColor=[UIColor darkGrayColor].CGColor;
     self.msgTV.layer.borderWidth=0.5;
     
+    
+    self.recordBtn.layer.cornerRadius=2;
+    self.recordBtn.clipsToBounds=YES;
+    self.recordBtn.layer.borderColor=[UIColor darkGrayColor].CGColor;
+    self.recordBtn.layer.borderWidth=0.5;
+    
+    
     self.tableView.tableFooterView=[[UIView alloc] init];
+    
+    
+    
+    //bar
+    self.currentMsgType=0;
+    
+    self.msgTV.delegate=self;
+    
+    [self.sendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
+}
+
+-(void)p_updateSendBtnStatus
+{
+    //文本
+    if(self.currentMsgType==0){
+        self.sendBtn.enabled=self.msgTV.text.length>0?YES:NO;
+    }else/*语音*/{
+        self.sendBtn.enabled=NO;
+    }
 }
 
 -(void)p_registerKeyboardAnimationNote
