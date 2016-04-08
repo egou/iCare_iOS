@@ -145,6 +145,9 @@
                                //存储用户信息
                                MYINFO.username=username;
                                
+                               //连接数据库
+                               [IGLOCALMANAGER connectToDataRepositoryWithDocId:username];
+                               
                                //进入主页面
                                [wSelf p_didLoginSuccess];
                            }

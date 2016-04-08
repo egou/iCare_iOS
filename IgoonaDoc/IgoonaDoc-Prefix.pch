@@ -18,6 +18,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 #import "IGHTTPClient.h"
+#import "IGLocalDataManager.h"
 #import "IGCommon/IGCommon.h"
 
 #import "MBProgressHUD.h"

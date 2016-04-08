@@ -19,25 +19,22 @@
 {
     if(self=[super init])
     {
-        UIStoryboard *patientsStoryboard=[UIStoryboard storyboardWithName:@"MyPatients" bundle:nil];
-        UIViewController *myPatientsVC=[patientsStoryboard instantiateInitialViewController];
-        myPatientsVC.tabBarItem.image=[UIImage imageNamed:@"item_data"];
-        myPatientsVC.tabBarItem.title=@"我的病人";
+        UIStoryboard *toDoListSb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+        UIViewController *toDoVC=[toDoListSb instantiateInitialViewController];
+        toDoVC.tabBarItem.image=[UIImage imageNamed:@"item_data"];
+        toDoVC.tabBarItem.title=@"待办事项";
+
+        
+        UIStoryboard *doneListSb=[UIStoryboard storyboardWithName:@"DoneList" bundle:nil];
+        UIViewController *doneListVC=[doneListSb instantiateInitialViewController];
+        doneListVC.tabBarItem.image=[UIImage imageNamed:@"item_search"];
+        doneListVC.tabBarItem.title=@"已办事项";
         
         
-        UIStoryboard *dataQueryStoryboard=[UIStoryboard storyboardWithName:@"DataQuery" bundle:nil];
-        UIViewController *dataQueryVC=[dataQueryStoryboard instantiateInitialViewController];
-        dataQueryVC.tabBarItem.image=[UIImage imageNamed:@"item_search"];
-        dataQueryVC.tabBarItem.title=@"数据查询";
-        
-        
-        UIStoryboard *userCenterStoryboard=[UIStoryboard storyboardWithName:@"UserCenter" bundle:nil];
-        UIViewController *userCenterVC=[userCenterStoryboard instantiateInitialViewController];
-        userCenterVC.tabBarItem.image=[UIImage imageNamed:@"item_me"];
-        userCenterVC.tabBarItem.title=@"用户中心";
+
         
         self.tabBar.translucent=NO;
-        self.viewControllers=@[myPatientsVC,dataQueryVC,userCenterVC];
+        self.viewControllers=@[toDoVC,doneListVC];
     }
     return self;
 }
