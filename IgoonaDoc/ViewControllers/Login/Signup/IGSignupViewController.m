@@ -11,6 +11,9 @@
 #import "IGUserDefaults.h"
 
 @interface IGSignupViewController ()
+@property (weak, nonatomic) IBOutlet UIView *textFieldBgView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textFieldBgViewBottomLC;
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UITextField *invitationCodeTF;
@@ -28,8 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.saveUsernameBtn.counterpartCheckBox=self.savePasswordBtn;
-    self.savePasswordBtn.counterpartCheckBox=self.saveUsernameBtn;
+    [self p_initUI];
+   
 }
 
 
@@ -37,8 +40,13 @@
 {
     [super viewWillAppear:animated];
     [self p_showDefaults];
+    [self p_registerKeyboardNote];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self p_unRegisterKeyboardNote];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -56,6 +64,21 @@
 }
 
 #pragma mark - private methods
+-(void)p_initUI{
+    self.textFieldBgView.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.6];
+    self.textFieldBgView.layer.masksToBounds=YES;
+    self.textFieldBgView.layer.borderColor=[UIColor whiteColor].CGColor;
+    self.textFieldBgView.layer.borderWidth=1;
+    self.textFieldBgView.layer.cornerRadius=4;
+    
+    self.signupBtn.layer.masksToBounds=YES;
+    self.signupBtn.layer.cornerRadius=4;
+    
+    
+    self.saveUsernameBtn.counterpartCheckBox=self.savePasswordBtn;
+    self.savePasswordBtn.counterpartCheckBox=self.saveUsernameBtn;
+}
+
 
 -(void)p_showDefaults
 {
@@ -179,6 +202,36 @@
 - (IBAction)tapBackground:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+
+#pragma mark - keyboard note
+-(void)p_registerKeyboardNote{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHideNOtification:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)p_unRegisterKeyboardNote{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void)onKeyboardWillShowNotification:(NSNotification*)note{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.textFieldBgViewBottomLC.constant =100;
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
+}
+
+-(void)onKeyboardWillHideNOtification:(NSNotification*)note{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.textFieldBgViewBottomLC.constant =47;
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
+
+    
 }
 
 

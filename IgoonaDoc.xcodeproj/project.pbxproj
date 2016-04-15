@@ -62,7 +62,6 @@
 		6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001EF1C9D221800085229 /* UIRefreshControl+AFNetworking.m */; };
 		6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001F11C9D221800085229 /* UIWebView+AFNetworking.m */; };
 		6B0002261C9D221900085229 /* IGRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001F41C9D221800085229 /* IGRootViewController.m */; };
-		6B0002271C9D221900085229 /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001F81C9D221800085229 /* IGSignupViewController.m */; };
 		6B0002281C9D221900085229 /* IGCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001FB1C9D221800085229 /* IGCheckBox.m */; };
 		6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001FD1C9D221800085229 /* IGSaveInfoCheckBox.m */; };
 		6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */; };
@@ -79,6 +78,7 @@
 		6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032E091CC1493A0027DDAD /* IGSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -217,8 +217,6 @@
 		6B0001F11C9D221800085229 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		6B0001F31C9D221800085229 /* IGRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRootViewController.h; sourceTree = "<group>"; };
 		6B0001F41C9D221800085229 /* IGRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRootViewController.m; sourceTree = "<group>"; };
-		6B0001F71C9D221800085229 /* IGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSignupViewController.h; sourceTree = "<group>"; };
-		6B0001F81C9D221800085229 /* IGSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSignupViewController.m; sourceTree = "<group>"; };
 		6B0001FA1C9D221800085229 /* IGCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCheckBox.h; sourceTree = "<group>"; };
 		6B0001FB1C9D221800085229 /* IGCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCheckBox.m; sourceTree = "<group>"; };
 		6B0001FC1C9D221800085229 /* IGSaveInfoCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSaveInfoCheckBox.h; sourceTree = "<group>"; };
@@ -251,6 +249,8 @@
 		6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListInteractor.m; sourceTree = "<group>"; };
 		6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewController.h; sourceTree = "<group>"; };
 		6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
+		6B032E081CC1493A0027DDAD /* IGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSignupViewController.h; sourceTree = "<group>"; };
+		6B032E091CC1493A0027DDAD /* IGSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSignupViewController.m; sourceTree = "<group>"; };
 		6B1584BC1CB130A4009C4EAD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6B1584BE1CB130A9009C4EAD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B1584C01CB130AF009C4EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -608,24 +608,14 @@
 		6B0001F51C9D221800085229 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6B0001F61C9D221800085229 /* BindPhoneNum */,
+				6B032E071CC1493A0027DDAD /* Signup */,
 				6B0001F91C9D221800085229 /* CheckBox */,
 				6B0001FE1C9D221800085229 /* IGFirstLoadingViewController.h */,
 				6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */,
 				6B0002001C9D221800085229 /* IGLoginViewController.h */,
 				6B0002011C9D221800085229 /* IGLoginViewController.m */,
-				6B0002021C9D221900085229 /* IGSaveInfoButton */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		6B0001F61C9D221800085229 /* BindPhoneNum */ = {
-			isa = PBXGroup;
-			children = (
-				6B0001F71C9D221800085229 /* IGSignupViewController.h */,
-				6B0001F81C9D221800085229 /* IGSignupViewController.m */,
-			);
-			path = BindPhoneNum;
 			sourceTree = "<group>";
 		};
 		6B0001F91C9D221800085229 /* CheckBox */ = {
@@ -637,13 +627,6 @@
 				6B0001FD1C9D221800085229 /* IGSaveInfoCheckBox.m */,
 			);
 			path = CheckBox;
-			sourceTree = "<group>";
-		};
-		6B0002021C9D221900085229 /* IGSaveInfoButton */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = IGSaveInfoButton;
 			sourceTree = "<group>";
 		};
 		6B00022E1C9D24CD00085229 /* UserInfo */ = {
@@ -724,6 +707,15 @@
 			children = (
 			);
 			path = DoneList;
+			sourceTree = "<group>";
+		};
+		6B032E071CC1493A0027DDAD /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				6B032E081CC1493A0027DDAD /* IGSignupViewController.h */,
+				6B032E091CC1493A0027DDAD /* IGSignupViewController.m */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		6B1584CE1CB13151009C4EAD /* JPush */ = {
@@ -879,6 +871,7 @@
 				2C008DA51CAF760F00ECE4B5 /* MJRefreshComponent.m in Sources */,
 				6B00018D1C9D1E9500085229 /* AppDelegate.m in Sources */,
 				6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */,
+				6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
@@ -901,7 +894,6 @@
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6B00020D1C9D221900085229 /* AFNetworkReachabilityManager.m in Sources */,
-				6B0002271C9D221900085229 /* IGSignupViewController.m in Sources */,
 				2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */,
 				6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */,
