@@ -9,17 +9,18 @@
 #import "IGLoginViewController.h"
 #import "IGUserDefaults.h"
 #import "IGSaveInfoCheckBox.h"
-#import "IGMainTabBarController.h"
+
 
 @interface IGLoginViewController ()
+@property (weak, nonatomic) IBOutlet UIView *textfieldBgView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 
 @property (weak, nonatomic) IBOutlet IGSaveUserNameCheckBox *saveUsernameBtn;
 @property (weak, nonatomic) IBOutlet IGSavePasswordCheckBox *savePwdBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-@property (weak, nonatomic) IBOutlet UIButton *bindPhoneNumBtn;
-@property (weak, nonatomic) IBOutlet UIButton *resetPwdBtn;
+@property (weak, nonatomic) IBOutlet UIButton *signupBtn;
+@property (weak, nonatomic) IBOutlet UIButton *forgetPasswordBtn;
 
 @end
 
@@ -30,11 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    
-    self.saveUsernameBtn.counterpartCheckBox=self.savePwdBtn;
-    self.savePwdBtn.counterpartCheckBox=self.saveUsernameBtn;
-    
+    [self p_initUI];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -45,11 +42,35 @@
     [self p_onEnter];
 }
 
-
-
-
-
 #pragma mark - private methods
+
+-(void)p_initUI{
+    //textfield
+    self.textfieldBgView.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.6];
+    self.textfieldBgView.layer.masksToBounds=YES;
+    self.textfieldBgView.layer.borderColor=[UIColor whiteColor].CGColor;
+    self.textfieldBgView.layer.borderWidth=1;
+    self.textfieldBgView.layer.cornerRadius=4;
+    
+    
+    //login button
+    self.loginBtn.layer.masksToBounds=YES;
+    self.loginBtn.layer.cornerRadius=4;
+    
+    
+    
+    //forget pwd
+    self.forgetPasswordBtn.titleLabel.attributedText=[[NSAttributedString alloc] initWithString:@"忘记密码" attributes:@{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)}];
+    
+    self.signupBtn.titleLabel.attributedText=[[NSAttributedString alloc] initWithString:@"注册" attributes:@{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)}];
+    
+    
+    self.saveUsernameBtn.counterpartCheckBox=self.savePwdBtn;
+    self.savePwdBtn.counterpartCheckBox=self.saveUsernameBtn;
+}
+
+
+
 -(void)p_showDefaults
 {
     //先清空
@@ -171,13 +192,8 @@
 
 -(void)p_didLoginSuccess
 {
-    
-    
-//    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    UIViewController *mainTabBarController=[sb instantiateViewControllerWithIdentifier:@"IGMainTabBarControllerID"];
-//    mainTabBarController.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
-//    [self presentViewController:mainTabBarController animated:YES completion:nil];
-    UIViewController *mainVC=[[IGMainTabBarController alloc] init];
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
+    UIViewController *mainVC=[sb instantiateInitialViewController];
     mainVC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
     [self presentViewController:mainVC animated:YES completion:nil];
     

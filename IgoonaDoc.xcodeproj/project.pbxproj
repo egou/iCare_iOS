@@ -26,7 +26,6 @@
 		2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008D9E1CAF760F00ECE4B5 /* UIScrollView+MJExtension.m */; };
 		2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */; };
 		2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */; };
-		2C008DB81CAF9B3700ECE4B5 /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DB71CAF9B3700ECE4B5 /* IGMsgDetailInteractor.m */; };
 		6B00018A1C9D1E9500085229 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001891C9D1E9500085229 /* main.m */; };
 		6B00018D1C9D1E9500085229 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00018C1C9D1E9500085229 /* AppDelegate.m */; };
 		6B0001951C9D1E9500085229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001941C9D1E9500085229 /* Assets.xcassets */; };
@@ -68,11 +67,18 @@
 		6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001FD1C9D221800085229 /* IGSaveInfoCheckBox.m */; };
 		6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */; };
 		6B00022B1C9D221900085229 /* IGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0002011C9D221800085229 /* IGLoginViewController.m */; };
-		6B00022C1C9D221900085229 /* IGMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0002051C9D221900085229 /* IGMainTabBarController.m */; };
 		6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0002301C9D250B00085229 /* IGDoctorInformation.m */; };
 		6B0002371C9D2D6400085229 /* ToDoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0002351C9D2D6400085229 /* ToDoList.storyboard */; };
 		6B00023A1C9D2D8E00085229 /* DoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0002381C9D2D8E00085229 /* DoneList.storyboard */; };
-		6B1584A41CB10367009C4EAD /* IGMsgDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1584A31CB10367009C4EAD /* IGMsgDetailObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */; settings = {ASSET_TAGS = (); }; };
+		6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E011CC125190027DDAD /* IGMsgSummaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; settings = {ASSET_TAGS = (); }; };
+		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -83,13 +89,6 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; settings = {ASSET_TAGS = (); }; };
-		6BF85C6C1CAD5620009F0943 /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C601CAD5620009F0943 /* IGMsgDetailViewCell.m */; };
-		6BF85C6D1CAD5620009F0943 /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C621CAD5620009F0943 /* IGMsgDetailViewController.m */; };
-		6BF85C6E1CAD5620009F0943 /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C651CAD5620009F0943 /* IGToDoListDataManager.m */; };
-		6BF85C6F1CAD5620009F0943 /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C671CAD5620009F0943 /* IGToDoListInteractor.m */; };
-		6BF85C701CAD5620009F0943 /* IGMsgSummaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C691CAD5620009F0943 /* IGMsgSummaryModel.m */; };
-		6BF85C711CAD5620009F0943 /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C6B1CAD5620009F0943 /* IGToDoListViewController.m */; };
-		6BF85C741CAD6015009F0943 /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF85C731CAD6015009F0943 /* IGMsgDetailDataManager.m */; };
 		6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */; };
 		6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */; settings = {ASSET_TAGS = (); }; };
 		6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02B1CB7EE5E0087B569 /* FMDatabaseAdditions.m */; settings = {ASSET_TAGS = (); }; };
@@ -139,8 +138,6 @@
 		2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2C008DA11CAF760F00ECE4B5 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		2C008DB61CAF9B3700ECE4B5 /* IGMsgDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailInteractor.h; sourceTree = "<group>"; };
-		2C008DB71CAF9B3700ECE4B5 /* IGMsgDetailInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailInteractor.m; sourceTree = "<group>"; };
 		6B0001851C9D1E9500085229 /* IgoonaDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgoonaDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0001891C9D1E9500085229 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B00018B1C9D1E9500085229 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -230,15 +227,30 @@
 		6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFirstLoadingViewController.m; sourceTree = "<group>"; };
 		6B0002001C9D221800085229 /* IGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGLoginViewController.h; sourceTree = "<group>"; };
 		6B0002011C9D221800085229 /* IGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGLoginViewController.m; sourceTree = "<group>"; };
-		6B0002041C9D221900085229 /* IGMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMainTabBarController.h; sourceTree = "<group>"; };
-		6B0002051C9D221900085229 /* IGMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMainTabBarController.m; sourceTree = "<group>"; };
 		6B00022D1C9D235F00085229 /* IgoonaDoc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IgoonaDoc-Prefix.pch"; sourceTree = "<group>"; };
 		6B00022F1C9D250B00085229 /* IGDoctorInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoctorInformation.h; sourceTree = "<group>"; };
 		6B0002301C9D250B00085229 /* IGDoctorInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDoctorInformation.m; sourceTree = "<group>"; };
 		6B0002361C9D2D6400085229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ToDoList.storyboard; sourceTree = "<group>"; };
 		6B0002391C9D2D8E00085229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DoneList.storyboard; sourceTree = "<group>"; };
-		6B1584A21CB10367009C4EAD /* IGMsgDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailObj.h; sourceTree = "<group>"; };
-		6B1584A31CB10367009C4EAD /* IGMsgDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailObj.m; sourceTree = "<group>"; };
+		6B032DE41CC11FF80027DDAD /* IGUIDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGUIDefine.h; sourceTree = "<group>"; };
+		6B032DE61CC125190027DDAD /* IGMsgDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailObj.h; sourceTree = "<group>"; };
+		6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailObj.m; sourceTree = "<group>"; };
+		6B032DEB1CC125190027DDAD /* IGMsgDetailDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailDataManager.h; sourceTree = "<group>"; };
+		6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailDataManager.m; sourceTree = "<group>"; };
+		6B032DED1CC125190027DDAD /* IGMsgDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailInteractor.h; sourceTree = "<group>"; };
+		6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailInteractor.m; sourceTree = "<group>"; };
+		6B032DEF1CC125190027DDAD /* IGMsgDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewCell.h; sourceTree = "<group>"; };
+		6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewCell.m; sourceTree = "<group>"; };
+		6B032DF11CC125190027DDAD /* IGMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewController.h; sourceTree = "<group>"; };
+		6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewController.m; sourceTree = "<group>"; };
+		6B032DF41CC125190027DDAD /* IGMsgSummaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgSummaryModel.h; sourceTree = "<group>"; };
+		6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgSummaryModel.m; sourceTree = "<group>"; };
+		6B032DF61CC125190027DDAD /* IGToDoListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListDataManager.h; sourceTree = "<group>"; };
+		6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListDataManager.m; sourceTree = "<group>"; };
+		6B032DF81CC125190027DDAD /* IGToDoListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListInteractor.h; sourceTree = "<group>"; };
+		6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListInteractor.m; sourceTree = "<group>"; };
+		6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewController.h; sourceTree = "<group>"; };
+		6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
 		6B1584BC1CB130A4009C4EAD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6B1584BE1CB130A9009C4EAD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B1584C01CB130AF009C4EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -250,20 +262,6 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
-		6BF85C5F1CAD5620009F0943 /* IGMsgDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewCell.h; sourceTree = "<group>"; };
-		6BF85C601CAD5620009F0943 /* IGMsgDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewCell.m; sourceTree = "<group>"; };
-		6BF85C611CAD5620009F0943 /* IGMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewController.h; sourceTree = "<group>"; };
-		6BF85C621CAD5620009F0943 /* IGMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewController.m; sourceTree = "<group>"; };
-		6BF85C641CAD5620009F0943 /* IGToDoListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListDataManager.h; sourceTree = "<group>"; };
-		6BF85C651CAD5620009F0943 /* IGToDoListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListDataManager.m; sourceTree = "<group>"; };
-		6BF85C661CAD5620009F0943 /* IGToDoListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListInteractor.h; sourceTree = "<group>"; };
-		6BF85C671CAD5620009F0943 /* IGToDoListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListInteractor.m; sourceTree = "<group>"; };
-		6BF85C681CAD5620009F0943 /* IGMsgSummaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgSummaryModel.h; sourceTree = "<group>"; };
-		6BF85C691CAD5620009F0943 /* IGMsgSummaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgSummaryModel.m; sourceTree = "<group>"; };
-		6BF85C6A1CAD5620009F0943 /* IGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewController.h; sourceTree = "<group>"; };
-		6BF85C6B1CAD5620009F0943 /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
-		6BF85C721CAD6015009F0943 /* IGMsgDetailDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailDataManager.h; sourceTree = "<group>"; };
-		6BF85C731CAD6015009F0943 /* IGMsgDetailDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailDataManager.m; sourceTree = "<group>"; };
 		6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6BFBA0281CB7EE5E0087B569 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -424,6 +422,7 @@
 				6B0001AD1C9D221800085229 /* Networking */,
 				6BFBA03A1CB7EEE60087B569 /* LocalDataManager */,
 				6B0001B01C9D221800085229 /* ThirdParty */,
+				6B032DE31CC11FC90027DDAD /* Utility */,
 				6B0001881C9D1E9500085229 /* Supporting Files */,
 				6B1584D21CB1315C009C4EAD /* Frameworks */,
 			);
@@ -599,7 +598,9 @@
 				6B0001F31C9D221800085229 /* IGRootViewController.h */,
 				6B0001F41C9D221800085229 /* IGRootViewController.m */,
 				6B0001F51C9D221800085229 /* Login */,
-				6B0002031C9D221900085229 /* MainTab */,
+				6B032DE91CC125190027DDAD /* ToDoList */,
+				6B032E051CC1257D0027DDAD /* Others */,
+				6B032DE51CC125190027DDAD /* DataStructures */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -645,18 +646,6 @@
 			path = IGSaveInfoButton;
 			sourceTree = "<group>";
 		};
-		6B0002031C9D221900085229 /* MainTab */ = {
-			isa = PBXGroup;
-			children = (
-				6B0002041C9D221900085229 /* IGMainTabBarController.h */,
-				6B0002051C9D221900085229 /* IGMainTabBarController.m */,
-				6BF85C5C1CAD5620009F0943 /* DoneList */,
-				6BF85C5D1CAD5620009F0943 /* ToDoList */,
-				6B1584A11CB1031A009C4EAD /* DataStructures */,
-			);
-			path = MainTab;
-			sourceTree = "<group>";
-		};
 		6B00022E1C9D24CD00085229 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,13 +655,75 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
-		6B1584A11CB1031A009C4EAD /* DataStructures */ = {
+		6B032DE31CC11FC90027DDAD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				6B1584A21CB10367009C4EAD /* IGMsgDetailObj.h */,
-				6B1584A31CB10367009C4EAD /* IGMsgDetailObj.m */,
+				6B032DE41CC11FF80027DDAD /* IGUIDefine.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		6B032DE51CC125190027DDAD /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				6B032DE61CC125190027DDAD /* IGMsgDetailObj.h */,
+				6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */,
 			);
 			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		6B032DE91CC125190027DDAD /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				6B032DF31CC125190027DDAD /* ToDoList */,
+				6B032DEA1CC125190027DDAD /* MsgDetail */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		6B032DEA1CC125190027DDAD /* MsgDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6B032DEB1CC125190027DDAD /* IGMsgDetailDataManager.h */,
+				6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */,
+				6B032DED1CC125190027DDAD /* IGMsgDetailInteractor.h */,
+				6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */,
+				6B032DEF1CC125190027DDAD /* IGMsgDetailViewCell.h */,
+				6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */,
+				6B032DF11CC125190027DDAD /* IGMsgDetailViewController.h */,
+				6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */,
+			);
+			path = MsgDetail;
+			sourceTree = "<group>";
+		};
+		6B032DF31CC125190027DDAD /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				6B032DF41CC125190027DDAD /* IGMsgSummaryModel.h */,
+				6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */,
+				6B032DF61CC125190027DDAD /* IGToDoListDataManager.h */,
+				6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */,
+				6B032DF81CC125190027DDAD /* IGToDoListInteractor.h */,
+				6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */,
+				6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */,
+				6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		6B032E051CC1257D0027DDAD /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6B032E061CC1257D0027DDAD /* DoneList */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		6B032E061CC1257D0027DDAD /* DoneList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DoneList;
 			sourceTree = "<group>";
 		};
 		6B1584CE1CB13151009C4EAD /* JPush */ = {
@@ -699,52 +750,6 @@
 				6B1584BC1CB130A4009C4EAD /* Security.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6BF85C5C1CAD5620009F0943 /* DoneList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DoneList;
-			sourceTree = "<group>";
-		};
-		6BF85C5D1CAD5620009F0943 /* ToDoList */ = {
-			isa = PBXGroup;
-			children = (
-				6BF85C5E1CAD5620009F0943 /* MsgDetail */,
-				6BF85C631CAD5620009F0943 /* ToDoList */,
-			);
-			path = ToDoList;
-			sourceTree = "<group>";
-		};
-		6BF85C5E1CAD5620009F0943 /* MsgDetail */ = {
-			isa = PBXGroup;
-			children = (
-				6BF85C611CAD5620009F0943 /* IGMsgDetailViewController.h */,
-				6BF85C621CAD5620009F0943 /* IGMsgDetailViewController.m */,
-				6BF85C5F1CAD5620009F0943 /* IGMsgDetailViewCell.h */,
-				6BF85C601CAD5620009F0943 /* IGMsgDetailViewCell.m */,
-				6BF85C721CAD6015009F0943 /* IGMsgDetailDataManager.h */,
-				6BF85C731CAD6015009F0943 /* IGMsgDetailDataManager.m */,
-				2C008DB61CAF9B3700ECE4B5 /* IGMsgDetailInteractor.h */,
-				2C008DB71CAF9B3700ECE4B5 /* IGMsgDetailInteractor.m */,
-			);
-			path = MsgDetail;
-			sourceTree = "<group>";
-		};
-		6BF85C631CAD5620009F0943 /* ToDoList */ = {
-			isa = PBXGroup;
-			children = (
-				6BF85C6A1CAD5620009F0943 /* IGToDoListViewController.h */,
-				6BF85C6B1CAD5620009F0943 /* IGToDoListViewController.m */,
-				6BF85C641CAD5620009F0943 /* IGToDoListDataManager.h */,
-				6BF85C651CAD5620009F0943 /* IGToDoListDataManager.m */,
-				6BF85C661CAD5620009F0943 /* IGToDoListInteractor.h */,
-				6BF85C671CAD5620009F0943 /* IGToDoListInteractor.m */,
-				6BF85C681CAD5620009F0943 /* IGMsgSummaryModel.h */,
-				6BF85C691CAD5620009F0943 /* IGMsgSummaryModel.m */,
-			);
-			path = ToDoList;
 			sourceTree = "<group>";
 		};
 		6BFBA0271CB7EE5E0087B569 /* fmdb */ = {
@@ -850,7 +855,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B1584A41CB10367009C4EAD /* IGMsgDetailObj.m in Sources */,
 				6B00020B1C9D221900085229 /* IGHTTPClient.m in Sources */,
 				6B0002181C9D221900085229 /* NSArray+MASAdditions.m in Sources */,
 				6B0002211C9D221900085229 /* UIButton+AFNetworking.m in Sources */,
@@ -859,6 +863,7 @@
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
+				6B032E011CC125190027DDAD /* IGMsgSummaryModel.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
@@ -867,6 +872,7 @@
 				2C008DAA1CAF760F00ECE4B5 /* MJRefreshAutoStateFooter.m in Sources */,
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
 				6B0002221C9D221900085229 /* UIImageView+AFNetworking.m in Sources */,
 				6B0002281C9D221900085229 /* IGCheckBox.m in Sources */,
 				6B00020A1C9D221900085229 /* IGUserDefaults.m in Sources */,
@@ -875,7 +881,6 @@
 				6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
-				6BF85C6C1CAD5620009F0943 /* IGMsgDetailViewCell.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
@@ -886,41 +891,40 @@
 				6B00018A1C9D1E9500085229 /* main.m in Sources */,
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
-				6BF85C6D1CAD5620009F0943 /* IGMsgDetailViewController.m in Sources */,
+				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
+				6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */,
+				6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */,
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
-				6B00022C1C9D221900085229 /* IGMainTabBarController.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6B00020D1C9D221900085229 /* AFNetworkReachabilityManager.m in Sources */,
 				6B0002271C9D221900085229 /* IGSignupViewController.m in Sources */,
 				2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */,
-				6BF85C6F1CAD5620009F0943 /* IGToDoListInteractor.m in Sources */,
-				6BF85C741CAD6015009F0943 /* IGMsgDetailDataManager.m in Sources */,
 				6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */,
 				6B00022B1C9D221900085229 /* IGLoginViewController.m in Sources */,
 				2C008DA91CAF760F00ECE4B5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,
-				6BF85C711CAD5620009F0943 /* IGToDoListViewController.m in Sources */,
+				6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
-				6BF85C6E1CAD5620009F0943 /* IGToDoListDataManager.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
 				6B0002201C9D221900085229 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				6BF85C701CAD5620009F0943 /* IGMsgSummaryModel.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
-				2C008DB81CAF9B3700ECE4B5 /* IGMsgDetailInteractor.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
+				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
+				6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */,
 				2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */,
 				6B0002081C9D221900085229 /* IGCommonUI.m in Sources */,
 				6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */,
 				6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */,
+				6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */,
 				2C008DA31CAF760F00ECE4B5 /* MJRefreshAutoFooter.m in Sources */,
 				6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */,
 			);

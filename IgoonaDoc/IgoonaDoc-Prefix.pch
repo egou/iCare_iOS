@@ -25,6 +25,9 @@
 
 #import "UserInfo/IGDoctorInformation.h"
 #import "Masonry.h"
+
+
+#import "IGUIDefine.h"
 #endif
 
 #endif /* IgoonaDoc_Prefix_pch */

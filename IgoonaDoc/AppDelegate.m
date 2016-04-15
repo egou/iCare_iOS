@@ -30,13 +30,11 @@
     
     
     
-    UIColor *appTint=[UIColor blueColor];
     
     //整体UI风格
-    [UINavigationBar appearance].barTintColor=appTint;
+    [UINavigationBar appearance].barTintColor=IGUI_MainAppearanceColor;
     [UINavigationBar appearance].titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:appTint} forState:UIControlStateHighlighted];
-    [[UITabBar appearance] setTintColor:appTint];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:IGUI_MainAppearanceColor} forState:UIControlStateHighlighted];
     
     
     
