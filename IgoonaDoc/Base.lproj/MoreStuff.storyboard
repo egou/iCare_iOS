@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ivd-dy-WZy">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--More Stuff View Controller-->
+        <scene sceneID="gfT-WX-u7J">
+            <objects>
+                <viewController id="Ivd-dy-WZy" customClass="IGMoreStuffViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1GI-Tz-TLD"/>
+                        <viewControllerLayoutGuide type="bottom" id="QMr-mp-Fvk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j35-h1-WLN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-5R-SIT">
+                                <rect key="frame" x="90" y="0.0" width="510" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.83066998110000001" green="0.778047296" blue="0.49618181389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="1uW-pq-shb">
+                                    <rect key="frame" x="0.0" y="218" width="510" height="110"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-0O-aLv">
+                                            <rect key="frame" x="30" y="33" width="450" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="HJW-Bq-x6W"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="退出登录">
+                                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onLogoutBtn:" destination="Ivd-dy-WZy" eventType="touchUpInside" id="p2W-9A-WGd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="lDh-0O-aLv" firstAttribute="leading" secondItem="1uW-pq-shb" secondAttribute="leading" constant="30" id="kmG-vq-zSZ"/>
+                                        <constraint firstItem="lDh-0O-aLv" firstAttribute="centerY" secondItem="1uW-pq-shb" secondAttribute="centerY" id="ne7-Q8-Val"/>
+                                        <constraint firstAttribute="trailing" secondItem="lDh-0O-aLv" secondAttribute="trailing" constant="30" id="pOZ-0h-OrT"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="IGMoreStuffViewMyInfoCell" rowHeight="190" id="dx3-Wc-mNE" customClass="IGMoreStuffViewMyInfoCell">
+                                        <rect key="frame" x="0.0" y="28" width="510" height="190"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dx3-Wc-mNE" id="Pcq-JK-IIn">
+                                            <rect key="frame" x="0.0" y="0.0" width="510" height="189"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_me" translatesAutoresizingMaskIntoConstraints="NO" id="hsF-29-Ptr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="510" height="189"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_note" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-yz-ist">
+                                                    <rect key="frame" x="205" y="45" width="100" height="100"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="R4l-DU-KaU"/>
+                                                        <constraint firstAttribute="height" constant="100" id="YwH-l1-4KZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1900N4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tw-TU-6TE">
+                                                    <rect key="frame" x="224" y="153" width="62" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ypu-yz-ist" firstAttribute="centerY" secondItem="Pcq-JK-IIn" secondAttribute="centerY" id="7Ma-nd-M2E"/>
+                                                <constraint firstItem="0tw-TU-6TE" firstAttribute="top" secondItem="Ypu-yz-ist" secondAttribute="bottom" constant="8" id="EMb-P1-qyC"/>
+                                                <constraint firstAttribute="bottom" secondItem="hsF-29-Ptr" secondAttribute="bottom" id="FgO-82-A0J"/>
+                                                <constraint firstItem="0tw-TU-6TE" firstAttribute="centerX" secondItem="Pcq-JK-IIn" secondAttribute="centerX" id="Ubv-eK-8aw"/>
+                                                <constraint firstItem="hsF-29-Ptr" firstAttribute="leading" secondItem="Pcq-JK-IIn" secondAttribute="leading" id="ZMg-7w-Wxh"/>
+                                                <constraint firstItem="hsF-29-Ptr" firstAttribute="top" secondItem="Pcq-JK-IIn" secondAttribute="top" id="evQ-Ih-16R"/>
+                                                <constraint firstAttribute="trailing" secondItem="hsF-29-Ptr" secondAttribute="trailing" id="m0n-9U-dT5"/>
+                                                <constraint firstItem="Ypu-yz-ist" firstAttribute="centerX" secondItem="Pcq-JK-IIn" secondAttribute="centerX" id="y5m-Vx-aeA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="myPhoneNumLabel" destination="0tw-TU-6TE" id="Wzr-fN-ZRm"/>
+                                            <outlet property="myPhotoIV" destination="Ypu-yz-ist" id="PXa-Wx-1qG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ivd-dy-WZy" id="GCv-KL-MWd"/>
+                                    <outlet property="delegate" destination="Ivd-dy-WZy" id="H0Q-JR-gcZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="QMr-mp-Fvk" firstAttribute="top" secondItem="cXe-5R-SIT" secondAttribute="bottom" id="LYE-tX-cAA"/>
+                            <constraint firstItem="cXe-5R-SIT" firstAttribute="top" secondItem="j35-h1-WLN" secondAttribute="top" id="Lh6-9i-5Ba"/>
+                            <constraint firstItem="cXe-5R-SIT" firstAttribute="leading" secondItem="j35-h1-WLN" secondAttribute="leading" constant="90" id="NBt-DG-5rJ"/>
+                            <constraint firstAttribute="trailing" secondItem="cXe-5R-SIT" secondAttribute="trailing" id="ot1-XY-rEq"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OQk-aP-dFk" appends="YES" id="O62-um-Yxr"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="logoutBtn" destination="lDh-0O-aLv" id="Dz5-g5-FOP"/>
+                        <outlet property="tableView" destination="cXe-5R-SIT" id="iC7-FW-wdi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLj-pJ-VuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="OQk-aP-dFk">
+                    <connections>
+                        <action selector="onSwipeGesture:" destination="Ivd-dy-WZy" id="ahV-ub-73t"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="313" y="482"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg_me" width="285" height="193"/>
+        <image name="item_note" width="23" height="23"/>
+    </resources>
+</document>

@@ -7,7 +7,7 @@
 //
 
 #import "IGToDoListInteractor.h"
-#import "IGMsgSummaryModel.h"
+#import "IGMsgDetailObj.h"
 
 @implementation IGToDoListInteractor
 

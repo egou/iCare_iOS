@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--我的病人-->
+        <!--To Do List View Controller-->
         <scene sceneID="ko4-Kj-495">
             <objects>
                 <tableViewController id="m1c-qf-zyC" customClass="IGToDoListViewController" sceneMemberID="viewController">
@@ -35,17 +35,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5Y-uu-84W">
-                                            <rect key="frame" x="12" y="7" width="8" height="8"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="8" id="JAf-S7-cx3"/>
-                                                <constraint firstAttribute="height" constant="8" id="QIr-9t-13l"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-hA-ysO">
                                             <rect key="frame" x="82" y="38" width="34" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -55,8 +44,6 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1uc-7X-o1A" firstAttribute="leading" secondItem="MAn-vJ-iWI" secondAttribute="trailing" constant="18" id="25j-jI-KHq"/>
-                                        <constraint firstItem="j5Y-uu-84W" firstAttribute="leading" secondItem="MAn-vJ-iWI" secondAttribute="leading" constant="-4" id="E1H-Bd-C4P"/>
-                                        <constraint firstItem="j5Y-uu-84W" firstAttribute="top" secondItem="MAn-vJ-iWI" secondAttribute="top" constant="-4" id="PvB-rJ-k1b"/>
                                         <constraint firstItem="Kqa-hA-ysO" firstAttribute="leading" secondItem="1uc-7X-o1A" secondAttribute="leading" id="S7q-AI-A5S"/>
                                         <constraint firstItem="MAn-vJ-iWI" firstAttribute="leading" secondItem="Xy2-ER-YI3" secondAttribute="leadingMargin" constant="8" id="Udz-lQ-Clt"/>
                                         <constraint firstItem="MAn-vJ-iWI" firstAttribute="centerY" secondItem="Xy2-ER-YI3" secondAttribute="centerY" id="bme-DL-LEy"/>
@@ -65,7 +52,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="badgeLabel" destination="j5Y-uu-84W" id="2Qt-r6-azX"/>
                                     <outlet property="icon" destination="MAn-vJ-iWI" id="yLT-pk-inI"/>
                                     <outlet property="lastMsg" destination="Kqa-hA-ysO" id="PjO-Aa-OPY"/>
                                     <outlet property="name" destination="1uc-7X-o1A" id="vix-w5-DG8"/>
@@ -77,11 +63,48 @@
                             <outlet property="delegate" destination="m1c-qf-zyC" id="RI1-9p-Vlr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我的病人" id="HMB-Gj-cNx"/>
+                    <navigationItem key="navigationItem" id="HMB-Gj-cNx">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="LZy-33-zkH">
+                            <rect key="frame" x="228" y="6" width="145" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我好了大夫" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opU-ih-Sge">
+                                    <rect key="frame" x="30" y="6" width="85" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3E-Kr-Vza">
+                                    <rect key="frame" x="115" y="-6" width="44" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="OPE-0I-PZB"/>
+                                        <constraint firstAttribute="height" constant="44" id="RcP-LJ-UvV"/>
+                                    </constraints>
+                                    <state key="normal" image="item_rest"/>
+                                    <connections>
+                                        <action selector="onWorkStatusBtn:" destination="m1c-qf-zyC" eventType="touchUpInside" id="O0i-5T-IYq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="opU-ih-Sge" firstAttribute="centerY" secondItem="LZy-33-zkH" secondAttribute="centerY" id="IDA-rf-LQs"/>
+                                <constraint firstItem="opU-ih-Sge" firstAttribute="centerX" secondItem="LZy-33-zkH" secondAttribute="centerX" id="NGv-bn-ige"/>
+                                <constraint firstItem="e3E-Kr-Vza" firstAttribute="leading" secondItem="opU-ih-Sge" secondAttribute="trailing" id="eSW-jS-OVI"/>
+                                <constraint firstItem="e3E-Kr-Vza" firstAttribute="centerY" secondItem="LZy-33-zkH" secondAttribute="centerY" id="vrn-HA-XlN"/>
+                            </constraints>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" image="item_more" id="LyK-iK-FUy">
+                            <connections>
+                                <action selector="onMoreStuffBtn:" destination="m1c-qf-zyC" id="09X-e4-Auz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2b-bC-Ce1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="165"/>
+            <point key="canvasLocation" x="1043" y="-69"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="odo-wn-Pi5">
@@ -109,7 +132,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSF-J7-cbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2021" y="144"/>
+            <point key="canvasLocation" x="817" y="1032"/>
         </scene>
         <!--Msg Detail View Controller-->
         <scene sceneID="DoW-iP-kGU">
@@ -404,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYq-US-kLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="144"/>
+            <point key="canvasLocation" x="1548" y="1032"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tEG-Gn-TZI">
@@ -420,7 +443,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0K-Ve-8M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="165"/>
+            <point key="canvasLocation" x="265" y="-69"/>
         </scene>
     </scenes>
     <resources>
@@ -430,5 +453,7 @@
         <image name="item_data" width="24" height="24"/>
         <image name="item_me" width="24" height="26"/>
         <image name="item_microphone" width="36" height="36"/>
+        <image name="item_more" width="3" height="16"/>
+        <image name="item_rest" width="22" height="21"/>
     </resources>
 </document>

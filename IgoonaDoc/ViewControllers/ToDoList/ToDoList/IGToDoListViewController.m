@@ -7,14 +7,17 @@
 //
 
 #import "IGToDoListViewController.h"
-#import "IGMsgSummaryModel.h"
+#import "IGMsgSummaryObj.h"
 
 #import "IGMsgDetailViewController.h"
 #import "MJRefresh.h"
 
-@interface IGToDoListViewController ()
+#import "IGMoreStuffViewController.h"
+#import "IGViewControllerTransitioning.h"
 
-@property (nonatomic,strong) NSArray<IGMsgSummaryModel*>* allMsgSumArray;
+@interface IGToDoListViewController ()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
+
+@property (nonatomic,strong) NSArray<IGMsgSummaryObj*>* toDoListCopyArray;  //仅仅为副本
 
 @end
 
@@ -30,20 +33,24 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //刷新
     [self p_requestForToDoList];
 }
 
-#pragma mark - getter & setter
--(NSArray<IGMsgSummaryModel*>*)allMsgSumArray
-{
-    if(!_allMsgSumArray)
-    {
-        _allMsgSumArray=@[];
-    }
-    return _allMsgSumArray;
+#pragma mark - events
+- (IBAction)onMoreStuffBtn:(id)sender {
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    IGMoreStuffViewController *moreStuffVC=[sb instantiateInitialViewController];
+    moreStuffVC.delegate=self;
+    self.navigationController.definesPresentationContext=YES;
+    moreStuffVC.modalPresentationStyle=UIModalPresentationOverCurrentContext;
+    moreStuffVC.transitioningDelegate=self;
+    [self.navigationController presentViewController:moreStuffVC animated:YES completion:nil];
 }
 
-
+- (IBAction)onWorkStatusBtn:(id)sender {
+}
 
 #pragma mark - Table view data source & delegate
 
@@ -53,13 +60,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.allMsgSumArray.count;
+    return self.toDoListCopyArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IGMyPatientsViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyPatientsViewCellID"];
-    cell.msgSumData=self.allMsgSumArray[indexPath.row];
+    cell.msgSumData=self.toDoListCopyArray[indexPath.row];
     return cell;
 }
 
@@ -67,69 +74,44 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-    IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
-    NSString* patientId=@"1";
-    NSAssert(patientId.length>0, @"patient Id is empty");
-    vc.patientId=patientId;
-    vc.hidesBottomBarWhenPushed=YES;
-    vc.edgesForExtendedLayout = UIRectEdgeAll;
-    [self.navigationController pushViewController:vc animated:YES];
+    if(1){
+        //如果为对话
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+        IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
+        NSString* patientId=@"1";
+        NSAssert(patientId.length>0, @"patient Id is empty");
+        vc.patientId=patientId;
+        vc.hidesBottomBarWhenPushed=YES;
+        vc.edgesForExtendedLayout = UIRectEdgeAll;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        
+    }
 }
+
+
 
 #pragma mark - private methods
 -(void)p_requestForToDoList
 {
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
     
-    [IGHTTPCLIENT GET:@"php/message.php"
-           parameters:@{@"action":@"doctor_get_summary",
-                        @"start":@0,
-                        @"limit":@20}
-             progress:nil
-              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                  [IGCommonUI hideHUDForView:self.navigationController.view];
-                  NSLog(@"%@",responseObject);
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1))
-                  {
-                      NSMutableArray<IGMsgSummaryModel*> *msgSumArray=[NSMutableArray array];
-                      for(NSDictionary *msgSumDic in (NSArray*)responseObject[@"data"])
-                      {
-                          IGMsgSummaryModel *msg=[[IGMsgSummaryModel alloc] init];
-                          
-                          NSString *encodedIconStr=msgSumDic[@"icon"];
-                          if(encodedIconStr.length>0){
-                              msg.iconData=[[NSData alloc] initWithBase64EncodedString:encodedIconStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-                          }else{
-                              msg.iconData=[NSData data];
-                          }
-                          
-                          msg.lastMsg=msgSumDic[@"lastMsg"];
-                          msg.lastMsgId=msgSumDic[@"lastMsgId"];
-                          msg.lastMsgTS=msgSumDic[@"lastMsgTS"];
-                          msg.lastReadMsgId=msgSumDic[@"lastReadMsgId"];
-                          msg.memberId=msgSumDic[@"member_id"];
-                          msg.memberName=msgSumDic[@"member_name"];
-                          msg.newMsgCt=[msgSumDic[@"newMsgCt"] integerValue];
-                          msg.serviceLevel=[msgSumDic[@"service_level"] integerValue];
-                          
-                          [msgSumArray addObject:msg];
-                      }
-                      
-                      self.allMsgSumArray=msgSumArray;
-                      [self.tableView reloadData];
-                  }
-                  else
-                  {
-                      [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取消息失败"];
-                  }
-                  
-             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 [IGCommonUI hideHUDForView:self.navigationController.view];
-                 [IGCommonUI showHUDShortlyWithNetworkErrorMsgAddedTo:self.navigationController.view];
-             }];
 }
 
+
+#pragma mark - IGMoreStuffViewControllerDelegate
+-(void)moreStuffViewController:(IGMoreStuffViewController *)viewController onEvent:(IGMoreStuffEvent)event{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"on more stuff:%d",event);
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    return [[IGViewControllerTransitioningPush alloc] init];
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+    return [[IGViewControllerTransitioningPop alloc] init];
+}
 @end
 
 
@@ -137,27 +119,18 @@
 
 
 @interface IGMyPatientsViewCell()
-
-@property (weak, nonatomic) IBOutlet UILabel *badgeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *lastMsg;
-
 
 @end
 
 
 
 @implementation IGMyPatientsViewCell
--(void)awakeFromNib
-{
-    self.badgeLabel.layer.cornerRadius=4;
-    self.badgeLabel.clipsToBounds=YES;
-}
 
--(void)setMsgSumData:(IGMsgSummaryModel *)msgSumData
+-(void)setMsgSumData:(IGMsgSummaryObj *)msgSumData
 {
-    self.badgeLabel.hidden=msgSumData.newMsgCt>0?NO:YES;
     self.icon.image=msgSumData.iconData.length>0?[UIImage imageWithData:msgSumData.iconData]:[UIImage imageNamed:@"item_me"];
     self.name.text=msgSumData.memberName;
     self.lastMsg.text=msgSumData.lastMsg;

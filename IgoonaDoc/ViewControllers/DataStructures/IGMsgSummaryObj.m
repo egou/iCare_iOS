@@ -6,9 +6,9 @@
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGMsgSummaryModel.h"
+#import "IGMsgSummaryObj.h"
 
-@implementation IGMsgSummaryModel
+@implementation IGMsgSummaryObj
 
 -(instancetype)init
 {

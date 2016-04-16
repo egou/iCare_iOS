@@ -15,9 +15,9 @@
 
 
 
-@class IGMsgSummaryModel;
+@class IGMsgSummaryObj;
 @interface IGMyPatientsViewCell: UITableViewCell
 
-@property (nonatomic,strong) IGMsgSummaryModel *msgSumData;
+@property (nonatomic,strong) IGMsgSummaryObj *msgSumData;
 
 @end

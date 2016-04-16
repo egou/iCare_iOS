@@ -35,7 +35,7 @@
     [UINavigationBar appearance].barTintColor=IGUI_MainAppearanceColor;
     [UINavigationBar appearance].titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor whiteColor]};
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:IGUI_MainAppearanceColor} forState:UIControlStateHighlighted];
-    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
     
     
     //JPush

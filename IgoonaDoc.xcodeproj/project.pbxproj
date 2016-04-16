@@ -74,11 +74,14 @@
 		6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */; settings = {ASSET_TAGS = (); }; };
 		6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E011CC125190027DDAD /* IGMsgSummaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032E091CC1493A0027DDAD /* IGSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B033D151CC1DDCB00CD87DC /* IGMsgSummaryObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; settings = {ASSET_TAGS = (); }; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -241,8 +244,6 @@
 		6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewCell.m; sourceTree = "<group>"; };
 		6B032DF11CC125190027DDAD /* IGMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewController.h; sourceTree = "<group>"; };
 		6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewController.m; sourceTree = "<group>"; };
-		6B032DF41CC125190027DDAD /* IGMsgSummaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgSummaryModel.h; sourceTree = "<group>"; };
-		6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgSummaryModel.m; sourceTree = "<group>"; };
 		6B032DF61CC125190027DDAD /* IGToDoListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListDataManager.h; sourceTree = "<group>"; };
 		6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListDataManager.m; sourceTree = "<group>"; };
 		6B032DF81CC125190027DDAD /* IGToDoListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListInteractor.h; sourceTree = "<group>"; };
@@ -251,6 +252,13 @@
 		6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
 		6B032E081CC1493A0027DDAD /* IGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSignupViewController.h; sourceTree = "<group>"; };
 		6B032E091CC1493A0027DDAD /* IGSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSignupViewController.m; sourceTree = "<group>"; };
+		6B033D131CC1DDCB00CD87DC /* IGMsgSummaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgSummaryObj.h; sourceTree = "<group>"; };
+		6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgSummaryObj.m; sourceTree = "<group>"; };
+		6B033D3C1CC288EE00CD87DC /* IGMoreStuffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMoreStuffViewController.h; sourceTree = "<group>"; };
+		6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMoreStuffViewController.m; sourceTree = "<group>"; };
+		6B033D401CC2895900CD87DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MoreStuff.storyboard; sourceTree = "<group>"; };
+		6B033D421CC2A2B900CD87DC /* IGViewControllerTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewControllerTransitioning.h; sourceTree = "<group>"; };
+		6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewControllerTransitioning.m; sourceTree = "<group>"; };
 		6B1584BC1CB130A4009C4EAD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6B1584BE1CB130A9009C4EAD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B1584C01CB130AF009C4EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -448,6 +456,7 @@
 				6B0001A21C9D221800085229 /* Login.storyboard */,
 				6B0002351C9D2D6400085229 /* ToDoList.storyboard */,
 				6B0002381C9D2D8E00085229 /* DoneList.storyboard */,
+				6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -642,6 +651,8 @@
 			isa = PBXGroup;
 			children = (
 				6B032DE41CC11FF80027DDAD /* IGUIDefine.h */,
+				6B033D421CC2A2B900CD87DC /* IGViewControllerTransitioning.h */,
+				6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -649,6 +660,8 @@
 		6B032DE51CC125190027DDAD /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				6B033D131CC1DDCB00CD87DC /* IGMsgSummaryObj.h */,
+				6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */,
 				6B032DE61CC125190027DDAD /* IGMsgDetailObj.h */,
 				6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */,
 			);
@@ -682,14 +695,12 @@
 		6B032DF31CC125190027DDAD /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				6B032DF41CC125190027DDAD /* IGMsgSummaryModel.h */,
-				6B032DF51CC125190027DDAD /* IGMsgSummaryModel.m */,
+				6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */,
+				6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */,
 				6B032DF61CC125190027DDAD /* IGToDoListDataManager.h */,
 				6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */,
 				6B032DF81CC125190027DDAD /* IGToDoListInteractor.h */,
 				6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */,
-				6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */,
-				6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -697,16 +708,10 @@
 		6B032E051CC1257D0027DDAD /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				6B032E061CC1257D0027DDAD /* DoneList */,
+				6B033D3C1CC288EE00CD87DC /* IGMoreStuffViewController.h */,
+				6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */,
 			);
 			path = Others;
-			sourceTree = "<group>";
-		};
-		6B032E061CC1257D0027DDAD /* DoneList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DoneList;
 			sourceTree = "<group>";
 		};
 		6B032E071CC1493A0027DDAD /* Signup */ = {
@@ -836,6 +841,7 @@
 				6B0002371C9D2D6400085229 /* ToDoList.storyboard in Resources */,
 				6B0002071C9D221900085229 /* Login.storyboard in Resources */,
 				6B00023A1C9D2D8E00085229 /* DoneList.storyboard in Resources */,
+				6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */,
 				6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -855,13 +861,13 @@
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
-				6B032E011CC125190027DDAD /* IGMsgSummaryModel.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
 				6B0002231C9D221900085229 /* UIProgressView+AFNetworking.m in Sources */,
 				2C008DAB1CAF760F00ECE4B5 /* MJRefreshBackGifFooter.m in Sources */,
 				2C008DAA1CAF760F00ECE4B5 /* MJRefreshAutoStateFooter.m in Sources */,
+				6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */,
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
@@ -875,6 +881,7 @@
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
+				6B033D151CC1DDCB00CD87DC /* IGMsgSummaryObj.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
@@ -882,6 +889,7 @@
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
 				6B0002171C9D221900085229 /* MASViewConstraint.m in Sources */,
 				6B00018A1C9D1E9500085229 /* main.m in Sources */,
+				6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */,
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
@@ -955,6 +963,14 @@
 				6B0002391C9D2D8E00085229 /* Base */,
 			);
 			name = DoneList.storyboard;
+			sourceTree = "<group>";
+		};
+		6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B033D401CC2895900CD87DC /* Base */,
+			);
+			name = MoreStuff.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

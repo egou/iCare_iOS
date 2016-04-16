@@ -10,19 +10,38 @@
 
 @protocol IGToDoListDataManagerDelegate;
 
+
+
+/**
+ 负责 1主动获取数据
+     2监听推送
+     3整理所有数据
+     4转换工作状态
+ */
 @interface IGToDoListDataManager : NSObject
 
+@property (nonatomic,weak) id<IGToDoListDataManagerDelegate> delegate;
+
+@property (nonatomic,strong,readonly) NSArray *toDoListArray;   //目前所有待办
+@property (nonatomic,assign,readonly) BOOL hasLoadedAll;        //没有更多待办
+
+@property (nonatomic,assign,readonly) BOOL isWorking;           //是否在工作
+
+
+-(void)tapToChangeWorkStatus;
 -(void)pullDownToGetNewMsgs;
 -(void)pullUpToGetOldMsgs;
 
-@property (nonatomic,weak) id<IGToDoListDataManagerDelegate> delegate;
 @end
+
+
 
 
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
--(void)msgSummaryDataManager:(IGToDoListDataManager*)magager didReceiveNewMsgsSuccess:(BOOL)success withAllMsgs:(id)msgs;
--(void)msgSummaryDataManager:(IGToDoListDataManager *)magager didReceiveOldMsgsSuccess:(BOOL)success withAllMsgs:(id)msgs hasLoadedAll:(BOOL)hasLoadedAll;
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)magager;
+-(void)toDoListDataManager:(IGToDoListDataManager*)magager didReceiveNewMsgsSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGToDoListDataManager *)magager didReceiveOldMsgsSuccess:(BOOL)success;
 
 @end
 

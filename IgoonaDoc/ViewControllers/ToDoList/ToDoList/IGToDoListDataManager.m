@@ -7,15 +7,19 @@
 //
 
 #import "IGToDoListDataManager.h"
-#import "IGMsgSummaryModel.h"
+#import "IGMsgDetailObj.h"
 #import "IGToDoListInteractor.h"
 
 @interface IGToDoListDataManager()
 
-@property (nonatomic,strong) NSArray<IGMsgSummaryModel*> *allMsgsArray;
+
 @property (nonatomic,strong) IGToDoListInteractor *dataInteractor;
 
-@property (nonatomic,strong) NSArray *tempNewMsgsArray;//接受新消息可能会需要几次请求
+@property (nonatomic,strong,readwrite) NSArray *toDoListArray;
+@property (nonatomic,assign,readwrite) BOOL hasLoadedAll;
+@property (nonatomic,assign,readwrite) BOOL isWorking;
+
+
 
 @end
 
@@ -25,10 +29,9 @@
 {
     if(self=[super init])
     {
-        //从本地获取数据
-        _allMsgsArray=@[];
-        
-        
+        _toDoListArray=@[];
+        _hasLoadedAll=NO;
+        _isWorking=NO;
     }
     return self;
 }
