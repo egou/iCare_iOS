@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-5R-SIT">
-                                <rect key="frame" x="90" y="0.0" width="510" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="510" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.83066998110000001" green="0.778047296" blue="0.49618181389999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="1uW-pq-shb">
@@ -101,8 +101,8 @@
                         <constraints>
                             <constraint firstItem="QMr-mp-Fvk" firstAttribute="top" secondItem="cXe-5R-SIT" secondAttribute="bottom" id="LYE-tX-cAA"/>
                             <constraint firstItem="cXe-5R-SIT" firstAttribute="top" secondItem="j35-h1-WLN" secondAttribute="top" id="Lh6-9i-5Ba"/>
-                            <constraint firstItem="cXe-5R-SIT" firstAttribute="leading" secondItem="j35-h1-WLN" secondAttribute="leading" constant="90" id="NBt-DG-5rJ"/>
-                            <constraint firstAttribute="trailing" secondItem="cXe-5R-SIT" secondAttribute="trailing" id="ot1-XY-rEq"/>
+                            <constraint firstItem="cXe-5R-SIT" firstAttribute="leading" secondItem="j35-h1-WLN" secondAttribute="leading" id="NBt-DG-5rJ"/>
+                            <constraint firstAttribute="trailing" secondItem="cXe-5R-SIT" secondAttribute="trailing" constant="90" id="ot1-XY-rEq"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="OQk-aP-dFk" appends="YES" id="O62-um-Yxr"/>
@@ -114,7 +114,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLj-pJ-VuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="OQk-aP-dFk">
+                <swipeGestureRecognizer direction="left" id="OQk-aP-dFk">
                     <connections>
                         <action selector="onSwipeGesture:" destination="Ivd-dy-WZy" id="ahV-ub-73t"/>
                     </connections>

@@ -20,8 +20,15 @@
     [super viewDidLoad];
     
     //view
-    self.view.backgroundColor=[UIColor colorWithWhite:0.0 alpha:0.2];
+    self.view.backgroundColor=nil;
+    
+    //tableview
     self.tableView.backgroundColor=[UIColor colorWithWhite:0.95 alpha:1.0];
+    self.tableView.layer.shadowColor=[UIColor darkGrayColor].CGColor;
+    self.tableView.layer.shadowOffset=CGSizeMake(0, 0);
+    self.tableView.layer.shadowOpacity=0.8;
+    self.tableView.layer.shadowRadius=8;
+    self.tableView.clipsToBounds=NO;
     
     //logout btn
     self.logoutBtn.layer.masksToBounds=YES;

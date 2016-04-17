@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IGViewControllerTransitioningPush : NSObject<UIViewControllerAnimatedTransitioning>
+@interface IGViewControllerTransitioningPushFromLeft : NSObject<UIViewControllerAnimatedTransitioning>
 
 @end
 
-@interface IGViewControllerTransitioningPop : NSObject<UIViewControllerAnimatedTransitioning>
+@interface IGViewControllerTransitioningPopToLeft : NSObject<UIViewControllerAnimatedTransitioning>
 
 @end

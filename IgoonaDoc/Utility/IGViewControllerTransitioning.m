@@ -8,7 +8,7 @@
 
 #import "IGViewControllerTransitioning.h"
 
-@implementation IGViewControllerTransitioningPush
+@implementation IGViewControllerTransitioningPushFromLeft
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.2;
@@ -19,7 +19,7 @@
     UIView *cView=[transitionContext containerView];
     [cView addSubview:toView];
     
-    toView.frame=CGRectOffset(cView.bounds, cView.bounds.size.width,0);
+    toView.frame=CGRectOffset(cView.bounds, -cView.bounds.size.width,0);
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
                          toView.frame=cView.bounds;
@@ -32,7 +32,7 @@
 
 
 
-@implementation IGViewControllerTransitioningPop
+@implementation IGViewControllerTransitioningPopToLeft
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.2;
@@ -44,7 +44,7 @@
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                      animations:^{
-                         fromView.frame=CGRectOffset(cView.bounds, cView.bounds.size.width,0);
+                         fromView.frame=CGRectOffset(cView.bounds, -cView.bounds.size.width,0);
                      } completion:^(BOOL finished){
                          [transitionContext completeTransition:YES];
                      }];

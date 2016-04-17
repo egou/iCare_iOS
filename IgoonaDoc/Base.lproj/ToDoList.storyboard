@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--To Do List View Controller-->
+        <!--我好了大夫-->
         <scene sceneID="ko4-Kj-495">
             <objects>
                 <tableViewController id="m1c-qf-zyC" customClass="IGToDoListViewController" sceneMemberID="viewController">
@@ -63,41 +63,15 @@
                             <outlet property="delegate" destination="m1c-qf-zyC" id="RI1-9p-Vlr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HMB-Gj-cNx">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="LZy-33-zkH">
-                            <rect key="frame" x="228" y="6" width="145" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我好了大夫" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opU-ih-Sge">
-                                    <rect key="frame" x="30" y="6" width="85" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3E-Kr-Vza">
-                                    <rect key="frame" x="115" y="-6" width="44" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="OPE-0I-PZB"/>
-                                        <constraint firstAttribute="height" constant="44" id="RcP-LJ-UvV"/>
-                                    </constraints>
-                                    <state key="normal" image="item_rest"/>
-                                    <connections>
-                                        <action selector="onWorkStatusBtn:" destination="m1c-qf-zyC" eventType="touchUpInside" id="O0i-5T-IYq"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="opU-ih-Sge" firstAttribute="centerY" secondItem="LZy-33-zkH" secondAttribute="centerY" id="IDA-rf-LQs"/>
-                                <constraint firstItem="opU-ih-Sge" firstAttribute="centerX" secondItem="LZy-33-zkH" secondAttribute="centerX" id="NGv-bn-ige"/>
-                                <constraint firstItem="e3E-Kr-Vza" firstAttribute="leading" secondItem="opU-ih-Sge" secondAttribute="trailing" id="eSW-jS-OVI"/>
-                                <constraint firstItem="e3E-Kr-Vza" firstAttribute="centerY" secondItem="LZy-33-zkH" secondAttribute="centerY" id="vrn-HA-XlN"/>
-                            </constraints>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" image="item_more" id="LyK-iK-FUy">
+                    <navigationItem key="navigationItem" title="我好了大夫" id="HMB-Gj-cNx">
+                        <barButtonItem key="leftBarButtonItem" image="item_more" id="kWM-JE-tN5">
                             <connections>
-                                <action selector="onMoreStuffBtn:" destination="m1c-qf-zyC" id="09X-e4-Auz"/>
+                                <action selector="onMoreStuffBtn:" destination="m1c-qf-zyC" id="YYz-0m-OZ2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="item_rest" id="4a0-Xu-YSz">
+                            <connections>
+                                <action selector="onWorkStatusBtn:" destination="m1c-qf-zyC" id="EUL-pF-nNs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

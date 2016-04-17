@@ -106,11 +106,11 @@
 
 #pragma mark - UIViewControllerTransitioningDelegate
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    return [[IGViewControllerTransitioningPush alloc] init];
+    return [[IGViewControllerTransitioningPushFromLeft alloc] init];
 }
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    return [[IGViewControllerTransitioningPop alloc] init];
+    return [[IGViewControllerTransitioningPopToLeft alloc] init];
 }
 @end
 
