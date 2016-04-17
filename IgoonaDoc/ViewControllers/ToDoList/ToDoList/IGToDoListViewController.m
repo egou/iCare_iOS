@@ -12,12 +12,15 @@
 #import "IGMsgDetailViewController.h"
 #import "MJRefresh.h"
 
-#import "IGMoreStuffViewController.h"
-#import "IGViewControllerTransitioning.h"
+#import "IGToDoListRouting.h"
 
-@interface IGToDoListViewController ()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
+
+
+@interface IGToDoListViewController ()
 
 @property (nonatomic,strong) NSArray<IGMsgSummaryObj*>* toDoListCopyArray;  //仅仅为副本
+
+@property (nonatomic,strong) IGToDoListRouting *routing;
 
 @end
 
@@ -27,6 +30,11 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView=[[UIView alloc] init];
+    
+    
+    //routing
+    self.routing=[[IGToDoListRouting alloc] init];
+    self.routing.routingOwner=self;
 }
 
 
@@ -40,13 +48,9 @@
 
 #pragma mark - events
 - (IBAction)onMoreStuffBtn:(id)sender {
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
-    IGMoreStuffViewController *moreStuffVC=[sb instantiateInitialViewController];
-    moreStuffVC.delegate=self;
-    self.navigationController.definesPresentationContext=YES;
-    moreStuffVC.modalPresentationStyle=UIModalPresentationOverCurrentContext;
-    moreStuffVC.transitioningDelegate=self;
-    [self.navigationController presentViewController:moreStuffVC animated:YES completion:nil];
+    
+    [self.routing transToMoreStuffView];
+
 }
 
 - (IBAction)onWorkStatusBtn:(id)sender {
@@ -97,21 +101,6 @@
     
 }
 
-
-#pragma mark - IGMoreStuffViewControllerDelegate
--(void)moreStuffViewController:(IGMoreStuffViewController *)viewController onEvent:(IGMoreStuffEvent)event{
-    [viewController dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"on more stuff:%d",event);
-}
-
-#pragma mark - UIViewControllerTransitioningDelegate
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    return [[IGViewControllerTransitioningPushFromLeft alloc] init];
-}
-
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    return [[IGViewControllerTransitioningPopToLeft alloc] init];
-}
 @end
 
 
