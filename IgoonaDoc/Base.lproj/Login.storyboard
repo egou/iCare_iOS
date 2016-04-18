@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="2Ih-cZ-g8H">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="113" y="-34" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="医生版加载中..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lj-6x-D5S">
                                 <rect key="frame" x="20" y="28" width="116" height="21"/>
@@ -46,15 +46,26 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Rvf-ES-SmK">
+                                <rect key="frame" x="173" y="83" width="255" height="255"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2016 我好了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVf-SM-aj7">
+                                <rect key="frame" x="249" y="560" width="102" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2Ih-cZ-g8H" firstAttribute="leading" secondItem="izg-As-UKD" secondAttribute="leading" id="KIU-N4-owS"/>
-                            <constraint firstItem="2Ih-cZ-g8H" firstAttribute="top" secondItem="izg-As-UKD" secondAttribute="top" id="KZC-wD-SoG"/>
+                            <constraint firstItem="zVf-SM-aj7" firstAttribute="centerX" secondItem="izg-As-UKD" secondAttribute="centerX" id="9Jk-jV-qVA"/>
+                            <constraint firstItem="Rvf-ES-SmK" firstAttribute="centerY" secondItem="izg-As-UKD" secondAttribute="centerY" multiplier="0.7" id="FP6-Ry-MmD"/>
                             <constraint firstItem="5Lj-6x-D5S" firstAttribute="top" secondItem="Rqr-l2-Uox" secondAttribute="bottom" constant="8" id="NMu-12-mr9"/>
-                            <constraint firstAttribute="trailing" secondItem="2Ih-cZ-g8H" secondAttribute="trailing" id="QwV-9W-lZD"/>
-                            <constraint firstItem="aSR-e8-tLk" firstAttribute="top" secondItem="2Ih-cZ-g8H" secondAttribute="bottom" id="Zd3-2K-MFT"/>
+                            <constraint firstItem="Rvf-ES-SmK" firstAttribute="centerX" secondItem="izg-As-UKD" secondAttribute="centerX" id="PdU-nz-1gs"/>
+                            <constraint firstItem="2Ih-cZ-g8H" firstAttribute="centerX" secondItem="izg-As-UKD" secondAttribute="centerX" id="YTM-fQ-HO5"/>
                             <constraint firstItem="5Lj-6x-D5S" firstAttribute="leading" secondItem="izg-As-UKD" secondAttribute="leadingMargin" id="kYL-Zj-9Zp"/>
+                            <constraint firstItem="aSR-e8-tLk" firstAttribute="top" secondItem="zVf-SM-aj7" secondAttribute="bottom" constant="20" id="mQJ-cI-kcx"/>
+                            <constraint firstItem="2Ih-cZ-g8H" firstAttribute="centerY" secondItem="izg-As-UKD" secondAttribute="centerY" id="sb8-C9-twU"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -77,11 +88,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="RTx-9N-W73">
                                 <rect key="frame" x="113" y="-67" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iN3-QK-s5f" customClass="IGSaveUserNameCheckBox">
-                                <rect key="frame" x="20" y="121" width="110" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iN3-QK-s5f" customClass="IGSaveUserNameCheckBox">
+                                <rect key="frame" x="46" y="438" width="110" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HB6-z6-SQr"/>
+                                    <constraint firstAttribute="width" constant="110" id="vVS-KK-bKi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="保存用户名" image="unchecked_checkbox">
+                                <state key="normal" title="记住用户名" image="unchecked_checkbox">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -99,14 +114,13 @@
                                     <action selector="onSignupBtn:" destination="6bu-kD-059" eventType="touchUpInside" id="AIy-6D-j8W"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GZ-Mh-bp3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6GZ-Mh-bp3">
                                 <rect key="frame" x="20" y="20" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="vxZ-cl-lfF"/>
                                     <constraint firstAttribute="height" constant="44" id="ybJ-nx-qOq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="&lt;">
+                                <state key="normal" image="btn_back">
                                     <color key="titleColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -114,7 +128,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-L6-vnv">
-                                <rect key="frame" x="46" y="263" width="508" height="180"/>
+                                <rect key="frame" x="46" y="250" width="508" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zww-QD-HWg">
                                         <rect key="frame" x="16" y="18" width="60" height="24"/>
@@ -197,14 +211,17 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="r2K-zO-FjZ">
-                                <rect key="frame" x="190" y="121" width="220" height="110"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="266" y="100" width="69" height="118"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-2O-KnE" customClass="IGSavePasswordCheckBox">
-                                <rect key="frame" x="20" y="166" width="110" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-2O-KnE" customClass="IGSavePasswordCheckBox">
+                                <rect key="frame" x="444" y="438" width="110" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="UCj-x8-HOW"/>
+                                    <constraint firstAttribute="height" constant="44" id="Wln-ja-lnw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="保存密码" image="unchecked_checkbox">
+                                <state key="normal" title="记住密码" image="unchecked_checkbox">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -212,17 +229,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="7Bl-2O-KnE" firstAttribute="trailing" secondItem="65c-Wa-JWy" secondAttribute="trailing" id="9ZH-6v-5Gi"/>
                             <constraint firstItem="6GZ-Mh-bp3" firstAttribute="leading" secondItem="NNt-ba-hGV" secondAttribute="leadingMargin" id="E8y-g6-SFY"/>
+                            <constraint firstItem="7Bl-2O-KnE" firstAttribute="centerY" secondItem="iN3-QK-s5f" secondAttribute="centerY" id="GrX-Bn-YDR"/>
                             <constraint firstItem="bLa-Dl-qUR" firstAttribute="top" secondItem="65c-Wa-JWy" secondAttribute="bottom" constant="55" id="HZN-XZ-pfQ"/>
                             <constraint firstItem="bLa-Dl-qUR" firstAttribute="top" secondItem="RTx-9N-W73" secondAttribute="bottom" id="KWN-Dq-3H2"/>
                             <constraint firstItem="RTx-9N-W73" firstAttribute="centerX" secondItem="NNt-ba-hGV" secondAttribute="centerX" id="Lkp-aL-htQ"/>
                             <constraint firstItem="r2K-zO-FjZ" firstAttribute="centerX" secondItem="NNt-ba-hGV" secondAttribute="centerX" id="MuE-hY-UqU"/>
                             <constraint firstItem="lUI-L6-vnv" firstAttribute="top" secondItem="r2K-zO-FjZ" secondAttribute="bottom" constant="32" id="V0x-L7-jaD"/>
-                            <constraint firstItem="65c-Wa-JWy" firstAttribute="top" secondItem="lUI-L6-vnv" secondAttribute="bottom" constant="47" id="acI-gr-00k"/>
+                            <constraint firstItem="65c-Wa-JWy" firstAttribute="top" secondItem="lUI-L6-vnv" secondAttribute="bottom" constant="60" id="acI-gr-00k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="65c-Wa-JWy" secondAttribute="trailing" constant="26" id="c4p-IQ-yfm"/>
                             <constraint firstItem="lUI-L6-vnv" firstAttribute="trailing" secondItem="65c-Wa-JWy" secondAttribute="trailing" id="mh8-s1-Nxj"/>
                             <constraint firstItem="65c-Wa-JWy" firstAttribute="leading" secondItem="NNt-ba-hGV" secondAttribute="leadingMargin" constant="26" id="mwb-6c-jaH"/>
                             <constraint firstItem="lUI-L6-vnv" firstAttribute="leading" secondItem="65c-Wa-JWy" secondAttribute="leading" id="puW-KE-x64"/>
+                            <constraint firstItem="iN3-QK-s5f" firstAttribute="leading" secondItem="65c-Wa-JWy" secondAttribute="leading" id="qBa-wd-Vey"/>
+                            <constraint firstItem="65c-Wa-JWy" firstAttribute="top" secondItem="iN3-QK-s5f" secondAttribute="bottom" constant="8" id="s6K-KS-xLU"/>
                             <constraint firstItem="6GZ-Mh-bp3" firstAttribute="top" secondItem="BKS-l6-ab6" secondAttribute="bottom" id="v9N-4s-Syj"/>
                         </constraints>
                         <connections>
@@ -284,7 +305,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6bu-kD-059" kind="presentation" id="Pge-vI-2Cb"/>
+                                    <segue destination="6bu-kD-059" kind="presentation" modalTransitionStyle="flipHorizontal" id="Pge-vI-2Cb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4K-8e-fFQ">
@@ -396,8 +417,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4uq-fo-nyt">
-                                <rect key="frame" x="190" y="107" width="220" height="110"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="266" y="99" width="69" height="118"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -454,7 +474,8 @@
         <image name="bg_login" width="375" height="667"/>
         <image name="btn_back" width="12" height="22"/>
         <image name="launch" width="375" height="667"/>
-        <image name="logo" width="220" height="110"/>
+        <image name="launch_logo" width="255" height="255"/>
+        <image name="logo" width="69" height="118"/>
         <image name="unchecked_checkbox" width="16" height="16"/>
     </resources>
 </document>

@@ -40,8 +40,8 @@
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)magager;
--(void)toDoListDataManager:(IGToDoListDataManager*)magager didReceiveNewMsgsSuccess:(BOOL)success;
--(void)toDoListDataManager:(IGToDoListDataManager *)magager didReceiveOldMsgsSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGToDoListDataManager*)manager didReceiveNewMsgsSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveOldMsgsSuccess:(BOOL)success;
 
 @end
 

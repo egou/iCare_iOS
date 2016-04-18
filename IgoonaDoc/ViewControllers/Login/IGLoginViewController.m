@@ -47,10 +47,12 @@
 -(void)p_initUI{
     //textfield
     self.textfieldBgView.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.6];
-    self.textfieldBgView.layer.masksToBounds=YES;
+    
     self.textfieldBgView.layer.borderColor=[UIColor whiteColor].CGColor;
     self.textfieldBgView.layer.borderWidth=1;
     self.textfieldBgView.layer.cornerRadius=4;
+    
+
     
     
     //login button

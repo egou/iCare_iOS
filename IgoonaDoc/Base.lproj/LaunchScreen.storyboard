@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,15 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="9X9-Dt-h82">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="113" y="-34" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2016 我好了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vd-RS-v0L">
+                                <rect key="frame" x="249" y="560" width="102" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="KEc-Fc-azJ">
+                                <rect key="frame" x="173" y="83" width="255" height="255"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9X9-Dt-h82" secondAttribute="trailing" id="A3O-uG-3ZY"/>
-                            <constraint firstItem="9X9-Dt-h82" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Eo1-sN-bzl"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="9X9-Dt-h82" secondAttribute="bottom" id="Nho-eL-aaG"/>
-                            <constraint firstItem="9X9-Dt-h82" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vwE-9F-fH6"/>
+                            <constraint firstItem="9X9-Dt-h82" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="6rZ-Zg-yjh"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="6Vd-RS-v0L" secondAttribute="bottom" constant="20" id="9HT-Qy-YP2"/>
+                            <constraint firstItem="KEc-Fc-azJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.7" id="Epl-9X-Ga1"/>
+                            <constraint firstItem="6Vd-RS-v0L" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fNH-fR-auq"/>
+                            <constraint firstItem="KEc-Fc-azJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xV9-bO-w75"/>
+                            <constraint firstItem="9X9-Dt-h82" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yX2-6H-1au"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,5 +49,6 @@
     </scenes>
     <resources>
         <image name="launch" width="375" height="667"/>
+        <image name="launch_logo" width="255" height="255"/>
     </resources>
 </document>

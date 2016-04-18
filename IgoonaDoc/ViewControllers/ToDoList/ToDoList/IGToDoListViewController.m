@@ -7,21 +7,24 @@
 //
 
 #import "IGToDoListViewController.h"
-#import "IGMsgSummaryObj.h"
+#import "IGToDoListViewCell.h"
+#import "IGToDoObj.h"
 
 #import "IGMsgDetailViewController.h"
 #import "MJRefresh.h"
 
+
+#import "IGToDoListDataManager.h"
 #import "IGToDoListRouting.h"
 
 
 
-@interface IGToDoListViewController ()
+@interface IGToDoListViewController ()<IGToDoListDataManagerDelegate>
 
-@property (nonatomic,strong) NSArray<IGMsgSummaryObj*>* toDoListCopyArray;  //仅仅为副本
+@property (nonatomic,strong) NSArray<IGToDoObj*>* toDoListCopyArray;  //仅仅为副本
 
 @property (nonatomic,strong) IGToDoListRouting *routing;
-
+@property (nonatomic,strong) IGToDoListDataManager  *dataManager;
 @end
 
 @implementation IGToDoListViewController
@@ -29,12 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView=[[UIView alloc] init];
+    [self p_initUI];
+    
     
     
     //routing
     self.routing=[[IGToDoListRouting alloc] init];
     self.routing.routingOwner=self;
+    
+    self.dataManager=[[IGToDoListDataManager alloc] init];
+    self.dataManager.delegate=self;
 }
 
 
@@ -69,8 +76,8 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IGMyPatientsViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyPatientsViewCellID"];
-    cell.msgSumData=self.toDoListCopyArray[indexPath.row];
+    IGToDoListViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGToDoListViewCell"];
+    cell.toDoData=self.toDoListCopyArray[indexPath.row];
     return cell;
 }
 
@@ -95,35 +102,46 @@
 
 
 
-#pragma mark - private methods
--(void)p_requestForToDoList
-{
+#pragma mark - data manager delegate
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveNewMsgsSuccess:(BOOL)success{
+    
+    if(success){
+        self.toDoListCopyArray=[manager.toDoListArray copy];
+        [self.tableView reloadData];
+    }
+}
+
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveOldMsgsSuccess:(BOOL)success{
     
 }
 
-@end
-
-
-
-
-
-@interface IGMyPatientsViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *lastMsg;
-
-@end
-
-
-
-@implementation IGMyPatientsViewCell
-
--(void)setMsgSumData:(IGMsgSummaryObj *)msgSumData
-{
-    self.icon.image=msgSumData.iconData.length>0?[UIImage imageWithData:msgSumData.iconData]:[UIImage imageNamed:@"item_me"];
-    self.name.text=msgSumData.memberName;
-    self.lastMsg.text=msgSumData.lastMsg;
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)magager{
+    
 }
 
 
+#pragma mark - private methods
+-(void)p_initUI{
+    
+    self.tableView.backgroundColor=IGUI_NormalBgColor;
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView=[[UIView alloc] init];
+    self.tableView.tableFooterView.backgroundColor=nil;
+    
+}
+
+-(void)p_requestForToDoList
+{
+    [self.dataManager pullDownToGetNewMsgs];
+}
+
 @end
+
+
+
+
+
+
+
+
+

@@ -78,7 +78,7 @@
 		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032E091CC1493A0027DDAD /* IGSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B033D151CC1DDCB00CD87DC /* IGMsgSummaryObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B033D151CC1DDCB00CD87DC /* IGToDoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; settings = {ASSET_TAGS = (); }; };
 		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; settings = {ASSET_TAGS = (); }; };
@@ -92,6 +92,7 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; settings = {ASSET_TAGS = (); }; };
+		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BF71CC363EE00B95CD8 /* IGMyInformationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BF54BFB1CC3641400B95CD8 /* IGMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFA1CC3641400B95CD8 /* IGMyTeamViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BF54BFE1CC3643D00B95CD8 /* IGMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFD1CC3643D00B95CD8 /* IGMyWalletViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -260,8 +261,8 @@
 		6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
 		6B032E081CC1493A0027DDAD /* IGSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSignupViewController.h; sourceTree = "<group>"; };
 		6B032E091CC1493A0027DDAD /* IGSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSignupViewController.m; sourceTree = "<group>"; };
-		6B033D131CC1DDCB00CD87DC /* IGMsgSummaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgSummaryObj.h; sourceTree = "<group>"; };
-		6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgSummaryObj.m; sourceTree = "<group>"; };
+		6B033D131CC1DDCB00CD87DC /* IGToDoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoObj.h; sourceTree = "<group>"; };
+		6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoObj.m; sourceTree = "<group>"; };
 		6B033D3C1CC288EE00CD87DC /* IGMoreStuffViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMoreStuffViewController.h; sourceTree = "<group>"; };
 		6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMoreStuffViewController.m; sourceTree = "<group>"; };
 		6B033D401CC2895900CD87DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MoreStuff.storyboard; sourceTree = "<group>"; };
@@ -278,6 +279,8 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6BD6DA2B1CC525BD00E44C18 /* IGToDoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewCell.h; sourceTree = "<group>"; };
+		6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
 		6BF54BF61CC363EE00B95CD8 /* IGMyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyInformationViewController.h; sourceTree = "<group>"; };
 		6BF54BF71CC363EE00B95CD8 /* IGMyInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyInformationViewController.m; sourceTree = "<group>"; };
 		6BF54BF91CC3641400B95CD8 /* IGMyTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyTeamViewController.h; sourceTree = "<group>"; };
@@ -477,8 +480,8 @@
 			isa = PBXGroup;
 			children = (
 				6B0001A01C9D221800085229 /* LaunchScreen.storyboard */,
-				6B0001A21C9D221800085229 /* Login.storyboard */,
 				6B0002351C9D2D6400085229 /* ToDoList.storyboard */,
+				6B0001A21C9D221800085229 /* Login.storyboard */,
 				6B0002381C9D2D8E00085229 /* DoneList.storyboard */,
 				6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */,
 			);
@@ -684,8 +687,8 @@
 		6B032DE51CC125190027DDAD /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
-				6B033D131CC1DDCB00CD87DC /* IGMsgSummaryObj.h */,
-				6B033D141CC1DDCB00CD87DC /* IGMsgSummaryObj.m */,
+				6B033D131CC1DDCB00CD87DC /* IGToDoObj.h */,
+				6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */,
 				6B032DE61CC125190027DDAD /* IGMsgDetailObj.h */,
 				6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */,
 				6BF54C081CC36B8B00B95CD8 /* IGMyTeamMemberObj.h */,
@@ -723,6 +726,8 @@
 			children = (
 				6B032DFA1CC125190027DDAD /* IGToDoListViewController.h */,
 				6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */,
+				6BD6DA2B1CC525BD00E44C18 /* IGToDoListViewCell.h */,
+				6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */,
 				6B032DF61CC125190027DDAD /* IGToDoListDataManager.h */,
 				6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */,
 				6B032DF81CC125190027DDAD /* IGToDoListInteractor.h */,
@@ -970,7 +975,8 @@
 				6BF54C011CC3645A00B95CD8 /* IGDoneListViewController.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
-				6B033D151CC1DDCB00CD87DC /* IGMsgSummaryObj.m in Sources */,
+				6B033D151CC1DDCB00CD87DC /* IGToDoObj.m in Sources */,
+				6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */,
 				6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,

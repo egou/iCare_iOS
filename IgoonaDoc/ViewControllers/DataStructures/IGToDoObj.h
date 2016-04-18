@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IGMsgSummaryObj : NSObject
+@interface IGToDoObj : NSObject
 
 
 @property (nonatomic,copy) NSString *lastMsg;
