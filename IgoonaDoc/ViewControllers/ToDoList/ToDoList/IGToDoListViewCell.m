@@ -30,9 +30,10 @@
 
 -(void)setToDoData:(IGToDoObj *)toDoData
 {
-    self.iconIV.image=toDoData.iconData.length>0?[UIImage imageWithData:toDoData.iconData]:[UIImage imageNamed:@"item_me"];
-    self.nameLabel.text=toDoData.memberName;
-    self.msgLabel.text=toDoData.lastMsg;
+    self.nameLabel.text=toDoData.tMemberName;
+    self.msgLabel.text=toDoData.tMsg;
+    self.timeLabel.text=toDoData.tDueTime;
+    self.typeLabel.text=toDoData.tType==1?@"求助":@"报告";
 }
 
 

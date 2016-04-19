@@ -10,15 +10,13 @@
 
 @interface IGToDoObj : NSObject
 
-
-@property (nonatomic,copy) NSString *lastMsg;
-@property (nonatomic,strong) NSData *iconData;
-@property (nonatomic,copy) NSString *lastMsgId;
-@property (nonatomic,copy) NSString *lastMsgTS;
-@property (nonatomic,copy) NSString *lastReadMsgId;
-@property (nonatomic,copy) NSString *memberId;
-@property (nonatomic,copy) NSString *memberName;
-@property (nonatomic,assign) NSInteger newMsgCt;
-@property (nonatomic,assign) NSInteger serviceLevel;
+@property (nonatomic,copy) NSString *tDueTime;
+@property (nonatomic,copy) NSString *tId;
+@property (nonatomic,copy) NSString *tMemberId;
+@property (nonatomic,copy) NSString *tMemberName;
+@property (nonatomic,copy) NSString *tIconId;
+@property (nonatomic,copy) NSString *tMsg;
+@property (nonatomic,assign) NSInteger tStatus;
+@property (nonatomic,assign) NSInteger tType;
 
 @end

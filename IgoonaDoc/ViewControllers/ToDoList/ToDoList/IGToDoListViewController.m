@@ -42,15 +42,16 @@
     
     self.dataManager=[[IGToDoListDataManager alloc] init];
     self.dataManager.delegate=self;
+    
+    
+    //pull to refresh
+    [self.tableView.mj_header beginRefreshing];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //刷新
-    [self p_requestForToDoList];
 }
 
 #pragma mark - events
@@ -103,17 +104,28 @@
 
 
 #pragma mark - data manager delegate
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveNewMsgsSuccess:(BOOL)success{
-    
+
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
+    [self.tableView.mj_header endRefreshing];
     if(success){
-        self.toDoListCopyArray=[manager.toDoListArray copy];
-        [self.tableView reloadData];
+        [self p_reloadData];
+        
+    }else{
+        NSLog(@"刷新待办事失败");
     }
 }
 
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveOldMsgsSuccess:(BOOL)success{
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
+    [self.tableView.mj_footer endRefreshing];
+    if(success){
+        [self p_reloadData];
+        
+    }else{
+        NSLog(@"获取更多待办事情失败");
+    }
     
 }
+
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)magager{
     
@@ -123,16 +135,35 @@
 #pragma mark - private methods
 -(void)p_initUI{
     
+    //tableview
     self.tableView.backgroundColor=IGUI_NormalBgColor;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView=[[UIView alloc] init];
     self.tableView.tableFooterView.backgroundColor=nil;
     
+    
+    //pull to refresh
+    self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.dataManager pullDownToRefreshList];
+    }];
+    
+    self.tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self.dataManager pullUpToLoadMoreList];
+    }];
+    self.tableView.mj_footer.automaticallyHidden=YES;
+
 }
 
--(void)p_requestForToDoList
-{
-    [self.dataManager pullDownToGetNewMsgs];
+-(void)p_reloadData{
+    
+    self.toDoListCopyArray=[self.dataManager.toDoListArray copy];
+    [self.tableView reloadData];
+    
+    if(self.dataManager.hasLoadedAll){
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }else{
+        [self.tableView.mj_footer resetNoMoreData];
+    }
 }
 
 @end

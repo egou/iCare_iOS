@@ -14,14 +14,12 @@
 {
     if(self=[super init])
     {
-        _lastMsg=@"";
-        _lastMsgId=@"";
-        _lastMsgTS=@"";
-        _lastReadMsgId=@"";
-        _memberId=@"";
-        _memberName=@"";
-        _newMsgCt=0;
-        _serviceLevel=-1;
+        _tDueTime=@"";
+        _tId=@"";
+        _tMemberId=@"";
+        _tMemberName=@"";
+        _tIconId=@"";
+        _tMsg=@"";
     }
     return self;
 }

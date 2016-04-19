@@ -29,8 +29,8 @@
 
 
 -(void)tapToChangeWorkStatus;
--(void)pullDownToGetNewMsgs;
--(void)pullUpToGetOldMsgs;
+-(void)pullDownToRefreshList;
+-(void)pullUpToLoadMoreList;
 
 @end
 
@@ -40,8 +40,8 @@
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)magager;
--(void)toDoListDataManager:(IGToDoListDataManager*)manager didReceiveNewMsgsSuccess:(BOOL)success;
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveOldMsgsSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGToDoListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
 
 @end
 

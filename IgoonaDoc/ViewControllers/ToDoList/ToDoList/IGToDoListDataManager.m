@@ -50,19 +50,40 @@
 
 
 #pragma mark - interfaces
+-(void)tapToChangeWorkStatus{
+    
+}
 
--(void)pullDownToGetNewMsgs
+
+-(void)pullDownToRefreshList
 {
-    [self.dataInteractor requestForNewMsgWithHandler:^(BOOL success, NSArray<IGMsgSummaryModel *> *newMsgs) {
+    [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
         
+        if(success){
+            self.toDoListArray=todoArray;
+            self.hasLoadedAll=loadAll;
+        }
+        [self.delegate toDoListDataManager:self didRefreshToDoListSuccess:success];
     }];
 }
 
--(void)pullUpToGetOldMsgs
+-(void)pullUpToLoadMoreList
 {
-    [self.dataInteractor requestForOldMsgWithHandler:^(BOOL success, NSArray<IGMsgSummaryModel *> *oldMsgs, BOOL loadAll) {
+    IGToDoObj *earliestToDo=self.toDoListArray.lastObject;
+    
+    if(earliestToDo){
+        [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
+            if(success){
+                self.toDoListArray=[self.toDoListArray arrayByAddingObjectsFromArray:todoArray];
+                self.hasLoadedAll=loadAll;
+            }
+            [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:success];
+            
+        }];
         
-    }];
+    }else{
+        [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:NO];
+    }
 }
 
 @end
