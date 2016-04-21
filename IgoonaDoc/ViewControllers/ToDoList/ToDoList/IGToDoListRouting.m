@@ -14,6 +14,11 @@
 #import "IGMyTeamViewController.h"
 
 
+
+
+
+#import "IGMsgDetailViewController.h"
+
 @interface IGToDoListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
 
 @end
@@ -32,6 +37,21 @@
     [self.routingOwner.navigationController presentViewController:moreStuffVC animated:YES completion:nil];
 }
 
+
+-(void)transToMsgDetailViewWithPatientId:(NSString *)patientId{
+
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+    IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
+    
+    NSAssert(patientId.length>0, @"patient Id is empty");
+    vc.patientId=patientId;
+    [self.routingOwner.navigationController pushViewController:vc animated:YES];
+
+}
+
+-(void)transToReportDetailViewWithTaskId:(NSString *)taskId{
+    
+}
 
 
 #pragma mark - IGMoreStuffViewControllerDelegate

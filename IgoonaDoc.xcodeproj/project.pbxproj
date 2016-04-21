@@ -709,14 +709,14 @@
 		6B032DEA1CC125190027DDAD /* MsgDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6B032DF11CC125190027DDAD /* IGMsgDetailViewController.h */,
+				6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */,
 				6B032DEB1CC125190027DDAD /* IGMsgDetailDataManager.h */,
 				6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */,
 				6B032DED1CC125190027DDAD /* IGMsgDetailInteractor.h */,
 				6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */,
 				6B032DEF1CC125190027DDAD /* IGMsgDetailViewCell.h */,
 				6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */,
-				6B032DF11CC125190027DDAD /* IGMsgDetailViewController.h */,
-				6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */,
 			);
 			path = MsgDetail;
 			sourceTree = "<group>";

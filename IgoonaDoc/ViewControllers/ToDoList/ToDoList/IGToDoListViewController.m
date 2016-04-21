@@ -86,19 +86,22 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(1){
-        //如果为对话
-        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-        IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
-        NSString* patientId=@"1";
-        NSAssert(patientId.length>0, @"patient Id is empty");
-        vc.patientId=patientId;
-        vc.hidesBottomBarWhenPushed=YES;
-        vc.edgesForExtendedLayout = UIRectEdgeAll;
-        [self.navigationController pushViewController:vc animated:YES];
-    }else{
-        
-    }
+    [self.dataManager tapToRequestToHandleTaskAtIndex:indexPath.row];
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    
+//    if(1){
+//        //如果为对话
+//        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+//        IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
+//        NSString* patientId=@"1";
+//        NSAssert(patientId.length>0, @"patient Id is empty");
+//        vc.patientId=patientId;
+//        vc.hidesBottomBarWhenPushed=YES;
+//        vc.edgesForExtendedLayout = UIRectEdgeAll;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else{
+//        
+//    }
 }
 
 
@@ -131,6 +134,48 @@
     
 }
 
+
+//0未知
+//1成功
+//2不存在
+//3处理中
+//4处理完毕
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveTaskInfo:(IGToDoObj *)taskInfo StatusCode:(NSInteger)code{
+    [IGCommonUI hideHUDForView:self.navigationController.view];
+    if(code==0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"未知错误"];
+        return;
+    }
+    
+    if(code==1){
+        
+        if(taskInfo.tType==1){
+            //求助
+            [self.routing transToMsgDetailViewWithPatientId:taskInfo.tMemberId];
+            return;
+        }
+        
+        if(taskInfo.tType==2){
+            //报告
+            return;
+        }
+        
+        return;
+    }
+    
+    if(code==2){   //不存在
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务不存在"];
+        return;
+    }
+    if(code==3){   //正在处理
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务正有人处理"];
+        return;
+    }
+    if(code==4){   //已经处理完成
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务已完成"];
+        return;
+    }
+}
 
 #pragma mark - private methods
 -(void)p_initUI{
@@ -165,6 +210,10 @@
         [self.tableView.mj_footer resetNoMoreData];
     }
 }
+
+
+
+
 
 @end
 

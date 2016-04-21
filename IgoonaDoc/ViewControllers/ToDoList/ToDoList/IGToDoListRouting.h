@@ -17,4 +17,7 @@
 
 -(void)transToMoreStuffView;
 
+-(void)transToMsgDetailViewWithPatientId:(NSString*)patientId;
+-(void)transToReportDetailViewWithTaskId:(NSString*)taskId;
+
 @end

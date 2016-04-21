@@ -21,5 +21,11 @@
                             LastMemberId:(NSString*)memberId
                            finishHandler:(void(^)(BOOL success, NSArray<IGToDoObj*>* todoArray,BOOL loadAll))handler;
 
+/**
+ 请求处理某个任务
+ */
+-(void)requestToHandleTaskWithTaskId:(NSString *)taskId
+                       finishHandler:(void(^)(NSInteger statusCode))handler;
+
 @end
 

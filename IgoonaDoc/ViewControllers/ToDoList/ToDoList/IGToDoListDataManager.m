@@ -7,7 +7,7 @@
 //
 
 #import "IGToDoListDataManager.h"
-#import "IGMsgDetailObj.h"
+#import "IGToDoObj.h"
 #import "IGToDoListInteractor.h"
 
 @interface IGToDoListDataManager()
@@ -83,6 +83,19 @@
         
     }else{
         [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:NO];
+    }
+}
+
+-(void)tapToRequestToHandleTaskAtIndex:(NSInteger)index{
+    
+    IGToDoObj *todo=self.toDoListArray[index];
+    if(todo){
+        [self.dataInteractor requestToHandleTaskWithTaskId:todo.tId finishHandler:^(NSInteger statusCode) {
+            [self.delegate toDoListDataManager:self didReceiveTaskInfo:todo StatusCode:statusCode];
+        }];
+        
+    }else{
+        [self.delegate toDoListDataManager:self didReceiveTaskInfo:nil StatusCode:0];
     }
 }
 

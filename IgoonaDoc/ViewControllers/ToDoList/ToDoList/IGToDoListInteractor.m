@@ -69,4 +69,23 @@
 
 
 
+
+-(void)requestToHandleTaskWithTaskId:(NSString *)taskId finishHandler:(void (^)(NSInteger))handler{
+    [IGHTTPCLIENT GET:@"php/task.php"
+           parameters:@{@"action":@"task_state",
+                        @"id":taskId,
+                        @"status":@2}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      handler(1);
+                  }else{
+                      handler([responseObject[@"reason"] integerValue]);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  handler(0);
+              }];
+}
+
 @end

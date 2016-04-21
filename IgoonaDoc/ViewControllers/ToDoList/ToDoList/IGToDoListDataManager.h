@@ -28,20 +28,33 @@
 @property (nonatomic,assign,readonly) BOOL isWorking;           //是否在工作
 
 
+//待办记事数据
 -(void)tapToChangeWorkStatus;
 -(void)pullDownToRefreshList;
 -(void)pullUpToLoadMoreList;
+
+-(void)tapToRequestToHandleTaskAtIndex:(NSInteger)index;
 
 @end
 
 
 
-
+@class IGToDoObj;
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)magager;
 -(void)toDoListDataManager:(IGToDoListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
 -(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
+
+
+/**
+ 0未知
+ 1成功
+ 2不存在
+ 3处理中
+ 4处理完毕
+ */
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveTaskInfo:(IGToDoObj*)taskInfo StatusCode:(NSInteger)code;
 
 @end
 

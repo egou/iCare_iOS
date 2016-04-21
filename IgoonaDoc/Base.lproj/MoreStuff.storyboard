@@ -59,7 +59,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_me" translatesAutoresizingMaskIntoConstraints="NO" id="hsF-29-Ptr">
                                                     <rect key="frame" x="0.0" y="0.0" width="510" height="189"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_note" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-yz-ist">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor1" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-yz-ist">
                                                     <rect key="frame" x="205" y="45" width="100" height="100"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -255,6 +255,6 @@
     </scenes>
     <resources>
         <image name="bg_me" width="285" height="193"/>
-        <image name="item_note" width="23" height="23"/>
+        <image name="doctor1" width="75" height="75"/>
     </resources>
 </document>
