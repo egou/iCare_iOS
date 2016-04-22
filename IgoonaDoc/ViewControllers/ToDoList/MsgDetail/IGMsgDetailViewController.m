@@ -54,10 +54,15 @@
     [self p_registerKeyboardAnimationNote];
     
     //获取新消息
-    [self.tableView.mj_header beginRefreshing];
+    [self.tableView.mj_footer beginRefreshing];
     [self p_reloadAllMsgs];
 //    [self.dataManager pullToGetNewMsgs];
     
+    //滑动到最新消息
+    if(self.allMsgsCopyArray.count>0){
+        NSIndexPath *lastRow=[NSIndexPath indexPathForRow:self.allMsgsCopyArray.count-1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastRow  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -111,7 +116,10 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IGMsgDetailObj *msg= self.allMsgsCopyArray[indexPath.row];
+    
+    //最新的消息显示在最下方
+    NSInteger msgCount=self.allMsgsCopyArray.count;
+    IGMsgDetailObj *msg= self.allMsgsCopyArray[msgCount-1-indexPath.row];
     
     if(msg.mIsOut){
         
@@ -150,36 +158,23 @@
 
 -(void)dataManager:(IGMsgDetailDataManager*)manager didReceiveNewMsgsSuccess:(BOOL)success
 {
+     [self.tableView.mj_footer endRefreshing];
     if(success){
         [self p_reloadAllMsgs];
     }
-     [self p_endPullDownRefresh];
 }
 
 
 -(void)dataManager:(IGMsgDetailDataManager*)manager didReceiveOldMsgsSuccess:(BOOL)success
 {
+    [self.tableView.mj_header endRefreshing];
     if(success){
         [self p_reloadAllMsgs];
     }
     
-    [self p_endPullUpRefreshWithAllDataLoaded:manager.hasLoadedAllOldMsgs];
+#warning 如果没有更多历史消息，应该提示
 }
 
-
-#pragma mark - private methods
-
--(void)p_endPullDownRefresh
-{
-    [self.tableView.mj_header endRefreshing];
-}
--(void)p_endPullUpRefreshWithAllDataLoaded:(BOOL)loadedAll
-{
-    if(loadedAll)
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
-    else
-        [self.tableView.mj_footer endRefreshing];
-}
 
 
 
@@ -211,13 +206,13 @@
     
     //pull to refresh
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.dataManager pullToGetNewMsgs];
-    }];
-    
-    self.tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self.dataManager pullToGetOldMsgs];
     }];
-    self.tableView.mj_footer.automaticallyHidden=YES;
+    
+    MJRefreshBackNormalFooter *backFooter=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self.dataManager pullToGetNewMsgs];
+    }];
+    self.tableView.mj_footer=backFooter;
 }
 
 -(void)p_updateSendBtnStatus
@@ -248,8 +243,17 @@
 
 -(void)p_reloadAllMsgs
 {
+    
+    NSInteger oldCnt = self.allMsgsCopyArray.count;
+    NSInteger newCnt  = self.dataManager.allMsgs.count;
+    
     self.allMsgsCopyArray=[self.dataManager.allMsgs copy];
     [self.tableView reloadData];
+    
+    if(newCnt>oldCnt){//保持当前滚动+1(显示一条新消息)
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newCnt - oldCnt-1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 #pragma mark - keyboard Notification
@@ -266,7 +270,7 @@
                         options:kAnimCurve
                      animations:^{
                          self.barBottomSpaceLC.constant=kFrame.size.height;
-                         [self.view setNeedsLayout];
+                         [self.view layoutIfNeeded];
                      } completion:nil];
     
 }
@@ -282,7 +286,7 @@
                         options:kAnimCurve
                      animations:^{
                          self.barBottomSpaceLC.constant=0;
-                         [self.view setNeedsLayout];
+                         [self.view layoutIfNeeded];
                      } completion:nil];
 }
 
@@ -299,7 +303,7 @@
                         options:kAnimCurve
                      animations:^{
                          self.barBottomSpaceLC.constant=kFrame.size.height;
-                         [self.view setNeedsLayout];
+                         [self.view layoutIfNeeded];
                      } completion:nil];
 }
 
