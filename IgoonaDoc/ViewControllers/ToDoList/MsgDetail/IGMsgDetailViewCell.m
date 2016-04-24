@@ -77,6 +77,10 @@
 @implementation IGMsgDetailViewCell_MyText
 -(void)awakeFromNib{
     
+    self.contentView.backgroundColor=IGUI_NormalBgColor;
+    
+    self.iconIV.layer.cornerRadius=4;
+    
     UIImage *bgMsgImg=[UIImage imageNamed:@"msg_me"];
     bgMsgImg=[bgMsgImg resizableImageWithCapInsets:UIEdgeInsetsMake(22, 5,8, 12)];
     self.msgBgIV.image=bgMsgImg;
@@ -96,11 +100,19 @@
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *audioDurationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *msgBgIV;
 
 @end
 
 @implementation IGMsgDetailViewCell_MyAudio
 -(void)awakeFromNib{
+    self.contentView.backgroundColor=IGUI_NormalBgColor;
+    self.iconIV.layer.cornerRadius=4;
+    
+    UIImage *bgMsgImg=[UIImage imageNamed:@"msg_me"];
+    bgMsgImg=[bgMsgImg resizableImageWithCapInsets:UIEdgeInsetsMake(22, 5,8, 12)];
+    self.msgBgIV.image=bgMsgImg;
+    
     [self.playBtn addTarget:self action:@selector(onAudioBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)setMsg:(IGMsgDetailObj *)msg{
@@ -132,13 +144,16 @@
 @implementation IGMsgDetailViewCell_OtherText
 
 -(void)awakeFromNib{
+    self.contentView.backgroundColor=IGUI_NormalBgColor;
+    self.iconIV.layer.cornerRadius=4;
+    
     UIImage *bgMsgImg=[UIImage imageNamed:@"msg_other"];
     bgMsgImg=[bgMsgImg resizableImageWithCapInsets:UIEdgeInsetsMake(22, 12,8, 5)];
     self.msgBgIV.image=bgMsgImg;
 
 }
 -(void)setMsg:(IGMsgDetailObj *)msg{
-    self.iconIV.image=[UIImage imageNamed:@"doctor1"];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:@"patient1"];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.msgLabel.text=msg.mText;
 }
@@ -157,15 +172,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UILabel *audioDurationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *msgBgIV;
 
 @end
 @implementation IGMsgDetailViewCell_OtherAudio
 -(void)awakeFromNib{
+    self.contentView.backgroundColor=IGUI_NormalBgColor;
+    self.iconIV.layer.cornerRadius=4;
+    
+    UIImage *bgMsgImg=[UIImage imageNamed:@"msg_other"];
+    bgMsgImg=[bgMsgImg resizableImageWithCapInsets:UIEdgeInsetsMake(22, 12,8, 5)];
+    self.msgBgIV.image=bgMsgImg;
+    [self.contentView sendSubviewToBack:self.msgBgIV];
     [self.playBtn addTarget:self action:@selector(onAudioBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)setMsg:(IGMsgDetailObj *)msg{
-    self.iconIV.image=[UIImage imageNamed:@"doctor1"];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:@"patient1"];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.audioDurationLabel.text=[NSString stringWithFormat:@"%d\"",(int)msg.mAudioDuration];
 }
@@ -193,6 +216,9 @@
 
 @implementation IGMsgDetailViewCell_OtherImage
 -(void)setMsg:(IGMsgDetailObj *)msg{
+    self.contentView.backgroundColor=IGUI_NormalBgColor;
+    self.iconIV.layer.cornerRadius=4;
+    
     self.iconIV.image=[UIImage imageNamed:@"doctor1"];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.imageMsgIV.image=[UIImage imageWithData:msg.mThumbnail];

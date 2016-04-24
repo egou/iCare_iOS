@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *msgTV;
 @property (weak, nonatomic) IBOutlet UIButton *recordBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
+@property (weak, nonatomic) IBOutlet UILabel *sendBtnLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barHeightLC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barBottomSpaceLC;
@@ -74,14 +75,7 @@
     
     //获取新消息
     [self.tableView.mj_footer beginRefreshing];
-    [self p_reloadAllMsgs];
-//    [self.dataManager pullToGetNewMsgs];
-    
-    //滑动到最新消息
-    if(self.allMsgsCopyArray.count>0){
-        NSIndexPath *lastRow=[NSIndexPath indexPathForRow:self.allMsgsCopyArray.count-1 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:lastRow  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    }
+    [self p_reloadAllMsgsWithNewMsg:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -100,7 +94,7 @@
         self.msgTV.hidden=NO;
         self.recordBtn.hidden=YES;
     }else{
-        [self.msgTypeBtn setImage:[UIImage imageNamed:@"item_keyboard"] forState:UIControlStateNormal];
+        [self.msgTypeBtn setImage:[UIImage imageNamed:@"item_pencil"] forState:UIControlStateNormal];
         self.msgTV.hidden=YES;
         self.recordBtn.hidden=NO;
     }
@@ -111,6 +105,18 @@
 
 
 #pragma mark - events
+-(void)onDataBtn:(id)sender{
+    
+}
+
+-(void)onCompleteBtn:(id)sender{
+    
+}
+
+-(void)onCancelBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (IBAction)onMsgTypeBtn:(id)sender {
     
@@ -169,7 +175,7 @@
 {
      [self.tableView.mj_footer endRefreshing];
     if(success){
-        [self p_reloadAllMsgs];
+        [self p_reloadAllMsgsWithNewMsg:YES];
     }
 }
 
@@ -178,7 +184,7 @@
 {
     [self.tableView.mj_header endRefreshing];
     if(success){
-        [self p_reloadAllMsgs];
+        [self p_reloadAllMsgsWithNewMsg:NO];
     }
     
 #warning 如果没有更多历史消息，应该提示
@@ -189,23 +195,41 @@
 
 -(void)p_loadAdditionalView
 {
-    self.msgTV.layer.cornerRadius=2;
+    //nav
+    self.navigationItem.title=@"病粉有求";
+    
+    self.navigationItem.hidesBackButton=YES;
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"资料" style:UIBarButtonItemStylePlain target:self action:@selector(onDataBtn:)];
+    
+    
+    UIBarButtonItem *completeItem=[[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(onCompleteBtn:)];
+    UIBarButtonItem *cancelItem=[[UIBarButtonItem alloc] initWithTitle:@"放弃" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelBtn:)];
+    
+    self.navigationItem.rightBarButtonItems=@[completeItem,cancelItem];
+    
+    
+    //msg bar
+    self.sendBtnLabel.clipsToBounds=YES;
+    self.sendBtnLabel.layer.cornerRadius=4;
+    
+    self.msgTV.layer.cornerRadius=4;
     self.msgTV.layer.masksToBounds=YES;
-    self.msgTV.layer.borderColor=[UIColor darkGrayColor].CGColor;
-    self.msgTV.layer.borderWidth=0.5;
+    self.msgTV.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    self.msgTV.layer.borderWidth=1;
     
     
-    self.recordBtn.layer.cornerRadius=2;
+    self.recordBtn.layer.cornerRadius=4;
     self.recordBtn.clipsToBounds=YES;
-    self.recordBtn.layer.borderColor=[UIColor darkGrayColor].CGColor;
-    self.recordBtn.layer.borderWidth=0.5;
+    self.recordBtn.layer.borderColor=IGUI_MainAppearanceColor.CGColor;
+    self.recordBtn.layer.borderWidth=1;
+    [self.recordBtn setTitleColor:IGUI_MainAppearanceColor forState:UIControlStateNormal];
     
     
     self.tableView.tableFooterView=[[UIView alloc] init];
+    self.tableView.backgroundColor=IGUI_NormalBgColor;
+    self.tableView.tableFooterView.backgroundColor=IGUI_NormalBgColor;
     
     
-    
-    //bar
     self.currentMsgType=0;
     
     self.msgTV.delegate=self;
@@ -229,6 +253,7 @@
     //文本
     if(self.currentMsgType==0){
         self.sendBtn.enabled=self.msgTV.text.length>0?YES:NO;
+        self.sendBtnLabel.backgroundColor=self.msgTV.text.length>0?IGUI_MainAppearanceColor:[UIColor lightGrayColor];
     }else/*语音*/{
         self.sendBtn.enabled=NO;
     }
@@ -250,7 +275,7 @@
     
 }
 
--(void)p_reloadAllMsgs
+-(void)p_reloadAllMsgsWithNewMsg:(BOOL)newMsg
 {
     
     NSInteger oldCnt = self.allMsgsCopyArray.count;
@@ -259,9 +284,20 @@
     self.allMsgsCopyArray=[self.dataManager.allMsgs copy];
     [self.tableView reloadData];
     
-    if(newCnt>oldCnt){//保持当前滚动+1(显示一条新消息)
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newCnt - oldCnt-1 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    //滚动处理
+    if(newMsg){//新消息
+        //滚到最底部（最新的）
+        if(self.allMsgsCopyArray.count>0){
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:self.allMsgsCopyArray.count-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        }
+        
+    }else{//老消息
+        
+        if(newCnt>oldCnt){//保持当前滚动+1(显示一条新消息)
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newCnt - oldCnt-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        }
     }
 }
 

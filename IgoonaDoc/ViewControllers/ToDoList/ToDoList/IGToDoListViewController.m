@@ -207,8 +207,6 @@
     self.toDoListCopyArray=[self.dataManager.toDoListArray copy];
     [self.tableView reloadData];
     
-    
-    
     if(self.dataManager.hasLoadedAll){
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }else{
