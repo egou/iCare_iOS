@@ -210,9 +210,9 @@
     
     
     if(self.dataManager.hasLoadedAll){
-        //此处应该在上方提示数据加载完毕
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }else{
-        
+        [self.tableView.mj_footer resetNoMoreData];
     }
 }
 

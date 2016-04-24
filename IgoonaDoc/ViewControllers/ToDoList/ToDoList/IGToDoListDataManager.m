@@ -69,10 +69,10 @@
 
 -(void)pullUpToLoadMoreList
 {
-    IGToDoObj *earliestToDo=self.toDoListArray.lastObject;
+    IGToDoObj *lastTodo=self.toDoListArray.lastObject;
     
-    if(earliestToDo){
-        [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
+    if(lastTodo){
+        [self.dataInteractor requestForToDoListWithLastDueTime:lastTodo.tDueTime LastMemberId:lastTodo.tMemberId finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
             if(success){
                 self.toDoListArray=[self.toDoListArray arrayByAddingObjectsFromArray:todoArray];
                 self.hasLoadedAll=loadAll;
