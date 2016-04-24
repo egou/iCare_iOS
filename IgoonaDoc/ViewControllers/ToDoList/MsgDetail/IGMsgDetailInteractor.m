@@ -62,4 +62,43 @@
               }];
 }
 
+
+
+
+
+-(void)requestToSendMsg:(NSString *)textMsg audioMsg:(NSData *)audioMsg finishHandler:(void (^)(BOOL, NSString *))finishHandler{
+    
+    NSDictionary *pDic=@{};
+    
+    if(textMsg.length>0){
+        pDic=@{@"text":textMsg,
+               @"audio":@"",
+               @"length":@"0"};
+    }else if(audioMsg.length>0){
+        NSData *encodedAudioData=[audioMsg base64EncodedDataWithOptions:0];
+        pDic=@{@"action":@"doctor_add",
+               @"text":@"",
+               @"audio":encodedAudioData,
+               @"length":@10};
+    }
+    
+    
+    
+    [IGHTTPCLIENT POST:@"php/message.php?action=doctor_add"
+           parameters:pDic
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+                  NSLog(@"%@",responseObject);
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      
+                  }else{
+                      finishHandler(NO,nil);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,nil);
+              }];
+    
+}
 @end

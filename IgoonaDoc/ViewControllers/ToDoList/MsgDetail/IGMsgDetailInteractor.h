@@ -21,4 +21,13 @@
                          limitNum:(NSInteger)limitNum
                     finishHandler:(void(^)(BOOL success,NSInteger total,NSArray* msgs))finishHandler;
 
+
+/**
+ textMsg,audioMsg至少有一个不为空，优先textMsg
+ */
+-(void)requestToSendMsg:(NSString*)textMsg
+               audioMsg:(NSData*)audioMsg
+          finishHandler:(void(^)(BOOL success,NSString *msgId))finishHandler;
+
+
 @end

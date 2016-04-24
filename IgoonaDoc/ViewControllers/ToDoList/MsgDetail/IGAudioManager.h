@@ -10,6 +10,10 @@
 
 @interface IGAudioManager : NSObject
 
--(void)playAudioWithData:(NSData*)data;
+-(void)startPlayingAudioWithData:(NSData*)data;
+-(void)stopPlaying;
+
+-(void)startRecording;
+-(void)stopRecording;
 
 @end

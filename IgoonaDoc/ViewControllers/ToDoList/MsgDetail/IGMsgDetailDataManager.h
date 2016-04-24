@@ -11,6 +11,7 @@
  对话数据管理，将获取的消息组织好，并：
  1负责网络获取消息
  2负责本地存储，本地读取
+ 3负责发送消息处理
  */
 
 @protocol IGMsgDetailDataManagerDelegate;
@@ -27,6 +28,9 @@
 -(void)pullToGetNewMsgs;
 -(void)pullToGetOldMsgs;
 
+-(void)sendTextMsg:(NSString*)textMsg;
+-(void)sendAudioMsg:(NSData*)audioMsg;
+
 @end
 
 
@@ -35,5 +39,9 @@
 -(void)dataManager:(IGMsgDetailDataManager*)manager didReceiveNewMsgsSuccess:(BOOL)success;
 -(void)dataManager:(IGMsgDetailDataManager*)manager didReceiveOldMsgsSuccess:(BOOL)success ;
 
+/**
+ msgType 0文本 1语音
+ */
+-(void)dataManager:(IGMsgDetailDataManager *)manager didSendTextMsgSuccess:(BOOL)success msgType:(NSInteger)msgType;
 
 @end

@@ -468,6 +468,9 @@
                                         <state key="normal" title="按下说话">
                                             <color key="titleColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onRecordBtn:" destination="0nd-RT-lsh" eventType="touchUpInside" id="ezy-d9-f9O"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9i-au-66v">
                                         <rect key="frame" x="524" y="8" width="64" height="40"/>

@@ -122,8 +122,23 @@
     
     self.currentMsgType=self.currentMsgType^1;//0，1切换
 }
+- (IBAction)onRecordBtn:(id)sender {
+    [self.audioManager startRecording];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*3), dispatch_get_main_queue(), ^{
+        [self.audioManager stopRecording];
+    });
+}
 
 - (IBAction)onSendBtn:(id)sender {
+    
+    if(self.currentMsgType==0){ //text
+        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [self.dataManager sendTextMsg:self.msgTV.text];
+        
+    }else{  //audio
+        
+    }
 }
 
 #pragma mark - UITableViewDelegate & Datasource
@@ -149,7 +164,7 @@
     __weak typeof(self) wSelf=self;
     UITableViewCell *msgCell=[IGMsgDetailViewCell tableView:tableView dequeueReusableCellWithMsg:msg onAudioBtnHandler:^(UITableViewCell *cell) {
         
-        [wSelf.audioManager playAudioWithData:msg.mAudioData];
+        [wSelf.audioManager startPlayingAudioWithData:msg.mAudioData];
  
     }];
     return msgCell;
@@ -191,6 +206,27 @@
 }
 
 
+-(void)dataManager:(IGMsgDetailDataManager *)manager didSendTextMsgSuccess:(BOOL)success msgType:(NSInteger)msgType{
+    [IGCommonUI hideHUDForView:self.navigationController.view];
+    if(!success){
+        
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"发送失败"];
+        
+    }else{
+        
+        if(msgType==0){
+            self.msgTV.text=@"";    //清空
+        }else{
+            
+        }
+        
+        [self p_reloadAllMsgsWithNewMsg:YES];
+    }
+}
+
+
+
+#pragma mark - private methods
 
 
 -(void)p_loadAdditionalView

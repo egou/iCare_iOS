@@ -122,6 +122,23 @@
     }
 }
 
+-(void)sendTextMsg:(NSString *)textMsg{
+    if(textMsg.length>0){
+        [self p_requestToSendTextMsg:textMsg audioMsg:nil];
+    }else{
+        NSLog(@"发送文本长度应大于0");
+    }
+}
+
+-(void)sendAudioMsg:(NSData *)audioMsg{
+    
+    if(audioMsg.length>0){
+        [self p_requestToSendTextMsg:nil audioMsg:audioMsg];
+    }else{
+        NSLog(@"发送语音长度应大于0");
+    }
+}
+
 
 #pragma mark - getter & setter
 -(IGMsgDetailInteractor *)interactor
@@ -170,6 +187,51 @@
                                       self.isLoadingNewMsgs=NO;
                                   }];
 }
+
+-(void)p_requestToSendTextMsg:(NSString*)textMsg audioMsg:(NSData*)audioMsg{
+    
+    [self.interactor requestToSendMsg:textMsg
+                             audioMsg:audioMsg
+                        finishHandler:^(BOOL success, NSString *msgId) {
+                            if(success){
+                                IGMsgDetailObj *msg=[[IGMsgDetailObj alloc] init];
+                                [self p_insertMsg:msg toAllMsgs:self.allMsgs];
+                            }
+                            
+                            [self.delegate dataManager:self didSendTextMsgSuccess:success msgType:textMsg.length>0?0:1];
+                        }];
+
+}
+
+
+
+-(NSArray*)p_insertMsg:(IGMsgDetailObj*)msg toAllMsgs:(NSArray*)allMsgs{
+    
+    __block BOOL foundMsg=NO;
+    [allMsgs enumerateObjectsUsingBlock:^(IGMsgDetailObj*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([obj.mId isEqualToString:msg.mId]){
+            foundMsg=YES;
+            *stop=YES;
+        }
+    }];
+    
+    if(foundMsg){
+        return allMsgs;
+    }else{
+        NSMutableArray *mAllMsgs=[allMsgs copy];
+        [mAllMsgs addObject:msg];
+        
+        NSArray* sortedMsgs= [mAllMsgs sortedArrayUsingComparator:^NSComparisonResult(IGMsgDetailObj *obj1, IGMsgDetailObj *obj2) {
+            NSString* id1=obj1.mId;
+            NSString *id2=obj2.mId;
+            
+            return -[id1 compare:id2];
+            
+        }];
+        return sortedMsgs;
+    }
+}
+
 
 
 #pragma mark - Push Note
