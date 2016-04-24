@@ -12,6 +12,7 @@
 #import "MJRefresh.h"
 #import "IGMsgDetailObj.h"
 
+#import "IGAudioManager.h"
 @interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,11 +28,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barBottomSpaceLC;
 
 
+
 @property (nonatomic,assign) NSInteger currentMsgType;  //0文本 1语音
 
 //对话数据管理者
 @property (nonatomic,strong) IGMsgDetailDataManager *dataManager;
 @property (nonatomic,strong) NSArray *allMsgsCopyArray; //存储dataManager 数据副本
+
+//音频管理者
+@property (nonatomic,strong) IGAudioManager *audioManager;
 
 @end
 
@@ -43,8 +48,22 @@
     //data manager
     self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.patientId];
     self.dataManager.delegate=self;
+    
+    //audio manager
+    self.audioManager=[[IGAudioManager alloc] init];
+    
     //other views
     [self p_loadAdditionalView];
+    
+    //自动适配信息
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 88;
+    
+    //如果只能浏览消息
+#if 0
+    self.barHeightLC.constant=0;
+    self.bottomBarView.clipsToBounds=YES;
+#endif
 }
 
 
@@ -116,31 +135,21 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     //最新的消息显示在最下方
+    
     NSInteger msgCount=self.allMsgsCopyArray.count;
     IGMsgDetailObj *msg= self.allMsgsCopyArray[msgCount-1-indexPath.row];
     
-    if(msg.mIsOut){
+    __weak typeof(self) wSelf=self;
+    UITableViewCell *msgCell=[IGMsgDetailViewCell tableView:tableView dequeueReusableCellWithMsg:msg onAudioBtnHandler:^(UITableViewCell *cell) {
         
-        IGMsgDetailViewCell_MyText* cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_MyText"];
-        cell.msgLabel.text=msg.mText;
-        
-        return cell;
-        
-    }else{
-        IGMsgDetailViewCell_OtherText *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCellID_OtherText"];
+        [wSelf.audioManager playAudioWithData:msg.mAudioData];
+ 
+    }];
+    return msgCell;
 
-        cell.msgLabel.text=msg.mText;
-        return cell;
-    }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    IGMsgDetailObj *msg=self.allMsgsCopyArray[indexPath.row];
-     return [IGMsgDetailViewCell_MyText heightForCellWithMsgText:msg.mText];
-}
 
 
 
@@ -271,6 +280,12 @@
                      animations:^{
                          self.barBottomSpaceLC.constant=kFrame.size.height;
                          [self.view layoutIfNeeded];
+                         
+                         //table view scroll to last row
+                         NSInteger rowCount= [self tableView:self.tableView numberOfRowsInSection:0];
+                         NSIndexPath *lastRowIndexPath=[NSIndexPath indexPathForRow:rowCount-1 inSection:0];
+                         [self.tableView scrollToRowAtIndexPath:lastRowIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                         
                      } completion:nil];
     
 }

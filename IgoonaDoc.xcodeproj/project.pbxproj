@@ -26,6 +26,7 @@
 		2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008D9E1CAF760F00ECE4B5 /* UIScrollView+MJExtension.m */; };
 		2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */; };
 		2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */; };
+		2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C56EB241CCB60EB0083726C /* IGAudioManager.m */; };
 		6B00018A1C9D1E9500085229 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001891C9D1E9500085229 /* main.m */; };
 		6B00018D1C9D1E9500085229 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00018C1C9D1E9500085229 /* AppDelegate.m */; };
 		6B0001951C9D1E9500085229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001941C9D1E9500085229 /* Assets.xcassets */; };
@@ -69,19 +70,19 @@
 		6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0002301C9D250B00085229 /* IGDoctorInformation.m */; };
 		6B0002371C9D2D6400085229 /* ToDoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0002351C9D2D6400085229 /* ToDoList.storyboard */; };
 		6B00023A1C9D2D8E00085229 /* DoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0002381C9D2D8E00085229 /* DoneList.storyboard */; };
-		6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */; settings = {ASSET_TAGS = (); }; };
-		6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */; settings = {ASSET_TAGS = (); }; };
-		6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */; settings = {ASSET_TAGS = (); }; };
-		6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032E091CC1493A0027DDAD /* IGSignupViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B033D151CC1DDCB00CD87DC /* IGToDoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */; settings = {ASSET_TAGS = (); }; };
-		6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; settings = {ASSET_TAGS = (); }; };
-		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; settings = {ASSET_TAGS = (); }; };
+		6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */; };
+		6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEC1CC125190027DDAD /* IGMsgDetailDataManager.m */; };
+		6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */; };
+		6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */; };
+		6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF21CC125190027DDAD /* IGMsgDetailViewController.m */; };
+		6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF71CC125190027DDAD /* IGToDoListDataManager.m */; };
+		6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DF91CC125190027DDAD /* IGToDoListInteractor.m */; };
+		6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032DFB1CC125190027DDAD /* IGToDoListViewController.m */; };
+		6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B032E091CC1493A0027DDAD /* IGSignupViewController.m */; };
+		6B033D151CC1DDCB00CD87DC /* IGToDoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */; };
+		6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */; };
+		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; };
+		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -91,24 +92,24 @@
 		6B1584C91CB130E4009C4EAD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C81CB130E4009C4EAD /* SystemConfiguration.framework */; };
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
-		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; settings = {ASSET_TAGS = (); }; };
-		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BF71CC363EE00B95CD8 /* IGMyInformationViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54BFB1CC3641400B95CD8 /* IGMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFA1CC3641400B95CD8 /* IGMyTeamViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54BFE1CC3643D00B95CD8 /* IGMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFD1CC3643D00B95CD8 /* IGMyWalletViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54C011CC3645A00B95CD8 /* IGDoneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C001CC3645A00B95CD8 /* IGDoneListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54C041CC3648900B95CD8 /* IGMyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C031CC3648900B95CD8 /* IGMyPatientsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54C071CC3697400B95CD8 /* IGMyTeamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C061CC3697400B95CD8 /* IGMyTeamViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54C0A1CC36B8B00B95CD8 /* IGMyTeamMemberObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C091CC36B8B00B95CD8 /* IGMyTeamMemberObj.m */; settings = {ASSET_TAGS = (); }; };
-		6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */; settings = {ASSET_TAGS = (); }; };
+		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; };
+		6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BF71CC363EE00B95CD8 /* IGMyInformationViewController.m */; };
+		6BF54BFB1CC3641400B95CD8 /* IGMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFA1CC3641400B95CD8 /* IGMyTeamViewController.m */; };
+		6BF54BFE1CC3643D00B95CD8 /* IGMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFD1CC3643D00B95CD8 /* IGMyWalletViewController.m */; };
+		6BF54C011CC3645A00B95CD8 /* IGDoneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C001CC3645A00B95CD8 /* IGDoneListViewController.m */; };
+		6BF54C041CC3648900B95CD8 /* IGMyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C031CC3648900B95CD8 /* IGMyPatientsViewController.m */; };
+		6BF54C071CC3697400B95CD8 /* IGMyTeamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C061CC3697400B95CD8 /* IGMyTeamViewCell.m */; };
+		6BF54C0A1CC36B8B00B95CD8 /* IGMyTeamMemberObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C091CC36B8B00B95CD8 /* IGMyTeamMemberObj.m */; };
+		6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */; };
 		6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */; };
-		6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */; settings = {ASSET_TAGS = (); }; };
-		6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02B1CB7EE5E0087B569 /* FMDatabaseAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02D1CB7EE5E0087B569 /* FMDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
-		6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02F1CB7EE5E0087B569 /* FMDatabaseQueue.m */; settings = {ASSET_TAGS = (); }; };
-		6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0321CB7EE5E0087B569 /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
-		6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBA0331CB7EE5E0087B569 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */; };
+		6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02B1CB7EE5E0087B569 /* FMDatabaseAdditions.m */; };
+		6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02D1CB7EE5E0087B569 /* FMDatabasePool.m */; };
+		6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02F1CB7EE5E0087B569 /* FMDatabaseQueue.m */; };
+		6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0321CB7EE5E0087B569 /* FMResultSet.m */; };
+		6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBA0331CB7EE5E0087B569 /* Info.plist */; };
+		6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,8 @@
 		2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2C008DA11CAF760F00ECE4B5 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		2C56EB231CCB60EB0083726C /* IGAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAudioManager.h; sourceTree = "<group>"; };
+		2C56EB241CCB60EB0083726C /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
 		6B0001851C9D1E9500085229 /* IgoonaDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgoonaDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0001891C9D1E9500085229 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B00018B1C9D1E9500085229 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -717,6 +720,8 @@
 				6B032DEE1CC125190027DDAD /* IGMsgDetailInteractor.m */,
 				6B032DEF1CC125190027DDAD /* IGMsgDetailViewCell.h */,
 				6B032DF01CC125190027DDAD /* IGMsgDetailViewCell.m */,
+				2C56EB231CCB60EB0083726C /* IGAudioManager.h */,
+				2C56EB241CCB60EB0083726C /* IGAudioManager.m */,
 			);
 			path = MsgDetail;
 			sourceTree = "<group>";
@@ -1010,6 +1015,7 @@
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
+				2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
 				6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */,
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
@@ -1173,7 +1179,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Porco.IgoonaDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Porco.igoonaDoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1192,7 +1198,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Porco.IgoonaDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Porco.igoonaDoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -91,6 +91,13 @@
     IGToDoObj *todo=self.toDoListArray[index];
     if(todo){
         [self.dataInteractor requestToHandleTaskWithTaskId:todo.tId finishHandler:^(NSInteger statusCode) {
+
+            //2不存在 4处理完毕 任务要去掉
+            if(statusCode==2||statusCode==4){
+                NSMutableArray *temp=[ self.toDoListArray mutableCopy];
+                [temp removeObject:todo];
+            }
+            
             [self.delegate toDoListDataManager:self didReceiveTaskInfo:todo StatusCode:statusCode];
         }];
         

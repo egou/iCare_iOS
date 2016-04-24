@@ -8,43 +8,44 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class IGMsgDetailObj;
+@interface IGMsgDetailViewCell :UITableViewCell;
+
++(UITableViewCell *)tableView:(UITableView*)tableView
+   dequeueReusableCellWithMsg:(IGMsgDetailObj*)msg
+            onAudioBtnHandler:(void(^)(UITableViewCell *cell))handler;
+
+@end
+
+
+
+
+
+
 @interface IGMsgDetailViewCell_MyText : UITableViewCell
-
-+(CGFloat)heightForCellWithMsgText:(NSString *)text;
-@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *msgLabel;
-
+-(void)setMsg:(IGMsgDetailObj*)msg;
 @end
 
 
 @interface IGMsgDetailViewCell_MyAudio : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
-@property (weak, nonatomic) IBOutlet UIButton *playBtn;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *audioDurationLabel;
-
+-(void)setMsg:(IGMsgDetailObj*)msg;
+@property (nonatomic,copy) void(^onAudioBtnHandler)(UITableViewCell*);
 @end
-
-
 
 
 
 @interface IGMsgDetailViewCell_OtherText : UITableViewCell
-
-+(CGFloat)heightForCellWithMsgText:(NSString *)text;
-@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *msgLabel;
-
+-(void)setMsg:(IGMsgDetailObj*)msg;
 @end
 
 
 @interface IGMsgDetailViewCell_OtherAudio : UITableViewCell
+-(void)setMsg:(IGMsgDetailObj*)msg;
+@property (nonatomic,copy) void(^onAudioBtnHandler)(UITableViewCell*);
+@end
 
-@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *playBtn;
-@property (weak, nonatomic) IBOutlet UILabel *audioDurationLabel;
 
+@interface IGMsgDetailViewCell_OtherImage: UITableViewCell
+-(void)setMsg:(IGMsgDetailObj*)msg;
 @end

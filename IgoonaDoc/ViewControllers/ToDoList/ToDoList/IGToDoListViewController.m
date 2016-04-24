@@ -156,6 +156,7 @@
         }
         
         if(taskInfo.tType==2){
+           
             //报告
             return;
         }
@@ -163,16 +164,18 @@
         return;
     }
     
-    if(code==2){   //不存在
+    if(code==2){   //不存在，更新删除相应任务
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务不存在"];
+        [self p_reloadData];
         return;
     }
     if(code==3){   //正在处理
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务正有人处理"];
         return;
     }
-    if(code==4){   //已经处理完成
+    if(code==4){   //已经处理完成，更新删除相应任务
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务已完成"];
+        [self p_reloadData];
         return;
     }
 }
@@ -204,10 +207,12 @@
     self.toDoListCopyArray=[self.dataManager.toDoListArray copy];
     [self.tableView reloadData];
     
+    
+    
     if(self.dataManager.hasLoadedAll){
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        //此处应该在上方提示数据加载完毕
     }else{
-        [self.tableView.mj_footer resetNoMoreData];
+        
     }
 }
 

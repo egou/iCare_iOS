@@ -11,6 +11,7 @@
 @interface IGMsgDetailObj : NSObject
 
 @property (nonatomic,copy) NSString *mId;
+@property (nonatomic,copy) NSString *mPhotoId;  //头像标识
 @property (nonatomic,copy) NSString *mSessionId;
 @property (nonatomic,assign) BOOL mIsOut;
 @property (nonatomic,copy) NSString *mTime;

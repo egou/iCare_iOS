@@ -35,7 +35,7 @@
                               IGMsgDetailObj *msg=[IGMsgDetailObj new];
                               msg.mId=msgDic[@"id"];
                               msg.mSessionId=msgDic[@"session_id"];
-                              msg.mIsOut=msgDic[@"isOut"];
+                              msg.mIsOut=[msgDic[@"isOut"] integerValue];
                               msg.mTime=msgDic[@"time"];
                               msg.mText=msgDic[@"msgText"];
                               

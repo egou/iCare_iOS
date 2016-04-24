@@ -36,6 +36,8 @@
                   
                   if(IG_DIC_ASSERT(responseObject, @"success", @1)){
                       
+                      NSLog(@"%@",responseObject);
+                      
                       NSMutableArray *toDoArray=[NSMutableArray array];
                       NSArray *dataArray=responseObject[@"data"];
                       [dataArray enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull tDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -80,7 +82,26 @@
                   if(IG_DIC_ASSERT(responseObject, @"success", @1)){
                       handler(1);
                   }else{
-                      handler([responseObject[@"reason"] integerValue]);
+                          
+                      // retCode 要转换为statusCode值( 0未知 1成功 2不存在  3处理中 4处理完毕)
+                       
+                      NSInteger retCode=[responseObject[@"reason"] integerValue];
+                      NSInteger statusCode=0;
+                      
+                      switch (retCode) {
+                          case 14:
+                              statusCode=2;
+                              break;
+                          case 15:
+                              statusCode=3;
+                              
+                          case 16:
+                              statusCode=4;
+                              
+                          default:
+                              break;
+                      }
+                      handler(statusCode);
                   }
                   
               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
