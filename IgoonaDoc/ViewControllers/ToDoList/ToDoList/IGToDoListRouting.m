@@ -38,13 +38,15 @@
 }
 
 
--(void)transToMsgDetailViewWithPatientId:(NSString *)patientId{
+-(void)transToMsgDetailViewWithPatientId:(NSString *)patientId taskId:(NSString *)taskId{
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
     
     NSAssert(patientId.length>0, @"patient Id is empty");
+     NSAssert(taskId.length>0, @"task Id is empty");
     vc.patientId=patientId;
+    vc.taskId=taskId;
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 
 }

@@ -66,20 +66,25 @@
 
 
 
--(void)requestToSendMsg:(NSString *)textMsg audioMsg:(NSData *)audioMsg finishHandler:(void (^)(BOOL, NSString *))finishHandler{
+-(void)requestToSendMsg:(NSString *)textMsg audioMsg:(NSData *)audioMsg otherId:(NSString *)otherId taskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSString *))finishHandler
+{
     
     NSDictionary *pDic=@{};
     
     if(textMsg.length>0){
         pDic=@{@"text":textMsg,
                @"audio":@"",
-               @"length":@"0"};
+               @"length":@"0",
+               @"sessionId":taskId,
+               @"memberId":otherId};
     }else if(audioMsg.length>0){
-        NSData *encodedAudioData=[audioMsg base64EncodedDataWithOptions:0];
+        NSString *encodedAudioString=[audioMsg base64EncodedStringWithOptions:0];
+        
         pDic=@{@"action":@"doctor_add",
-               @"text":@"",
-               @"audio":encodedAudioData,
-               @"length":@10};
+               @"audio":encodedAudioString,
+               @"length":@"3",
+               @"sessionId":taskId,
+               @"memberId":otherId};
     }
     
     
@@ -92,6 +97,7 @@
                   
                   if(IG_DIC_ASSERT(responseObject, @"success", @1)){
                       
+                      finishHandler(YES,[responseObject[@"id"] stringValue]);
                   }else{
                       finishHandler(NO,nil);
                   }

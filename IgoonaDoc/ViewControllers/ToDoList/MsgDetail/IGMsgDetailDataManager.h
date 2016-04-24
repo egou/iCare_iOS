@@ -23,7 +23,7 @@
 @property (nonatomic,strong,readonly) NSArray *allMsgs;
 @property (nonatomic,assign,readonly) BOOL hasLoadedAllOldMsgs;
 
--(instancetype)initWithPatientId:(NSString*)patientId;
+-(instancetype)initWithPatientId:(NSString*)patientId taskId:(NSString*)taskId;
 
 -(void)pullToGetNewMsgs;
 -(void)pullToGetOldMsgs;

@@ -13,6 +13,7 @@
 
 @interface IGMsgDetailDataManager()
 @property (nonatomic,copy) NSString *patientId;
+@property (nonatomic,copy) NSString *taskId;
 
 @property (nonatomic,strong,readwrite) NSArray *allMsgs;
 @property (nonatomic,assign,readwrite) BOOL hasLoadedAllOldMsgs;
@@ -29,12 +30,14 @@
 
 @implementation IGMsgDetailDataManager
 
--(instancetype)initWithPatientId:(NSString *)patientId
+-(instancetype)initWithPatientId:(NSString *)patientId taskId:(NSString *)taskId
 {
     NSAssert(patientId.length>0, @"patient ID is empty");
+    NSAssert(taskId.length>0, @"task ID is empty");
     if(self=[super init])
     {
         self.patientId=patientId;
+        self.taskId=taskId;
         
         //数据库读取数据
         self.allMsgs= [IGLOCALMANAGER loadAllLocalMessagesDataWithPatientId:patientId];
@@ -192,10 +195,32 @@
     
     [self.interactor requestToSendMsg:textMsg
                              audioMsg:audioMsg
+                              otherId:self.patientId
+                               taskId:self.taskId
                         finishHandler:^(BOOL success, NSString *msgId) {
                             if(success){
                                 IGMsgDetailObj *msg=[[IGMsgDetailObj alloc] init];
-                                [self p_insertMsg:msg toAllMsgs:self.allMsgs];
+                                
+                                msg.mId=msgId;
+                                msg.mPhotoId=@"1";
+                                msg.mSessionId=self.taskId;
+                                msg.mIsOut=YES;
+                                
+                                NSDate *now=[NSDate date];
+                                NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
+                                [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                                NSString *dateStr=[dateForm stringFromDate:now];
+                                msg.mTime=dateStr;
+                                
+                                if(textMsg.length>0)
+                                    msg.mText=textMsg;
+                                else{
+                                    msg.mAudioData=audioMsg;
+                                    msg.mAudioDuration=3;//修改
+                                }
+                                
+                                self.allMsgs=[self p_insertMsg:msg toAllMsgs:self.allMsgs];
+                                [IGLOCALMANAGER saveMessagesData:@[msg] withPatientId:self.patientId];
                             }
                             
                             [self.delegate dataManager:self didSendTextMsgSuccess:success msgType:textMsg.length>0?0:1];
@@ -218,7 +243,7 @@
     if(foundMsg){
         return allMsgs;
     }else{
-        NSMutableArray *mAllMsgs=[allMsgs copy];
+        NSMutableArray *mAllMsgs=[allMsgs mutableCopy];
         [mAllMsgs addObject:msg];
         
         NSArray* sortedMsgs= [mAllMsgs sortedArrayUsingComparator:^NSComparisonResult(IGMsgDetailObj *obj1, IGMsgDetailObj *obj2) {

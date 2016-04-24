@@ -13,7 +13,7 @@
 #import "IGMsgDetailObj.h"
 
 #import "IGAudioManager.h"
-@interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate>
+@interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -47,11 +47,12 @@
     [super viewDidLoad];
 
     //data manager
-    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.patientId];
+    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.patientId taskId:self.taskId];
     self.dataManager.delegate=self;
     
     //audio manager
     self.audioManager=[[IGAudioManager alloc] init];
+    self.audioManager.delegate=self;
     
     //other views
     [self p_loadAdditionalView];
@@ -208,6 +209,7 @@
 
 -(void)dataManager:(IGMsgDetailDataManager *)manager didSendTextMsgSuccess:(BOOL)success msgType:(NSInteger)msgType{
     [IGCommonUI hideHUDForView:self.navigationController.view];
+    
     if(!success){
         
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"发送失败"];
@@ -224,6 +226,14 @@
     }
 }
 
+
+#pragma mark - audio manager delegate
+-(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data{
+    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager sendAudioMsg:data];
+    
+}
 
 
 #pragma mark - private methods

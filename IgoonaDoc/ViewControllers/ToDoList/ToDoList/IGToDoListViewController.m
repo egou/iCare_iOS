@@ -151,7 +151,8 @@
         
         if(taskInfo.tType==1){
             //求助
-            [self.routing transToMsgDetailViewWithPatientId:taskInfo.tMemberId];
+            [self.routing transToMsgDetailViewWithPatientId:taskInfo.tMemberId
+                                                     taskId:taskInfo.tId];
             return;
         }
         

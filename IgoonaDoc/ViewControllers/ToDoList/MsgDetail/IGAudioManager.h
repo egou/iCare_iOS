@@ -8,12 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol IGAudioManagerDelegate;
 @interface IGAudioManager : NSObject
+
+@property (nonatomic,weak) id<IGAudioManagerDelegate> delegate;
 
 -(void)startPlayingAudioWithData:(NSData*)data;
 -(void)stopPlaying;
 
 -(void)startRecording;
 -(void)stopRecording;
+
+@end
+
+
+
+@protocol IGAudioManagerDelegate <NSObject>
+
+-(void)audioManager:(IGAudioManager*)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData*)data;
 
 @end

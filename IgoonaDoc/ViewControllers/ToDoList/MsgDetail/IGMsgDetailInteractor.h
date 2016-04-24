@@ -27,6 +27,8 @@
  */
 -(void)requestToSendMsg:(NSString*)textMsg
                audioMsg:(NSData*)audioMsg
+                otherId:(NSString*)otherId
+                 taskId:(NSString*)taskId
           finishHandler:(void(^)(BOOL success,NSString *msgId))finishHandler;
 
 

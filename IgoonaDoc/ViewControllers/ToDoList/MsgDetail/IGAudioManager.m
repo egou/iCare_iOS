@@ -129,6 +129,9 @@
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
 {
     NSLog(@"audio manager: Finish recording");
+    
+    NSData *data=[NSData dataWithContentsOfURL:recorder.url];
+    [self.delegate audioManager:self didFinishRecordingSuccess:YES WithAudioData:data];
 }
 
 -(void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError *)error

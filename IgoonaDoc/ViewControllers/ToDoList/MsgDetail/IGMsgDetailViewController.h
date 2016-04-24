@@ -11,5 +11,6 @@
 @interface IGMsgDetailViewController : UIViewController
 
 @property (nonatomic,copy) NSString *patientId;
+@property (nonatomic,copy) NSString *taskId;
 
 @end
