@@ -25,6 +25,6 @@
 
 @protocol IGAudioManagerDelegate <NSObject>
 
--(void)audioManager:(IGAudioManager*)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData*)data;
+-(void)audioManager:(IGAudioManager*)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData*)data duration:(NSInteger)duration;
 
 @end

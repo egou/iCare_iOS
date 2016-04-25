@@ -123,13 +123,6 @@
     
     self.currentMsgType=self.currentMsgType^1;//0，1切换
 }
-- (IBAction)onRecordBtn:(id)sender {
-    [self.audioManager startRecording];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*3), dispatch_get_main_queue(), ^{
-        [self.audioManager stopRecording];
-    });
-}
 
 - (IBAction)onSendBtn:(id)sender {
     
@@ -140,6 +133,39 @@
     }else{  //audio
         
     }
+}
+
+//这里需要处理几种情况
+
+- (IBAction)touchDownRecordBtn:(id)sender {
+
+    NSLog(@"down");
+    [self.audioManager startRecording];
+}
+
+- (IBAction)touchUpInsideRecordBtn:(id)sender {
+    NSLog(@"up in");
+    [self.audioManager stopRecording];
+}
+
+
+
+- (IBAction)touchUpOutsideRecordBtn:(id)sender {
+    NSLog(@"up out");
+    //取消发送
+}
+
+- (IBAction)touchDragOutsideRecordBtn:(id)sender {
+    NSLog(@"drag out");
+}
+- (IBAction)touchDragInsideRecordBtn:(id)sender {
+    NSLog(@"drag inside");
+}
+- (IBAction)touchExit:(id)sender {
+    NSLog(@"exit");
+}
+- (IBAction)touchEnter:(id)sender {
+    NSLog(@"enter");
 }
 
 #pragma mark - UITableViewDelegate & Datasource
@@ -171,9 +197,6 @@
     return msgCell;
 
 }
-
-
-
 
 
 
@@ -228,10 +251,10 @@
 
 
 #pragma mark - audio manager delegate
--(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data{
+-(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data duration:(NSInteger)duration{
     
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];
-    [self.dataManager sendAudioMsg:data];
+    [self.dataManager sendAudioMsg:data duration:duration];
     
 }
 

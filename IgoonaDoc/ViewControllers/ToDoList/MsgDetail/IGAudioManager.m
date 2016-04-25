@@ -59,16 +59,6 @@
 -(void)stopRecording{
     if(self.audioRecorder.recording){
         [self.audioRecorder stop];
-        
-     //just for test
-        NSError *error;
-        self.audioPlayer = [[AVAudioPlayer alloc]
-                        initWithContentsOfURL:self.audioRecorder.url
-                        error:&error];
-        NSLog(@"%@",error);
-        [self.audioPlayer prepareToPlay];
-        [self.audioPlayer play];
-
     }
 }
 
@@ -131,7 +121,10 @@
     NSLog(@"audio manager: Finish recording");
     
     NSData *data=[NSData dataWithContentsOfURL:recorder.url];
-    [self.delegate audioManager:self didFinishRecordingSuccess:YES WithAudioData:data];
+    
+    AVAudioPlayer *player=[[AVAudioPlayer alloc] initWithData:data error:nil];
+    NSInteger dur=MAX(1,(NSInteger)player.duration);
+    [self.delegate audioManager:self didFinishRecordingSuccess:YES WithAudioData:data duration:dur];
 }
 
 -(void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError *)error

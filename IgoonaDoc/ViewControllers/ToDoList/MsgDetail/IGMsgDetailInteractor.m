@@ -66,7 +66,7 @@
 
 
 
--(void)requestToSendMsg:(NSString *)textMsg audioMsg:(NSData *)audioMsg otherId:(NSString *)otherId taskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSString *))finishHandler
+-(void)requestToSendMsg:(NSString *)textMsg audioMsg:(NSData *)audioMsg audioDuration:(NSInteger)audioDuration otherId:(NSString *)otherId taskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSString *))finishHandler
 {
     
     NSDictionary *pDic=@{};
@@ -82,7 +82,7 @@
         
         pDic=@{@"action":@"doctor_add",
                @"audio":encodedAudioString,
-               @"length":@"3",
+               @"length":@(audioDuration),
                @"sessionId":taskId,
                @"memberId":otherId};
     }

@@ -469,7 +469,13 @@
                                             <color key="titleColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="onRecordBtn:" destination="0nd-RT-lsh" eventType="touchUpInside" id="ezy-d9-f9O"/>
+                                            <action selector="touchDownRecordBtn:" destination="0nd-RT-lsh" eventType="touchDown" id="mYH-du-QCm"/>
+                                            <action selector="touchDragInsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchDragInside" id="FRO-KI-FlT"/>
+                                            <action selector="touchDragOutsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchDragOutside" id="hom-1a-Ufb"/>
+                                            <action selector="touchEnter:" destination="0nd-RT-lsh" eventType="touchDragEnter" id="vMN-Do-m3N"/>
+                                            <action selector="touchExit:" destination="0nd-RT-lsh" eventType="touchDragExit" id="sOl-VR-Kn8"/>
+                                            <action selector="touchUpInsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchUpInside" id="fK5-Ul-oQR"/>
+                                            <action selector="touchUpOutsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchUpOutside" id="do3-xb-xcD"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9i-au-66v">

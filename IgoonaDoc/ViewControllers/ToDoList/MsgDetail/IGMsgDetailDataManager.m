@@ -127,16 +127,16 @@
 
 -(void)sendTextMsg:(NSString *)textMsg{
     if(textMsg.length>0){
-        [self p_requestToSendTextMsg:textMsg audioMsg:nil];
+        [self p_requestToSendTextMsg:textMsg audioMsg:nil audioDuration:0];
     }else{
         NSLog(@"发送文本长度应大于0");
     }
 }
 
--(void)sendAudioMsg:(NSData *)audioMsg{
+-(void)sendAudioMsg:(NSData *)audioMsg duration:(NSInteger)duration{
     
     if(audioMsg.length>0){
-        [self p_requestToSendTextMsg:nil audioMsg:audioMsg];
+        [self p_requestToSendTextMsg:nil audioMsg:audioMsg audioDuration:duration];
     }else{
         NSLog(@"发送语音长度应大于0");
     }
@@ -169,7 +169,10 @@
                                   finishHandler:^(BOOL success, NSInteger total, NSArray *msgs) {
                                       if(success){
                                           
-                                          self.tempNewMsgs=[msgs arrayByAddingObjectsFromArray:self.tempNewMsgs];
+                                          //这里返回的是id递增，需要倒转一下
+                                          NSArray * descMsgs=[[msgs reverseObjectEnumerator] allObjects];
+                                          
+                                          self.tempNewMsgs=[descMsgs arrayByAddingObjectsFromArray:self.tempNewMsgs];
                                           
                                           if(total<=self.tempNewMsgs.count){//完成
                                               //把新消息融入老消息
@@ -191,10 +194,11 @@
                                   }];
 }
 
--(void)p_requestToSendTextMsg:(NSString*)textMsg audioMsg:(NSData*)audioMsg{
+-(void)p_requestToSendTextMsg:(NSString*)textMsg audioMsg:(NSData*)audioMsg audioDuration:(NSInteger)duration{
     
     [self.interactor requestToSendMsg:textMsg
                              audioMsg:audioMsg
+                        audioDuration:duration
                               otherId:self.patientId
                                taskId:self.taskId
                         finishHandler:^(BOOL success, NSString *msgId) {
@@ -216,7 +220,7 @@
                                     msg.mText=textMsg;
                                 else{
                                     msg.mAudioData=audioMsg;
-                                    msg.mAudioDuration=3;//修改
+                                    msg.mAudioDuration=duration;//修改
                                 }
                                 
                                 self.allMsgs=[self p_insertMsg:msg toAllMsgs:self.allMsgs];

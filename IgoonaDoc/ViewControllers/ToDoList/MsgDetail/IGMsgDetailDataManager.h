@@ -29,7 +29,7 @@
 -(void)pullToGetOldMsgs;
 
 -(void)sendTextMsg:(NSString*)textMsg;
--(void)sendAudioMsg:(NSData*)audioMsg;
+-(void)sendAudioMsg:(NSData*)audioMsg duration:(NSInteger)duration;
 
 @end
 
