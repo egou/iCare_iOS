@@ -51,7 +51,14 @@
 
 #pragma mark - interfaces
 -(void)tapToChangeWorkStatus{
+    NSInteger toStatus=self.isWorking?0:1;
     
+    [self.dataInteractor requestToChangeToWorkStatus:toStatus finishHandler:^(BOOL success) {
+        if(success){
+            self.isWorking=!self.isWorking;
+        }
+        [self.delegate toDoListDataManagerDidChangeWorkStatus:self];
+    }];
 }
 
 

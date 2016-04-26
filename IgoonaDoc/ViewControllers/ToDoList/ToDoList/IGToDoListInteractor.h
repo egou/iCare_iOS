@@ -15,6 +15,14 @@
 @interface IGToDoListInteractor : NSObject
 
 /**
+ 请求切换工作状态
+ */
+-(void)requestToChangeToWorkStatus:(NSInteger)status
+                     finishHandler:(void(^)(BOOL success))handler;
+
+
+/**
+ 请求任务列表
  当dueTime,memberId为空，请求最新数据
  */
 -(void)requestForToDoListWithLastDueTime:(NSString*)dueTime
@@ -26,6 +34,7 @@
  */
 -(void)requestToHandleTaskWithTaskId:(NSString *)taskId
                        finishHandler:(void(^)(NSInteger statusCode))handler;
+
 
 @end
 

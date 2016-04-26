@@ -42,7 +42,7 @@
 @class IGToDoObj;
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
--(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)magager;
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)manager;
 -(void)toDoListDataManager:(IGToDoListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
 -(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
 

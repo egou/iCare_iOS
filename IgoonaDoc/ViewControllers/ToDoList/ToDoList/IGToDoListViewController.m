@@ -32,17 +32,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self p_initUI];
-    
-    
-    
+
     //routing
     self.routing=[[IGToDoListRouting alloc] init];
     self.routing.routingOwner=self;
     
+    //data manager
     self.dataManager=[[IGToDoListDataManager alloc] init];
     self.dataManager.delegate=self;
     
+    [self p_initUI];
     
     //pull to refresh
     [self.tableView.mj_header beginRefreshing];
@@ -52,6 +51,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
 }
 
 #pragma mark - events
@@ -62,6 +62,8 @@
 }
 
 - (IBAction)onWorkStatusBtn:(id)sender {
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager tapToChangeWorkStatus];
 }
 
 #pragma mark - Table view data source & delegate
@@ -86,22 +88,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    //先检测是否处于工作状态
+    if(!self.dataManager.isWorking){
+        
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"您目前未处于工作状态"];
+        return;
+    }
+    
+    
     [self.dataManager tapToRequestToHandleTaskAtIndex:indexPath.row];
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];
-    
-//    if(1){
-//        //如果为对话
-//        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-//        IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
-//        NSString* patientId=@"1";
-//        NSAssert(patientId.length>0, @"patient Id is empty");
-//        vc.patientId=patientId;
-//        vc.hidesBottomBarWhenPushed=YES;
-//        vc.edgesForExtendedLayout = UIRectEdgeAll;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }else{
-//        
-//    }
 }
 
 
@@ -130,8 +126,16 @@
 }
 
 
--(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)magager{
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)manager{
     
+    [IGCommonUI hideHUDForView:self.navigationController.view];
+    
+    if(manager.isWorking){
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
+        
+    }else{
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
+    }
 }
 
 
@@ -201,6 +205,13 @@
     }];
     self.tableView.mj_footer.automaticallyHidden=YES;
 
+    //work status
+    if(self.dataManager.isWorking){
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
+        
+    }else{
+        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
+    }
 }
 
 -(void)p_reloadData{

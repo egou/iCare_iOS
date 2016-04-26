@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barHeightLC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barBottomSpaceLC;
 
-
+@property (nonatomic,strong) UIView *recordingBgView;
 
 @property (nonatomic,assign) NSInteger currentMsgType;  //0文本 1语音
 
@@ -104,6 +104,16 @@
     [self p_updateSendBtnStatus];
 }
 
+-(UIView*)recordingBgView{
+    if(!_recordingBgView){
+     
+        UIImage *recordingBg=[UIImage imageNamed:@"bg_recording"];
+        _recordingBgView=[[UIImageView alloc] initWithImage:recordingBg];
+    }
+    
+    return _recordingBgView;
+}
+
 
 #pragma mark - events
 -(void)onDataBtn:(id)sender{
@@ -141,6 +151,9 @@
 
     NSLog(@"down");
     [self.audioManager startRecording];
+    
+    [self p_showRecordingBg:YES];
+    
 }
 
 - (IBAction)touchUpInsideRecordBtn:(id)sender {
@@ -252,6 +265,8 @@
 
 #pragma mark - audio manager delegate
 -(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data duration:(NSInteger)duration{
+    
+    [self p_showRecordingBg:NO];
     
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];
     [self.dataManager sendAudioMsg:data duration:duration];
@@ -369,6 +384,22 @@
         }
     }
 }
+
+-(void)p_showRecordingBg:(BOOL)show{
+    
+    if(show){
+        [self.view addSubview:self.recordingBgView];
+        
+        [self.recordingBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.mas_equalTo(self.view);
+        }];
+        
+    }else{
+        [self.recordingBgView removeFromSuperview];
+    }
+}
+
+
 
 #pragma mark - keyboard Notification
 -(void)onKeyboardWillShowNotification:(NSNotification*)note

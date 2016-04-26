@@ -11,6 +11,27 @@
 
 @implementation IGToDoListInteractor
 
+-(void)requestToChangeToWorkStatus:(NSInteger)status finishHandler:(void (^)(BOOL))handler{
+    [IGHTTPCLIENT GET:@"php/doctor.php"
+           parameters:@{@"action":@"change_working_state",
+                        @"state":@(status)}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      handler(YES);
+                  }else{
+                      handler(NO);
+                  }
+                  
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  handler(NO);
+              }];
+}
+
+
+
 -(void)requestForToDoListWithLastDueTime:(NSString *)dueTime
                             LastMemberId:(NSString *)memberId
                            finishHandler:(void (^)(BOOL, NSArray<IGToDoObj *> *, BOOL))handler
