@@ -18,6 +18,7 @@
 
 
 #import "IGMsgDetailViewController.h"
+#import "IGReportDetailViewController.h"
 
 @interface IGToDoListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
 
@@ -51,8 +52,17 @@
 
 }
 
--(void)transToReportDetailViewWithTaskId:(NSString *)taskId{
+-(void)transToReportDetailViewWithPatientId:(NSString *)patientId taskId:(NSString *)taskId{
     
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+    IGReportDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportDetailViewController"];
+    
+    NSAssert(patientId.length>0, @"patient Id is empty");
+    NSAssert(taskId.length>0, @"task Id is empty");
+    vc.patientId=patientId;
+    vc.taskId=taskId;
+    [self.routingOwner.navigationController pushViewController:vc animated:YES];
+
 }
 
 

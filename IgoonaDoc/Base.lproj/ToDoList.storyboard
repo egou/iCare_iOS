@@ -536,7 +536,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYq-US-kLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="1032"/>
+            <point key="canvasLocation" x="1796" y="-446"/>
+        </scene>
+        <!--Report Detail View Controller-->
+        <scene sceneID="vGD-Dq-qx1">
+            <objects>
+                <tableViewController storyboardIdentifier="IGReportDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mYW-3W-cdn" customClass="IGReportDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="c2p-iE-Tla">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ome-zK-jCX">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ome-zK-jCX" id="OQR-mM-daT">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mYW-3W-cdn" id="M8g-z8-XKb"/>
+                            <outlet property="delegate" destination="mYW-3W-cdn" id="mds-hM-j3T"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Pf-Yc-tdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="348"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tEG-Gn-TZI">

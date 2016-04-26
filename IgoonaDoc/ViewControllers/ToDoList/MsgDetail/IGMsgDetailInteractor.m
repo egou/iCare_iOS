@@ -107,4 +107,45 @@
               }];
     
 }
+
+
+-(void)requestToExitTask:(NSString *)taskId completed:(BOOL)completed finishHandler:(void (^)(BOOL))finishHandler{
+    [IGHTTPCLIENT GET:@"php/task.php"
+           parameters:@{@"action":@"task_state",
+                        @"id":taskId,
+                        @"status":completed?@3:@1}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                  }else{
+                      
+                      // retCode 要转换为statusCode值( 0未知 1成功 2不存在  3处理中 4处理完毕)
+                      
+//                      NSInteger retCode=[responseObject[@"reason"] integerValue];
+//                      NSInteger statusCode=0;
+//                      
+//                      switch (retCode) {
+//                          case 14:
+//                              statusCode=2;
+//                              break;
+//                          case 15:
+//                              statusCode=3;
+//                              
+//                          case 16:
+//                              statusCode=4;
+//                              
+//                          default:
+//                              break;
+//                      }
+//                      handler(statusCode);
+                      finishHandler(NO);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+
+}
+
 @end

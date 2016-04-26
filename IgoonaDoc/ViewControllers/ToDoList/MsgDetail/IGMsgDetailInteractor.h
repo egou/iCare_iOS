@@ -33,4 +33,11 @@
           finishHandler:(void(^)(BOOL success,NSString *msgId))finishHandler;
 
 
+/**
+ 申请退出任务
+ */
+-(void)requestToExitTask:(NSString*)taskId
+               completed:(BOOL)completed
+           finishHandler:(void(^)(BOOL success))finishHandler;
+
 @end

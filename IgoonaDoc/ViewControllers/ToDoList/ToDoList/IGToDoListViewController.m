@@ -10,14 +10,11 @@
 #import "IGToDoListViewCell.h"
 #import "IGToDoObj.h"
 
-#import "IGMsgDetailViewController.h"
-#import "MJRefresh.h"
-
 
 #import "IGToDoListDataManager.h"
 #import "IGToDoListRouting.h"
 
-
+#import "MJRefresh.h"
 
 @interface IGToDoListViewController ()<IGToDoListDataManagerDelegate>
 
@@ -42,6 +39,10 @@
     self.dataManager.delegate=self;
     
     [self p_initUI];
+    
+    //自动请求进入工作状态
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager tapToChangeWorkStatus];
     
     //pull to refresh
     [self.tableView.mj_header beginRefreshing];
@@ -163,6 +164,8 @@
         if(taskInfo.tType==2){
            
             //报告
+            [self.routing transToReportDetailViewWithPatientId:taskInfo.tMemberId
+                                                        taskId:taskInfo.tId];
             return;
         }
         
@@ -205,6 +208,7 @@
     }];
     self.tableView.mj_footer.automaticallyHidden=YES;
 
+    
     //work status
     if(self.dataManager.isWorking){
         [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
@@ -212,6 +216,7 @@
     }else{
         [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
     }
+
 }
 
 -(void)p_reloadData{

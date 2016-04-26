@@ -142,6 +142,13 @@
     }
 }
 
+-(void)tapToExitTaskFinished:(BOOL)finished{
+    [self.interactor requestToExitTask:self.taskId
+                             completed:finished
+                         finishHandler:^(BOOL success) {
+                            [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
+                         }];
+}
 
 #pragma mark - getter & setter
 -(IGMsgDetailInteractor *)interactor

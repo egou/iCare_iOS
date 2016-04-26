@@ -121,11 +121,13 @@
 }
 
 -(void)onCompleteBtn:(id)sender{
-    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager tapToExitTaskFinished:YES];
 }
 
 -(void)onCancelBtn:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager tapToExitTaskFinished:NO];
 }
 
 
@@ -262,7 +264,15 @@
     }
 }
 
-
+-(void)dataManager:(IGMsgDetailDataManager *)manager didExitTaskSuccess:(BOOL)success taskCompleted:(BOOL)completed{
+    
+    if(success){
+        [IGCommonUI hideHUDForView:self.navigationController.view];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"未知错误"];
+    }
+}
 #pragma mark - audio manager delegate
 -(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data duration:(NSInteger)duration{
     
