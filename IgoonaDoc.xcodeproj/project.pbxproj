@@ -111,6 +111,7 @@
 		6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0321CB7EE5E0087B569 /* FMResultSet.m */; };
 		6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBA0331CB7EE5E0087B569 /* Info.plist */; };
 		6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */; };
+		6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -318,6 +319,8 @@
 		6BFBA0331CB7EE5E0087B569 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BFBA03B1CB7EEE60087B569 /* IGLocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGLocalDataManager.h; sourceTree = "<group>"; };
 		6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGLocalDataManager.m; sourceTree = "<group>"; };
+		6BFBB2BC1CD0F8C40096A02A /* IGReportDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportDetailViewCell.h; sourceTree = "<group>"; };
+		6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportDetailViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,6 +779,8 @@
 			children = (
 				6B03E3571CCFB6640020FE8F /* IGReportDetailViewController.h */,
 				6B03E3581CCFB6640020FE8F /* IGReportDetailViewController.m */,
+				6BFBB2BC1CD0F8C40096A02A /* IGReportDetailViewCell.h */,
+				6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -971,6 +976,7 @@
 				2C008DAD1CAF760F00ECE4B5 /* MJRefreshBackStateFooter.m in Sources */,
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
+				6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
