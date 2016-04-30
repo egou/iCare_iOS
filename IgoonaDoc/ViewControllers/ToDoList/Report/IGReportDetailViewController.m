@@ -12,6 +12,7 @@
 #import "IGToDoObj.h"
 
 #import "IGSingleSelectionTableViewController.h"
+#import "IGMemberDataViewController.h"
 
 @interface IGReportDetailViewController ()
 
@@ -38,7 +39,11 @@
 #pragma mark - events
 
 -(void)onDataBtn:(id)sender{
-    
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
+    vc.memberId=self.taskInfo.tMemberId;
+    vc.memberName=self.taskInfo.tMemberName;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)onCompleteBtn:(id)sender{
@@ -397,8 +402,8 @@
             
             NSArray *problemsArray=self.autoReportDic[@"problems"];
             [problemsArray enumerateObjectsUsingBlock:^(NSDictionary* pDic, NSUInteger idx, BOOL * stop) {
-                NSString *cId=pDic[@"category"];
-                NSNumber *cValue=pDic[@"value"];
+                NSNumber *cId=@([pDic[@"category"] integerValue]);
+                NSNumber *cValue=@([pDic[@"value"] integerValue]);
                 self.categoryValueDic[cId]=cValue;
             }];
         }

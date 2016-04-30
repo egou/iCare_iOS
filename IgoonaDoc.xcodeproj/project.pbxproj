@@ -96,6 +96,17 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0231CD4CD7E0050495B /* IGMemberDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C0351CD4FFA60050495B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B87C0301CD4FF6C0050495B /* Charts.framework */; };
+		6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0371CD501210050495B /* IGBPChartManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; };
 		6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BF71CC363EE00B95CD8 /* IGMyInformationViewController.m */; };
 		6BF54BFB1CC3641400B95CD8 /* IGMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54BFA1CC3641400B95CD8 /* IGMyTeamViewController.m */; };
@@ -115,6 +126,30 @@
 		6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */; };
 		6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B87C02F1CD4FF6C0050495B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		6B87C0311CD4FF6C0050495B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		6B87C0331CD4FF6C0050495B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C008D781CAF760F00ECE4B5 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -292,6 +327,26 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
+		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
+		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
+		6B87C0191CD4CD7E0050495B /* IGBpDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataViewController.h; sourceTree = "<group>"; };
+		6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataViewController.m; sourceTree = "<group>"; };
+		6B87C01C1CD4CD7E0050495B /* IGMemberDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataEntity.h; sourceTree = "<group>"; };
+		6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataEntity.m; sourceTree = "<group>"; };
+		6B87C01E1CD4CD7E0050495B /* IGMemberDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataManager.h; sourceTree = "<group>"; };
+		6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataManager.m; sourceTree = "<group>"; };
+		6B87C0201CD4CD7E0050495B /* IGMemberDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewController.h; sourceTree = "<group>"; };
+		6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewController.m; sourceTree = "<group>"; };
+		6B87C0261CD4EA1F0050495B /* IGMemberDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewCell.h; sourceTree = "<group>"; };
+		6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewCell.m; sourceTree = "<group>"; };
+		6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		6B87C0361CD501210050495B /* IGBPChartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBPChartManager.h; sourceTree = "<group>"; };
+		6B87C0371CD501210050495B /* IGBPChartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBPChartManager.m; sourceTree = "<group>"; };
+		6B87C0391CD501980050495B /* IGBpDataDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataDetailObj.h; sourceTree = "<group>"; };
+		6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataDetailObj.m; sourceTree = "<group>"; };
+		6B87C03D1CD513F20050495B /* IGEkgDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgDataViewController.h; sourceTree = "<group>"; };
+		6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgDataViewController.m; sourceTree = "<group>"; };
 		6BD6DA2B1CC525BD00E44C18 /* IGToDoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewCell.h; sourceTree = "<group>"; };
 		6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
 		6BF54BF61CC363EE00B95CD8 /* IGMyInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyInformationViewController.h; sourceTree = "<group>"; };
@@ -334,6 +389,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B87C0351CD4FFA60050495B /* Charts.framework in Frameworks */,
 				6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */,
 				6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */,
 				6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */,
@@ -458,6 +514,7 @@
 			children = (
 				6B0001871C9D1E9500085229 /* IgoonaDoc */,
 				6B0001861C9D1E9500085229 /* Products */,
+				6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -508,6 +565,7 @@
 				6B0001A21C9D221800085229 /* Login.storyboard */,
 				6B0002381C9D2D8E00085229 /* DoneList.storyboard */,
 				6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */,
+				6B87C0051CD4C3630050495B /* MemberData.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -660,6 +718,7 @@
 				6B0001F51C9D221800085229 /* Login */,
 				6B032DE91CC125190027DDAD /* ToDoList */,
 				6B032E051CC1257D0027DDAD /* Others */,
+				6B87C0081CD4C3B80050495B /* MemberData */,
 				6B032DE51CC125190027DDAD /* DataStructures */,
 				2C506B911CD1C0F900B61BB3 /* Common */,
 			);
@@ -712,6 +771,8 @@
 		6B032DE51CC125190027DDAD /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				6B87C0391CD501980050495B /* IGBpDataDetailObj.h */,
+				6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */,
 				6B033D131CC1DDCB00CD87DC /* IGToDoObj.h */,
 				6B033D141CC1DDCB00CD87DC /* IGToDoObj.m */,
 				6B032DE61CC125190027DDAD /* IGMsgDetailObj.h */,
@@ -720,6 +781,8 @@
 				6BF54C091CC36B8B00B95CD8 /* IGMyTeamMemberObj.m */,
 				2C506B951CD1E2CC00B61BB3 /* IGReportCategoryObj.h */,
 				2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */,
+				6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */,
+				6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -827,6 +890,61 @@
 				6B1584BC1CB130A4009C4EAD /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B87C0081CD4C3B80050495B /* MemberData */ = {
+			isa = PBXGroup;
+			children = (
+				6B87C01B1CD4CD7E0050495B /* dataList */,
+				6B87C0181CD4CD7E0050495B /* bp */,
+				6B87C03C1CD5135C0050495B /* ekg */,
+			);
+			path = MemberData;
+			sourceTree = "<group>";
+		};
+		6B87C0181CD4CD7E0050495B /* bp */ = {
+			isa = PBXGroup;
+			children = (
+				6B87C0361CD501210050495B /* IGBPChartManager.h */,
+				6B87C0371CD501210050495B /* IGBPChartManager.m */,
+				6B87C0191CD4CD7E0050495B /* IGBpDataViewController.h */,
+				6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */,
+			);
+			path = bp;
+			sourceTree = "<group>";
+		};
+		6B87C01B1CD4CD7E0050495B /* dataList */ = {
+			isa = PBXGroup;
+			children = (
+				6B87C0201CD4CD7E0050495B /* IGMemberDataViewController.h */,
+				6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */,
+				6B87C0261CD4EA1F0050495B /* IGMemberDataViewCell.h */,
+				6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */,
+				6B87C01E1CD4CD7E0050495B /* IGMemberDataManager.h */,
+				6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */,
+				6B87C01C1CD4CD7E0050495B /* IGMemberDataEntity.h */,
+				6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */,
+			);
+			path = dataList;
+			sourceTree = "<group>";
+		};
+		6B87C02A1CD4FF6B0050495B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B87C0301CD4FF6C0050495B /* Charts.framework */,
+				6B87C0321CD4FF6C0050495B /* Charts.framework */,
+				6B87C0341CD4FF6C0050495B /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B87C03C1CD5135C0050495B /* ekg */ = {
+			isa = PBXGroup;
+			children = (
+				6B87C03D1CD513F20050495B /* IGEkgDataViewController.h */,
+				6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */,
+			);
+			path = ekg;
 			sourceTree = "<group>";
 		};
 		6BF54BF01CC363B700B95CD8 /* DoneList */ = {
@@ -957,6 +1075,12 @@
 			mainGroup = 6B00017C1C9D1E9500085229;
 			productRefGroup = 6B0001861C9D1E9500085229 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6B87C02A1CD4FF6B0050495B /* Products */;
+					ProjectRef = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6B0001841C9D1E9500085229 /* IgoonaDoc */,
@@ -964,12 +1088,37 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		6B87C0301CD4FF6C0050495B /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 6B87C02F1CD4FF6C0050495B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B87C0321CD4FF6C0050495B /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 6B87C0311CD4FF6C0050495B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B87C0341CD4FF6C0050495B /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 6B87C0331CD4FF6C0050495B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		6B0001831C9D1E9500085229 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6B0001951C9D1E9500085229 /* Assets.xcassets in Resources */,
+				6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */,
 				6B0002061C9D221900085229 /* LaunchScreen.storyboard in Resources */,
 				2C008DB11CAF760F00ECE4B5 /* MJRefresh.bundle in Resources */,
 				6B0002371C9D2D6400085229 /* ToDoList.storyboard in Resources */,
@@ -996,6 +1145,7 @@
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
 				6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
+				6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
@@ -1006,6 +1156,7 @@
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
+				6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */,
 				6B0002221C9D221900085229 /* UIImageView+AFNetworking.m in Sources */,
 				6B03E3591CCFB6640020FE8F /* IGReportDetailViewController.m in Sources */,
 				6B0002281C9D221900085229 /* IGCheckBox.m in Sources */,
@@ -1023,6 +1174,7 @@
 				6BF54BF81CC363EE00B95CD8 /* IGMyInformationViewController.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
+				6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B0002091C9D221900085229 /* IGCommonValidExpression.m in Sources */,
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
@@ -1031,12 +1183,14 @@
 				6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */,
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
+				6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */,
 				6BF54C041CC3648900B95CD8 /* IGMyPatientsViewController.m in Sources */,
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
 				6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */,
 				6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */,
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
+				6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				6BF54C0A1CC36B8B00B95CD8 /* IGMyTeamMemberObj.m in Sources */,
 				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
@@ -1048,8 +1202,10 @@
 				6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */,
 				6B00022B1C9D221900085229 /* IGLoginViewController.m in Sources */,
+				6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */,
 				2C008DA91CAF760F00ECE4B5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,
+				6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */,
 				6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
@@ -1060,6 +1216,8 @@
 				6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */,
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
 				6B0002201C9D221900085229 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				6B87C0231CD4CD7E0050495B /* IGMemberDataEntity.m in Sources */,
+				6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
 				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
@@ -1119,6 +1277,14 @@
 				6B033D401CC2895900CD87DC /* Base */,
 			);
 			name = MoreStuff.storyboard;
+			sourceTree = "<group>";
+		};
+		6B87C0051CD4C3630050495B /* MemberData.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B87C0061CD4C3630050495B /* Base */,
+			);
+			name = MemberData.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1210,6 +1376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IgoonaDoc/IgoonaDoc-Prefix.pch";
 				INFOPLIST_FILE = IgoonaDoc/Info.plist;
@@ -1229,6 +1396,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IgoonaDoc/IgoonaDoc-Prefix.pch";
 				INFOPLIST_FILE = IgoonaDoc/Info.plist;
