@@ -145,43 +145,46 @@
 //2不存在
 //3处理中
 //4处理完毕
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveTaskInfo:(IGToDoObj *)taskInfo StatusCode:(NSInteger)code{
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager
+didReceiveHandlingRequestResult:(NSInteger)statusCode
+                  taskInfo:(IGToDoObj *)taskInfo
+                reportInfo:(NSDictionary *)reportInfo{
+
     [IGCommonUI hideHUDForView:self.navigationController.view];
-    if(code==0){
+    if(statusCode==0){
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"未知错误"];
         return;
     }
     
-    if(code==1){
+    if(statusCode==1){
         
         if(taskInfo.tType==1){
             //求助
-            [self.routing transToMsgDetailViewWithPatientId:taskInfo.tMemberId
-                                                     taskId:taskInfo.tId];
+            [self.routing transToMsgDetailViewWithTaskInfo:taskInfo];
+
             return;
         }
         
         if(taskInfo.tType==2){
            
             //报告
-            [self.routing transToReportDetailViewWithPatientId:taskInfo.tMemberId
-                                                        taskId:taskInfo.tId];
+            [self.routing transToReportDetailViewWithTaskInfo:taskInfo autoReport:reportInfo];
             return;
         }
         
         return;
     }
     
-    if(code==2){   //不存在，更新删除相应任务
+    if(statusCode==2){   //不存在，更新删除相应任务
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务不存在"];
         [self p_reloadData];
         return;
     }
-    if(code==3){   //正在处理
+    if(statusCode==3){   //正在处理
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务正有人处理"];
         return;
     }
-    if(code==4){   //已经处理完成，更新删除相应任务
+    if(statusCode==4){   //已经处理完成，更新删除相应任务
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务已完成"];
         [self p_reloadData];
         return;

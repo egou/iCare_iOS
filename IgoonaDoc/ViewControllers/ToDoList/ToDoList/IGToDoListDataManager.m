@@ -98,18 +98,32 @@
     IGToDoObj *todo=self.toDoListArray[index];
     if(todo){
         [self.dataInteractor requestToHandleTaskWithTaskId:todo.tId finishHandler:^(NSInteger statusCode) {
-
-            //2不存在 4处理完毕 任务要去掉
-            if(statusCode==2||statusCode==4){
-                NSMutableArray *temp=[ self.toDoListArray mutableCopy];
-                [temp removeObject:todo];
-            }
             
-            [self.delegate toDoListDataManager:self didReceiveTaskInfo:todo StatusCode:statusCode];
+            if(statusCode==1&&todo.tType==2){
+                //如果请求处理报告成功，则还需一步
+                [self.dataInteractor requestForAutoReportContentWithTaskId:todo.tId finishHandler:^(BOOL success, NSDictionary *autoReportDic) {
+                    if(success){
+                        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:1 taskInfo:todo reportInfo:autoReportDic];
+                    }else{
+                        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:0 taskInfo:todo reportInfo:nil];
+                    }
+                }];
+                
+            }else{
+            
+                //2不存在 4处理完毕 任务要去掉
+                if(statusCode==2||statusCode==4){
+                    NSMutableArray *temp=[ self.toDoListArray mutableCopy];
+                    [temp removeObject:todo];
+                }
+
+                [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:statusCode taskInfo:todo reportInfo:nil];
+            }
         }];
         
     }else{
-        [self.delegate toDoListDataManager:self didReceiveTaskInfo:nil StatusCode:0];
+
+        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:0 taskInfo:nil reportInfo:nil];
     }
 }
 

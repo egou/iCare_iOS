@@ -26,6 +26,8 @@
 		2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008D9E1CAF760F00ECE4B5 /* UIScrollView+MJExtension.m */; };
 		2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */; };
 		2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */; };
+		2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C506B931CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m */; };
+		2C506B971CD1E2CC00B61BB3 /* IGReportCategoryObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */; };
 		2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C56EB241CCB60EB0083726C /* IGAudioManager.m */; };
 		6B00018A1C9D1E9500085229 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001891C9D1E9500085229 /* main.m */; };
 		6B00018D1C9D1E9500085229 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B00018C1C9D1E9500085229 /* AppDelegate.m */; };
@@ -83,7 +85,7 @@
 		6B033D3E1CC288EE00CD87DC /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D3D1CC288EE00CD87DC /* IGMoreStuffViewController.m */; };
 		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; };
 		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; };
-		6B03E3591CCFB6640020FE8F /* IGReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B03E3581CCFB6640020FE8F /* IGReportDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B03E3591CCFB6640020FE8F /* IGReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B03E3581CCFB6640020FE8F /* IGReportDetailViewController.m */; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -111,7 +113,7 @@
 		6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0321CB7EE5E0087B569 /* FMResultSet.m */; };
 		6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BFBA0331CB7EE5E0087B569 /* Info.plist */; };
 		6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA03C1CB7EEE60087B569 /* IGLocalDataManager.m */; };
-		6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBB2BD1CD0F8C40096A02A /* IGReportDetailViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +155,10 @@
 		2C008DA01CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		2C008DA11CAF760F00ECE4B5 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2C008DA21CAF760F00ECE4B5 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		2C506B921CD1C19900B61BB3 /* IGSingleSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGSingleSelectionTableViewController.h; sourceTree = "<group>"; };
+		2C506B931CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGSingleSelectionTableViewController.m; sourceTree = "<group>"; };
+		2C506B951CD1E2CC00B61BB3 /* IGReportCategoryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportCategoryObj.h; sourceTree = "<group>"; };
+		2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportCategoryObj.m; sourceTree = "<group>"; };
 		2C56EB231CCB60EB0083726C /* IGAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAudioManager.h; sourceTree = "<group>"; };
 		2C56EB241CCB60EB0083726C /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
 		6B0001851C9D1E9500085229 /* IgoonaDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgoonaDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,6 +444,15 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		2C506B911CD1C0F900B61BB3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C506B921CD1C19900B61BB3 /* IGSingleSelectionTableViewController.h */,
+				2C506B931CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		6B00017C1C9D1E9500085229 = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +661,7 @@
 				6B032DE91CC125190027DDAD /* ToDoList */,
 				6B032E051CC1257D0027DDAD /* Others */,
 				6B032DE51CC125190027DDAD /* DataStructures */,
+				2C506B911CD1C0F900B61BB3 /* Common */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -702,6 +718,8 @@
 				6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */,
 				6BF54C081CC36B8B00B95CD8 /* IGMyTeamMemberObj.h */,
 				6BF54C091CC36B8B00B95CD8 /* IGMyTeamMemberObj.m */,
+				2C506B951CD1E2CC00B61BB3 /* IGReportCategoryObj.h */,
+				2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -1021,6 +1039,7 @@
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				6BF54C0A1CC36B8B00B95CD8 /* IGMyTeamMemberObj.m in Sources */,
+				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1037,6 +1056,7 @@
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
+				2C506B971CD1E2CC00B61BB3 /* IGReportCategoryObj.m in Sources */,
 				6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */,
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
 				6B0002201C9D221900085229 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

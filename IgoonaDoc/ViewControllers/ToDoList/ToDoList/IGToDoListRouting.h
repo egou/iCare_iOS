@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class IGToDoObj;
+
 @interface IGToDoListRouting : NSObject
 
 /**
@@ -17,7 +19,9 @@
 
 -(void)transToMoreStuffView;
 
--(void)transToMsgDetailViewWithPatientId:(NSString*)patientId taskId:(NSString*)taskId;
--(void)transToReportDetailViewWithPatientId:(NSString*)patientId taskId:(NSString*)taskId;
+
+-(void)transToMsgDetailViewWithTaskInfo:(IGToDoObj*)taskInfo;
+-(void)transToReportDetailViewWithTaskInfo:(IGToDoObj*)taskInfo autoReport:(NSDictionary*)autoReport;
+
 
 @end

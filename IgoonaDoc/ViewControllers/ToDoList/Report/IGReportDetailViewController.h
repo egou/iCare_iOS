@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class IGToDoObj;
 @interface IGReportDetailViewController : UITableViewController
 
-@property (nonatomic,copy) NSString *patientId;
-@property (nonatomic,copy) NSString *taskId;
+@property (nonatomic,strong) IGToDoObj *taskInfo;
+@property (nonatomic,strong) NSDictionary *autoReportDic;
 
 @end

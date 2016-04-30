@@ -130,4 +130,26 @@
               }];
 }
 
+
+-(void)requestForAutoReportContentWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL,NSDictionary*))handler{
+    [IGHTTPCLIENT GET:@"php/report.php"
+           parameters:@{@"action":@"get_task_report",
+                        @"taskId":taskId}
+             progress:nil
+              success:^(NSURLSessionDataTask * task, NSDictionary* responseObject) {
+                  NSLog(@"%@",responseObject);
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      handler(YES,responseObject);
+                      
+                  }else{
+                      handler(NO,nil);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  handler(NO,nil);
+              }];
+}
+
+
+
 @end

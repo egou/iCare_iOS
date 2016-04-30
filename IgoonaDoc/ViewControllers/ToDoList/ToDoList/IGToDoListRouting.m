@@ -20,6 +20,8 @@
 #import "IGMsgDetailViewController.h"
 #import "IGReportDetailViewController.h"
 
+
+
 @interface IGToDoListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
 
 @end
@@ -39,28 +41,21 @@
 }
 
 
--(void)transToMsgDetailViewWithPatientId:(NSString *)patientId taskId:(NSString *)taskId{
+-(void)transToMsgDetailViewWithTaskInfo:(IGToDoObj *)taskInfo{
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
-    
-    NSAssert(patientId.length>0, @"patient Id is empty");
-     NSAssert(taskId.length>0, @"task Id is empty");
-    vc.patientId=patientId;
-    vc.taskId=taskId;
+    vc.taskInfo=taskInfo;
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 
 }
 
--(void)transToReportDetailViewWithPatientId:(NSString *)patientId taskId:(NSString *)taskId{
+-(void)transToReportDetailViewWithTaskInfo:(IGToDoObj *)taskInfo autoReport:(NSDictionary *)autoReport{
     
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGReportDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportDetailViewController"];
-    
-    NSAssert(patientId.length>0, @"patient Id is empty");
-    NSAssert(taskId.length>0, @"task Id is empty");
-    vc.patientId=patientId;
-    vc.taskId=taskId;
+    vc.taskInfo=taskInfo;
+    vc.autoReportDic=autoReport;
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 
 }
@@ -81,7 +76,7 @@
     }];
     
     
-    NSLog(@"on more stuff:%d",event);
+    NSLog(@"on more stuff:%d",(int)event);
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

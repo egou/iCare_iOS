@@ -35,6 +35,12 @@
 -(void)requestToHandleTaskWithTaskId:(NSString *)taskId
                        finishHandler:(void(^)(NSInteger statusCode))handler;
 
+/**
+ 请求处理如果为报告，请求智能报告内容
+ */
+-(void)requestForAutoReportContentWithTaskId:(NSString*)taskId
+                               finishHandler:(void(^)(BOOL success,NSDictionary *autoReportDic))handler;
+
 
 @end
 

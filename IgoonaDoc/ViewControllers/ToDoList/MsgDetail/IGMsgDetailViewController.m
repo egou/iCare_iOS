@@ -11,6 +11,7 @@
 #import "IGMsgDetailDataManager.h"
 #import "MJRefresh.h"
 #import "IGMsgDetailObj.h"
+#import "IGToDoObj.h"
 
 #import "IGAudioManager.h"
 @interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
@@ -47,7 +48,8 @@
     [super viewDidLoad];
 
     //data manager
-    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.patientId taskId:self.taskId];
+    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.taskInfo.tMemberId
+                                                                taskId:self.taskInfo.tId];
     self.dataManager.delegate=self;
     
     //audio manager

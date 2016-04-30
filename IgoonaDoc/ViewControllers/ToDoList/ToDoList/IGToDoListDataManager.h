@@ -48,13 +48,16 @@
 
 
 /**
- 0未知
- 1成功
- 2不存在
- 3处理中
- 4处理完毕
+ @pamrama statusCode 0未知
+            1成功
+            2不存在
+            3处理中
+            4处理完毕
+ 
+ 如果成功，且task为report，则智能报告内容在reportInfo里
  */
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveTaskInfo:(IGToDoObj*)taskInfo StatusCode:(NSInteger)code;
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGToDoObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
+
 
 @end
 
