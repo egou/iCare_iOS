@@ -25,17 +25,6 @@
     [self p_setChartWithEkgData:self.ekgData];
 }
 
--(BOOL)shouldAutorotate{
-    return YES;
-}
-
--(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
--(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
-    return UIInterfaceOrientationPortrait;
-}
 
 #pragma mark - private methods
 

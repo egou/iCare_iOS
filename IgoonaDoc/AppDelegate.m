@@ -44,15 +44,24 @@
                                                       UIUserNotificationTypeAlert)
                                           categories:nil];
     
-    static NSString *appKey = @"969cc1e1b9b4740900171c65";
+    static NSString *appKey = @"be8e846e07f74ec9b6fed7c3";
     static NSString *channel = @"Publish channel";
     static BOOL isProduction = FALSE;
     
     [JPUSHService setupWithOption:launchOptions appKey:appKey
                           channel:channel apsForProduction:isProduction];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                      selector:@selector(networkDidReceiveMessage:)
+                          name:kJPFNetworkDidReceiveMessageNotification
+                        object:nil];
+    
     return YES;
 }
+
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -116,5 +125,23 @@
     return str;
 }
 
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    NSString *title = [userInfo valueForKey:@"title"];
+    NSString *content = [userInfo valueForKey:@"content"];
+    NSDictionary *extra = [userInfo valueForKey:@"extras"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    
+    NSString *currentContent = [NSString
+                                stringWithFormat:
+                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
+                                [NSDateFormatter localizedStringFromDate:[NSDate date]
+                                                               dateStyle:NSDateFormatterNoStyle
+                                                               timeStyle:NSDateFormatterMediumStyle],
+                                title, content, [self logDic:extra]];
+    NSLog(@"%@", currentContent);
+}
 
 @end

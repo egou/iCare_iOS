@@ -2,7 +2,7 @@
 //  IGMsgDetailInteractor.m
 //  IgoonaDoc
 //
-//  Created by domeng on 2/4/16.
+//  Created by Porco on 2/4/16.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 

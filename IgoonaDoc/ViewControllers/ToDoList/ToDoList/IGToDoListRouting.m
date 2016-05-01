@@ -73,6 +73,12 @@
             IGMyTeamViewController *myTeamVC=[sb instantiateViewControllerWithIdentifier:@"IGMyTeamViewController"];
             [self.routingOwner.navigationController pushViewController:myTeamVC  animated:YES];
         }
+        
+        if(event==IGMoreStuffEventTouchHistoryTasks){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+            UIViewController *doneListVC=[sb instantiateViewControllerWithIdentifier:@"IGDoneListViewController"];
+            [self.routingOwner.navigationController pushViewController:doneListVC animated:YES];
+        }
     }];
     
     

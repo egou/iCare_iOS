@@ -11,7 +11,7 @@
 /**************************     app VC architecture      ************************/
 /*                                                                              */
 /*                                              (present)                       */
-/*                     RootViewController  ----------------- MainTabVC          */
+/*                     RootViewController  ----------------- MainVC             */
 /*                       /             \                                        */
 /*              (Child1)/      (Child2) \                                       */
 /*                     /                 \                                      */

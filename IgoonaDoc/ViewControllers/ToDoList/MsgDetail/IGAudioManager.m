@@ -2,7 +2,7 @@
 //  IGAudioManager.m
 //  IgoonaDoc
 //
-//  Created by domeng on 23/4/16.
+//  Created by Porco on 23/4/16.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 

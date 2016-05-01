@@ -43,8 +43,10 @@
         [info enumerateObjectsUsingBlock:^(IGReportCategoryObj *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
             IGCheckBox *checkBox=[[IGCheckBox alloc] init];
-            [checkBox setTitle:obj.cName forState:UIControlStateNormal];
-            [checkBox setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
+            NSAttributedString *attTitle=[[NSAttributedString alloc] initWithString:obj.cName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor darkGrayColor]}];
+            [checkBox setAttributedTitle:attTitle forState:UIControlStateNormal];
+            [checkBox setTitleEdgeInsets:UIEdgeInsetsMake(0, 4, 0, -4)];
             [self.contentView addSubview:checkBox];
             
             [checkBox mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -52,7 +54,7 @@
                 make.height.mas_equalTo(40);
                 make.top.mas_equalTo(self.contentView).offset(8+(idx/2)*40);
                 if(idx%2==0){//左侧
-                    make.leading.mas_equalTo(self.contentView.mas_leadingMargin).offset(8);
+                    make.leading.mas_equalTo(self.contentView.mas_leadingMargin);
                 }else{
                     make.leading.mas_equalTo(self.contentView.mas_centerX).offset(8);
                 }
@@ -97,7 +99,7 @@
         NSInteger index=[self.checkBoxArray indexOfObject:checkBox];
         
         if(self.checkInfoChangeHandler){
-            self.checkInfoChangeHandler(index,change[NSKeyValueChangeNewKey]);
+            self.checkInfoChangeHandler(index,[change[NSKeyValueChangeNewKey] boolValue]);
         }
     }
 }

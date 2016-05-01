@@ -14,6 +14,8 @@
 #import "IGSingleSelectionTableViewController.h"
 #import "IGMemberDataViewController.h"
 
+#import "IGTaskRequestEntity.h"
+
 @interface IGReportDetailViewController ()
 
 @property (nonatomic,assign) NSInteger healthLevel;
@@ -48,11 +50,74 @@
 
 -(void)onCompleteBtn:(id)sender{
     
+    __block NSMutableArray *problems=[NSMutableArray array];   //只把非默认的值加入其中
+    [self.categoryValueDic enumerateKeysAndObjectsUsingBlock:^(NSNumber* categoryId, NSNumber* value, BOOL * _Nonnull stop) {
+        
+        //value 不等于0 且 value对应的index也不得0
+        
+        if(value.intValue!=0){
+            
+            [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(value.integerValue==obj.vId&&obj.vIndex!=0){
+                    [problems addObject:value];
+                    *stop=YES;
+                }
+            }];
+        }
+    }];
+    
+    
+    NSDictionary *reportInfo=@{@"id":self.autoReportDic[@"id"],
+                               @"taskId":self.taskInfo.tId,
+                               @"memberId":self.taskInfo.tMemberId,
+                               @"healthLevel":@(self.healthLevel),
+                               @"problems":problems,
+                               @"suggestion":self.suggestions};
+    
+    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [IGTaskRequestEntity requestToSubmitReportWithContentInfo:reportInfo finishHandler:^(BOOL success) {
+        [IGCommonUI hideHUDForView:self.navigationController.view];
+        
+        if(success){
+            //发送状态改变给服务器，不用管结果
+            [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId completed:YES finishHandler:nil];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }else{
+            
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"提交报告失败"];
+        }
+    }];
+    
 }
 
 -(void)onCancelBtn:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"您要放弃该任务吗" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        
+        [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId
+                                     completed:NO
+                                 finishHandler:^(BOOL success) {
+                                     [IGCommonUI hideHUDForView:self.navigationController.view];
+                                     if(success){
+                                         [self.navigationController popViewControllerAnimated:YES];
+                                     }else{
+                                          [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"放弃任务失败"];
+                                     }
+                                 }];
+        
+    }]];
+
+    [self presentViewController:ac animated:YES completion:nil];
 }
+
+
 #pragma mark - tableview delegate & datasource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
@@ -63,7 +128,6 @@
     if(section==0){
         return 1;
     }
-    
     
     if(section==1){ //血压
         NSArray *allCategories=[IGReportCategoryObj allCategoriesInfo];
@@ -170,11 +234,21 @@
             [cell setCheckInfo:checkInfoArray];
             
             __weak  typeof(self) wSelf=self;
-            cell.checkInfoChangeHandler=^(NSInteger index,NSNumber* toValue){
+            cell.checkInfoChangeHandler=^(NSInteger index,BOOL checked){
                 
                 //查找相应的category，并赋值
                 IGReportCategoryObj *category= categoriesWithBoolValue[index];
-                wSelf.categoryValueDic[@(category.cId)]=toValue;
+                
+                __block NSNumber *problemId=@0;
+                if(checked){
+                    [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if(obj.vCategory==category.cId){
+                            problemId=@(obj.vId);
+                            *stop=YES;
+                        }
+                    }];
+                }
+                wSelf.categoryValueDic[@(category.cId)]=problemId;
             };
             
             return cell;
@@ -339,13 +413,17 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     NSArray *titles=@[self.taskInfo.tMemberName,@"心电仪",@"血压",@"建议"];
-    NSArray *colors=@[IGUI_MainAppearanceColor,[UIColor yellowColor],[UIColor yellowColor],[UIColor blueColor]];
+    NSArray *colors=@[IGUI_MainAppearanceColor,
+                      [UIColor colorWithRed:245/255. green:174/255. blue:4/255. alpha:1],
+                      [UIColor colorWithRed:245/255. green:174/255. blue:4/255. alpha:1],
+                      [UIColor colorWithRed:100/255. green:149/255. blue:237/255. alpha:1]];
     
     UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
     view.backgroundColor=colors[section];
     
     UILabel *tLabel=[[UILabel alloc] init];
     tLabel.text=titles[section];
+    tLabel.textColor=[UIColor whiteColor];
     [view addSubview:tLabel];
     [tLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(view);

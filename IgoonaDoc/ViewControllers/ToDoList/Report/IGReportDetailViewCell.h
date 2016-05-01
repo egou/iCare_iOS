@@ -21,7 +21,7 @@
 
 +(instancetype)cellWithCheckBoxInfo:(NSArray*)info;
 
-@property (nonatomic,copy) void(^checkInfoChangeHandler)(NSInteger index,NSNumber* toValue);
+@property (nonatomic,copy) void(^checkInfoChangeHandler)(NSInteger index,BOOL checked);
 
 
 -(void)setCheckInfo:(NSArray *)checkInfo;
