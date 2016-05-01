@@ -294,6 +294,13 @@
             return obj1<obj2?NSOrderedAscending:NSOrderedDescending;
         }];
         
+        //没有index为0项，插入‘无’选项
+        IGReportProblemObj *firstProblem=[problems firstObject];
+        if(firstProblem.vIndex!=0){
+            IGReportProblemObj *emptyProblem=[IGReportProblemObj objWithId:0 name:@"无" category:categoryId index:0];
+            [problems insertObject:emptyProblem atIndex:0];
+        }
+        
         //当前选中的问题
         __block NSMutableArray *problemNames=[NSMutableArray array];
         __block NSInteger curProblemRow=-1;
@@ -373,38 +380,46 @@
     
 
     //data
-
+    //默认值
     self.healthLevel=-1;
-    self.categoryValueDic=[@{@1:@-1,
-                             @2:@-1,
-                             @3:@-1,
-                             @4:@-1,
-                             @5:@-1,
-                             @6:@-1,
-                             @7:@-1,
-                             @8:@-1,
-                             @9:@-1,
-                             @10:@0,
-                             @11:@0,
-                             @12:@0,
-                             @13:@0,
-                             @14:@0,
-                             @15:@0,
-                             @16:@0,
-                             @17:@0,} mutableCopy];
+    
+    __block NSMutableDictionary *defaultDic=[NSMutableDictionary dictionary];
+    [[IGReportCategoryObj allCategoriesInfo] enumerateObjectsUsingBlock:^(IGReportCategoryObj* categoryObj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSInteger categoryId=categoryObj.cId;
+        __block NSInteger defaultValue=0;
+        
+        [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* problemObj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if(problemObj.vCategory==categoryId&&problemObj.vIndex==0){
+                defaultValue=problemObj.vId;
+                *stop=YES;
+            }
+        }];
+        
+        defaultDic[@(categoryId)]=@(defaultValue);
+    }];
+    self.categoryValueDic=defaultDic;
     self.suggestions=@"";
     
-    if(self.autoReportDic){//自动报告
+    
+    //自动报告值
+    if(self.autoReportDic){
         if([self.autoReportDic[@"id"] intValue]){   //有值
             
             self.healthLevel=[self.autoReportDic[@"health_level"] intValue];
             self.suggestions=self.autoReportDic[@"suggestion"]?:@"";
             
             NSArray *problemsArray=self.autoReportDic[@"problems"];
-            [problemsArray enumerateObjectsUsingBlock:^(NSDictionary* pDic, NSUInteger idx, BOOL * stop) {
-                NSNumber *cId=@([pDic[@"category"] integerValue]);
-                NSNumber *cValue=@([pDic[@"value"] integerValue]);
-                self.categoryValueDic[cId]=cValue;
+            
+            
+            [problemsArray enumerateObjectsUsingBlock:^(id problem, NSUInteger idx, BOOL * stop) {
+                NSInteger pId=[problem integerValue];
+                [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if(obj.vId==pId){
+                        self.categoryValueDic[@(obj.vCategory)]=@(pId);
+                        *stop=YES;
+                    }
+                }];
             }];
         }
     }

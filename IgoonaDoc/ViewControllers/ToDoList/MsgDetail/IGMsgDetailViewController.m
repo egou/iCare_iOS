@@ -14,6 +14,9 @@
 #import "IGToDoObj.h"
 
 #import "IGAudioManager.h"
+
+#import "IGMemberDataViewController.h"
+
 @interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -119,7 +122,12 @@
 
 #pragma mark - events
 -(void)onDataBtn:(id)sender{
-    
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
+    vc.memberId=self.taskInfo.tMemberId;
+    vc.memberName=self.taskInfo.tMemberName;
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 -(void)onCompleteBtn:(id)sender{
