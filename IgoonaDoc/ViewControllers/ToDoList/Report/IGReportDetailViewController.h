@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class IGToDoObj;
+@class IGTaskObj;
 @interface IGReportDetailViewController : UITableViewController
 
-@property (nonatomic,strong) IGToDoObj *taskInfo;
+@property (nonatomic,strong) IGTaskObj *taskInfo;
 @property (nonatomic,strong) NSDictionary *autoReportDic;
 
 @end

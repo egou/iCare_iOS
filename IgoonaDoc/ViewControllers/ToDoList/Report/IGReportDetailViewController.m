@@ -9,7 +9,7 @@
 #import "IGReportDetailViewController.h"
 #import "IGReportDetailViewCell.h"
 #import "IGReportCategoryObj.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 
 #import "IGSingleSelectionTableViewController.h"
 #import "IGMemberDataViewController.h"

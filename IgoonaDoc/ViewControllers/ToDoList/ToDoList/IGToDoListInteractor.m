@@ -7,7 +7,7 @@
 //
 
 #import "IGToDoListInteractor.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 
 @implementation IGToDoListInteractor
 
@@ -34,7 +34,7 @@
 
 -(void)requestForToDoListWithLastDueTime:(NSString *)dueTime
                             LastMemberId:(NSString *)memberId
-                           finishHandler:(void (^)(BOOL, NSArray<IGToDoObj *> *, BOOL))handler
+                           finishHandler:(void (^)(BOOL, NSArray<IGTaskObj *> *, BOOL))handler
 {
     NSDictionary *pDic=@{};
     if(dueTime.length>0&&memberId>0){
@@ -63,7 +63,7 @@
                       NSArray *dataArray=responseObject[@"data"];
                       [dataArray enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull tDic, NSUInteger idx, BOOL * _Nonnull stop) {
                           
-                          IGToDoObj *t=[[IGToDoObj alloc] init];
+                          IGTaskObj *t=[[IGTaskObj alloc] init];
                           t.tDueTime=tDic[@"due_time"];
                           t.tId=tDic[@"id"];
                           t.tMemberId=tDic[@"member_id"];

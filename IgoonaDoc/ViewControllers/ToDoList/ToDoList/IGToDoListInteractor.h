@@ -10,7 +10,7 @@
 /**
  该类从网络获取数据
  */
-@class IGToDoObj;
+@class IGTaskObj;
 
 @interface IGToDoListInteractor : NSObject
 
@@ -27,7 +27,7 @@
  */
 -(void)requestForToDoListWithLastDueTime:(NSString*)dueTime
                             LastMemberId:(NSString*)memberId
-                           finishHandler:(void(^)(BOOL success, NSArray<IGToDoObj*>* todoArray,BOOL loadAll))handler;
+                           finishHandler:(void(^)(BOOL success, NSArray<IGTaskObj*>* todoArray,BOOL loadAll))handler;
 
 /**
  请求处理某个任务

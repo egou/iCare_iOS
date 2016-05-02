@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class IGToDoObj;
+@class IGTaskObj;
 @interface IGMsgDetailViewController : UIViewController
 
-@property (nonatomic,strong) IGToDoObj *taskInfo;
+@property (nonatomic,strong) IGTaskObj *taskInfo;
 
 @end

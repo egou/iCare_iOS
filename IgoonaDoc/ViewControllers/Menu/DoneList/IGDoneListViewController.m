@@ -9,7 +9,7 @@
 #import "IGDoneListViewController.h"
 #import "IGDoneListDataManager.h"
 #import "IGDoneListViewCell.h"
-#import "IGDoneTaskObj.h"
+#import "IGTaskObj.h"
 #import "MJRefresh.h"
 
 
@@ -53,7 +53,7 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     IGDoneListViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGDoneListViewCell"];
     
-    IGDoneTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
+    IGTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
     [cell setDoneTask:task];
     
     return cell;
@@ -63,7 +63,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    IGDoneTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
+    IGTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
     if(task.tType==1){  //求助
         
         return;

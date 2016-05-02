@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class  IGDoneTaskObj;
+@class  IGTaskObj;
 @interface IGDoneListViewCell : UITableViewCell
 
--(void)setDoneTask:(IGDoneTaskObj*)taskInfo;
+-(void)setDoneTask:(IGTaskObj*)taskInfo;
 
 @end

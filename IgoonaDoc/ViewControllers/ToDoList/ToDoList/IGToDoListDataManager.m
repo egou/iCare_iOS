@@ -7,7 +7,7 @@
 //
 
 #import "IGToDoListDataManager.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 #import "IGToDoListInteractor.h"
 
 @interface IGToDoListDataManager()
@@ -64,7 +64,7 @@
 
 -(void)pullDownToRefreshList
 {
-    [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
+    [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGTaskObj *> *todoArray, BOOL loadAll) {
         
         if(success){
             self.toDoListArray=todoArray;
@@ -76,10 +76,10 @@
 
 -(void)pullUpToLoadMoreList
 {
-    IGToDoObj *lastTodo=self.toDoListArray.lastObject;
+    IGTaskObj *lastTodo=self.toDoListArray.lastObject;
     
     if(lastTodo){
-        [self.dataInteractor requestForToDoListWithLastDueTime:lastTodo.tDueTime LastMemberId:lastTodo.tMemberId finishHandler:^(BOOL success, NSArray<IGToDoObj *> *todoArray, BOOL loadAll) {
+        [self.dataInteractor requestForToDoListWithLastDueTime:lastTodo.tDueTime LastMemberId:lastTodo.tMemberId finishHandler:^(BOOL success, NSArray<IGTaskObj *> *todoArray, BOOL loadAll) {
             if(success){
                 self.toDoListArray=[self.toDoListArray arrayByAddingObjectsFromArray:todoArray];
                 self.hasLoadedAll=loadAll;
@@ -95,7 +95,7 @@
 
 -(void)tapToRequestToHandleTaskAtIndex:(NSInteger)index{
     
-    IGToDoObj *todo=self.toDoListArray[index];
+    IGTaskObj *todo=self.toDoListArray[index];
     if(todo){
         [self.dataInteractor requestToHandleTaskWithTaskId:todo.tId finishHandler:^(NSInteger statusCode) {
             

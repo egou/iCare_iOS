@@ -134,60 +134,52 @@
         <scene sceneID="6gI-oj-b1Z">
             <objects>
                 <tableViewController storyboardIdentifier="IGDoneListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ekB-QG-vSn" customClass="IGDoneListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="tcM-wU-Bof">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="tcM-wU-Bof">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IGDoneListViewCell" rowHeight="83" id="kWO-UA-4KU" customClass="IGDoneListViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="83"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IGDoneListViewCell" rowHeight="80" id="kWO-UA-4KU" customClass="IGDoneListViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kWO-UA-4KU" id="CGw-uq-RAK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLi-6K-GPE">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bp" translatesAutoresizingMaskIntoConstraints="NO" id="qCT-d7-dfZ">
-                                                    <rect key="frame" x="18" y="8" width="60" height="60"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="8bR-UH-sGv"/>
-                                                        <constraint firstAttribute="width" constant="60" id="JyQ-Wn-MJT"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="波哥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4F-fj-cO7">
-                                                    <rect key="frame" x="86" y="12" width="34" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="34" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWw-y0-AA8">
-                                                    <rect key="frame" x="86" y="46" width="32" height="20"/>
+                                                    <rect key="frame" x="8" y="45" width="32" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上午10:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtp-YU-trn">
-                                                    <rect key="frame" x="519" y="13" width="73" height="20"/>
+                                                    <rect key="frame" x="519" y="9" width="73" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紧急求助" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFK-s3-p8h">
-                                                    <rect key="frame" x="528" y="46" width="64" height="20"/>
+                                                    <rect key="frame" x="528" y="45" width="64" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="处理时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpS-UW-8cQ">
-                                                    <rect key="frame" x="451" y="13" width="64" height="20"/>
+                                                    <rect key="frame" x="451" y="9" width="64" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,15 +190,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="UFK-s3-p8h" firstAttribute="trailing" secondItem="wtp-YU-trn" secondAttribute="trailing" id="6lU-rw-Rz4"/>
-                                                <constraint firstItem="tWw-y0-AA8" firstAttribute="bottom" secondItem="qCT-d7-dfZ" secondAttribute="bottom" constant="-2" id="BZ1-N3-tOz"/>
+                                                <constraint firstItem="X4F-fj-cO7" firstAttribute="leading" secondItem="LLi-6K-GPE" secondAttribute="leading" constant="8" id="BZF-kr-pYH"/>
                                                 <constraint firstAttribute="trailing" secondItem="wtp-YU-trn" secondAttribute="trailing" constant="8" id="JR8-Qw-uAh"/>
-                                                <constraint firstItem="qCT-d7-dfZ" firstAttribute="centerY" secondItem="LLi-6K-GPE" secondAttribute="centerY" id="Oby-WT-RGI"/>
-                                                <constraint firstItem="qCT-d7-dfZ" firstAttribute="leading" secondItem="LLi-6K-GPE" secondAttribute="leading" constant="18" id="PER-Ta-269"/>
-                                                <constraint firstItem="X4F-fj-cO7" firstAttribute="leading" secondItem="qCT-d7-dfZ" secondAttribute="trailing" constant="8" id="X8W-nQ-l1V"/>
+                                                <constraint firstAttribute="bottom" secondItem="tWw-y0-AA8" secondAttribute="bottom" constant="8" id="Xqb-Dh-8MA"/>
                                                 <constraint firstItem="wpS-UW-8cQ" firstAttribute="centerY" secondItem="X4F-fj-cO7" secondAttribute="centerY" id="fxi-q9-Aor"/>
+                                                <constraint firstItem="X4F-fj-cO7" firstAttribute="top" secondItem="LLi-6K-GPE" secondAttribute="top" constant="8" id="ilQ-Vb-YlH"/>
                                                 <constraint firstItem="wtp-YU-trn" firstAttribute="centerY" secondItem="X4F-fj-cO7" secondAttribute="centerY" id="lbG-Ko-Pn7"/>
                                                 <constraint firstItem="UFK-s3-p8h" firstAttribute="centerY" secondItem="tWw-y0-AA8" secondAttribute="centerY" id="oyq-zp-bqv"/>
-                                                <constraint firstItem="X4F-fj-cO7" firstAttribute="top" secondItem="qCT-d7-dfZ" secondAttribute="top" constant="4" id="xIF-Md-rp6"/>
                                                 <constraint firstItem="tWw-y0-AA8" firstAttribute="leading" secondItem="X4F-fj-cO7" secondAttribute="leading" id="ygN-cW-Fli"/>
                                                 <constraint firstItem="wtp-YU-trn" firstAttribute="leading" secondItem="wpS-UW-8cQ" secondAttribute="trailing" constant="4" id="ygi-j3-KxG"/>
                                             </constraints>
@@ -224,7 +214,6 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="customContainerView" destination="LLi-6K-GPE" id="40p-sw-AQo"/>
-                                    <outlet property="iconIV" destination="qCT-d7-dfZ" id="m1y-Ir-3M8"/>
                                     <outlet property="msgLabel" destination="UFK-s3-p8h" id="QDU-KE-Y15"/>
                                     <outlet property="nameLabel" destination="X4F-fj-cO7" id="yQA-hv-Xh3"/>
                                     <outlet property="timeLabel" destination="wtp-YU-trn" id="zd9-h0-yEi"/>

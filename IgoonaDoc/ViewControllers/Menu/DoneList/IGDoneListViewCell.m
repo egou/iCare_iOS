@@ -7,11 +7,10 @@
 //
 
 #import "IGDoneListViewCell.h"
-#import "IGDoneTaskObj.h"
+#import "IGTaskObj.h"
 @interface IGDoneListViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *customContainerView;
-@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -30,7 +29,7 @@
     self.contentView.backgroundColor=nil;
 }
 
--(void)setDoneTask:(IGDoneTaskObj *)taskInfo{
+-(void)setDoneTask:(IGTaskObj *)taskInfo{
     
     self.nameLabel.text=taskInfo.tMemberName;
     self.msgLabel.text=taskInfo.tMsg;

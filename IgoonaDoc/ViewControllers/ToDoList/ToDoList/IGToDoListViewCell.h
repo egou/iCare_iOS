@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class IGToDoObj;
+@class IGTaskObj;
 @interface IGToDoListViewCell: UITableViewCell
 
-@property (nonatomic,strong) IGToDoObj *toDoData;
+@property (nonatomic,strong) IGTaskObj *toDoData;
 
 @end

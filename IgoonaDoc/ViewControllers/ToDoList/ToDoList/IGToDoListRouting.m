@@ -41,7 +41,7 @@
 }
 
 
--(void)transToMsgDetailViewWithTaskInfo:(IGToDoObj *)taskInfo{
+-(void)transToMsgDetailViewWithTaskInfo:(IGTaskObj *)taskInfo{
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
@@ -50,7 +50,7 @@
 
 }
 
--(void)transToReportDetailViewWithTaskInfo:(IGToDoObj *)taskInfo autoReport:(NSDictionary *)autoReport{
+-(void)transToReportDetailViewWithTaskInfo:(IGTaskObj *)taskInfo autoReport:(NSDictionary *)autoReport{
     
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGReportDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportDetailViewController"];

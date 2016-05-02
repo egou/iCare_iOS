@@ -7,7 +7,7 @@
 //
 
 #import "IGToDoListViewCell.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 
 @interface IGToDoListViewCell()
 
@@ -28,7 +28,7 @@
 }
 
 
--(void)setToDoData:(IGToDoObj *)toDoData
+-(void)setToDoData:(IGTaskObj *)toDoData
 {
     self.nameLabel.text=toDoData.tMemberName;
     self.msgLabel.text=toDoData.tMsg;

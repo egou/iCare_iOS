@@ -11,7 +11,7 @@
 #import "IGMsgDetailDataManager.h"
 #import "MJRefresh.h"
 #import "IGMsgDetailObj.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 
 #import "IGAudioManager.h"
 

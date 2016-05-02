@@ -8,7 +8,7 @@
 
 #import "IGToDoListViewController.h"
 #import "IGToDoListViewCell.h"
-#import "IGToDoObj.h"
+#import "IGTaskObj.h"
 
 
 #import "IGToDoListDataManager.h"
@@ -18,7 +18,7 @@
 
 @interface IGToDoListViewController ()<IGToDoListDataManagerDelegate>
 
-@property (nonatomic,strong) NSArray<IGToDoObj*>* toDoListCopyArray;  //仅仅为副本
+@property (nonatomic,strong) NSArray<IGTaskObj*>* toDoListCopyArray;  //仅仅为副本
 
 @property (nonatomic,strong) IGToDoListRouting *routing;
 @property (nonatomic,strong) IGToDoListDataManager  *dataManager;
@@ -147,7 +147,7 @@
 //4处理完毕
 -(void)toDoListDataManager:(IGToDoListDataManager *)manager
 didReceiveHandlingRequestResult:(NSInteger)statusCode
-                  taskInfo:(IGToDoObj *)taskInfo
+                  taskInfo:(IGTaskObj *)taskInfo
                 reportInfo:(NSDictionary *)reportInfo{
 
     [IGCommonUI hideHUDForView:self.navigationController.view];

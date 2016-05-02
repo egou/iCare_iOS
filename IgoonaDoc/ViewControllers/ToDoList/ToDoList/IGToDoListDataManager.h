@@ -39,7 +39,7 @@
 
 
 
-@class IGToDoObj;
+@class IGTaskObj;
 @protocol IGToDoListDataManagerDelegate <NSObject>
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)manager;
@@ -56,7 +56,7 @@
  
  如果成功，且task为report，则智能报告内容在reportInfo里
  */
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGToDoObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
+-(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
 
 
 @end
