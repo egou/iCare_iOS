@@ -22,19 +22,33 @@
  */
 -(void)disconnect;
 
+
+
+//对话消息管理
 /**
- 获取数据
+ 获取对话消息数据
  */
 -(NSArray*)loadAllLocalMessagesDataWithPatientId:(NSString*)patientId;
 
-
 /**
- 存储数据
+ 存储对话消息数据
  */
 -(void)saveMessagesData:(NSArray*)messagesData withPatientId:(NSString*)patientId;
 
-
+/**
+ 清空对话消息数据
+ */
 -(void)clearAllMessageDataWithPatientId:(NSString*)patientId;
+
+
+
+
+
+//已办记事管理
+-(NSArray*)loadAllDoneTasks;
+-(void)saveDoneTasks:(NSArray*)donetasks;
+-(void)clearAllDoneTasks;
+
 @end
 
 

@@ -10,4 +10,19 @@
 
 @implementation IGTaskObj
 
+-(instancetype)init{
+    if(self=[super init]){
+        
+        _tId=@"";
+        _tHandleTime=@"";
+        _tDueTime=@"";
+        _tMemberId=@"";
+        _tMemberName=@"";
+        _tMemberIconId=@"";
+        _tMsg=@"";
+        
+    }
+    return self;
+}
+
 @end

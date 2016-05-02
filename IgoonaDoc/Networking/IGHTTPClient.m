@@ -23,7 +23,7 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
     static IGHTTPClient *_sharedClient=nil;
     static dispatch_once_t IGHTTPClient_token;
     dispatch_once(&IGHTTPClient_token, ^{
-        NSURL *baseURL=[NSURL URLWithString:IGURL];
+        NSURL *baseURL=[NSURL URLWithString:IGURLBAIDU];
         _sharedClient=[[IGHTTPClient alloc] initWithBaseURL:baseURL];
         _sharedClient.requestSerializer=[AFHTTPRequestSerializer serializer];
         _sharedClient.requestSerializer.timeoutInterval=10;

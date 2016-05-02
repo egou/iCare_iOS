@@ -23,10 +23,9 @@
 @implementation IGDoneListDataManager
 -(instancetype)init{
     if(self=[super init]){
-        
-        self.allTasksArray=[NSArray array];
+                
         //从数据库获取
-        
+        self.allTasksArray= [[IGLocalDataManager sharedManager] loadAllDoneTasks];
     }
     return self;
 }
@@ -44,7 +43,12 @@
         //没有数据的情况，省却参数以获取新消息
         [IGDoneListEntity requestForDoneTasksWithEndTime:nil memberId:nil isOld:NO finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
             
+            
             if(success){
+                
+                //本地存储
+                [[IGLocalDataManager sharedManager] saveDoneTasks:tasks];
+                
                 self.allTasksArray=[self p_sortedTasksWithTasks:tasks];
                 self.hasLoadedAll=tasks.count>=total?YES:NO;
             }
@@ -66,6 +70,9 @@
         [IGDoneListEntity requestForDoneTasksWithEndTime:time memberId:memberId isOld:YES finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
             
             if(success){
+                //本地存储
+                [[IGLocalDataManager sharedManager] saveDoneTasks:tasks];
+                
                 NSArray *allTasks=[self.allTasksArray arrayByAddingObjectsFromArray:tasks];
                 self.allTasksArray=[self p_sortedTasksWithTasks:allTasks];
                 self.hasLoadedAll=tasks.count>=total?YES:NO;
@@ -94,6 +101,12 @@
     
     [IGDoneListEntity requestForDoneTasksWithEndTime:time memberId:memberId isOld:NO finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
         if(success){
+            
+            //本地存储
+            [[IGLocalDataManager sharedManager] saveDoneTasks:tasks];
+            
+            
+            //拼接所有新消息
             NSArray *tempTasks=[self.tempNewTasksArray arrayByAddingObjectsFromArray:tasks];
             self.tempNewTasksArray=[self p_sortedTasksWithTasks:tempTasks];
             

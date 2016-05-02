@@ -44,7 +44,7 @@
 -(void)transToMsgDetailViewWithTaskInfo:(IGTaskObj *)taskInfo{
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-    IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewControllerID"];
+    IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
     vc.taskInfo=taskInfo;
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 

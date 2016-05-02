@@ -234,7 +234,7 @@
                                 [IGLOCALMANAGER saveMessagesData:@[msg] withPatientId:self.patientId];
                             }
                             
-                            [self.delegate dataManager:self didSendTextMsgSuccess:success msgType:textMsg.length>0?0:1];
+                            [self.delegate dataManager:self didSendMsgSuccess:success msgType:textMsg.length>0?0:1];
                         }];
 
 }

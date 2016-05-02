@@ -66,11 +66,15 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 88;
     
+    
     //如果只能浏览消息
-#if 0
-    self.barHeightLC.constant=0;
-    self.bottomBarView.clipsToBounds=YES;
-#endif
+    if(self.taskInfo.tStatus==3){
+        self.barHeightLC.constant=0;
+        self.bottomBarView.clipsToBounds=YES;
+        
+        self.navigationItem.rightBarButtonItems=nil;
+        self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+    }
 }
 
 
@@ -121,6 +125,10 @@
 
 
 #pragma mark - events
+-(void)onBackBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)onDataBtn:(id)sender{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
     IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
@@ -255,7 +263,7 @@
 }
 
 
--(void)dataManager:(IGMsgDetailDataManager *)manager didSendTextMsgSuccess:(BOOL)success msgType:(NSInteger)msgType{
+-(void)dataManager:(IGMsgDetailDataManager *)manager didSendMsgSuccess:(BOOL)success msgType:(NSInteger)msgType{
     [IGCommonUI hideHUDForView:self.navigationController.view];
     
     if(!success){
@@ -266,6 +274,7 @@
         
         if(msgType==0){
             self.msgTV.text=@"";    //清空
+            [self p_updateSendBtnStatus];
         }else{
             
         }

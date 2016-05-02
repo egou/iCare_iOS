@@ -9,6 +9,10 @@
 #import "IGLocalDataManager.h"
 #import "FMDB.h"
 #import "IGMsgDetailObj.h"
+#import "IGTaskObj.h"
+
+
+static NSString * const IGDoneTaskTableName=@"IGDoneTaskTableName";
 
 @interface IGLocalDataManager()
 
@@ -50,9 +54,9 @@
     //connect to database
     [self.database close];  //先关掉上次数据库
     
-    self.database=[FMDatabase databaseWithPath:[self p_pathForUserDirWithFilename:@"msg.db"]];
+    self.database=[FMDatabase databaseWithPath:[self p_pathForUserDirWithFilename:@"task.db"]];
     
-    NSLog(@"db path:%@",[self p_pathForUserDirWithFilename:@"msg.db"]);
+    NSLog(@"db path:%@",[self p_pathForUserDirWithFilename:@"task.db"]);
     
     if(![self.database open])
     {
@@ -194,6 +198,73 @@
 }
 
 
+
+-(NSArray*)loadAllDoneTasks{
+    
+    if(![self.database tableExists:IGDoneTaskTableName])
+    {
+        return @[];
+    }
+    
+    NSString *queryStr=[NSString stringWithFormat:@"select * from %@ order by end_time desc",IGDoneTaskTableName];
+    
+    NSMutableArray *allData=[NSMutableArray array];
+    
+    FMResultSet *rs=[self.database executeQuery:queryStr];
+    while ([rs next]) {
+        IGTaskObj *t=[IGTaskObj new];
+        t.tId=[rs stringForColumn:@"id"];
+        t.tHandleTime=[rs stringForColumn:@"end_time"];
+        t.tDueTime=[rs stringForColumn:@"due_time"];
+        t.tMemberId=[rs stringForColumn:@"member_id"];
+        t.tMemberName=[rs stringForColumn:@"member_name"];
+        t.tMemberIconId=[rs stringForColumn:@"member_icon_id"];
+        t.tMsg=[rs stringForColumn:@"message"];
+        t.tType=[rs intForColumn:@"type"];
+        t.tStatus=[rs intForColumn:@"status"];
+        
+        [allData addObject:t];
+    }
+    
+    return allData;
+}
+
+-(void)saveDoneTasks:(NSArray*)donetasks{
+    
+    //create table if needed
+    if(![self.database tableExists:IGDoneTaskTableName])
+    {
+        NSString *createTableSQL=[NSString stringWithFormat:@"create table %@ (id integer primary key, end_time text, due_time text, member_id text, member_name text, member_icon_id text, message text, type integer, status integer)",IGDoneTaskTableName];
+        [self.database executeUpdate:createTableSQL];
+    }
+
+    
+    [self.database beginTransaction];
+    
+    for(IGTaskObj *task in donetasks)
+    {
+        NSString *queryStr=[NSString stringWithFormat:@"replace into %@ (id, end_time, due_time, member_id, member_name, member_icon_id, message, type, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",IGDoneTaskTableName];
+        [self.database executeUpdate:queryStr,
+         task.tId,
+         task.tHandleTime,
+         task.tDueTime,
+         task.tMemberId,
+         task.tMemberName,
+         task.tMemberIconId,
+         task.tMsg,
+         @(task.tType),
+         @(task.tStatus)];//注意参数必需为object
+    }
+    
+    [self.database commit];
+    
+}
+
+
+-(void)clearAllDoneTasks{
+    NSString *queryStr=[NSString stringWithFormat:@"DROP TABLE IF EXISTS %@",IGDoneTaskTableName];
+    [self.database executeUpdate:queryStr];
+}
 
 #pragma mark - private methods
 

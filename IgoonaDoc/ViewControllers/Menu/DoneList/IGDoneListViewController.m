@@ -12,6 +12,7 @@
 #import "IGTaskObj.h"
 #import "MJRefresh.h"
 
+#import "IGMsgDetailViewController.h"
 
 @interface IGDoneListViewController ()<IGDoneListDataManagerDelegate>
 
@@ -65,6 +66,10 @@
     
     IGTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
     if(task.tType==1){  //求助
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+        IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
+        vc.taskInfo=task;
+        [self.navigationController pushViewController:vc animated:YES];
         
         return;
     }

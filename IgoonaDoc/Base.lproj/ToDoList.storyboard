@@ -234,7 +234,7 @@
         <!--Msg Detail View Controller-->
         <scene sceneID="DoW-iP-kGU">
             <objects>
-                <viewController storyboardIdentifier="IGMsgDetailViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0nd-RT-lsh" customClass="IGMsgDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IGMsgDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0nd-RT-lsh" customClass="IGMsgDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iSa-aB-a9q"/>
                         <viewControllerLayoutGuide type="bottom" id="wbs-fZ-qGd"/>
@@ -605,12 +605,18 @@
                                         <rect key="frame" x="58" y="10" width="454" height="35"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="9SQ-HL-o8K"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBt-Yv-nST">
                                         <rect key="frame" x="58" y="8" width="454" height="39"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="WT5-hO-etu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="按下说话">
                                             <color key="titleColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -641,12 +647,9 @@
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="H9R-eU-Oaw" secondAttribute="trailing" constant="8" id="4LF-Qf-aFT"/>
-                                    <constraint firstItem="aBt-Yv-nST" firstAttribute="top" secondItem="VHv-AM-x6f" secondAttribute="top" constant="8" id="5aa-RG-368"/>
                                     <constraint firstItem="H9R-eU-Oaw" firstAttribute="leading" secondItem="wbt-ZD-7Qq" secondAttribute="trailing" constant="8" id="9MT-Fb-Nho"/>
-                                    <constraint firstAttribute="bottom" secondItem="wbt-ZD-7Qq" secondAttribute="bottom" constant="10" id="EzM-IZ-Tt0"/>
                                     <constraint firstItem="aJv-2U-Deq" firstAttribute="top" secondItem="VHv-AM-x6f" secondAttribute="top" id="F4F-CL-Wq4"/>
                                     <constraint firstAttribute="height" constant="55" id="Fvd-uu-Wia"/>
-                                    <constraint firstAttribute="bottom" secondItem="aBt-Yv-nST" secondAttribute="bottom" constant="8" id="Lur-Qo-1FX"/>
                                     <constraint firstItem="aBt-Yv-nST" firstAttribute="leading" secondItem="aJv-2U-Deq" secondAttribute="trailing" constant="8" id="Nwb-wu-poj"/>
                                     <constraint firstItem="c9i-au-66v" firstAttribute="centerX" secondItem="H9R-eU-Oaw" secondAttribute="centerX" id="Tbg-dF-uFw"/>
                                     <constraint firstAttribute="bottom" secondItem="aJv-2U-Deq" secondAttribute="bottom" id="TxV-Bb-1ea"/>
@@ -654,7 +657,8 @@
                                     <constraint firstAttribute="bottom" secondItem="H9R-eU-Oaw" secondAttribute="bottom" id="Xpk-Y7-t1u"/>
                                     <constraint firstItem="c9i-au-66v" firstAttribute="centerY" secondItem="H9R-eU-Oaw" secondAttribute="centerY" id="bE7-9e-vFA"/>
                                     <constraint firstItem="H9R-eU-Oaw" firstAttribute="leading" secondItem="aBt-Yv-nST" secondAttribute="trailing" constant="8" id="fUo-D7-puX"/>
-                                    <constraint firstItem="wbt-ZD-7Qq" firstAttribute="top" secondItem="VHv-AM-x6f" secondAttribute="top" constant="10" id="qhq-qq-xZG"/>
+                                    <constraint firstItem="wbt-ZD-7Qq" firstAttribute="centerY" secondItem="VHv-AM-x6f" secondAttribute="centerY" id="fbd-Nx-shJ"/>
+                                    <constraint firstItem="aBt-Yv-nST" firstAttribute="centerY" secondItem="VHv-AM-x6f" secondAttribute="centerY" id="kiA-js-stR"/>
                                     <constraint firstItem="H9R-eU-Oaw" firstAttribute="top" secondItem="VHv-AM-x6f" secondAttribute="top" id="tV6-lh-6Xg"/>
                                     <constraint firstItem="aJv-2U-Deq" firstAttribute="leading" secondItem="VHv-AM-x6f" secondAttribute="leading" constant="8" id="wOZ-0p-1nz"/>
                                 </constraints>

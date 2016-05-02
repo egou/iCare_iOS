@@ -44,7 +44,7 @@
 /**
  msgType 0文本 1语音
  */
--(void)dataManager:(IGMsgDetailDataManager *)manager didSendTextMsgSuccess:(BOOL)success msgType:(NSInteger)msgType;
+-(void)dataManager:(IGMsgDetailDataManager *)manager didSendMsgSuccess:(BOOL)success msgType:(NSInteger)msgType;
 
 
 -(void)dataManager:(IGMsgDetailDataManager *)manager didExitTaskSuccess:(BOOL)success taskCompleted:(BOOL)completed;
