@@ -34,9 +34,23 @@
     }
 }
 
--(void)setMemberInfo:(IGMyTeamMemberObj *)memberInfo{
-    self.nameLabel.text=memberInfo.name;
-    self.statusLabel.text=@"是神么？";
+-(void)setMemberInfo:(IGDocMemberObj*)memberInfo deletable:(BOOL)deletable{
+    self.nameLabel.text=memberInfo.dName;
+    
+    NSInteger status=memberInfo.dStatus;
+    
+    self.deleteBtn.hidden=deletable?NO:YES;
+    
+    
+    if(status==0){
+        
+        self.statusLabel.text=@"空闲";
+        self.statusLabel.textColor=[UIColor lightGrayColor];
+    }else if(status==1){
+        self.statusLabel.text=@"工作中";
+        self.statusLabel.textColor=IGUI_MainAppearanceColor;
+    }
+    
 }
 
 @end
@@ -81,8 +95,8 @@
     }
 }
 
--(void)setMemberInfo:(IGMyTeamMemberObj *)memberInfo{
-    self.nameLabel.text=memberInfo.name;
+-(void)setMemberInfo:(IGDocMemberObj *)memberInfo{
+    self.nameLabel.text=memberInfo.dName;
     self.statusLabel.text=@"待批准";
 }
 @end

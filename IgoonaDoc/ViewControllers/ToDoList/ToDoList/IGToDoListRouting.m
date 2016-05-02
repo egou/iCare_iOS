@@ -12,7 +12,7 @@
 #import "IGViewControllerTransitioning.h"
 
 #import "IGMyTeamViewController.h"
-
+#import "IGMyIncomeViewController.h"
 
 
 
@@ -66,6 +66,10 @@
     
     [viewController dismissViewControllerAnimated:YES completion:^{
         
+        //账户信息
+        
+        
+        
         //我的团队
         if(event==IGMoreStuffEventTouchMyTeam){
             
@@ -74,6 +78,13 @@
             [self.routingOwner.navigationController pushViewController:myTeamVC  animated:YES];
         }
         
+        //我的口粮
+        if(event==IGMoreStuffEventTouchMyWallet){
+            IGMyIncomeViewController *vc=[IGMyIncomeViewController new];
+            [self.routingOwner.navigationController pushViewController:vc animated:YES];
+        }
+        
+        //已办记事
         if(event==IGMoreStuffEventTouchHistoryTasks){
             UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
             UIViewController *doneListVC=[sb instantiateViewControllerWithIdentifier:@"IGDoneListViewController"];

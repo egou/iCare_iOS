@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IGMyTeamMemberObj.h"
+#import "IGDocMemberObj.h"
 
 @interface IGMyTeamViewCell_inTeam : UITableViewCell
 
 @property (nonatomic,copy) void(^onDeleteBtnHandler)(IGMyTeamViewCell_inTeam *cell);
 
--(void)setMemberInfo:(IGMyTeamMemberObj*)memberInfo;
+-(void)setMemberInfo:(IGDocMemberObj*)memberInfo deletable:(BOOL)deletable;
 
 @end
 
@@ -23,6 +23,6 @@
 
 
 @property (nonatomic,copy) void(^onReplyBtnHandler)(IGMyTeamViewCell_application* cell, BOOL rejection);
--(void)setMemberInfo:(IGMyTeamMemberObj*)memberInfo;
+-(void)setMemberInfo:(IGDocMemberObj*)memberInfo;
 
 @end

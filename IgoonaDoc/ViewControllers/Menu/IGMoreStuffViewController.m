@@ -88,8 +88,8 @@
             
         }
         
-        NSArray *itemImgs=@[@"item_note",@"item_team",@"item_patients",@"item_coins",@"item_info"];
-        NSArray *itemNames=@[@"已完成任务",@"我的工作组",@"我的患者",@"我的钱包",@"关于我好了"];
+        NSArray *itemImgs=@[@"item_team",@"item_patients",@"item_coins",@"item_note",@"item_info"];
+        NSArray *itemNames=@[@"我的战友",@"我的病粉",@"我的口粮",@"我的奉献",@"关于我好了"];
         
         cell.textLabel.text=itemNames[indexPath.row-1];
         cell.imageView.image=[UIImage imageNamed:itemImgs[indexPath.row-1]];

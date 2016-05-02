@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IGMyWalletViewController : UITableViewController
+@interface IGMyIncomeViewController : UITableViewController
 
 @end

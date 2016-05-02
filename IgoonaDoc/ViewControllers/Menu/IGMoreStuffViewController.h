@@ -10,12 +10,14 @@
 
 typedef NS_ENUM(NSInteger,IGMoreStuffEvent){
     IGMoreStuffEventTouchMyInfo=0,
-    IGMoreStuffEventTouchHistoryTasks,
     IGMoreStuffEventTouchMyTeam,
     IGMoreStuffEventTouchMyPatients,
     IGMoreStuffEventTouchMyWallet,
+    IGMoreStuffEventTouchHistoryTasks,
     IGMoreStuffEventTouchIgoonaInfo,
+    
     IGMoreStuffEventTouchLogoutButton,
+    
     IGMoreStuffEventSwipe
 };
 

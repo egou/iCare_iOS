@@ -8,9 +8,14 @@
 
 #import "IGMyTeamViewController.h"
 #import "IGMyTeamViewCell.h"
+#import "IGDocMemberObj.h"
+#import "MJRefresh.h"
+
+#import "IGMyTeamRequestEntity.h"
 
 @interface IGMyTeamViewController ()
 
+@property (nonatomic,assign) BOOL iamHead;
 @property (nonatomic,strong) NSArray *memberList;
 
 @end
@@ -20,29 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //tableview
-    self.tableView.backgroundColor=[UIColor colorWithWhite:0.9 alpha:1];
-    self.tableView.tableFooterView=[[UIView alloc] init];
-    self.tableView.tableFooterView.backgroundColor=nil;
+    [self p_initAdditionalUI];
     
-    //navigationbar
-    self.navigationItem.title=@"我的工作组";
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
-    self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.leftBarButtonItem=backItem;
+    self.memberList=@[];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
-    
-    
-    NSMutableArray *list=[NSMutableArray array];
-    for(int i=0;i<arc4random()%10;i++){
-        IGMyTeamMemberObj *m=[[IGMyTeamMemberObj alloc] init];
-        m.name=[NSString stringWithFormat:@"医者%d",i];
-        m.status=arc4random()%2;
-        m.doctorId=[NSString stringWithFormat:@"%d",i+1];
-        
-        [list addObject:m];
-    }
-    _memberList=[list copy];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - events
@@ -66,28 +57,59 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    IGMyTeamMemberObj *docInfo= self.memberList[indexPath.row];
-    if(docInfo.status){
+    IGDocMemberObj *docInfo=self.memberList[indexPath.row];
+    
+    IGMyTeamViewCell_inTeam *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell_inTeam"];
+    [cell setMemberInfo:docInfo deletable:self.iamHead];
+    
+    cell.onDeleteBtnHandler=^(IGMyTeamViewCell_inTeam* inTeamCell){
         
-        IGMyTeamViewCell_inTeam *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell_inTeam"];
-        [cell setMemberInfo:docInfo ];
-        cell.onDeleteBtnHandler=^(IGMyTeamViewCell_inTeam* inTeamCell){
-            NSLog(@"delete");
-        };
-        return cell;
+        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
         
-    }else{
-        IGMyTeamViewCell_application *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell_application"];
-        [cell setMemberInfo:docInfo];
-        cell.onReplyBtnHandler=^(IGMyTeamViewCell_application *applyCell,BOOL reject){
-            NSLog(@"reject:%d",(int)reject);
-        };
-        return cell;
-    }
+        [IGMyTeamRequestEntity requestToSetApproveStatus:0 doctorId:docInfo.dId finishHandler:^(BOOL success) {
+            
+            [IGCommonUI hideHUDForView:self.navigationController.view];
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"删除成功":@"删除失败"];
+            //此处应删除相应数据
+        }];
+    };
+    return cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+#pragma mark - private methods
+-(void)p_initAdditionalUI{
+    //tableview
+    self.tableView.backgroundColor=IGUI_NormalBgColor;
+    self.tableView.tableFooterView=[[UIView alloc] init];
+    
+    //navigationbar
+    self.navigationItem.title=@"我的战友";
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+    self.navigationItem.hidesBackButton=YES;
+    self.navigationItem.leftBarButtonItem=backItem;
+    
+    
+    //pull to refresh
+    self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [IGMyTeamRequestEntity requestForTeamInfoFinishHandler:^(BOOL success, BOOL isHead, NSArray *teamInfo) {
+            [self.tableView.mj_header endRefreshing];
+            
+            if(success){
+                self.iamHead=isHead;
+                self.memberList=teamInfo;
+                [self.tableView reloadData];
+            }else{
+                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取信息失败"];
+            }
+        }];
+        
+    }];
+}
 @end
