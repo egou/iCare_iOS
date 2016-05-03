@@ -271,7 +271,74 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1V-R1-wAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="-30"/>
+            <point key="canvasLocation" x="621" y="391"/>
+        </scene>
+        <!--My Patients View Controller-->
+        <scene sceneID="Oyc-YR-d6x">
+            <objects>
+                <tableViewController storyboardIdentifier="IGMyPatientsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lGz-Yj-lPv" customClass="IGMyPatientsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="c5y-BT-Esy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IGMyPatientsViewCell" id="e3D-kP-uei" customClass="IGMyPatientsViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3D-kP-uei" id="15K-qv-Y3K">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQb-g7-zGT">
+                                            <rect key="frame" x="16" y="11" width="34" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeR-g0-Zs9">
+                                            <rect key="frame" x="283" y="11" width="34" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbG-gT-K3o">
+                                            <rect key="frame" x="542" y="11" width="34" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="nQb-g7-zGT" firstAttribute="centerY" secondItem="15K-qv-Y3K" secondAttribute="centerY" id="5QM-en-95h"/>
+                                        <constraint firstItem="nQb-g7-zGT" firstAttribute="leading" secondItem="15K-qv-Y3K" secondAttribute="leadingMargin" constant="8" id="9J6-V2-VHM"/>
+                                        <constraint firstItem="hbG-gT-K3o" firstAttribute="centerY" secondItem="15K-qv-Y3K" secondAttribute="centerY" id="Bc8-i9-i2J"/>
+                                        <constraint firstItem="oeR-g0-Zs9" firstAttribute="centerY" secondItem="15K-qv-Y3K" secondAttribute="centerY" id="KH9-hy-6v1"/>
+                                        <constraint firstItem="oeR-g0-Zs9" firstAttribute="centerX" secondItem="15K-qv-Y3K" secondAttribute="centerX" id="NwL-fs-FCw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hbG-gT-K3o" secondAttribute="trailing" constant="16" id="uOy-v2-BgG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="ageLabel" destination="hbG-gT-K3o" id="abo-lK-6GX"/>
+                                    <outlet property="genderLabel" destination="oeR-g0-Zs9" id="E8g-mJ-y4j"/>
+                                    <outlet property="nameLabel" destination="nQb-g7-zGT" id="rnJ-JE-9AU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lGz-Yj-lPv" id="bLs-ma-mfO"/>
+                            <outlet property="delegate" destination="lGz-Yj-lPv" id="7sg-a0-03Q"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nq2-BJ-bN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="391"/>
         </scene>
     </scenes>
     <resources>

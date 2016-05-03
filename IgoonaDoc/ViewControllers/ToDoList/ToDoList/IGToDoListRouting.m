@@ -78,6 +78,15 @@
             [self.routingOwner.navigationController pushViewController:myTeamVC  animated:YES];
         }
         
+        //我的病粉
+        if(event==IGMoreStuffEventTouchMyPatients){
+            
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            UIViewController *myPatientsvVC=[sb instantiateViewControllerWithIdentifier:@"IGMyPatientsViewController"];
+            [self.routingOwner.navigationController pushViewController:myPatientsvVC animated:YES];
+            
+        }
+        
         //我的口粮
         if(event==IGMoreStuffEventTouchMyWallet){
             IGMyIncomeViewController *vc=[IGMyIncomeViewController new];

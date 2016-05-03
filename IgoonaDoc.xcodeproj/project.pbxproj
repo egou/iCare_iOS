@@ -97,6 +97,10 @@
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; settings = {ASSET_TAGS = (); }; };
 		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -358,6 +362,14 @@
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
+		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
+		6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsViewCell.m; sourceTree = "<group>"; };
+		6B697D281CD8F43000A12CE1 /* IGPatientInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientInfoObj.h; sourceTree = "<group>"; };
+		6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientInfoObj.m; sourceTree = "<group>"; };
+		6B697D2B1CD8F5B400A12CE1 /* IGMyPatientsDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsDataManager.h; sourceTree = "<group>"; };
+		6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsDataManager.m; sourceTree = "<group>"; };
+		6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsRequestEntity.h; sourceTree = "<group>"; };
+		6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsRequestEntity.m; sourceTree = "<group>"; };
 		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
 		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
 		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
@@ -831,6 +843,8 @@
 				6BA60F0F1CD759BF00E39D54 /* IGDocMemberObj.m */,
 				6BA60F181CD76A0800E39D54 /* IGIncomeObj.h */,
 				6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */,
+				6B697D281CD8F43000A12CE1 /* IGPatientInfoObj.h */,
+				6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -1035,6 +1049,12 @@
 			children = (
 				6BA60EF51CD70DDD00E39D54 /* IGMyPatientsViewController.h */,
 				6BA60EF61CD70DDD00E39D54 /* IGMyPatientsViewController.m */,
+				6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */,
+				6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */,
+				6B697D2B1CD8F5B400A12CE1 /* IGMyPatientsDataManager.h */,
+				6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */,
+				6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */,
+				6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */,
 			);
 			path = MyPatients;
 			sourceTree = "<group>";
@@ -1214,6 +1234,7 @@
 				6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
+				6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */,
 				6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
 				6B0002231C9D221900085229 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1236,6 +1257,7 @@
 				6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
+				6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */,
 				6B057CAC1CD5EC490059D2F3 /* IGTaskNavigationController.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
 				6BA60F041CD70DDD00E39D54 /* IGMyInformationViewController.m in Sources */,
@@ -1255,6 +1277,7 @@
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
 				6B057CB11CD5F8AD0059D2F3 /* IGTaskRequestEntity.m in Sources */,
 				6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */,
+				6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */,
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
 				6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */,
@@ -1306,6 +1329,7 @@
 				6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */,
 				6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */,
 				6B032E021CC125190027DDAD /* IGToDoListDataManager.m in Sources */,
+				6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */,
 				2C008DA31CAF760F00ECE4B5 /* MJRefreshAutoFooter.m in Sources */,
 				6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */,
 			);
