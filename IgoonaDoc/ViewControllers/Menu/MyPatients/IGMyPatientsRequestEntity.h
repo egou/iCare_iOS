@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class IGPatientDetailInfoObj;
 @interface IGMyPatientsRequestEntity : NSObject
 
 +(void)requestForMyPatientsWithStartNum:(NSInteger)startNum
                         finishHandler:(void(^)(BOOL success,NSArray *patientsInfo,NSInteger total))finishHandler;
+
+
+
++(void)requestForPatientDetailInfoWithPatientId:(NSString*)patientId
+                                  finishHandler:(void(^)(BOOL success,IGPatientDetailInfoObj *detailInfo))finishHandler;
 
 @end

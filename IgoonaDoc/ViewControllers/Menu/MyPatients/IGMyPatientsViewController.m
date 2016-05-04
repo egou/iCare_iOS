@@ -11,6 +11,8 @@
 #import "IGMyPatientsDataManager.h"
 #import "IGPatientInfoObj.h"
 
+#import "IGPatientDetailViewController.h"
+
 #import "MJRefresh.h"
 
 @interface IGMyPatientsViewController ()<IGMyPatientsDataManagerDelegate>
@@ -64,7 +66,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSLog(@"select %d",(int)indexPath.row);
+    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [self.dataManager selectRowAtIndex:indexPath.row];
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -127,6 +132,21 @@
     }else{
         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
     }
+}
+
+-(void)dataManager:(IGMyPatientsDataManager *)manager didGotPatientDetailInfo:(IGPatientDetailInfoObj *)detailInfo{
+    [IGCommonUI hideHUDForView:self.navigationController.view];
+    
+    if(detailInfo){
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+        IGPatientDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGPatientDetailViewController"];
+        vc.detailInfo=detailInfo;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+    }
+    
 }
 
 #pragma mark - private methods

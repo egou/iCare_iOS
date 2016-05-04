@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol IGMyPatientsDataManagerDelegate;
+@class IGPatientDetailInfoObj;
 
 @interface IGMyPatientsDataManager : NSObject
 
@@ -19,6 +20,9 @@
 
 -(void)pullToRefresh;
 -(void)pullToLoadMore;
+
+-(void)selectRowAtIndex:(NSInteger)row;
+
 @end
 
 
@@ -26,5 +30,8 @@
 
 -(void)dataManger:(IGMyPatientsDataManager *)manager didRefreshedSuccess:(BOOL)success;
 -(void)dataManger:(IGMyPatientsDataManager *)manager didLoadedMoreSuccess:(BOOL)success;
+
+
+-(void)dataManager:(IGMyPatientsDataManager*)manager didGotPatientDetailInfo:(IGPatientDetailInfoObj*)detailInfo;
 
 @end

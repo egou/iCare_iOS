@@ -45,4 +45,40 @@
               }];
 }
 
+
+
++(void)requestForPatientDetailInfoWithPatientId:(NSString *)patientId finishHandler:(void (^)(BOOL, IGPatientDetailInfoObj *))finishHandler{
+    [IGHTTPCLIENT GET:@"php/member.php"
+           parameters:@{@"action":@"doctor_get",
+                        @"memberId":patientId}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      IGPatientDetailInfoObj *p=[IGPatientDetailInfoObj new];
+                      
+                      p.pId=responseObject[@"id"];
+                      p.pUserId=responseObject[@"user_id"];
+                      p.pName=responseObject[@"name"];
+                      p.pAge=[responseObject[@"age"] integerValue];
+                      p.pIsMale=[responseObject[@"is_male"] boolValue];
+                      p.pWeight=[responseObject[@"weight"] integerValue];
+                      p.pHeight=[responseObject[@"height"] integerValue];
+                      p.pLevel=[responseObject[@"level"] integerValue];
+                      p.pUpdatedDate=responseObject[@"updated_on"];
+                      p.pArea=responseObject[@"area"];
+                      p.pLoginId=responseObject[@"login_id"];
+                      
+                      finishHandler(YES,p);
+                      
+                  }else{
+                      finishHandler(NO,nil);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,nil);
+              }];
+    
+}
+
 @end

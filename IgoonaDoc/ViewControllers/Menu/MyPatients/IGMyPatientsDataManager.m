@@ -8,6 +8,7 @@
 
 #import "IGMyPatientsDataManager.h"
 #import "IGMyPatientsRequestEntity.h"
+#import "IGPatientInfoObj.h"
 
 @interface IGMyPatientsDataManager()
 
@@ -50,6 +51,14 @@
     
 }
 
+
+-(void)selectRowAtIndex:(NSInteger)row{
+    IGPatientInfoObj *pInfo=self.patientsList[row];
+    
+    [IGMyPatientsRequestEntity requestForPatientDetailInfoWithPatientId:pInfo.pId finishHandler:^(BOOL success, IGPatientDetailInfoObj *detailInfo) {
+        [self.delegate dataManager:self didGotPatientDetailInfo:detailInfo];
+    }];
+}
 
 @end
 

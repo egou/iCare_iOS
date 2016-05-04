@@ -11,3 +11,10 @@
 @implementation IGPatientInfoObj
 
 @end
+
+
+@implementation IGPatientDetailInfoObj
+
+
+
+@end
