@@ -87,6 +87,8 @@
 		6B057CAC1CD5EC490059D2F3 /* IGTaskNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B057CAB1CD5EC490059D2F3 /* IGTaskNavigationController.m */; settings = {ASSET_TAGS = (); }; };
 		6B057CB11CD5F8AD0059D2F3 /* IGTaskRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B057CB01CD5F8AD0059D2F3 /* IGTaskRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
 		6B0C119F1CDA2B83004EFE11 /* IGPatientDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B0C85D31CDB8D7C007BBB93 /* IGReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B0C85D61CDB8F33007BBB93 /* IGReportContentObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BC1CB130A4009C4EAD /* Security.framework */; };
 		6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584BE1CB130A9009C4EAD /* libz.tbd */; };
 		6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584C01CB130AF009C4EAD /* UIKit.framework */; };
@@ -352,6 +354,10 @@
 		6B057CB01CD5F8AD0059D2F3 /* IGTaskRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskRequestEntity.m; sourceTree = "<group>"; };
 		6B0C119D1CDA2B83004EFE11 /* IGPatientDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientDetailViewController.h; sourceTree = "<group>"; };
 		6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientDetailViewController.m; sourceTree = "<group>"; };
+		6B0C85D11CDB8D7C007BBB93 /* IGReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportViewController.h; sourceTree = "<group>"; };
+		6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportViewController.m; sourceTree = "<group>"; };
+		6B0C85D41CDB8F33007BBB93 /* IGReportContentObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportContentObj.h; sourceTree = "<group>"; };
+		6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportContentObj.m; sourceTree = "<group>"; };
 		6B1584BC1CB130A4009C4EAD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6B1584BE1CB130A9009C4EAD /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B1584C01CB130AF009C4EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -848,6 +854,8 @@
 				6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */,
 				6B697D281CD8F43000A12CE1 /* IGPatientInfoObj.h */,
 				6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */,
+				6B0C85D41CDB8F33007BBB93 /* IGReportContentObj.h */,
+				6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -923,6 +931,8 @@
 		6B0C85CE1CDB8B84007BBB93 /* report */ = {
 			isa = PBXGroup;
 			children = (
+				6B0C85D11CDB8D7C007BBB93 /* IGReportViewController.h */,
+				6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */,
 			);
 			path = report;
 			sourceTree = "<group>";
@@ -1256,6 +1266,7 @@
 				2C008DAA1CAF760F00ECE4B5 /* MJRefreshAutoStateFooter.m in Sources */,
 				6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */,
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
+				6B0C85D61CDB8F33007BBB93 /* IGReportContentObj.m in Sources */,
 				6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
@@ -1313,6 +1324,7 @@
 				6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */,
 				6B00022B1C9D221900085229 /* IGLoginViewController.m in Sources */,
+				6B0C85D31CDB8D7C007BBB93 /* IGReportViewController.m in Sources */,
 				6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */,
 				2C008DA91CAF760F00ECE4B5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,

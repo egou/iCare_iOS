@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class IGReportContentObj;
 @interface IGMemberDataEntity : NSObject
 
 +(void)requestForDataWithMemberId:(NSString*)memberId
@@ -25,5 +26,7 @@
                        finishHandler:(void(^)(BOOL success,NSData *ekgData))finishHandler;
 
 
++(void)requestForReportDetailWithId:(NSString *)refId
+                      finishHandler:(void(^)(BOOL success,IGReportContentObj *report))finishHandler;
 
 @end

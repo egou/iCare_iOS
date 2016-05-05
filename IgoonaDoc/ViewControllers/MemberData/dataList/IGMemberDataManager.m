@@ -103,7 +103,9 @@
         }
             break;
         case 3:{
-            
+            [IGMemberDataEntity requestForReportDetailWithId:data.dRefId finishHandler:^(BOOL success, IGReportContentObj *report) {
+                [self.delegate dataManager:self didReceivedDataSuccess:success dataSummary:data data:report];
+            }];
         }
             break;
             

@@ -15,6 +15,9 @@
 
 #import "IGBpDataViewController.h"
 #import "IGEkgDataViewController.h"
+#import "IGReportViewController.h"
+
+#import "IGReportContentObj.h"
 
 @interface IGMemberDataViewController ()<IGMemberDataManagerDelegate>
 
@@ -121,7 +124,18 @@
             }
         }
             break;
-        case 3:
+        case 3:{
+            
+            if([data isKindOfClass:[IGReportContentObj class]]){
+                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
+                
+                vc.reportContent=data;
+                vc.reportContent.rMemberName=self.memberName;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+        }
             break;
             
         case 4:
