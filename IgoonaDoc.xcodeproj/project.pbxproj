@@ -920,6 +920,13 @@
 			path = Report;
 			sourceTree = "<group>";
 		};
+		6B0C85CE1CDB8B84007BBB93 /* report */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = report;
+			sourceTree = "<group>";
+		};
 		6B1584CE1CB13151009C4EAD /* JPush */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +959,7 @@
 				6B87C01B1CD4CD7E0050495B /* dataList */,
 				6B87C0181CD4CD7E0050495B /* bp */,
 				6B87C03C1CD5135C0050495B /* ekg */,
+				6B0C85CE1CDB8B84007BBB93 /* report */,
 			);
 			path = MemberData;
 			sourceTree = "<group>";

@@ -15,11 +15,10 @@
 #import "IGMyIncomeViewController.h"
 
 
-
-
 #import "IGMsgDetailViewController.h"
 #import "IGReportDetailViewController.h"
 
+#import "IGTaskObj.h"
 
 
 @interface IGToDoListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
@@ -45,7 +44,11 @@
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
-    vc.taskInfo=taskInfo;
+    vc.memberId=taskInfo.tMemberId;
+    vc.memberName=taskInfo.tMemberName;
+    vc.msgReadOnly=NO;
+    vc.taskId=taskInfo.tId;
+
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 
 }

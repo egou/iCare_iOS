@@ -32,8 +32,6 @@
 
 -(instancetype)initWithPatientId:(NSString *)patientId taskId:(NSString *)taskId
 {
-    NSAssert(patientId.length>0, @"patient ID is empty");
-    NSAssert(taskId.length>0, @"task ID is empty");
     if(self=[super init])
     {
         self.patientId=patientId;

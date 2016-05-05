@@ -8,6 +8,7 @@
 
 #import "IGPatientDetailViewController.h"
 #import "IGPatientInfoObj.h"
+#import "IGTaskObj.h"
 
 #import "IGMemberDataViewController.h"
 #import "IGMsgDetailViewController.h"
@@ -52,7 +53,9 @@
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
     IGMsgDetailViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
     
-    
+    msgVC.memberId=self.detailInfo.pId;
+    msgVC.memberName=self.detailInfo.pName;
+    msgVC.msgReadOnly=YES;
     
     [self.navigationController pushViewController:msgVC animated:YES];
 }

@@ -21,10 +21,19 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor blackColor];
     
+    
+    //nav
+    self.navigationItem.title=@"心电图";
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+    
     [self p_initChartWithZoomScaleX:self.ekgData.length/400.0];
     [self p_setChartWithEkgData:self.ekgData];
 }
 
+#pragma mark - events
+-(void)onBackBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - private methods
 

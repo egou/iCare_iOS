@@ -42,7 +42,7 @@
             typeName=@"报告";
             break;
         case 4:
-            typeImgName=@"img_item_note";
+            typeImgName=@"img_item_notification";
             typeName=@"通知";
             break;
             

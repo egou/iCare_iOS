@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class IGTaskObj;
+
 @interface IGMsgDetailViewController : UIViewController
 
-@property (nonatomic,strong) IGTaskObj *taskInfo;
+@property (nonatomic,copy) NSString *memberId;
+@property (nonatomic,copy) NSString *memberName;
+
+@property (nonatomic,assign) BOOL msgReadOnly;
+@property (nonatomic,copy) NSString *taskId;    //当msgReadOnly为Y时，忽略此值。
 
 @end

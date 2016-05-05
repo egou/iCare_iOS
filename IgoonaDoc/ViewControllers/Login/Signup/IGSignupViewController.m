@@ -65,11 +65,16 @@
 
 #pragma mark - private methods
 -(void)p_initUI{
-    self.textFieldBgView.backgroundColor=[UIColor colorWithWhite:1.0 alpha:0.6];
-    self.textFieldBgView.layer.masksToBounds=YES;
+    self.textFieldBgView.backgroundColor=[UIColor colorWithWhite:0.98 alpha:1];
+
     self.textFieldBgView.layer.borderColor=[UIColor whiteColor].CGColor;
     self.textFieldBgView.layer.borderWidth=1;
     self.textFieldBgView.layer.cornerRadius=4;
+    
+    self.textFieldBgView.layer.shadowColor=[UIColor lightGrayColor].CGColor;
+    self.textFieldBgView.layer.shadowOffset=CGSizeMake(0, 2);
+    self.textFieldBgView.layer.shadowRadius=2;
+    self.textFieldBgView.layer.shadowOpacity=0.8;
     
     self.signupBtn.layer.masksToBounds=YES;
     self.signupBtn.layer.cornerRadius=4;

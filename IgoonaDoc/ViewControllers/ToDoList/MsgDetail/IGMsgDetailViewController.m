@@ -50,9 +50,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    NSAssert(self.memberId.length>0, @"patient ID is empty");
+    if(self.msgReadOnly==NO){//如果消息不是只读，则必须有taskId
+        NSAssert(self.taskId.length>0, @"task ID is empty");
+    }
+    
     //data manager
-    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.taskInfo.tMemberId
-                                                                taskId:self.taskInfo.tId];
+    self.dataManager=[[IGMsgDetailDataManager alloc] initWithPatientId:self.memberId
+                                                                taskId:self.taskId];
     self.dataManager.delegate=self;
     
     //audio manager
@@ -68,7 +74,7 @@
     
     
     //如果只能浏览消息
-    if(self.taskInfo.tStatus==3){
+    if(self.msgReadOnly){
         self.barHeightLC.constant=0;
         self.bottomBarView.clipsToBounds=YES;
         
@@ -132,8 +138,8 @@
 -(void)onDataBtn:(id)sender{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
     IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
-    vc.memberId=self.taskInfo.tMemberId;
-    vc.memberName=self.taskInfo.tMemberName;
+    vc.memberId=self.memberId;
+    vc.memberName=self.memberName;
     [self.navigationController pushViewController:vc animated:YES];
 
 }
