@@ -171,6 +171,8 @@
                                
                                //存储用户信息
                                MYINFO.username=username;
+                               MYINFO.type=[responseObject[@"type"] integerValue];
+                               MYINFO.iconId=[responseObject[@"icon_idx"] integerValue];
                                
                                //连接数据库
                                [IGLOCALMANAGER connectToDataRepositoryWithDocId:username];

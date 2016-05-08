@@ -70,7 +70,11 @@
     [viewController dismissViewControllerAnimated:YES completion:^{
         
         //账户信息
-        
+        if(event==IGMoreStuffEventTouchMyInfo){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            UIViewController *myInfoVC=[sb instantiateViewControllerWithIdentifier:@"IGMyInformationViewController"];
+            [self.routingOwner.navigationController pushViewController:myInfoVC animated:YES];
+        }
         
         
         //我的团队

@@ -104,6 +104,10 @@
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
+		6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
+		6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; settings = {ASSET_TAGS = (); }; };
 		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -379,6 +383,14 @@
 		6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsDataManager.m; sourceTree = "<group>"; };
 		6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsRequestEntity.h; sourceTree = "<group>"; };
 		6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsRequestEntity.m; sourceTree = "<group>"; };
+		6B6DA7B71CDEEE1700DB5CBF /* IGDocInfoDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDocInfoDetailObj.h; sourceTree = "<group>"; };
+		6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDocInfoDetailObj.m; sourceTree = "<group>"; };
+		6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyInformationRequestEntity.h; sourceTree = "<group>"; };
+		6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyInformationRequestEntity.m; sourceTree = "<group>"; };
+		6B6DA7BF1CDF0DB800DB5CBF /* IGChangeMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyInfoViewController.h; sourceTree = "<group>"; };
+		6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyInfoViewController.m; sourceTree = "<group>"; };
+		6B6DA7C21CDF512700DB5CBF /* IGCityInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCityInfoObj.h; sourceTree = "<group>"; };
+		6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCityInfoObj.m; sourceTree = "<group>"; };
 		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
 		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
 		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
@@ -856,6 +868,10 @@
 				6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */,
 				6B0C85D41CDB8F33007BBB93 /* IGReportContentObj.h */,
 				6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */,
+				6B6DA7B71CDEEE1700DB5CBF /* IGDocInfoDetailObj.h */,
+				6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */,
+				6B6DA7C21CDF512700DB5CBF /* IGCityInfoObj.h */,
+				6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -1061,6 +1077,10 @@
 			children = (
 				6BA60EF21CD70DDD00E39D54 /* IGMyInformationViewController.h */,
 				6BA60EF31CD70DDD00E39D54 /* IGMyInformationViewController.m */,
+				6B6DA7BF1CDF0DB800DB5CBF /* IGChangeMyInfoViewController.h */,
+				6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */,
+				6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */,
+				6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -1291,11 +1311,13 @@
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
 				6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */,
+				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B0002091C9D221900085229 /* IGCommonValidExpression.m in Sources */,
 				6BA60F051CD70DDD00E39D54 /* IGMyPatientsViewController.m in Sources */,
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
 				6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */,
+				6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */,
 				6B0002171C9D221900085229 /* MASViewConstraint.m in Sources */,
 				6B00018A1C9D1E9500085229 /* main.m in Sources */,
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
@@ -1315,6 +1337,7 @@
 				6BA60F101CD759BF00E39D54 /* IGDocMemberObj.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
+				6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */,
 				6BA60F031CD70DDD00E39D54 /* IGMoreStuffViewController.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
@@ -1332,6 +1355,7 @@
 				6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
+				6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,

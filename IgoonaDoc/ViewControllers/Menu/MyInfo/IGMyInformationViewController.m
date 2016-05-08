@@ -7,8 +7,23 @@
 //
 
 #import "IGMyInformationViewController.h"
+#import "IGDocInfoDetailObj.h"
+#import "IGMyInformationRequestEntity.h"
+
+#import "IGChangeMyInfoViewController.h"
+#import "MJRefresh.h"
 
 @interface IGMyInformationViewController ()
+
+@property (nonatomic,strong) IGDocInfoDetailObj *detailInfo;
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
+@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hospitalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 
 @end
 
@@ -16,83 +31,92 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    //nav
+    self.navigationItem.title=@"我的账户";
+    self.navigationItem.hidesBackButton=YES;
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(onChangeInfoBtn:)];
+    self.navigationItem.rightBarButtonItem.enabled=NO;//只有获取到第一次信息才能点击
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    //pull to refresh
+    __weak typeof(self) wSelf=self;
+    self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [IGMyInformationRequestEntity requestForMyDetailInfoWithFinishHandler:^(IGDocInfoDetailObj *info) {
+            [wSelf.tableView.mj_header endRefreshing];
+            if(info){
+                wSelf.detailInfo=info;
+                [wSelf p_reloadAllData];
+                self.navigationItem.rightBarButtonItem.enabled=YES;
+            }else{
+                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+            }
+        }];
+        
+        
+    }];
     
-    // Configure the cell...
+    //table view
+    self.tableView.tableFooterView=[UIView new];
+    self.tableView.backgroundColor=IGUI_NormalBgColor;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+#pragma mark - table view delegate & data source
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if(section==0)
+        return 8;
+    return [super tableView:tableView heightForFooterInSection:section];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+#pragma mark - events
+-(void)onBackBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)onChangeInfoBtn:(id)sender{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    IGChangeMyInfoViewController *changeInfoVC=[sb instantiateViewControllerWithIdentifier:@"IGChangeMyInfoViewController"];
     
-    return cell;
+    changeInfoVC.detailInfo=self.detailInfo;
+    
+    [self.navigationController pushViewController:changeInfoVC animated:YES];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+
+#pragma mark - privatemethods
+-(void)p_reloadAllData{
+    
+    if(!self.detailInfo)
+        return;
+    
+    
+    self.userNameLabel.text=MYINFO.username;
+    self.nameLabel.text=self.detailInfo.dName;
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",self.detailInfo.dIconId]];
+    
+    NSArray *levels=@[@"主治",@"副主任",@"主任"];
+    NSInteger level=self.detailInfo.dLevel;
+    if(level<=3&&level>=1){
+        self.levelLabel.text=levels[level-1];
+    }else{
+        self.levelLabel.text=@"未知";
+    }
+
+    self.cityLabel.text=self.detailInfo.dCityName;
+    self.hospitalLabel.text=self.detailInfo.dHospitalName;
+    self.genderLabel.text=self.detailInfo.dGender==0?@"女":@"男";
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

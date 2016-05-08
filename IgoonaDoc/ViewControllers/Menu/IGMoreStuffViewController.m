@@ -72,7 +72,7 @@
         IGMoreStuffViewMyInfoCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMoreStuffViewMyInfoCell"];
         
 //        cell.myPhotoIV.image=[UIImage imageNamed:@"item_work"];
-        cell.myPhoneNumLabel.text=@"18600000000";
+        cell.myPhoneNumLabel.text=MYINFO.username;
         
         __weak typeof(self) wSelf=self;
         cell.tapPhotoHandler=^{
