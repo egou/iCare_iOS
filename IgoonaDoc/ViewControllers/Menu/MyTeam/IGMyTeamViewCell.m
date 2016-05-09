@@ -8,95 +8,62 @@
 
 #import "IGMyTeamViewCell.h"
 
-@interface IGMyTeamViewCell_inTeam()
+@interface IGMyTeamViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;
 
 @end
 
-@implementation IGMyTeamViewCell_inTeam
+@implementation IGMyTeamViewCell
 
 - (void)awakeFromNib {
     
-    self.deleteBtn.layer.masksToBounds=YES;
-    self.deleteBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    self.deleteBtn.layer.borderWidth=1;
-    self.deleteBtn.layer.cornerRadius=4;
+    self.editBtn.layer.masksToBounds=YES;
+    self.editBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    self.editBtn.layer.borderWidth=1;
+    self.editBtn.layer.cornerRadius=4;
     
-    [self.deleteBtn addTarget:self action:@selector(onDeleteBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.editBtn addTarget:self action:@selector(onEditBtn:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
--(void)onDeleteBtn:(id)sender{
-    if(self.onDeleteBtnHandler){
-        self.onDeleteBtnHandler(self);
+-(void)onEditBtn:(id)sender{
+    if(self.onEditBtnHandler){
+        self.onEditBtnHandler(self);
     }
 }
 
--(void)setMemberInfo:(IGDocMemberObj*)memberInfo deletable:(BOOL)deletable{
+-(void)setMemberInfo:(IGDocMemberObj*)memberInfo editable:(BOOL)editable{
     self.nameLabel.text=memberInfo.dName;
     
     NSInteger status=memberInfo.dStatus;
     
-    self.deleteBtn.hidden=deletable?NO:YES;
+    self.editBtn.hidden=editable?NO:YES;
     
     
     if(status==0){
-        
         self.statusLabel.text=@"空闲";
         self.statusLabel.textColor=[UIColor lightGrayColor];
+        
+        [self.editBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [self.editBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        
     }else if(status==1){
         self.statusLabel.text=@"工作中";
         self.statusLabel.textColor=IGUI_MainAppearanceColor;
+        
+        [self.editBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [self.editBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }else if(status==2){
+        self.statusLabel.text=@"已发邀请";
+        self.statusLabel.textColor=IGUI_COLOR(255, 180, 0,1.0);
+        
+        [self.editBtn setTitle:@"重新邀请" forState:UIControlStateNormal];
+        [self.editBtn setTitleColor:IGUI_COLOR(255, 180, 0,1.0) forState:UIControlStateNormal];
     }
     
 }
 
 @end
 
-
-
-
-
-@interface IGMyTeamViewCell_application()
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIButton *rejectBtn;
-@property (weak, nonatomic) IBOutlet UIButton *permitBtn;
-
-@end
-
-@implementation IGMyTeamViewCell_application
-
-- (void)awakeFromNib {
-    self.rejectBtn.layer.masksToBounds=YES;
-    self.rejectBtn.layer.borderColor=[UIColor redColor].CGColor;
-    self.rejectBtn.layer.borderWidth=1;
-    self.rejectBtn.layer.cornerRadius=4;
-    [self.rejectBtn addTarget:self action:@selector(onRejectBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    self.permitBtn.layer.masksToBounds=YES;
-    self.permitBtn.layer.cornerRadius=4;
-    [self.permitBtn addTarget:self action:@selector(onPermissionBtn:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-
--(void)onRejectBtn:(id)sender{
-    if(self.onReplyBtnHandler){
-        self.onReplyBtnHandler(self,YES);
-    }
-}
-
--(void)onPermissionBtn:(id)sender{
-    if(self.onReplyBtnHandler){
-        self.onReplyBtnHandler(self,NO);
-    }
-}
-
--(void)setMemberInfo:(IGDocMemberObj *)memberInfo{
-    self.nameLabel.text=memberInfo.dName;
-    self.statusLabel.text=@"待批准";
-}
-@end

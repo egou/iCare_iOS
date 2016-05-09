@@ -13,14 +13,28 @@
 /**
  请求组信息
  */
-+(void)requestForTeamInfoFinishHandler:(void(^)(BOOL success,BOOL isHead,NSArray* teamInfo))finishHandler;
++(void)requestForTeamInfoFinishHandler:(void(^)(BOOL success,NSArray* teamInfo))finishHandler;
 
 
 /**
  请求删除
  */
-+(void)requestToSetApproveStatus:(NSInteger)approveStatus
-                        doctorId:(NSString*)doctorId
-                   finishHandler:(void(^)(BOOL success))finishHandler;
++(void)requestToDeleteAssistant:(NSString*)docId
+                  finishHandler:(void(^)(BOOL success))finishHandler;
+
+
+/**
+ 请求添加
+ */
++(void)requestToAddAssistantWithPhoneNum:(NSString *)phoneNum
+                                     name:(NSString *)name
+                            finishHandler:(void(^)(BOOL success))finishHandler;
+
+/**
+ 重新添加
+ */
++(void)requestToReInviteAssistant:(NSString*)docId
+                    finishHandler:(void(^)(BOOL success))finishHandler;
+
 
 @end

@@ -15,7 +15,7 @@
 
 @interface IGMyTeamViewController ()
 
-@property (nonatomic,assign) BOOL iamHead;
+
 @property (nonatomic,strong) NSArray *memberList;
 
 @end
@@ -41,6 +41,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)onAddBtn:(id)sender{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    UIViewController *addAssistantVC=[sb instantiateViewControllerWithIdentifier:@"IGAddAssistantViewController"];
+    [self.navigationController pushViewController:addAssistantVC animated:YES];
+}
 
 #pragma mark - Table view data source
 
@@ -59,19 +64,41 @@
 
     IGDocMemberObj *docInfo=self.memberList[indexPath.row];
     
-    IGMyTeamViewCell_inTeam *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell_inTeam"];
-    [cell setMemberInfo:docInfo deletable:self.iamHead];
+    IGMyTeamViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell"];
+    BOOL iamHead=MYINFO.type==10;
+    [cell setMemberInfo:docInfo editable:iamHead];
     
-    cell.onDeleteBtnHandler=^(IGMyTeamViewCell_inTeam* inTeamCell){
+    cell.onEditBtnHandler=^(IGMyTeamViewCell* inTeamCell){
         
         [IGCommonUI showLoadingHUDForView:self.navigationController.view];
         
-        [IGMyTeamRequestEntity requestToSetApproveStatus:0 doctorId:docInfo.dId finishHandler:^(BOOL success) {
+        
+        if(docInfo.dStatus==2){//重发邀请
+            [IGMyTeamRequestEntity requestToReInviteAssistant:docInfo.dId finishHandler:^(BOOL success) {
+                [IGCommonUI hideHUDForView:self.navigationController.view];
+                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"发送成功":@"发送失败"];
+                
+            }];
             
-            [IGCommonUI hideHUDForView:self.navigationController.view];
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"删除成功":@"删除失败"];
-            //此处应删除相应数据
-        }];
+            
+        }else{//删除
+        
+            [IGMyTeamRequestEntity requestToDeleteAssistant:docInfo.dId finishHandler:^(BOOL success) {
+
+                [IGCommonUI hideHUDForView:self.navigationController.view];
+                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"删除成功":@"删除失败"];
+                
+                //此处应删除相应数据
+                if(success){
+                    NSMutableArray *mMemberList=[self.memberList mutableCopy];
+                    [mMemberList removeObject:docInfo];
+                    self.memberList=[mMemberList copy];
+                    [self.tableView reloadData];
+                }
+            }];
+        }
+        
+        
     };
     return cell;
 
@@ -94,15 +121,18 @@
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
     
+    BOOL iamHead=MYINFO.type==10;
+    if(iamHead){
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddBtn:)];
+    }
     
     //pull to refresh
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        [IGMyTeamRequestEntity requestForTeamInfoFinishHandler:^(BOOL success, BOOL isHead, NSArray *teamInfo) {
+        [IGMyTeamRequestEntity requestForTeamInfoFinishHandler:^(BOOL success, NSArray *teamInfo) {
             [self.tableView.mj_header endRefreshing];
             
             if(success){
-                self.iamHead=isHead;
                 self.memberList=teamInfo;
                 [self.tableView reloadData];
             }else{

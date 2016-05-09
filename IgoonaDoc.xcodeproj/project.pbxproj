@@ -108,6 +108,7 @@
 		6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; settings = {ASSET_TAGS = (); }; };
 		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -391,6 +392,8 @@
 		6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyInfoViewController.m; sourceTree = "<group>"; };
 		6B6DA7C21CDF512700DB5CBF /* IGCityInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCityInfoObj.h; sourceTree = "<group>"; };
 		6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCityInfoObj.m; sourceTree = "<group>"; };
+		6B74233D1CE0EEA8002D2B4D /* IGAddAssistantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAddAssistantViewController.h; sourceTree = "<group>"; };
+		6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAddAssistantViewController.m; sourceTree = "<group>"; };
 		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
 		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
 		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
@@ -1107,6 +1110,8 @@
 			children = (
 				6BA60EFA1CD70DDD00E39D54 /* IGMyTeamViewController.h */,
 				6BA60EFB1CD70DDD00E39D54 /* IGMyTeamViewController.m */,
+				6B74233D1CE0EEA8002D2B4D /* IGAddAssistantViewController.h */,
+				6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */,
 				6BA60EF81CD70DDD00E39D54 /* IGMyTeamViewCell.h */,
 				6BA60EF91CD70DDD00E39D54 /* IGMyTeamViewCell.m */,
 				6BA60F0B1CD7575D00E39D54 /* IGMyTeamRequestEntity.h */,
@@ -1356,6 +1361,7 @@
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */,
+				6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,

@@ -143,13 +143,13 @@
                   //test
                   IGReportContentObj *report=[IGReportContentObj new];
                   
-                  report.rHealthLevel=1;
-                  report.rSuggestion=@"哈酒味儿来看我今儿看文件而另外加哈酒味儿来看我今儿看文件而另外加哈酒味儿来看我今儿看文件而另外加";
-                  report.rTime=[[NSDate date] description];
-                  report.rProblems=@[@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1"];
-                  
-                  finishHandler(YES,report);
-                  return;
+//                  report.rHealthLevel=1;
+//                  report.rSuggestion=@"哈酒味儿来看我今儿看文件而另外加哈酒味儿来看我今儿看文件而另外加哈酒味儿来看我今儿看文件而另外加";
+//                  report.rTime=[[NSDate date] description];
+//                  report.rProblems=@[@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1",@"库连接1"];
+//                  
+//                  finishHandler(YES,report);
+//                  return;
                   
                   
                   if(IG_DIC_ASSERT(responseObject, @"success", @1)){
