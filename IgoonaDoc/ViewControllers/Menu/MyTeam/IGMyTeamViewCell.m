@@ -46,6 +46,7 @@
         self.statusLabel.text=@"空闲";
         self.statusLabel.textColor=[UIColor lightGrayColor];
         
+         self.editBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
         [self.editBtn setTitle:@"删除" forState:UIControlStateNormal];
         [self.editBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         
@@ -53,13 +54,15 @@
         self.statusLabel.text=@"工作中";
         self.statusLabel.textColor=IGUI_MainAppearanceColor;
         
+         self.editBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;
         [self.editBtn setTitle:@"删除" forState:UIControlStateNormal];
         [self.editBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     }else if(status==2){
         self.statusLabel.text=@"已发邀请";
         self.statusLabel.textColor=IGUI_COLOR(255, 180, 0,1.0);
         
-        [self.editBtn setTitle:@"重新邀请" forState:UIControlStateNormal];
+         self.editBtn.layer.borderColor=IGUI_COLOR(255, 180, 0,1.0).CGColor;
+        [self.editBtn setTitle:@"重发" forState:UIControlStateNormal];
         [self.editBtn setTitleColor:IGUI_COLOR(255, 180, 0,1.0) forState:UIControlStateNormal];
     }
     

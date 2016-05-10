@@ -114,7 +114,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="我好了大夫" id="HMB-Gj-cNx">
-                        <barButtonItem key="leftBarButtonItem" image="item_more" id="kWM-JE-tN5">
+                        <barButtonItem key="leftBarButtonItem" image="item_menu" id="kWM-JE-tN5">
                             <connections>
                                 <action selector="onMoreStuffBtn:" destination="m1c-qf-zyC" id="YYz-0m-OZ2"/>
                             </connections>
@@ -809,8 +809,8 @@
         <image name="img_bp" width="225" height="168"/>
         <image name="img_sound_me" width="15" height="23"/>
         <image name="img_sound_other" width="15" height="23"/>
+        <image name="item_menu" width="23" height="17"/>
         <image name="item_microphone" width="31" height="31"/>
-        <image name="item_more" width="23" height="17"/>
         <image name="item_rest" width="22" height="21"/>
         <image name="patient1" width="75" height="75"/>
     </resources>

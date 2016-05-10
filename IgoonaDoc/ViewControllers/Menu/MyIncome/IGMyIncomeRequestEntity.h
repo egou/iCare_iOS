@@ -13,4 +13,7 @@
 +(void)requestForMyIncomeWithStartNum:(NSInteger)startNum
                         finishHandler:(void(^)(BOOL success,NSArray *incomeInfo,NSInteger total))finishHandler;
 
+
++(void)requestForIncomeMembersWithStartNum:(NSInteger)startNum
+                             finishHandler:(void(^)(BOOL success,NSArray *incomeInfo,NSInteger total))finishHandler;
 @end

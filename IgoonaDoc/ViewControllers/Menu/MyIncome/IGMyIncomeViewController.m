@@ -9,9 +9,10 @@
 #import "IGMyIncomeViewController.h"
 #import "IGMyIncomeDataManager.h"
 #import "IGIncomeObj.h"
-
+#import "KxMenu.h"
 
 #import "MJRefresh.h"
+
 @interface IGMyIncomeViewController ()<IGMyIncomeDataManagerDelegate>
 
 @property (nonatomic,strong) IGMyIncomeDataManager *dataManager;
@@ -35,6 +36,44 @@
 #pragma mark - events
 -(void)onBackBtn:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)onMoreBtn:(UIBarButtonItem*)sender{
+    NSArray *items=@[[KxMenuItem menuItem:@"收入成员"
+                                    image:nil
+                                   target:self
+                                   action:@selector(onSubMenu0)],
+                     [KxMenuItem menuItem:@"收入明细"
+                                    image:nil
+                                   target:self
+                                   action:@selector(onSubMenu1)],
+                     [KxMenuItem menuItem:@"病粉服务"
+                                    image:nil
+                                   target:self
+                                   action:@selector(onSubMenu2)]];
+    [KxMenu showMenuInView:self.navigationController.view
+                  fromRect:CGRectMake([UIScreen mainScreen].bounds.size.width-20,64, 0, 0)
+                 menuItems:items];
+    
+}
+
+-(void)onSubMenu0{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGIncomeMembersViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)onSubMenu1{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGFinancialDetailViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+-(void)onSubMenu2{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGPatientServicesViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -106,6 +145,7 @@
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
     
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"item_more"] style:UIBarButtonItemStylePlain target:self action:@selector(onMoreBtn:)];
     
     //pull to load more
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
