@@ -6,28 +6,27 @@
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGIncomeMembersViewController.h"
-#import "IGIncomeMembersDataManager.h"
-#import "IGIncomeMemeberObj.h"
-#import "IGIncomeMembersViewCell.h"
-
 #import "IGIncomeMembersLv2ViewController.h"
+#import "IGIncomeMembersLv2DataManager.h"
+#import "IGIncomeMemeberObj.h"
+
 
 #import "MJRefresh.h"
 
-@interface IGIncomeMembersViewController ()<IGIncomeMembersDataManagerDelegate>
+@interface IGIncomeMembersLv2ViewController ()<IGIncomeMembersLv2DataManagerDelegate>
 
-@property (nonatomic,strong) IGIncomeMembersDataManager *dataManager;
+@property (nonatomic,strong) IGIncomeMembersLv2DataManager *dataManager;
 
 @end
 
 
-@implementation IGIncomeMembersViewController
+@implementation IGIncomeMembersLv2ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataManager=[IGIncomeMembersDataManager new];
+    self.dataManager=[IGIncomeMembersLv2DataManager new];
+    self.dataManager.docId=self.docId;
     self.dataManager.delegate=self;
     
     [self p_initAddtionalUI];
@@ -40,12 +39,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)onAddBtn:(id)sender{
-    
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
-    UIViewController *invitationVC=[sb instantiateViewControllerWithIdentifier:@"IGInviteDoctroViewController"];
-    [self.navigationController pushViewController:invitationVC animated:YES];
-}
 
 #pragma mark - Table view data source
 
@@ -61,13 +54,13 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    IGIncomeMembersViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGIncomeMembersViewCell"];
-    IGIncomeMemeberObj *member=self.dataManager.memberList[indexPath.row];
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGIncomeMembersLv2ViewCell"];
+    if(!cell){
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"IGIncomeMembersLv2ViewCell"];
+    }
     
-    [cell setMemberInfo:member];
-    cell.onReInviteBtnHanlder=^(IGIncomeMembersViewCell* cell){
-        NSLog(@"reinvite,%@",member.mId);
-    };
+    IGIncomeMemeberObj *member=self.dataManager.memberList[indexPath.row];
+    cell.textLabel.text=member.mName;
     
     return cell;
 }
@@ -75,18 +68,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    IGIncomeMemeberObj *member=self.dataManager.memberList[indexPath.row];
-    
-    if(member.mStatus>0){
-        IGIncomeMembersLv2ViewController *l2VC=[IGIncomeMembersLv2ViewController new];
-        l2VC.docId=member.mId;
-        [self.navigationController pushViewController:l2VC animated:YES];
-    }
+    NSLog(@"select %d",(int)indexPath.row);
 }
 
 
 #pragma mark - data manager delegate
--(void)dataManger:(IGIncomeMembersDataManager *)manager didRefreshedSuccess:(BOOL)success{
+-(void)dataManger:(IGIncomeMembersLv2DataManager *)manager didRefreshedSuccess:(BOOL)success{
     [self .tableView.mj_header endRefreshing];
     if(success){
         [self p_reloadAllData];
@@ -95,7 +82,7 @@
     }
 }
 
--(void)dataManger:(IGIncomeMembersDataManager *)manager didLoadedMoreSuccess:(BOOL)success{
+-(void)dataManger:(IGIncomeMembersLv2DataManager *)manager didLoadedMoreSuccess:(BOOL)success{
     [self.tableView.mj_footer endRefreshing];
     if(success){
         [self p_reloadAllData];
@@ -112,12 +99,12 @@
     self.tableView.tableFooterView=[[UIView alloc] init];
     
     //navigationbar
-    self.navigationItem.title=@"创收成员";
+    self.navigationItem.title=@"二级创收成员";
     UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddBtn:)];
+
     
     //pull to load more
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{

@@ -21,7 +21,7 @@
 @implementation IGIncomeMembersViewCell
 
 -(void)awakeFromNib{
-    
+    self.reInviteBtn.layer.cornerRadius=4.;
 }
 
 -(void)setMemberInfo:(IGIncomeMemeberObj *)info{
@@ -31,9 +31,13 @@
     if(info.mStatus==0){
         self.statusLabel.hidden=NO;
         self.reInviteBtn.hidden=NO;
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
+        self.accessoryType=UITableViewCellAccessoryNone;
     }else{
         self.statusLabel.hidden=YES;
         self.reInviteBtn.hidden=YES;
+        self.selectionStyle=UITableViewCellSelectionStyleDefault;
+        self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
 }
 
