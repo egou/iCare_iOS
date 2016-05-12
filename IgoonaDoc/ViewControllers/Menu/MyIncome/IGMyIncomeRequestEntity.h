@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class IGDocInfoDetailObj;
 @interface IGMyIncomeRequestEntity : NSObject
 
 +(void)requestForMyIncomeWithStartNum:(NSInteger)startNum
@@ -22,13 +23,17 @@
                                      StartNum:(NSInteger)startNum
                                 finishHandler:(void(^)(BOOL success,NSArray *incomeInfo,NSInteger total))           finishHandler;
 
-+(void)requestToInviteDoctorWithPhoneNum:(NSString*)phoneNum
-                                    name:(NSString*)name
-                                  isMale:(NSInteger)isMale
-                                   level:(NSInteger)level
-                                    city:(NSString*)city
-                                hospital:(NSString*)hospital
-                           finishHandler:(void(^)(BOOL resultCode,NSString *inviteId))finishHanlder;
 
+/**resultCode 0失败 1成功 2用户已注册*/
++(void)requestToInviteDoctorWithDocInfo:(IGDocInfoDetailObj*)docInfo
+                          finishHandler:(void(^)(NSInteger resultCode,NSString *inviteId))finishHanlder;
+
+/**收入明细*/
++(void)requestForFinancialDetailWithStartNum:(NSInteger)startNum
+                               finishHandler:(void(^)(BOOL success,NSArray *financialInfo,NSInteger total))finishHandler;
+
+/**病粉服务*/
++(void)requestForPatientServicesWithStartNum:(NSInteger)startNum
+                               finishHandler:(void(^)(BOOL success,NSArray *servicesInfo,NSInteger total))finishHandler;
 
 @end

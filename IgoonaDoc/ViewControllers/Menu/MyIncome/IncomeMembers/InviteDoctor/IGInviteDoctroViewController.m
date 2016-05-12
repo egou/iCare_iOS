@@ -13,6 +13,7 @@
 #import "IGMyInformationRequestEntity.h"
 #import "IGCityInfoObj.h"
 
+#import "IGMyIncomeRequestEntity.h"
 
 @interface IGInviteDoctroViewController()<UITextFieldDelegate>
 
@@ -66,6 +67,26 @@
 
 -(void)onInviteBtn:(id)sender{
     
+    //先检测填写有效性
+    
+    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [IGMyIncomeRequestEntity requestToInviteDoctorWithDocInfo:self.detailInfo finishHandler:^(NSInteger resultCode, NSString *inviteId) {
+        [IGCommonUI hideHUDForView:self.navigationController.view];
+        if(resultCode==1){
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            return ;
+        }
+    
+        
+        if(resultCode==2){
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"该用户已注册"];
+            return;
+        }
+        
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请失败"];
+    }];
 }
 
 - (IBAction)onMaleBtn:(id)sender {

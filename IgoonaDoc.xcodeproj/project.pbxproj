@@ -107,6 +107,12 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */; settings = {ASSET_TAGS = (); }; };
+		6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A21CE4DF6600E60694 /* IGFinancialDetailDataManager.m */; settings = {ASSET_TAGS = (); }; };
+		6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A51CE4E24700E60694 /* IGPatientServicesViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A81CE4E25B00E60694 /* IGPatientServicesDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; settings = {ASSET_TAGS = (); }; };
@@ -401,6 +407,18 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
+		6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailViewCell.m; sourceTree = "<group>"; };
+		6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailObj.h; sourceTree = "<group>"; };
+		6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailObj.m; sourceTree = "<group>"; };
+		6B28F49E1CE4DDCD00E60694 /* IGPatientServiceObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientServiceObj.h; sourceTree = "<group>"; };
+		6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientServiceObj.m; sourceTree = "<group>"; };
+		6B28F4A11CE4DF6600E60694 /* IGFinancialDetailDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailDataManager.h; sourceTree = "<group>"; };
+		6B28F4A21CE4DF6600E60694 /* IGFinancialDetailDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailDataManager.m; sourceTree = "<group>"; };
+		6B28F4A41CE4E24700E60694 /* IGPatientServicesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientServicesViewCell.h; sourceTree = "<group>"; };
+		6B28F4A51CE4E24700E60694 /* IGPatientServicesViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientServicesViewCell.m; sourceTree = "<group>"; };
+		6B28F4A71CE4E25B00E60694 /* IGPatientServicesDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientServicesDataManager.h; sourceTree = "<group>"; };
+		6B28F4A81CE4E25B00E60694 /* IGPatientServicesDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientServicesDataManager.m; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
 		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
@@ -913,6 +931,10 @@
 				6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */,
 				6B0D94A51CE2358300C5BA6D /* IGIncomeMemeberObj.h */,
 				6B0D94A61CE2358300C5BA6D /* IGIncomeMemeberObj.m */,
+				6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */,
+				6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */,
+				6B28F49E1CE4DDCD00E60694 /* IGPatientServiceObj.h */,
+				6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -1008,6 +1030,10 @@
 			children = (
 				6B0D94991CE2323900C5BA6D /* IGFinancialDetailViewController.h */,
 				6B0D949A1CE2323900C5BA6D /* IGFinancialDetailViewController.m */,
+				6B28F4A11CE4DF6600E60694 /* IGFinancialDetailDataManager.h */,
+				6B28F4A21CE4DF6600E60694 /* IGFinancialDetailDataManager.m */,
+				6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */,
+				6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */,
 			);
 			path = FinancialDetail;
 			sourceTree = "<group>";
@@ -1032,6 +1058,10 @@
 			children = (
 				6B0D949C1CE2326300C5BA6D /* IGPatientServicesViewController.h */,
 				6B0D949D1CE2326300C5BA6D /* IGPatientServicesViewController.m */,
+				6B28F4A71CE4E25B00E60694 /* IGPatientServicesDataManager.h */,
+				6B28F4A81CE4E25B00E60694 /* IGPatientServicesDataManager.m */,
+				6B28F4A41CE4E24700E60694 /* IGPatientServicesViewCell.h */,
+				6B28F4A51CE4E24700E60694 /* IGPatientServicesViewCell.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1381,6 +1411,7 @@
 				2C008DAD1CAF760F00ECE4B5 /* MJRefreshBackStateFooter.m in Sources */,
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
+				6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */,
 				6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
 				6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */,
@@ -1389,6 +1420,7 @@
 				6B7A35BC1CE38347007BC42A /* IGInviteDoctroViewController.m in Sources */,
 				6B0D94981CE2321600C5BA6D /* IGIncomeMembersViewController.m in Sources */,
 				6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */,
+				6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */,
 				6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
 				6B0D94A71CE2358300C5BA6D /* IGIncomeMemeberObj.m in Sources */,
@@ -1402,6 +1434,7 @@
 				6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
+				6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */,
 				6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */,
 				6B0002221C9D221900085229 /* UIImageView+AFNetworking.m in Sources */,
 				6B03E3591CCFB6640020FE8F /* IGReportDetailViewController.m in Sources */,
@@ -1427,6 +1460,7 @@
 				6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */,
 				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
+				6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */,
 				6B0002091C9D221900085229 /* IGCommonValidExpression.m in Sources */,
 				6BA60F051CD70DDD00E39D54 /* IGMyPatientsViewController.m in Sources */,
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
@@ -1473,6 +1507,7 @@
 				6B032DFF1CC125190027DDAD /* IGMsgDetailViewCell.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
+				6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */,
 				6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */,
 				6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
@@ -1502,6 +1537,7 @@
 				6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */,
 				2C008DA31CAF760F00ECE4B5 /* MJRefreshAutoFooter.m in Sources */,
 				6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */,
+				6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
