@@ -107,6 +107,8 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B1A2AB21CE62B5C00C7264B /* IGChangeMyPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A2AB11CE62B5C00C7264B /* IGChangeMyPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B1A2AB71CE62D8000C7264B /* IGChangeMyPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1A2AB61CE62D8000C7264B /* IGChangeMyPhotoViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */; settings = {ASSET_TAGS = (); }; };
@@ -407,6 +409,10 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B1A2AB01CE62B5C00C7264B /* IGChangeMyPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewController.h; sourceTree = "<group>"; };
+		6B1A2AB11CE62B5C00C7264B /* IGChangeMyPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyPhotoViewController.m; sourceTree = "<group>"; };
+		6B1A2AB51CE62D8000C7264B /* IGChangeMyPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewCell.h; sourceTree = "<group>"; };
+		6B1A2AB61CE62D8000C7264B /* IGChangeMyPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyPhotoViewCell.m; sourceTree = "<group>"; };
 		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
 		6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailViewCell.m; sourceTree = "<group>"; };
 		6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailObj.h; sourceTree = "<group>"; };
@@ -1214,6 +1220,10 @@
 				6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */,
 				6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */,
 				6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */,
+				6B1A2AB01CE62B5C00C7264B /* IGChangeMyPhotoViewController.h */,
+				6B1A2AB11CE62B5C00C7264B /* IGChangeMyPhotoViewController.m */,
+				6B1A2AB51CE62D8000C7264B /* IGChangeMyPhotoViewCell.h */,
+				6B1A2AB61CE62D8000C7264B /* IGChangeMyPhotoViewCell.m */,
 			);
 			path = MyInfo;
 			sourceTree = "<group>";
@@ -1409,7 +1419,9 @@
 				6B0002211C9D221900085229 /* UIButton+AFNetworking.m in Sources */,
 				6B00021C1C9D221900085229 /* MBProgressHUD.m in Sources */,
 				2C008DAD1CAF760F00ECE4B5 /* MJRefreshBackStateFooter.m in Sources */,
+				6B1A2AB71CE62D8000C7264B /* IGChangeMyPhotoViewCell.m in Sources */,
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
+				6B1A2AB21CE62B5C00C7264B /* IGChangeMyPhotoViewController.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
 				6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */,
 				6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */,

@@ -1393,7 +1393,7 @@
                         <sections>
                             <tableViewSection id="uMU-Rl-MDk">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="85" id="Y2G-yf-kBd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="Y2G-yf-kBd">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y2G-yf-kBd" id="RhB-Iw-xGX">
@@ -1446,7 +1446,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-VS-kAJ">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-VS-kAJ">
                                                     <rect key="frame" x="82" y="10" width="502" height="40"/>
                                                     <animations/>
                                                     <constraints>
@@ -1485,7 +1485,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXd-5S-Ezx">
-                                                    <rect key="frame" x="82" y="8" width="44" height="44"/>
+                                                    <rect key="frame" x="433" y="8" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Ccu-eF-vi8"/>
@@ -1499,7 +1499,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKm-KX-3Rb">
-                                                    <rect key="frame" x="181" y="8" width="44" height="44"/>
+                                                    <rect key="frame" x="532" y="8" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="QlF-Yo-m7M"/>
@@ -1515,12 +1515,12 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NKm-KX-3Rb" secondAttribute="trailing" constant="16" id="CEB-9Z-NJZ"/>
                                                 <constraint firstItem="veC-nm-2L9" firstAttribute="centerY" secondItem="q1c-fy-cgb" secondAttribute="centerY" id="GYK-tp-a0N"/>
                                                 <constraint firstItem="PXd-5S-Ezx" firstAttribute="centerY" secondItem="q1c-fy-cgb" secondAttribute="centerY" id="HzW-bn-80g"/>
                                                 <constraint firstItem="veC-nm-2L9" firstAttribute="leading" secondItem="q1c-fy-cgb" secondAttribute="leadingMargin" constant="8" id="IZA-0R-dTR"/>
                                                 <constraint firstItem="NKm-KX-3Rb" firstAttribute="leading" secondItem="PXd-5S-Ezx" secondAttribute="trailing" constant="55" id="Wgw-QE-r1T"/>
                                                 <constraint firstItem="NKm-KX-3Rb" firstAttribute="centerY" secondItem="q1c-fy-cgb" secondAttribute="centerY" id="Zvx-PZ-FZe"/>
-                                                <constraint firstItem="PXd-5S-Ezx" firstAttribute="leading" secondItem="veC-nm-2L9" secondAttribute="trailing" constant="32" id="bcd-LO-U41"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -1647,7 +1647,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入所属医院" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-D1-6mU">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入所属医院" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAW-D1-6mU">
                                                     <rect key="frame" x="82" y="10" width="502" height="40"/>
                                                     <animations/>
                                                     <constraints>
@@ -1690,6 +1690,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRh-xB-zdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297" y="-522"/>
+        </scene>
+        <!--Change My Photo View Controller-->
+        <scene sceneID="ZW1-Gu-Fia">
+            <objects>
+                <collectionViewController storyboardIdentifier="IGChangeMyPhotoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Pj-dj-eD4" customClass="IGChangeMyPhotoViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1Gg-4F-xEJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="28" id="AeW-pF-x9C">
+                            <size key="itemSize" width="60" height="60"/>
+                            <size key="headerReferenceSize" width="0.0" height="10"/>
+                            <size key="footerReferenceSize" width="0.0" height="10"/>
+                            <inset key="sectionInset" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IGChangeMyPhotoViewCell" id="UIb-93-D3s" customClass="IGChangeMyPhotoViewCell">
+                                <rect key="frame" x="18" y="10" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWN-Wt-abp">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <animations/>
+                                        </imageView>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dWN-Wt-abp" secondAttribute="bottom" id="BKO-30-rQe"/>
+                                    <constraint firstItem="dWN-Wt-abp" firstAttribute="leading" secondItem="UIb-93-D3s" secondAttribute="leading" id="Sll-gM-Otc"/>
+                                    <constraint firstItem="dWN-Wt-abp" firstAttribute="top" secondItem="UIb-93-D3s" secondAttribute="top" id="ibL-IQ-arg"/>
+                                    <constraint firstAttribute="trailing" secondItem="dWN-Wt-abp" secondAttribute="trailing" id="zhY-kJ-HZh"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="photoIV" destination="dWN-Wt-abp" id="2pK-s5-Hgf"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QrY-V5-upX">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="10"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OF4-SR-3TO">
+                            <rect key="frame" x="0.0" y="70" width="600" height="10"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="9Pj-dj-eD4" id="u56-WP-X3A"/>
+                            <outlet property="delegate" destination="9Pj-dj-eD4" id="5RC-wm-ojP"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kff-r1-TDR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1961" y="-522"/>
         </scene>
     </scenes>
     <resources>

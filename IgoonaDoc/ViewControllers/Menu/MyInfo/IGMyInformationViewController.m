@@ -47,6 +47,7 @@
             [wSelf.tableView.mj_header endRefreshing];
             if(info){
                 wSelf.detailInfo=info;
+                wSelf.detailInfo.dIconId=[@(MYINFO.iconId) stringValue];
                 [wSelf p_reloadAllData];
                 self.navigationItem.rightBarButtonItem.enabled=YES;
             }else{

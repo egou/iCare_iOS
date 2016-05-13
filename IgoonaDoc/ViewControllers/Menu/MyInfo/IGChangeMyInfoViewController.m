@@ -13,6 +13,7 @@
 #import "IGSingleSelectionTableViewController.h"
 #import "IGMyInformationRequestEntity.h"
 
+#import "IGChangeMyPhotoViewController.h"
 
 
 @interface IGChangeMyInfoViewController()<UITextFieldDelegate>
@@ -89,6 +90,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if(indexPath.row==0){
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+        IGChangeMyPhotoViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGChangeMyPhotoViewController"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
     if(indexPath.row==3){   //level
         IGSingleSelectionTableViewController *vc=[[IGSingleSelectionTableViewController alloc] init];
