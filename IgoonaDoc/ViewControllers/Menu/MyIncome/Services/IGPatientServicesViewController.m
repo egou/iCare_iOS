@@ -10,8 +10,10 @@
 #import "IGPatientServicesDataManager.h"
 #import "IGPatientServicesViewCell.h"
 #import "IGPatientServiceObj.h"
-
 #import "MJRefresh.h"
+
+#import "IGInvitedCustomersViewController.h"
+
 @interface IGPatientServicesViewController()<IGPatientServicesDataManagerDelegate>
 
 @property (nonatomic,strong) IGPatientServicesDataManager *dataManager;
@@ -36,7 +38,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+-(void)onInvitedCustomersBtn:(id)sender{
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+    IGInvitedCustomersViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGInvitedCustomersViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - Table view data source
 
@@ -100,6 +106,7 @@
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
     
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"病粉拓展" style:UIBarButtonItemStylePlain target:self action:@selector(onInvitedCustomersBtn:)];
     
     //pull to load more
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{

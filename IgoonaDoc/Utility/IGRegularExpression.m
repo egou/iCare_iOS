@@ -40,4 +40,25 @@
     return name.length>0;
 }
 
++(BOOL)isValidHeight:(NSString *)height{
+    NSString *regex=@"^[0-9]{1,3}$";
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [predicate evaluateWithObject:height];
+
+}
+
+
++(BOOL)isValidWeight:(NSString *)weight{
+    NSString *regex=@"^[0-9]+$";
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [predicate evaluateWithObject:weight];
+}
+
++(BOOL)isValidAge:(NSString *)age{
+    NSString *regex=@"^[0-9]{1,3}$";
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [predicate evaluateWithObject:age];
+
+}
+
 @end

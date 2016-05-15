@@ -12,6 +12,8 @@
 #import "IGDocInfoDetailObj.h"
 #import "IGFinancialDetailObj.h"
 #import "IGPatientServiceObj.h"
+#import "IGInvitedCustomerObj.h"
+#import "IGInvitedCustomerDetailObj.h"
 
 @implementation IGMyIncomeRequestEntity
 
@@ -225,4 +227,78 @@
     
 }
 
+
++(void)requestForInvitedCustomersFinishHandler:(void (^)(NSArray *))finishHandler{
+    [IGHTTPCLIENT GET:@"php/doctor.php"
+           parameters:@{@"action":@"get_invited_customer"}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      
+                      __block NSMutableArray *customers=[NSMutableArray array];
+                      [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* cDic, NSUInteger idx, BOOL * _Nonnull stop) {
+                          IGInvitedCustomerObj *c=[IGInvitedCustomerObj new];
+                          c.cId=cDic[@"id"];
+                          c.cName=cDic[@"name"];
+                          [customers addObject:c];
+                      }];
+                      
+                      finishHandler(customers);
+                      
+                  }else{
+                      finishHandler(nil);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(nil);
+              }];
+}
+
++(void)requestToReInvitedCustomer:(NSString *)customerId finishHandler:(void (^)(BOOL))finishHandler{
+    [IGHTTPCLIENT GET:@"php/member.php"
+           parameters:@{@"action":@"create_customer_invite",
+                        @"id":customerId}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                  }else{
+                      finishHandler(NO);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+}
+
+
++(void)requestToInviteCustomer:(IGInvitedCustomerDetailObj *)customerInfo finishHandler:(void (^)(BOOL, NSString *,BOOL))finishHandler{
+    [IGHTTPCLIENT GET:@"php/member.php"
+           parameters:@{@"action":@"create_customer_invite",
+                        @"userId":customerInfo.cPhoneNum,
+                        @"name":customerInfo.cName,
+                        @"age":@(customerInfo.cAge),
+                        @"is_male":@(customerInfo.cIsMale),
+                        @"height":@(customerInfo.cHeight),
+                        @"weight":@(customerInfo.cWeight)}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      
+                      id sent=responseObject[@"sent"];
+                      if(sent&&[sent boolValue]==0){
+                          finishHandler(YES,responseObject[@"id"],NO);
+                      }else{
+                          finishHandler(YES,responseObject[@"id"],YES);
+                      }
+                  }else{
+                      finishHandler(NO,nil,NO);
+                  }
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,nil,NO);
+              }];
+}
 @end

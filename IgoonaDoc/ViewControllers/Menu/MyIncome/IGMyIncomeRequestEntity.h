@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class IGDocInfoDetailObj;
+@class IGInvitedCustomerDetailObj;
+
 @interface IGMyIncomeRequestEntity : NSObject
 
 +(void)requestForMyIncomeWithStartNum:(NSInteger)startNum
@@ -36,4 +38,15 @@
 +(void)requestForPatientServicesWithStartNum:(NSInteger)startNum
                                finishHandler:(void(^)(BOOL success,NSArray *servicesInfo,NSInteger total))finishHandler;
 
+/**所有邀请过的病粉*/
++(void)requestForInvitedCustomersFinishHandler:(void(^)(NSArray* customersInfo))finishHandler;
+
+
+/**重新邀请*/
++(void)requestToReInvitedCustomer:(NSString*)customerId
+                    finishHandler:(void(^)(BOOL success))finishHandler;
+
+/**邀请客户,sent参数用于检测验证码是否发送成功*/
++(void)requestToInviteCustomer:(IGInvitedCustomerDetailObj*)customerInfo
+                 finishHandler:(void(^)(BOOL success, NSString* invitationId,BOOL sent))finishHandler;
 @end
