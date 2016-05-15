@@ -10,4 +10,8 @@
 
 @implementation IGChangeMyPhotoViewCell
 
+-(void)awakeFromNib{
+    
+}
+
 @end

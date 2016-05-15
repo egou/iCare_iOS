@@ -60,7 +60,35 @@
 }
 
 -(void)onSaveBtn:(id)sender{
+    //检验合法性
+    NSString *trimmedName=[self.detailInfo.dName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if(!trimmedName.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名不得为空"];
+        return;
+    }
     
+    if(!self.detailInfo.dCityId.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"城市不得为空"];
+        return;
+    }
+    
+    NSString *trimmedHospital=[self.detailInfo.dName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if(!trimmedHospital.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"医院名称不得为空"];
+        return;
+    }
+    
+    
+    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [IGMyInformationRequestEntity requestToChangeMyInfo:self.detailInfo finishHandler:^(BOOL success) {
+        if(success){
+            [IGCommonUI hideHUDForView:self.navigationController.view];
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"编辑信息成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"编辑信息失败"];
+        }
+    }];
 }
 
 - (IBAction)onMaleBtn:(id)sender {
@@ -94,7 +122,24 @@
     if(indexPath.row==0){
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
         IGChangeMyPhotoViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGChangeMyPhotoViewController"];
+        NSArray *photoIds=@[@"1",@"2",@"3",@"4",@"5",
+                            @"6",@"7",@"8",@"9",@"10"];
         
+        __block NSInteger selectedIndex=-1;
+        [photoIds enumerateObjectsUsingBlock:^(NSString *pId, NSUInteger idx, BOOL * _Nonnull stop) {
+            if([pId isEqualToString:self.detailInfo.dIconId]){
+                selectedIndex=idx;
+                *stop=YES;
+            }
+        }];
+        vc.allPhotoIds=photoIds;
+        vc.selectedIndex=selectedIndex;
+        vc.onPhotoHandler=^(IGChangeMyPhotoViewController *vc,NSInteger i){
+            [vc.navigationController popViewControllerAnimated:YES];
+            
+            self.detailInfo.dIconId=photoIds[i];
+            [self p_reloadAllData];
+        };
         [self.navigationController pushViewController:vc animated:YES];
     }
     

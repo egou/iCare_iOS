@@ -41,6 +41,27 @@
 
 +(void)requestToChangeMyInfo:(IGDocInfoDetailObj*)info finishHandler:(void(^)(BOOL success)) finishHandler{
     
+    [IGHTTPCLIENT GET:@"php/doctor.php"
+           parameters:@{@"action":@"update_doctor",
+                        @"name":info.dName,
+                        @"iconIdx":info.dIconId,
+                        @"isMale":@(info.dGender),
+                        @"level":@(info.dLevel),
+                        @"city":info.dCityId,
+                        @"hospital":info.dHospitalName}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                  }else{
+                      finishHandler(NO);
+                  }
+                  
+              }failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+    
 }
 
 +(void)requestForAllCitiesOfProvince:(NSString *)provinceId finishHandler:(void (^)(NSArray *))handler{

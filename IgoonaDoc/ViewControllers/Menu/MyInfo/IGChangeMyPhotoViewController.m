@@ -14,25 +14,59 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+
     self.collectionView.backgroundColor=IGUI_NormalBgColor;
+    
+    //nav
+    self.navigationItem.title=@"修改头像";
+    self.navigationItem.hidesBackButton=YES;
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+
+}
+
+#pragma mark - events
+-(void)onBackBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
+
+#pragma mark - collectionView DataSource & delegate
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return self.allPhotoIds.count;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     IGChangeMyPhotoViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"IGChangeMyPhotoViewCell" forIndexPath:indexPath];
     
-    cell.photoIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%d",(int)indexPath.row+1]];
+    
+    NSString *photoName=[NSString stringWithFormat:@"doctor%@",self.allPhotoIds[indexPath.row]];
+    cell.photoIV.image=[UIImage imageNamed:photoName];
+
+    if(self.selectedIndex==indexPath.row){
+        cell.layer.borderColor=IGUI_MainAppearanceColor.CGColor;
+        cell.layer.borderWidth=2;
+    }else{
+        cell.layer.borderWidth=0;
+    }
+    
     
     return cell;
 }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.selectedIndex=indexPath.row;
+    [collectionView reloadData];
+    
+    if(self.onPhotoHandler){
+        self.onPhotoHandler(self,indexPath.row);
+    }
+    
+}
 
 
 @end
