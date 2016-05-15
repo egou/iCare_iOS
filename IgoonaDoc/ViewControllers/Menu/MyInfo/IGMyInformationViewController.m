@@ -13,6 +13,9 @@
 #import "IGChangeMyInfoViewController.h"
 #import "MJRefresh.h"
 
+#import "IGChangePasswordViewController.h"
+#import "IGChangePhoneNumViewController.h"
+
 @interface IGMyInformationViewController ()
 
 @property (nonatomic,strong) IGDocInfoDetailObj *detailInfo;
@@ -47,7 +50,7 @@
             [wSelf.tableView.mj_header endRefreshing];
             if(info){
                 wSelf.detailInfo=info;
-                wSelf.detailInfo.dIconId=[@(MYINFO.iconId) stringValue];
+                wSelf.detailInfo.dIconId=MYINFO.iconId;
                 [wSelf p_reloadAllData];
                 self.navigationItem.rightBarButtonItem.enabled=YES;
             }else{
@@ -77,6 +80,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSInteger row=indexPath.row;
+    NSInteger section=indexPath.section;
+    
+    if(section==1){
+       
+        if(row==0){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            IGChangePhoneNumViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGChangePhoneNumViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+        if(row==1){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            IGChangePasswordViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGChangePasswordViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
 }
 
 

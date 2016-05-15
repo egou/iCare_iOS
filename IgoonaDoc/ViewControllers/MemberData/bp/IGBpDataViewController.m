@@ -76,11 +76,11 @@
         if([self.selectedBpID isEqualToString:bp.itemID])
         {
             self.sTimeLabel.text=bp.mearsureTime;
-            self.sSystolicLabel.text=[NSString stringWithFormat:@"%ld",bp.systolic];
-            self.sDiastolicLabel.text=[NSString stringWithFormat:@"%ld",bp.diastolic];
-            self.sHeartRateLabel.text=[NSString stringWithFormat:@"%ld",bp.heartRate];
-            self.sMAPLabel.text=[NSString stringWithFormat:@"%ld",bp.MAP];
-            self.sO2RateIndexLabel.text=[NSString stringWithFormat:@"%ld",bp.o2RateIndex];
+            self.sSystolicLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.systolic];
+            self.sDiastolicLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.diastolic];
+            self.sHeartRateLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.heartRate];
+            self.sMAPLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.MAP];
+            self.sO2RateIndexLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.o2RateIndex];
             
             break;
         }

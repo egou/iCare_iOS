@@ -13,7 +13,8 @@
 +(instancetype)sharedInformation;
 
 @property (nonatomic,copy) NSString *username;
-@property (nonatomic,assign) NSInteger iconId;
+@property (nonatomic,copy) NSString *password;
+@property (nonatomic,copy) NSString* iconId;
 @property (nonatomic,assign) NSInteger type;
 
 @end

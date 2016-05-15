@@ -82,6 +82,10 @@
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];
     [IGMyInformationRequestEntity requestToChangeMyInfo:self.detailInfo finishHandler:^(BOOL success) {
         if(success){
+            
+            //头像
+            MYINFO.iconId=self.detailInfo.dIconId;
+            
             [IGCommonUI hideHUDForView:self.navigationController.view];
             [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"编辑信息成功"];
             [self.navigationController popViewControllerAnimated:YES];

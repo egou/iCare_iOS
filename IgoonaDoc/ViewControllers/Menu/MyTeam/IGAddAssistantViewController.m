@@ -77,6 +77,8 @@
     //tableview
     self.tableView.backgroundColor=IGUI_NormalBgColor;
 
+    //invitationbtn
+    self.invitationBtn.layer.cornerRadius=4.;
 }
 
 @end

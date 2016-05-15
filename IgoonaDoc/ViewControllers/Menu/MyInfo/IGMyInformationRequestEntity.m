@@ -95,4 +95,72 @@
               }];
 }
 
+
++(void)requestToChangePhoneNum:(NSString*)phoneNum
+               confirmationNum:(NSString*)confirmationNum
+                 finishHandler:(void(^)(BOOL success))finishHandler{
+    
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"change_login_id",
+                        @"userId":phoneNum,
+                        @"confirmationNumber":confirmationNum}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                      
+                  }else{
+                      finishHandler(NO);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+    
+}
+
++(void)requestToSendConfirmationNumToPhone:(NSString*)phoneNum
+                             finishHandler:(void(^)(BOOL success))finishHandler{
+    
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"send_confirmation_number",
+                        @"userId":phoneNum}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                  }else{
+                      finishHandler(NO);
+                  }
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+    
+}
+
+
++(void)requestToChangePasswordWithOldPassword:(NSString*)oldPassword
+                                  newPassword:(NSString*)newPassword
+                                finishHandler:(void(^)(BOOL success))finishHanlder{
+    
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"change_password",
+                        @"oldPassword":oldPassword,
+                        @"newPassword":newPassword}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHanlder(YES);
+                  }else{
+                      finishHanlder(NO);
+                  }
+      
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 finishHanlder(NO);
+             }];
+    
+}
+
 @end

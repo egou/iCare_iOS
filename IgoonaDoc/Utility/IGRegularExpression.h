@@ -11,6 +11,7 @@
 @interface IGRegularExpression : UIViewController
 
 +(BOOL)isValidPhoneNum:(NSString*)phoneNum;
++(BOOL)isValidConfirmationNum:(NSString*)confirmationNum;
 +(BOOL)isValidPassword:(NSString*)password;
 +(BOOL)isValidName:(NSString*)name;
 @end

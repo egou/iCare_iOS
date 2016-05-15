@@ -12,12 +12,28 @@
 
 +(BOOL)isValidPhoneNum:(NSString*)phoneNum{
 
-    return phoneNum.length==11;
+    NSString *regex=@"^[0-9]{11}$";
+    
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    
+    return [predicate evaluateWithObject:phoneNum];
+}
+
++(BOOL)isValidConfirmationNum:(NSString *)confirmationNum{
+    
+    NSString *regex=@"^[0-9]+$";
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    
+    return [predicate evaluateWithObject:confirmationNum];
 }
 
 +(BOOL)isValidPassword:(NSString*)password{
     
-    return YES;
+    NSString *regex=@"^[0-9]+$";
+    NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    
+    return [predicate evaluateWithObject:password];
+   
 }
 
 +(BOOL)isValidName:(NSString *)name{
