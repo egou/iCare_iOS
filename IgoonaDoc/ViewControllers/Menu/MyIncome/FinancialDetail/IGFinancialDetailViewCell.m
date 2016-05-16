@@ -20,8 +20,11 @@
 
 -(void)setFinancialInfo:(IGFinancialDetailObj *)financialInfo{
     self.nameLabel.text=financialInfo.fName;
-    self.amountLabel.text=[NSString stringWithFormat:@"%.02f",financialInfo.fAmount/100.];
-    self.dateLabel.text=financialInfo.fDate;
+    self.amountLabel.text=[NSString stringWithFormat:@"%.02f元",financialInfo.fAmount/100.];
+    
+    
+    NSString *shortDateStr=[financialInfo.fDate substringWithRange:NSMakeRange(5, 5)];
+    self.dateLabel.text=shortDateStr;
 }
 
 @end

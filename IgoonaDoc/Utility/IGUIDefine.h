@@ -15,4 +15,17 @@
 #define IGUI_NormalBgColor [UIColor colorWithWhite:0.9 alpha:1.0]
 
 
+
+
+
+
+typedef NS_ENUM(NSInteger,IGServiceLevel) {
+    IGServiceLevelNone=0,
+    IGServiceLevelBronze,
+    IGServiceLevelSilver,
+    IGServiceLevelGold,
+    IGServiceLevelDiamond,
+    IGServiceLevelVIP
+};
+
 #endif /* IGUIDefine_h */

@@ -32,9 +32,51 @@
 {
     self.nameLabel.text=toDoData.tMemberName;
     self.msgLabel.text=toDoData.tMsg;
-    self.timeLabel.text=toDoData.tDueTime;
+    
+    
+    int timeStatusCode;
+    self.timeLabel.text=[self p_dueTime:toDoData.tDueTime statusCode:&timeStatusCode];
+    if(timeStatusCode<0)
+        self.timeLabel.textColor=[UIColor redColor];
+    else if(timeStatusCode==0)
+        self.timeLabel.textColor=IGUI_COLOR(187, 96, 8, 1.);
+    else
+        self.timeLabel.textColor=[UIColor darkGrayColor];
+    
+    
     self.typeLabel.text=toDoData.tType==1?@"求助":@"报告";
 }
 
+
+-(NSString*)p_dueTime:(NSString*)time statusCode:(int*)statusCode{
+    
+    NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
+    [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *dueDate=[dateForm dateFromString:time];
+    
+    if(!dueDate){
+        *statusCode=1;
+        return @"未知";
+    }
+    
+    NSDate* now=[NSDate date];
+    
+    NSComparisonResult result=[dueDate compare:now];
+    if(result==NSOrderedAscending){
+        *statusCode=-1;
+        return @"已过";
+    }
+    
+    NSDate* thirtyMinLater=[NSDate dateWithTimeInterval:30*60.0 sinceDate:now];
+    if([dueDate compare:thirtyMinLater]==NSOrderedAscending){
+        *statusCode=0;
+        NSTimeInterval interval=[dueDate timeIntervalSinceDate:now];
+        NSInteger min=interval/60;
+        return [NSString stringWithFormat:@"%d分钟",(int)min];
+    }
+    
+    *statusCode=1;
+    return [time substringWithRange:NSMakeRange(5, 11)];
+}
 
 @end
