@@ -15,6 +15,8 @@
 @property (strong, nonatomic) AVAudioRecorder *audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 
+
+@property (nonatomic,assign) BOOL recordIsCancelled;
 @end
 
 @implementation IGAudioManager
@@ -41,23 +43,49 @@
 }
 
 -(void)startRecording{
-    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
-        if(granted)
-        {
-            if (!self.audioRecorder.recording)
+    
+    AVAudioSessionRecordPermission permission=[AVAudioSession sharedInstance].recordPermission;
+    
+    if(permission==AVAudioSessionRecordPermissionUndetermined){
+        [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+            if(granted)
             {
-                [self.audioRecorder record];
+                NSLog(@"授权成功！");
             }
-        }
-        else
+            else
+            {
+                NSLog(@"用户未授权");
+            }
+        }];
+        return;
+    }
+    
+    if(permission==AVAudioSessionRecordPermissionDenied){
+     
+        [self.delegate audioManagerRecordPermissionDenied:self];
+        return;
+    }
+    
+    if(permission==AVAudioSessionRecordPermissionGranted){
+        if (!self.audioRecorder.recording)
         {
-            NSLog(@"未授权记录声音！！！");
+            self.recordIsCancelled=NO;
+            [self.audioRecorder record];
         }
-    }];
+        return;
+    }
+    
 }
 
 -(void)stopRecording{
     if(self.audioRecorder.recording){
+        [self.audioRecorder stop];
+    }
+}
+
+-(void)cancelRecording{
+    if(self.audioRecorder.recording){
+        self.recordIsCancelled=YES;
         [self.audioRecorder stop];
     }
 }
@@ -118,6 +146,11 @@
 
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
 {
+    if(self.recordIsCancelled){
+        [self.delegate audioManagerDidCancelRecording:self];
+        return;
+    }
+    
     NSLog(@"audio manager: Finish recording");
     
     NSData *data=[NSData dataWithContentsOfURL:recorder.url];

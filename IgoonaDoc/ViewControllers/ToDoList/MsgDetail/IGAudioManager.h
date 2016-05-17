@@ -16,8 +16,10 @@
 -(void)startPlayingAudioWithData:(NSData*)data;
 -(void)stopPlaying;
 
+
 -(void)startRecording;
 -(void)stopRecording;
+-(void)cancelRecording;
 
 @end
 
@@ -25,6 +27,9 @@
 
 @protocol IGAudioManagerDelegate <NSObject>
 
+-(void)audioManagerDidCancelRecording:(IGAudioManager*)audioManager;
 -(void)audioManager:(IGAudioManager*)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData*)data duration:(NSInteger)duration;
+
+-(void)audioManagerRecordPermissionDenied:(IGAudioManager *)audioManager;
 
 @end

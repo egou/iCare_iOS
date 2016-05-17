@@ -192,6 +192,7 @@
 - (IBAction)touchUpOutsideRecordBtn:(id)sender {
     NSLog(@"up out");
     //取消发送
+    [self.audioManager cancelRecording];
 }
 
 - (IBAction)touchDragOutsideRecordBtn:(id)sender {
@@ -308,6 +309,15 @@
     
 }
 
+-(void)audioManagerDidCancelRecording:(IGAudioManager *)audioManager{
+    [self p_showRecordingBg:NO];
+}
+
+-(void)audioManagerRecordPermissionDenied:(IGAudioManager *)audioManager{
+    UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"请在设置里授权使用麦克风" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:ac animated:YES completion:nil];
+}
 
 #pragma mark - private methods
 
