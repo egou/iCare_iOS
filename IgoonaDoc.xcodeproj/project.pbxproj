@@ -132,6 +132,8 @@
 		6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B76D7691CEB6779007D150A /* IGForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B76D7681CEB6778007D150A /* IGForgetPasswordViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B76D76C1CEB6848007D150A /* IGLoginRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
 		6B7A35B51CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A35B21CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B7A35B61CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A35B41CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B7A35BC1CE38347007BC42A /* IGInviteDoctroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A35BB1CE38347007BC42A /* IGInviteDoctroViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -466,6 +468,10 @@
 		6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCityInfoObj.m; sourceTree = "<group>"; };
 		6B74233D1CE0EEA8002D2B4D /* IGAddAssistantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAddAssistantViewController.h; sourceTree = "<group>"; };
 		6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAddAssistantViewController.m; sourceTree = "<group>"; };
+		6B76D7671CEB6778007D150A /* IGForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGForgetPasswordViewController.h; sourceTree = "<group>"; };
+		6B76D7681CEB6778007D150A /* IGForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGForgetPasswordViewController.m; sourceTree = "<group>"; };
+		6B76D76A1CEB6848007D150A /* IGLoginRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGLoginRequestEntity.h; sourceTree = "<group>"; };
+		6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGLoginRequestEntity.m; sourceTree = "<group>"; };
 		6B7A35B11CE376F9007BC42A /* IGIncomeMembersLv2DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersLv2DataManager.h; sourceTree = "<group>"; };
 		6B7A35B21CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMembersLv2DataManager.m; sourceTree = "<group>"; };
 		6B7A35B31CE376F9007BC42A /* IGIncomeMembersLv2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersLv2ViewController.h; sourceTree = "<group>"; };
@@ -889,12 +895,15 @@
 		6B0001F51C9D221800085229 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6B76D7641CEB604F007D150A /* ForgetPassword */,
 				6B032E071CC1493A0027DDAD /* Signup */,
 				6B0001F91C9D221800085229 /* CheckBox */,
 				6B0001FE1C9D221800085229 /* IGFirstLoadingViewController.h */,
 				6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */,
 				6B0002001C9D221800085229 /* IGLoginViewController.h */,
 				6B0002011C9D221800085229 /* IGLoginViewController.m */,
+				6B76D76A1CEB6848007D150A /* IGLoginRequestEntity.h */,
+				6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1164,6 +1173,15 @@
 				6B1584BC1CB130A4009C4EAD /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				6B76D7671CEB6778007D150A /* IGForgetPasswordViewController.h */,
+				6B76D7681CEB6778007D150A /* IGForgetPasswordViewController.m */,
+			);
+			path = ForgetPassword;
 			sourceTree = "<group>";
 		};
 		6B7A35B01CE376F9007BC42A /* level2 */ = {
@@ -1540,6 +1558,7 @@
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
 				6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */,
+				6B76D7691CEB6779007D150A /* IGForgetPasswordViewController.m in Sources */,
 				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */,
@@ -1577,6 +1596,7 @@
 				6BA60F031CD70DDD00E39D54 /* IGMoreStuffViewController.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
+				6B76D76C1CEB6848007D150A /* IGLoginRequestEntity.m in Sources */,
 				6B0D948C1CE21B5100C5BA6D /* IGRegularExpression.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6B00020D1C9D221900085229 /* AFNetworkReachabilityManager.m in Sources */,

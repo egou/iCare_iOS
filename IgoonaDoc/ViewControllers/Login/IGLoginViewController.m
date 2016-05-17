@@ -9,7 +9,7 @@
 #import "IGLoginViewController.h"
 #import "IGUserDefaults.h"
 #import "IGSaveInfoCheckBox.h"
-
+#import "IGForgetPasswordViewController.h"
 
 @interface IGLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textfieldBgView;
@@ -219,6 +219,38 @@
 - (IBAction)onLoginBtn:(id)sender
 {
     [self p_requestLogin];
+}
+
+- (IBAction)onForgetPasswordBtn:(id)sender {
+    
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    IGForgetPasswordViewController *forgetPwdVC=[sb instantiateViewControllerWithIdentifier:@"IGForgetPasswordViewController"];
+    
+    
+    __weak typeof(self) wSelf=self;
+    forgetPwdVC.onCancelHandler=^(IGForgetPasswordViewController *vc){
+        [vc dismissViewControllerAnimated:YES completion:nil];
+        wSelf.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
+    };
+    forgetPwdVC.onFinishHandler=^(IGForgetPasswordViewController *vc,NSString *phoneNum,NSString *pwd){
+        [vc dismissViewControllerAnimated:YES completion:nil];
+        
+        //用户名密码，该存的存起来
+        BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
+        if(needsSaveUsername)
+        {
+            [IGUserDefaults saveValue:phoneNum forKey:kIGUserDefaultsUserName];
+            BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
+            if(needsSavePassword)
+                [IGUserDefaults saveValue:pwd forKey:kIGUserDefaultsPassword];
+        }
+        
+        wSelf.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
+    };
+    
+    
+    UIViewController *forgetPwdNC=[[UINavigationController alloc] initWithRootViewController:forgetPwdVC];
+    [self presentViewController:forgetPwdNC animated:YES completion:nil];
 }
 
 - (IBAction)unwindSegue:(UIStoryboardSegue *)sender
