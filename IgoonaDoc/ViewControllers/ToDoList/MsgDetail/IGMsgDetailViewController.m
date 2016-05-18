@@ -227,6 +227,11 @@
     
     NSInteger msgCount=self.allMsgsCopyArray.count;
     IGMsgDetailObj *msg= self.allMsgsCopyArray[msgCount-1-indexPath.row];
+    if(msg.mIsOut){
+        msg.mPhotoId=MYINFO.iconId;
+    }else{
+        msg.mPhotoId=self.memberIconId;
+    }
     
     __weak typeof(self) wSelf=self;
     UITableViewCell *msgCell=[IGMsgDetailViewCell tableView:tableView dequeueReusableCellWithMsg:msg onAudioBtnHandler:^(UITableViewCell *cell) {

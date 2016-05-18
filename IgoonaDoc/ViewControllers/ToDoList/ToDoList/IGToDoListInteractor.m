@@ -65,6 +65,7 @@
                           
                           IGTaskObj *t=[[IGTaskObj alloc] init];
                           t.tDueTime=tDic[@"due_time"];
+                          t.tMemberIconId=tDic[@"icon_idx"];
                           t.tId=tDic[@"id"];
                           t.tMemberId=tDic[@"member_id"];
                           t.tMemberName=tDic[@"member_name"];

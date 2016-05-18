@@ -43,6 +43,7 @@
     else
         self.timeLabel.textColor=[UIColor darkGrayColor];
     
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"patient%@",toDoData.tMemberIconId]];
     
     self.typeLabel.text=toDoData.tType==1?@"求助":@"报告";
 }

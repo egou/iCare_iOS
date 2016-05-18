@@ -8,6 +8,7 @@
 
 #import "IGDoneListEntity.h"
 #import "IGTaskObj.h"
+#import "IGReportContentObj.h"
 
 @implementation IGDoneListEntity
 
@@ -65,5 +66,35 @@
               }];
     
 }
+
+
++(void)requestForReportDetailWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, IGReportContentObj *))finishHandler{
+    [IGHTTPCLIENT GET:@"php/report.php"
+           parameters:@{@"action":@"get_user_report",
+                        @"taskId":taskId}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                  
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      IGReportContentObj *report=[IGReportContentObj new];
+                      
+                      report.rHealthLevel=[responseObject[@"health_level"] integerValue];
+                      report.rSuggestion=responseObject[@"suggestion"];
+                      report.rTime=responseObject[@"time"];
+                      report.rProblems=responseObject[@"problems"];
+                      
+                      finishHandler(YES,report);
+                      
+                      
+                  }else{
+                      finishHandler(NO,nil);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,nil);
+              }];
+}
+
 
 @end

@@ -46,6 +46,7 @@
     IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
     vc.memberId=taskInfo.tMemberId;
     vc.memberName=taskInfo.tMemberName;
+    vc.memberIconId=taskInfo.tMemberIconId;
     vc.msgReadOnly=NO;
     vc.taskId=taskInfo.tId;
 

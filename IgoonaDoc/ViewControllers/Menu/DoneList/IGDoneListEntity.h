@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class IGReportContentObj;
 @interface IGDoneListEntity : NSObject
 
 /**
@@ -18,5 +18,12 @@
                              memberId:(NSString*)memberId
                                 isOld:(BOOL)isOld
                         finishHandler:(void(^)(BOOL success,NSArray *tasks,NSInteger total))finishHandler;
+
+
+
+
+/**！！！注意：这里和在用户资料里查看报告，接口参数不一样！！！*/
++(void)requestForReportDetailWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, IGReportContentObj *))finishHandler;
+
 
 @end
