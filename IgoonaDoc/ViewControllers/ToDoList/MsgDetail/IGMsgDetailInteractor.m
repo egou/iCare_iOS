@@ -42,8 +42,13 @@
                               NSData *mAudioEncodedData=msgDic[@"audio"];
                               msg.mAudioData=[[NSData alloc] initWithBase64EncodedData:mAudioEncodedData options:NSDataBase64DecodingIgnoreUnknownCharacters];
                               msg.mAudioDuration=[msgDic[@"seconds"] integerValue];
-                              msg.mThumbnail=msgDic[@"thumbnail"];
-
+                              
+                              NSString *mThumbnailStr=msgDic[@"thumbnail"];
+                              
+                              msg.mThumbnail=[[NSData alloc] initWithBase64EncodedString:mThumbnailStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                              
+                              
+                              
                               [msgs addObject:msg];
                           }
                           

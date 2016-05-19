@@ -124,6 +124,14 @@
      
         UIImage *recordingBg=[UIImage imageNamed:@"bg_recording"];
         _recordingBgView=[[UIImageView alloc] initWithImage:recordingBg];
+        
+        UILabel *hintLabel=[UILabel new];
+        hintLabel.textColor=[UIColor whiteColor];
+        [_recordingBgView addSubview:hintLabel];
+        [hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(_recordingBgView);
+            make.bottom.mas_equalTo(_recordingBgView).offset(-8);
+        }];
     }
     
     return _recordingBgView;
@@ -179,7 +187,7 @@
     [self.audioManager startRecording];
     
     [self p_showRecordingBg:YES];
-    
+    [self p_setHintLabelText:@"手指上滑,取消发送"];
 }
 
 - (IBAction)touchUpInsideRecordBtn:(id)sender {
@@ -202,9 +210,11 @@
     NSLog(@"drag inside");
 }
 - (IBAction)touchExit:(id)sender {
+    [self p_setHintLabelText:@"松开手指,取消发送"];
     NSLog(@"exit");
 }
 - (IBAction)touchEnter:(id)sender {
+    [self p_setHintLabelText:@"手指上滑,取消发送"];
     NSLog(@"enter");
 }
 
@@ -390,6 +400,7 @@
         self.sendBtnLabel.backgroundColor=self.msgTV.text.length>0?IGUI_MainAppearanceColor:[UIColor lightGrayColor];
     }else/*语音*/{
         self.sendBtn.enabled=NO;
+        self.sendBtnLabel.backgroundColor=[UIColor lightGrayColor];
     }
 }
 
@@ -449,7 +460,11 @@
     }
 }
 
-
+-(void)p_setHintLabelText:(NSString*)text{
+    UILabel *hintLabel= [self.recordingBgView subviews].firstObject;
+    hintLabel.text=text;
+    [hintLabel sizeToFit];
+}
 
 #pragma mark - keyboard Notification
 -(void)onKeyboardWillShowNotification:(NSNotification*)note
