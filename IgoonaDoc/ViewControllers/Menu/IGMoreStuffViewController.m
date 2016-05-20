@@ -58,7 +58,19 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row==0){
+    
+    NSInteger row=indexPath.row;
+    
+    if(MYINFO.type==11){//助手没有我的口粮
+        if(row==3){
+            return 0;
+        }
+    }
+    
+    
+    
+    
+    if(row==0){
         return 190;
     }else{
         return 60;
@@ -71,7 +83,7 @@
         
         IGMoreStuffViewMyInfoCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMoreStuffViewMyInfoCell"];
         
-//        cell.myPhotoIV.image=[UIImage imageNamed:@"item_work"];
+        cell.myPhotoIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",MYINFO.iconId]];
         cell.myPhoneNumLabel.text=MYINFO.username;
         
         __weak typeof(self) wSelf=self;
@@ -96,6 +108,9 @@
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.clipsToBounds=YES;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

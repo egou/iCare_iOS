@@ -40,9 +40,11 @@
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(onChangeInfoBtn:)];
-    self.navigationItem.rightBarButtonItem.enabled=NO;//只有获取到第一次信息才能点击
-    
+    if(MYINFO.type!=11){//助手没有修改
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(onChangeInfoBtn:)];
+        self.navigationItem.rightBarButtonItem.enabled=NO;//只有获取到第一次信息才能点击
+    }
+        
     //pull to refresh
     __weak typeof(self) wSelf=self;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -99,7 +101,21 @@
         }
     }
 }
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.clipsToBounds=YES;
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section=indexPath.section;
+    NSInteger row=indexPath.row;
+    
+    if(MYINFO.type==11){
+        if(section==0&&row>1){
+                return 0;
+        }
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
 
 #pragma mark - events
 -(void)onBackBtn:(id)sender{

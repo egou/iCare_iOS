@@ -65,8 +65,8 @@
     IGDocMemberObj *docInfo=self.memberList[indexPath.row];
     
     IGMyTeamViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMyTeamViewCell"];
-    BOOL iamHead=MYINFO.type==10;
-    [cell setMemberInfo:docInfo editable:iamHead];
+    BOOL editable=MYINFO.type!=11;  //助手不能邀请
+    [cell setMemberInfo:docInfo editable:editable];
     
     cell.onEditBtnHandler=^(IGMyTeamViewCell* inTeamCell){
         
@@ -121,8 +121,8 @@
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
     
-    BOOL iamHead=MYINFO.type==10;
-    if(iamHead){
+    
+    if(MYINFO.type!=11){    //只有助手没权限邀请
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddBtn:)];
     }
     
