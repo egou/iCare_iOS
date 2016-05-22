@@ -26,8 +26,16 @@
     if(self=[super init])
     {
         _username=@"";
+        _password=@"";
     }
     return self;
+}
+
+-(void)clear{
+    self.username=@"";
+    self.password=@"";
+    self.iconId=0;
+    self.type=0;
 }
 
 @end

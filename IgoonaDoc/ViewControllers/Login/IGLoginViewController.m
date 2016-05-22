@@ -40,6 +40,12 @@
     
     [self p_showDefaults];
     [self p_onEnter];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserDidLogoutNotification:) name:@"kUserDidLogout" object:nil];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - private methods
@@ -267,4 +273,15 @@
     }
     
 }
+
+
+-(void)onUserDidLogoutNotification:(NSNotification*)notification{
+    
+    //清空密码
+    [IGUserDefaults saveValue:@"" forKey:kIGUserDefaultsPassword];
+    
+    //退出
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

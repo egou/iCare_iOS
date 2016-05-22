@@ -17,6 +17,8 @@
 @property (nonatomic,copy) NSString* iconId;
 @property (nonatomic,assign) NSInteger type;
 
+-(void)clear;
+
 @end
 
 

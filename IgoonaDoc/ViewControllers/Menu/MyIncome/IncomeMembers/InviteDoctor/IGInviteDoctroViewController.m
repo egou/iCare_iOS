@@ -14,6 +14,7 @@
 #import "IGCityInfoObj.h"
 
 #import "IGMyIncomeRequestEntity.h"
+#import "IGRegularExpression.h"
 
 @interface IGInviteDoctroViewController()<UITextFieldDelegate>
 
@@ -68,6 +69,42 @@
 -(void)onInviteBtn:(id)sender{
     
     //先检测填写有效性
+    NSString *phoneNum=self.detailInfo.dPhoneNum;
+    if(![IGRegularExpression isValidPhoneNum:phoneNum]){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机格式错误"];
+        return;
+    }
+    
+    NSString *name=self.detailInfo.dName;
+    if(![IGRegularExpression isValidName:name]){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名格式错误"];
+        return;
+    }
+    
+    NSInteger level=self.detailInfo.dLevel;
+    if(level<1||level>3){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择级别"];
+        return;
+    }
+    
+    NSString *provinceId=self.detailInfo.dProvinceId;
+    if(!provinceId.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择省级"];
+        return;
+    }
+    
+    NSString *cityId=self.detailInfo.dCityId;
+    if(!cityId.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择市区"];
+        return;
+    }
+    
+    NSString *hospital=self.hospitalTF.text;
+    if(!hospital.length>0){
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请填写医院"];
+        return;
+    }
+    
     
     
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];

@@ -199,6 +199,8 @@
                         @"limit":@(20)}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  
+                 NSLog(@"%@",responseObject);
+                 
                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
                      
                      __block NSMutableArray *servicesList=[NSMutableArray array];

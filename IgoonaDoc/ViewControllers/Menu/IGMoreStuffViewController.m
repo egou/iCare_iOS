@@ -66,10 +66,7 @@
             return 0;
         }
     }
-    
-    
-    
-    
+
     if(row==0){
         return 190;
     }else{
@@ -109,6 +106,7 @@
         return cell;
     }
 }
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     cell.clipsToBounds=YES;
 }

@@ -107,6 +107,14 @@
             UIViewController *doneListVC=[sb instantiateViewControllerWithIdentifier:@"IGDoneListViewController"];
             [self.routingOwner.navigationController pushViewController:doneListVC animated:YES];
         }
+        
+        //登出
+        if(event==IGMoreStuffEventTouchLogoutButton){
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
+            
+//            [self.routingOwner.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
     
     

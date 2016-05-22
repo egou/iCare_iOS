@@ -127,6 +127,7 @@
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
+		6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */; settings = {ASSET_TAGS = (); }; };
 		6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -458,6 +459,8 @@
 		6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsDataManager.m; sourceTree = "<group>"; };
 		6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsRequestEntity.h; sourceTree = "<group>"; };
 		6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsRequestEntity.m; sourceTree = "<group>"; };
+		6B6A6EB31CF1830D00E8AEFD /* NSNull+PRJsonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+PRJsonNull.h"; sourceTree = "<group>"; };
+		6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+PRJsonNull.m"; sourceTree = "<group>"; };
 		6B6DA7B71CDEEE1700DB5CBF /* IGDocInfoDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDocInfoDetailObj.h; sourceTree = "<group>"; };
 		6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDocInfoDetailObj.m; sourceTree = "<group>"; };
 		6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyInformationRequestEntity.h; sourceTree = "<group>"; };
@@ -936,6 +939,8 @@
 				6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */,
 				6B0D948A1CE21B5100C5BA6D /* IGRegularExpression.h */,
 				6B0D948B1CE21B5100C5BA6D /* IGRegularExpression.m */,
+				6B6A6EB31CF1830D00E8AEFD /* NSNull+PRJsonNull.h */,
+				6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1579,6 +1584,7 @@
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
+				6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */,
 				6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */,
 				6B0D949E1CE2326300C5BA6D /* IGPatientServicesViewController.m in Sources */,
 				6B032DFD1CC125190027DDAD /* IGMsgDetailDataManager.m in Sources */,
