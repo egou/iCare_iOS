@@ -103,6 +103,9 @@
     NSLog(@"收到通知:%@", [self logDic:userInfo]);
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    
+    //发出通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppDidReceivePushMsgNotification" object:nil userInfo:userInfo];
 }
 
 - (NSString *)logDic:(NSDictionary *)dic {

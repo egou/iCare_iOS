@@ -39,41 +39,66 @@
 }
 
 -(void)onMoreBtn:(UIBarButtonItem*)sender{
-    NSArray *items=@[[KxMenuItem menuItem:@"收入成员"
-                                    image:nil
-                                   target:self
-                                   action:@selector(onSubMenu0)],
-                     [KxMenuItem menuItem:@"收入明细"
-                                    image:nil
-                                   target:self
-                                   action:@selector(onSubMenu1)],
-                     [KxMenuItem menuItem:@"病粉服务"
-                                    image:nil
-                                   target:self
-                                   action:@selector(onSubMenu2)]];
+    
+    NSArray *items=@[];
+    if(MYINFO.type==10||MYINFO.type==11){
+        items=@[[KxMenuItem menuItem:@"收入成员"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuMembers)],
+                [KxMenuItem menuItem:@"收入明细"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuIncome)],
+                [KxMenuItem menuItem:@"病粉服务"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuService)]];
+    }
+    
+    if(MYINFO.type==30){
+        items=@[[KxMenuItem menuItem:@"收入成员"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuMembers)],
+                [KxMenuItem menuItem:@"收入明细"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuIncome)],
+                [KxMenuItem menuItem:@"退出登录"
+                               image:nil
+                              target:self
+                              action:@selector(onSubMenuLogout)]];
+
+    }
+    
     [KxMenu showMenuInView:self.navigationController.view
                   fromRect:CGRectMake([UIScreen mainScreen].bounds.size.width-20,64, 0, 0)
                  menuItems:items];
     
 }
 
--(void)onSubMenu0{
+-(void)onSubMenuMembers{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
     UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGIncomeMembersViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)onSubMenu1{
+-(void)onSubMenuIncome{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
     UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGFinancialDetailViewController"];
     [self.navigationController pushViewController:vc animated:YES];
 
 }
 
--(void)onSubMenu2{
+-(void)onSubMenuService{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
     UIViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGPatientServicesViewController"];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)onSubMenuLogout{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
 }
 
 #pragma mark - Table view data source
@@ -141,9 +166,12 @@
     
     //navigationbar
     self.navigationItem.title=@"我的口粮";
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
-    self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.leftBarButtonItem=backItem;
+    
+    if(MYINFO.type==10||MYINFO.type==11){
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+        self.navigationItem.hidesBackButton=YES;
+        self.navigationItem.leftBarButtonItem=backItem;
+    }
     
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"item_more"] style:UIBarButtonItemStylePlain target:self action:@selector(onMoreBtn:)];
     

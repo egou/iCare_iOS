@@ -11,6 +11,11 @@
 #import "IGSaveInfoCheckBox.h"
 #import "IGForgetPasswordViewController.h"
 
+#import "IGMyIncomeViewController.h"
+#import "IGIncomeMembersViewController.h"
+
+#import "JPUSHService.h"
+
 @interface IGLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textfieldBgView;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTF;
@@ -182,10 +187,17 @@
                                MYINFO.iconId=responseObject[@"icon_idx"];
                                
                                //连接数据库
-                               [IGLOCALMANAGER connectToDataRepositoryWithDocId:username];
+                               if(MYINFO.type==10||MYINFO.type==11)
+                                   [IGLOCALMANAGER connectToDataRepositoryWithDocId:username];
+                               
+                               
+                               
+                               //推送别名绑定
+                               [self p_bindJPushAlias:username];
                                
                                //进入主页面
                                [wSelf p_didLoginSuccess];
+                               
                            }
                            else if(IG_DIC_ASSERT(responseObject, @"success", @0))
                            {
@@ -207,11 +219,46 @@
 
 -(void)p_didLoginSuccess
 {
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
-    UIViewController *mainVC=[sb instantiateInitialViewController];
-    mainVC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:mainVC animated:YES completion:nil];
+    if(MYINFO.type==10||MYINFO.type==11){
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
+        UIViewController *mainVC=[sb instantiateInitialViewController];
+        mainVC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:mainVC animated:YES completion:nil];
+        return;
+    }
     
+    if(MYINFO.type==30){
+        
+        IGMyIncomeViewController *vc=[IGMyIncomeViewController new];
+        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:nc animated:YES completion:nil];
+        
+        return;
+    }
+    
+    if(MYINFO.type==31){
+        
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:[NSBundle mainBundle]];
+        IGIncomeMembersViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGIncomeMembersViewController"];
+        
+        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:vc];
+        
+        [self presentViewController:nc animated:YES completion:nil];
+        
+        return;
+    }
+    
+}
+
+-(void)p_bindJPushAlias:(NSString*)alias{
+    [JPUSHService setTags:nil alias:alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+        
+        if(iResCode==0){
+            NSLog(@"别名绑定成功:[%@]",alias);
+        }else{
+            NSLog(@"别名绑定失败:[%@]",alias);
+        }
+    }];
 }
 
 #pragma mark -  events
@@ -279,6 +326,9 @@
     
     //清空密码
     [IGUserDefaults saveValue:@"" forKey:kIGUserDefaultsPassword];
+    
+    //解除推送绑定
+    [self p_bindJPushAlias:@""];
     
     //退出
     [self dismissViewControllerAnimated:YES completion:nil];

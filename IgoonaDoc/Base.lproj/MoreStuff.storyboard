@@ -270,7 +270,7 @@
                                                         <constraint firstAttribute="width" constant="51" id="bHf-tI-3uG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -299,7 +299,7 @@
                                                         <constraint firstAttribute="width" constant="51" id="GmM-sx-rhL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入战友姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uYp-Pn-IVy">
@@ -441,7 +441,7 @@
                                                 <constraint firstAttribute="width" constant="60" id="sC1-NK-RKe"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00-00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWr-1Q-SsD">
@@ -508,21 +508,21 @@
                                             <rect key="frame" x="20" y="16" width="34" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期限" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs2-NP-e8I">
                                             <rect key="frame" x="546" y="63" width="34" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfK-Ey-Rbd">
                                             <rect key="frame" x="563" y="16" width="17" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zK2-Mz-m6D" userLabel="dotline">
@@ -606,7 +606,7 @@
                                             <rect key="frame" x="19" y="11" width="34" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tk1-9W-LFL">
@@ -618,7 +618,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="重发">
-                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
                                                 <action selector="onReSendBtn:" destination="cW2-ma-25m" eventType="touchUpInside" id="0ed-0e-2oc"/>
@@ -832,7 +832,7 @@
                                                         <constraint firstAttribute="height" constant="44" id="wj0-ti-qsq"/>
                                                     </constraints>
                                                     <state key="normal" title="女" image="btn_circle_unselected">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="onFemaleBtn:" destination="GO6-le-xjN" eventType="touchUpInside" id="jWK-6q-3of"/>
@@ -846,7 +846,7 @@
                                                         <constraint firstAttribute="height" constant="44" id="chJ-Vp-Dvq"/>
                                                     </constraints>
                                                     <state key="normal" title="男" image="btn_circle_selected">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="onMaleBtn:" destination="GO6-le-xjN" eventType="touchUpInside" id="y69-4O-FO1"/>
@@ -1286,7 +1286,7 @@
         <scene sceneID="YUm-qI-NLP">
             <objects>
                 <tableViewController storyboardIdentifier="IGInviteDoctroViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l0m-VS-Mtg" customClass="IGInviteDoctroViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="QzM-q2-ay2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="QzM-q2-ay2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -1389,7 +1389,7 @@
                                                         <constraint firstAttribute="height" constant="44" id="sMa-Xd-FQv"/>
                                                     </constraints>
                                                     <state key="normal" title="男" image="btn_circle_unselected">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="onMaleBtn:" destination="l0m-VS-Mtg" eventType="touchUpInside" id="ymQ-Sc-Ghg"/>
@@ -1403,7 +1403,7 @@
                                                         <constraint firstAttribute="height" constant="44" id="Ug9-XC-hWh"/>
                                                     </constraints>
                                                     <state key="normal" title="女" image="btn_circle_unselected">
-                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="onFemaleBtn:" destination="l0m-VS-Mtg" eventType="touchUpInside" id="wnR-iS-SBl"/>
@@ -1440,7 +1440,7 @@
                                                     <rect key="frame" x="542" y="19" width="17" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1472,7 +1472,7 @@
                                                     <rect key="frame" x="542" y="19" width="17" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1504,7 +1504,7 @@
                                                     <rect key="frame" x="542" y="19" width="17" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2238,7 +2238,7 @@
                                                     <rect key="frame" x="16" y="19" width="51" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymG-zZ-EGL">
@@ -2359,7 +2359,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="1PS-sn-Umh"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入原密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7pj-UD-V0o">
@@ -2397,7 +2397,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="cyt-8u-qFV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xe5-yn-Atm">
@@ -2435,7 +2435,7 @@
                                                         <constraint firstAttribute="width" constant="70" id="PJP-h6-hdX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-st-FX8">

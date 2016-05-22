@@ -47,6 +47,10 @@
     [self.navigationController pushViewController:invitationVC animated:YES];
 }
 
+-(void)onLogoutBtn:(id)sender{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -113,11 +117,22 @@
     
     //navigationbar
     self.navigationItem.title=@"创收成员";
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
-    self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.leftBarButtonItem=backItem;
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddBtn:)];
+    if(MYINFO.type==10||MYINFO.type==11){
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
+        self.navigationItem.hidesBackButton=YES;
+        self.navigationItem.leftBarButtonItem=backItem;
+    }
+    
+    UIBarButtonItem *logoutItem=[[UIBarButtonItem alloc] initWithTitle:@"退出登陆" style:UIBarButtonItemStylePlain target:self action:@selector(onLogoutBtn:)];
+    if(MYINFO.type==31)
+        self.navigationItem.leftBarButtonItem=logoutItem;
+    
+    UIBarButtonItem *addItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAddBtn:)];
+    
+   
+    self.navigationItem.rightBarButtonItems=@[addItem];
+    
     
     //pull to load more
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
