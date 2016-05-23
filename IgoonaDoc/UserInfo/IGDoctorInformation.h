@@ -16,6 +16,8 @@
 @property (nonatomic,copy) NSString *password;
 @property (nonatomic,copy) NSString* iconId;
 @property (nonatomic,assign) NSInteger type;
+@property (nonatomic,assign) BOOL hasAgreed;
+
 
 -(void)clear;
 

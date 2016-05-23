@@ -32,8 +32,11 @@
             }
             return cell;
             
-        }else{  //图片
-            
+        }else{  //医生不会发文字，这种情况是无文字，无图片，返回
+            IGMsgDetailViewCell_MyText* cell=[tableView dequeueReusableCellWithIdentifier:@"IGMsgDetailViewCell_MyText"];
+            [cell setMsg:msg];
+            return cell;
+
         }
         
     }else{

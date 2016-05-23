@@ -7,6 +7,7 @@
 //
 
 #import "IGTaskNavigationController.h"
+#import "IGAgreementViewController.h"
 
 @interface IGTaskNavigationController ()
 
@@ -19,14 +20,18 @@
     // Do any additional setup after loading the view.
 }
 
-//- (BOOL)shouldAutorotate
-//{
-//    return [self.visibleViewController shouldAutorotate];
-//}
-//
-//-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-//    return [self.visibleViewController supportedInterfaceOrientations];
-//}
+-(void)viewWillAppear:(BOOL)animated{
+    if(MYINFO.hasAgreed==NO){
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+        IGAgreementViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGAgreementViewController"];
+        vc.agreeSuccessHandler=^(IGAgreementViewController*agreeVC){
+            [agreeVC dismissViewControllerAnimated:YES completion:nil];
+        };
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+}
+
+
 
 
 @end

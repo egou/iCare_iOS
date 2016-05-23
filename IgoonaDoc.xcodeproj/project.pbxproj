@@ -166,6 +166,7 @@
 		6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; };
 		6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */; };
+		6BF86C581CF34AC00061857C /* IGAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF86C571CF34AC00061857C /* IGAgreementViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */; };
 		6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */; };
 		6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA02B1CB7EE5E0087B569 /* FMDatabaseAdditions.m */; };
@@ -535,6 +536,8 @@
 		6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
 		6BF54C0B1CC3736100B95CD8 /* IGToDoListRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListRouting.h; sourceTree = "<group>"; };
 		6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListRouting.m; sourceTree = "<group>"; };
+		6BF86C561CF34AC00061857C /* IGAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAgreementViewController.h; sourceTree = "<group>"; };
+		6BF86C571CF34AC00061857C /* IGAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAgreementViewController.m; sourceTree = "<group>"; };
 		6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6BFBA0281CB7EE5E0087B569 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -994,6 +997,7 @@
 				6B03E3561CCFB56B0020FE8F /* Report */,
 				6B057CAF1CD5F8AD0059D2F3 /* IGTaskRequestEntity.h */,
 				6B057CB01CD5F8AD0059D2F3 /* IGTaskRequestEntity.m */,
+				6BF86C531CF34A9E0061857C /* agreement */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -1366,6 +1370,15 @@
 			path = MyIncome;
 			sourceTree = "<group>";
 		};
+		6BF86C531CF34A9E0061857C /* agreement */ = {
+			isa = PBXGroup;
+			children = (
+				6BF86C561CF34AC00061857C /* IGAgreementViewController.h */,
+				6BF86C571CF34AC00061857C /* IGAgreementViewController.m */,
+			);
+			path = agreement;
+			sourceTree = "<group>";
+		};
 		6BFBA0271CB7EE5E0087B569 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0C119F1CDA2B83004EFE11 /* IGPatientDetailViewController.m in Sources */,
+				6BF86C581CF34AC00061857C /* IGAgreementViewController.m in Sources */,
 				6B00020B1C9D221900085229 /* IGHTTPClient.m in Sources */,
 				6B0002181C9D221900085229 /* NSArray+MASAdditions.m in Sources */,
 				6B0002211C9D221900085229 /* UIButton+AFNetworking.m in Sources */,

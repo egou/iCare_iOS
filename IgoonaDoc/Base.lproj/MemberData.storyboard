@@ -32,7 +32,7 @@
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_healthLv0" translatesAutoresizingMaskIntoConstraints="NO" id="svq-Iu-P4m">
-                                            <rect key="frame" x="562" y="19" width="22" height="22"/>
+                                            <rect key="frame" x="554" y="15" width="30" height="30"/>
                                             <animations/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ7-Td-U90">
@@ -526,7 +526,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_healthLv0" width="22" height="22"/>
+        <image name="img_healthLv0" width="30" height="30"/>
         <image name="img_item_bp" width="23" height="19"/>
     </resources>
 </document>
