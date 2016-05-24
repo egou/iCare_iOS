@@ -14,6 +14,7 @@
 #import "IGIncomeMembersLv2ViewController.h"
 
 #import "MJRefresh.h"
+#import "IGMyIncomeRequestEntity.h"
 
 @interface IGIncomeMembersViewController ()<IGIncomeMembersDataManagerDelegate>
 
@@ -42,9 +43,18 @@
 
 -(void)onAddBtn:(id)sender{
     
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
-    UIViewController *invitationVC=[sb instantiateViewControllerWithIdentifier:@"IGInviteDoctroViewController"];
-    [self.navigationController pushViewController:invitationVC animated:YES];
+    
+    if(MYINFO.type==30){
+        //总代理
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+        UIViewController *invitationVC=[sb instantiateViewControllerWithIdentifier:@"IGInviteAgencyViewController"];
+        [self.navigationController pushViewController:invitationVC animated:YES];
+    
+    }else{
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+        UIViewController *invitationVC=[sb instantiateViewControllerWithIdentifier:@"IGInviteDoctroViewController"];
+        [self.navigationController pushViewController:invitationVC animated:YES];
+    }
 }
 
 -(void)onLogoutBtn:(id)sender{
@@ -71,6 +81,11 @@
     [cell setMemberInfo:member];
     cell.onReInviteBtnHanlder=^(IGIncomeMembersViewCell* cell){
         NSLog(@"reinvite,%@",member.mId);
+        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [IGMyIncomeRequestEntity requestToReInviteDocOrAgency:member.mId finishHandler:^(BOOL success) {
+            [IGCommonUI hideHUDForView:self.navigationController.view];
+            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"邀请成功":@"邀请失败"];
+        }];
     };
     
     return cell;
@@ -116,9 +131,14 @@
     self.tableView.tableFooterView=[[UIView alloc] init];
     
     //navigationbar
+    
     self.navigationItem.title=@"创收成员";
     
-    if(MYINFO.type==10||MYINFO.type==11){
+    if(MYINFO.type==30){
+        self.navigationItem.title=@"创收下属";
+    }
+    
+    if(MYINFO.type==10||MYINFO.type==11||MYINFO.type==30){
         UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
         self.navigationItem.hidesBackButton=YES;
         self.navigationItem.leftBarButtonItem=backItem;

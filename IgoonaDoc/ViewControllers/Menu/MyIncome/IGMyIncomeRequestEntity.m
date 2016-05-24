@@ -158,6 +158,52 @@
     
 }
 
+
++(void)requestToInviteAgencyWithPhoneNum:(NSString *)phoneNum name:(NSString *)name finishHandler:(void (^)(NSInteger, NSString *))finishHanlder{
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"invite_doctor",
+                        @"userId":phoneNum,
+                        @"name":name}
+             progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+                 NSLog(@"%@",responseObject);
+                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                     
+                     NSString* inviteId=responseObject[@"invite_id"];
+                     finishHanlder(1,inviteId);
+                     
+                 }else{
+                     
+                     if([responseObject[@"reason"] intValue]==7)
+                         finishHanlder(2,nil);
+                     else
+                         finishHanlder(0,nil);
+                 }
+                 
+                 
+             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 finishHanlder(0,nil);
+             }];
+}
+
++(void)requestToReInviteDocOrAgency:(NSString *)inviteId finishHandler:(void (^)(BOOL))finishHandler{
+    [IGHTTPCLIENT GET:@"php/doctor.php"
+           parameters:@{@"action":@"invite_doctor",
+                        @"doctorId":inviteId}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                  
+                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      finishHandler(YES);
+                  }else{
+                      finishHandler(NO);
+                  }
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO);
+              }];
+}
+
+
 +(void)requestForFinancialDetailWithStartNum:(NSInteger)startNum finishHandler:(void (^)(BOOL, NSArray *, NSInteger))finishHandler{
     [IGHTTPCLIENT GET:@"php/doctor.php"
            parameters:@{@"action":@"get_financial_detail",

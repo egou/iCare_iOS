@@ -18,7 +18,6 @@
 
 -(void)pullToRefresh;
 -(void)pullToLoadMore;
-
 @end
 
 

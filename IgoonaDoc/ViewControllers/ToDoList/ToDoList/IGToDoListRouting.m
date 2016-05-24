@@ -108,6 +108,12 @@
             [self.routingOwner.navigationController pushViewController:doneListVC animated:YES];
         }
         
+        if(event==IGMoreStuffEventTouchIgoonaInfo){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            UIViewController *infoVC=[sb instantiateViewControllerWithIdentifier:@"IGIgoonaInfoViewController"];
+            [self.routingOwner.navigationController pushViewController:infoVC animated:YES];
+        }
+        
         //登出
         if(event==IGMoreStuffEventTouchLogoutButton){
             

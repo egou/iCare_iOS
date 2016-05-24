@@ -30,6 +30,17 @@
 +(void)requestToInviteDoctorWithDocInfo:(IGDocInfoDetailObj*)docInfo
                           finishHandler:(void(^)(NSInteger resultCode,NSString *inviteId))finishHanlder;
 
+/**resultCode 0失败 1成功 2用户已注册*/
++(void)requestToInviteAgencyWithPhoneNum:(NSString*)phoneNum
+                                    name:(NSString*)name
+                           finishHandler:(void(^)(NSInteger resultCode,NSString *inviteId))finishHanlder;
+
++(void)requestToReInviteDocOrAgency:(NSString*)inviteId
+                      finishHandler:(void(^)(BOOL success))finishHandler;
+
+
+
+
 /**收入明细*/
 +(void)requestForFinancialDetailWithStartNum:(NSInteger)startNum
                                finishHandler:(void(^)(BOOL success,NSArray *financialInfo,NSInteger total))finishHandler;

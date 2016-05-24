@@ -188,7 +188,6 @@
                                
                                MYINFO.hasAgreed=[responseObject[@"need_agreement"] intValue]!=1;
                                
-                               MYINFO.hasAgreed=NO;
                                
                                //连接数据库
                                if(MYINFO.type==10||MYINFO.type==11)

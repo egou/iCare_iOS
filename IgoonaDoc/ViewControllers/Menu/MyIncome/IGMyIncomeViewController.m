@@ -57,7 +57,7 @@
     }
     
     if(MYINFO.type==30){
-        items=@[[KxMenuItem menuItem:@"收入成员"
+        items=@[[KxMenuItem menuItem:@"创收下属"
                                image:nil
                               target:self
                               action:@selector(onSubMenuMembers)],
