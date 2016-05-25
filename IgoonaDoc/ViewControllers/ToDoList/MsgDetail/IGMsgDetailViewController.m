@@ -92,6 +92,10 @@
     //获取新消息
     [self.tableView.mj_footer beginRefreshing];
     [self p_reloadAllMsgsWithNewMsg:YES];
+    
+    //监听消息通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMsgNotification:) name:@"kAppDidReceivePushMsgNotification" object:nil];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -99,6 +103,8 @@
     [super viewWillDisappear:animated];
     
     [self p_unregisterKeyboardAnimationNote];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - getter & setter
@@ -216,6 +222,18 @@
 - (IBAction)touchEnter:(id)sender {
     [self p_setHintLabelText:@"手指上滑,取消发送"];
     NSLog(@"enter");
+}
+
+
+-(void)onMsgNotification:(NSNotification*)notification{
+    NSDictionary *noteDic= notification.userInfo;
+    
+    if([noteDic[@"type"] intValue]==2){
+        NSString *memberId=[noteDic[@"memberId"] stringValue];
+        if([memberId isEqualToString:self.memberId]){
+            [self.dataManager pullToGetNewMsgs];
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate & Datasource
@@ -434,7 +452,7 @@
         //滚到最底部（最新的）
         if(self.allMsgsCopyArray.count>0){
             NSIndexPath *indexPath=[NSIndexPath indexPathForRow:self.allMsgsCopyArray.count-1 inSection:0];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }
         
     }else{//老消息

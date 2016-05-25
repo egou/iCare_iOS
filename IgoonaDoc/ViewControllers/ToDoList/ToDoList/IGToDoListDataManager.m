@@ -32,10 +32,16 @@
         _toDoListArray=@[];
         _hasLoadedAll=NO;
         _isWorking=NO;
+        
+        //注册消息
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTaskStatusChangedNotification:) name:@"" object:nil];
     }
     return self;
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - getter & setter
 -(IGToDoListInteractor*)dataInteractor
@@ -125,6 +131,35 @@
 
         [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:0 taskInfo:nil reportInfo:nil];
     }
+}
+
+
+-(void)onTaskStatusChangedNotification:(NSNotification*)notification{
+    
+    //if(type==1)
+    
+    NSString *taskId;
+    NSInteger status;
+    
+    
+    NSMutableArray *finishedTasks=[NSMutableArray array];
+    
+    //2处理中,3完成,1未处理
+     NSMutableArray *mTodoList= [self.toDoListArray mutableCopy];
+    [mTodoList enumerateObjectsUsingBlock:^(IGTaskObj* task, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([task.tId isEqualToString:taskId]){
+            task.tStatus=status;
+        }
+        
+        if(task.tStatus==3){
+            [finishedTasks addObject:task];
+        }
+    }];
+    
+    [mTodoList removeObjectsInArray:finishedTasks];
+    self.toDoListArray=[mTodoList copy];
+    
+    [self.delegate toDoListDataManagerdidReceiveTaskStatusChangedNote:self];
 }
 
 @end

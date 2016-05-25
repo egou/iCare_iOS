@@ -26,7 +26,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmK-qd-czS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bp" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-vJ-iWI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient1" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-vJ-iWI">
                                                     <rect key="frame" x="18" y="8" width="60" height="60"/>
                                                     <animations/>
                                                     <constraints>
@@ -815,7 +815,6 @@
     </scenes>
     <resources>
         <image name="doctor1" width="75" height="75"/>
-        <image name="img_bp" width="225" height="168"/>
         <image name="img_sound_me" width="15" height="23"/>
         <image name="img_sound_other" width="15" height="23"/>
         <image name="item_menu" width="23" height="17"/>

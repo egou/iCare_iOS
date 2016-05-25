@@ -46,6 +46,9 @@
     
     //pull to refresh
     [self.tableView.mj_header beginRefreshing];
+    
+    
+
 }
 
 
@@ -189,6 +192,11 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
         [self p_reloadData];
         return;
     }
+}
+
+
+-(void)toDoListDataManagerdidReceiveTaskStatusChangedNote:(IGToDoListDataManager *)manager{
+    [self p_reloadData];
 }
 
 #pragma mark - private methods
