@@ -9,6 +9,7 @@
 #import "IGToDoListDataManager.h"
 #import "IGTaskObj.h"
 #import "IGToDoListInteractor.h"
+#import "JPUSHService.h"
 
 @interface IGToDoListDataManager()
 
@@ -34,7 +35,8 @@
         _isWorking=NO;
         
         //注册消息
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTaskStatusChangedNotification:) name:@"" object:nil];
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onJPushMsgNote:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+       
     }
     return self;
 }
@@ -134,27 +136,59 @@
 }
 
 
--(void)onTaskStatusChangedNotification:(NSNotification*)notification{
+-(void)onJPushMsgNote:(NSNotification*)note{
     
-    //if(type==1)
     
-    NSString *taskId;
-    NSInteger status;
+    NSDictionary *noteInfo= note.userInfo;
+    NSLog(@"receive note:%@",noteInfo);
+    
+    NSDictionary *extrasDic= noteInfo[@"extras"];
+    NSInteger msgType=  [extrasDic[@"type"] integerValue];
+    
+#warning 这里待完善
+    return;
+    
+    if(msgType!=1){
+        return;
+    }
+
+    
+    
+    IGTaskObj *task=[IGTaskObj new];
+    task.tId=extrasDic[@"taskId"];
+    task.tStatus=[extrasDic[@"status"] integerValue];
+    task.tMsg=extrasDic[@"msg"];
+    task.tMemberIconId=[extrasDic[@"iconIdx"] stringValue];
+    task.tMemberName=@"";
+    task.tMemberId=@"";
+    task.tDueTime=extrasDic[@"taskDeadline"];
+    task.tHandleTime=@"";
+    task.tType=[extrasDic[@"taskType"] integerValue];
+
+    
     
     
     NSMutableArray *finishedTasks=[NSMutableArray array];
     
     //2处理中,3完成,1未处理
+    
      NSMutableArray *mTodoList= [self.toDoListArray mutableCopy];
-    [mTodoList enumerateObjectsUsingBlock:^(IGTaskObj* task, NSUInteger idx, BOOL * _Nonnull stop) {
-        if([task.tId isEqualToString:taskId]){
-            task.tStatus=status;
+    __block BOOL newTask=YES;   //判断是否为新任务
+    [mTodoList enumerateObjectsUsingBlock:^(IGTaskObj* t, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([t.tId isEqualToString:task.tId]){
+            t.tStatus=task.tStatus;
+            newTask=NO;
         }
         
-        if(task.tStatus==3){
-            [finishedTasks addObject:task];
+        if(t.tStatus==3){
+            [finishedTasks addObject:t];
         }
     }];
+    
+    //如果是新任务，则插到最前面
+    if(newTask&&task.tStatus!=3){
+        [mTodoList insertObject:task atIndex:0];
+    }
     
     [mTodoList removeObjectsInArray:finishedTasks];
     self.toDoListArray=[mTodoList copy];

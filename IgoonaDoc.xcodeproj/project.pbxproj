@@ -116,6 +116,7 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2049CE1CF752140032297D /* TWMessageBarManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */; settings = {ASSET_TAGS = (); }; };
@@ -440,6 +441,8 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B2049CD1CF752140032297D /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
+		6B2049CE1CF752140032297D /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
 		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
 		6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailViewCell.m; sourceTree = "<group>"; };
 		6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailObj.h; sourceTree = "<group>"; };
@@ -781,6 +784,7 @@
 		6B0001B01C9D221800085229 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				6B2049CC1CF752140032297D /* TWMessageBarManager */,
 				6B0D948F1CE22D3A00C5BA6D /* KxMenu */,
 				6BFBA0271CB7EE5E0087B569 /* fmdb */,
 				6B1584CE1CB13151009C4EAD /* JPush */,
@@ -1188,6 +1192,15 @@
 				6B1584BC1CB130A4009C4EAD /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B2049CC1CF752140032297D /* TWMessageBarManager */ = {
+			isa = PBXGroup;
+			children = (
+				6B2049CD1CF752140032297D /* TWMessageBarManager.h */,
+				6B2049CE1CF752140032297D /* TWMessageBarManager.m */,
+			);
+			path = TWMessageBarManager;
 			sourceTree = "<group>";
 		};
 		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
@@ -1663,6 +1676,7 @@
 				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
 				6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */,
+				6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */,
 				6BA60F141CD768CF00E39D54 /* IGMyIncomeViewController.m in Sources */,
 				2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */,
 				6B0002081C9D221900085229 /* IGCommonUI.m in Sources */,

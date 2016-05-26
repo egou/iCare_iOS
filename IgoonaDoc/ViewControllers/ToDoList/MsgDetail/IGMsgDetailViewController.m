@@ -93,8 +93,6 @@
     [self.tableView.mj_footer beginRefreshing];
     [self p_reloadAllMsgsWithNewMsg:YES];
     
-    //监听消息通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMsgNotification:) name:@"kAppDidReceivePushMsgNotification" object:nil];
     
 }
 
@@ -104,7 +102,6 @@
     
     [self p_unregisterKeyboardAnimationNote];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - getter & setter
@@ -225,16 +222,7 @@
 }
 
 
--(void)onMsgNotification:(NSNotification*)notification{
-    NSDictionary *noteDic= notification.userInfo;
-    
-    if([noteDic[@"type"] intValue]==2){
-        NSString *memberId=[noteDic[@"memberId"] stringValue];
-        if([memberId isEqualToString:self.memberId]){
-            [self.dataManager pullToGetNewMsgs];
-        }
-    }
-}
+
 
 #pragma mark - UITableViewDelegate & Datasource
 

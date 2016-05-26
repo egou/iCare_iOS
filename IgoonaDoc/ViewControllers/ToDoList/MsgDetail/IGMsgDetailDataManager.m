@@ -271,11 +271,21 @@
 #pragma mark - Push Note
 -(void)onJPushMsgNote:(NSNotification*)note
 {
-   NSDictionary *noteInfo= note.userInfo;
+    //获得推送，刷新一下（待优化成短消息直接更新，不刷新）
+    
+    NSDictionary *noteInfo= note.userInfo;
     NSLog(@"receive note:%@",noteInfo);
     
-    //获得推送，刷新一下（待优化成短消息直接更新，不刷新）
-    [self pullToGetNewMsgs];
+    NSDictionary *extrasDic= noteInfo[@"extras"];
+    NSInteger msgType=  [extrasDic[@"type"] integerValue];
+    
+    if(msgType==2){
+        NSString *memberId=[extrasDic[@"memberId"] stringValue];
+        if([memberId isEqualToString:self.patientId]){
+           [self pullToGetNewMsgs];
+        }
+    }
+
 }
 
 @end

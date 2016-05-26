@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JPUSHService.h"
-
+#import "TWMessageBarManager.h"
 
 @interface AppDelegate ()
 
@@ -104,8 +104,7 @@
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     
-    //发出通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppDidReceivePushMsgNotification" object:nil userInfo:userInfo];
+   //apns通知直接忽略了
 }
 
 - (NSString *)logDic:(NSDictionary *)dic {
@@ -129,22 +128,12 @@
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    NSString *title = [userInfo valueForKey:@"title"];
-    NSString *content = [userInfo valueForKey:@"content"];
-    NSDictionary *extra = [userInfo valueForKey:@"extras"];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    
-    NSString *currentContent = [NSString
-                                stringWithFormat:
-                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
-                                [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                               dateStyle:NSDateFormatterNoStyle
-                                                               timeStyle:NSDateFormatterMediumStyle],
-                                title, content, [self logDic:extra]];
-    NSLog(@"%@", currentContent);
+    //此处用来在应用运行时候显示横幅
+
+    NSLog(@"%@", notification.userInfo);
+    NSString* desc= [@([notification.userInfo[@"extras"][@"type"] integerValue]) stringValue];
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"收到新推送" description:desc type:TWMessageBarMessageTypeInfo duration:2];
 }
 
 @end
