@@ -36,8 +36,12 @@
     [self.tableView.mj_header beginRefreshing];
 }
 
+-(void)dealloc{
+    
+}
 #pragma mark - events
 -(void)onBackBtn:(id)sender{
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -111,6 +115,8 @@
 
 #pragma mark - private methods
 -(void)p_initAdditionalUI{
+    
+    
     //tableview
     self.tableView.backgroundColor=IGUI_NormalBgColor;
     self.tableView.tableFooterView=[[UIView alloc] init];
@@ -127,16 +133,18 @@
     }
     
     //pull to refresh
+    
+    __weak typeof(self) wSelf=self;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [IGMyTeamRequestEntity requestForTeamInfoFinishHandler:^(BOOL success, NSArray *teamInfo) {
-            [self.tableView.mj_header endRefreshing];
+            [wSelf.tableView.mj_header endRefreshing];
             
             if(success){
-                self.memberList=teamInfo;
-                [self.tableView reloadData];
+                wSelf.memberList=teamInfo;
+                [wSelf.tableView reloadData];
             }else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取信息失败"];
+                [IGCommonUI showHUDShortlyAddedTo:wSelf.navigationController.view alertMsg:@"获取信息失败"];
             }
         }];
         

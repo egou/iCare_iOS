@@ -103,7 +103,9 @@
     [self p_unregisterKeyboardAnimationNote];
     
 }
-
+-(void)dealloc{
+    
+}
 #pragma mark - getter & setter
 -(void)setCurrentMsgType:(NSInteger)currentMsgType
 {
@@ -388,12 +390,13 @@
     
     
     //pull to refresh
+    __weak typeof(self) wSelf=self;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.dataManager pullToGetOldMsgs];
+        [wSelf.dataManager pullToGetOldMsgs];
     }];
     
     MJRefreshBackNormalFooter *backFooter=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self.dataManager pullToGetNewMsgs];
+        [wSelf.dataManager pullToGetNewMsgs];
     }];
     self.tableView.mj_footer=backFooter;
 }

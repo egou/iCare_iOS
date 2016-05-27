@@ -131,9 +131,12 @@
     
     //此处用来在应用运行时候显示横幅
 
-    NSLog(@"%@", notification.userInfo);
-    NSString* desc= [@([notification.userInfo[@"extras"][@"type"] integerValue]) stringValue];
-    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"收到新推送" description:desc type:TWMessageBarMessageTypeInfo duration:2];
+    NSLog(@"收到推送%@", [@([notification.userInfo[@"extras"][@"type"] integerValue]) stringValue]);
+    
+//    NSInteger type=[notification.userInfo[@"extras"][@"type"] integerValue];
+//    if(type==2){
+//        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"【我好了】任务更新" description:@"你有了新任务" type:TWMessageBarMessageTypeInfo duration:2];
+//    }
 }
 
 @end

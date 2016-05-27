@@ -10,6 +10,7 @@
 #import "IGTaskObj.h"
 #import "IGToDoListInteractor.h"
 #import "JPUSHService.h"
+#import "TWMessageBarManager.h"
 
 @interface IGToDoListDataManager()
 
@@ -145,23 +146,24 @@
     NSDictionary *extrasDic= noteInfo[@"extras"];
     NSInteger msgType=  [extrasDic[@"type"] integerValue];
     
-#warning 这里待完善
-    return;
+    
     
     if(msgType!=1){
         return;
     }
 
+
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"【我好了】任务更新" description:@"你有了新任务" type:TWMessageBarMessageTypeInfo duration:2];
     
-    
+    //这一版只做新任务的推送
     IGTaskObj *task=[IGTaskObj new];
-    task.tId=extrasDic[@"taskId"];
-    task.tStatus=[extrasDic[@"status"] integerValue];
+    task.tId=[extrasDic[@"id"] stringValue];
+    task.tStatus=1;
     task.tMsg=extrasDic[@"msg"];
-    task.tMemberIconId=[extrasDic[@"iconIdx"] stringValue];
-    task.tMemberName=@"";
-    task.tMemberId=@"";
-    task.tDueTime=extrasDic[@"taskDeadline"];
+    task.tMemberIconId=extrasDic[@"iconIdx"];
+    task.tMemberName=extrasDic[@"memberName"];
+    task.tMemberId=extrasDic[@"memberId"];
+    task.tDueTime=extrasDic[@"dueTime"];
     task.tHandleTime=@"";
     task.tType=[extrasDic[@"taskType"] integerValue];
 

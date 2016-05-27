@@ -11,6 +11,8 @@
 #import "IGMsgDetailObj.h"
 #import "JPUSHService.h"
 
+#import "TWMessageBarManager.h"
+
 @interface IGMsgDetailDataManager()
 @property (nonatomic,copy) NSString *patientId;
 @property (nonatomic,copy) NSString *taskId;
@@ -271,7 +273,9 @@
 #pragma mark - Push Note
 -(void)onJPushMsgNote:(NSNotification*)note
 {
-    //获得推送，刷新一下（待优化成短消息直接更新，不刷新）
+    //获得推送，此处无论如何都刷新一下（待优化成短消息直接更新，不刷新）
+    
+    
     
     NSDictionary *noteInfo= note.userInfo;
     NSLog(@"receive note:%@",noteInfo);
@@ -281,10 +285,16 @@
     
     if(msgType==2){
         NSString *memberId=[extrasDic[@"memberId"] stringValue];
-        if([memberId isEqualToString:self.patientId]){
+        if([memberId isEqualToString:self.patientId]){  //正在通话
            [self pullToGetNewMsgs];
+            
+            //不好，把界面信息写到这里了，待优化
+            NSString *msg=extrasDic[@"msg"];
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"【我好了】新对话消息" description:msg type:TWMessageBarMessageTypeInfo duration:2];
         }
     }
+    
+    
 
 }
 
