@@ -29,7 +29,7 @@
 
 +(BOOL)isValidPassword:(NSString*)password{
     
-    NSString *regex=@"^[0-9]+$";
+    NSString *regex=@"^.{6,}$";
     NSPredicate *predicate=[NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     
     return [predicate evaluateWithObject:password];
@@ -38,6 +38,11 @@
 
 +(BOOL)isValidName:(NSString *)name{
     return name.length>0;
+}
+
+
++(BOOL)isValidInvitationCode:(NSString *)invitationCode{
+    return invitationCode.length>0;
 }
 
 +(BOOL)isValidHeight:(NSString *)height{

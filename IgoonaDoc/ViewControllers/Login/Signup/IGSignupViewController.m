@@ -9,6 +9,7 @@
 #import "IGSignupViewController.h"
 #import "IGSaveInfoCheckBox.h"
 #import "IGUserDefaults.h"
+#import "IGRegularExpression.h"
 
 @interface IGSignupViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textFieldBgView;
@@ -99,19 +100,19 @@
     NSString *password=[self.passwordTF.text copy];
     NSString *invitationCode=[self.invitationCodeTF.text copy];//21432445433
     
-    if(![IGCommonValidExpression isValidUsername:username])
+    if(![IGRegularExpression isValidPhoneNum:username])
     {
         [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户名格式错误"];
         return;
     }
     
-    if(![IGCommonValidExpression isValidUsername:password])
+    if(![IGRegularExpression isValidPassword:password])
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码至少为6个字符"];
         return;
     }
     
-    if(![IGCommonValidExpression isValidUsername:invitationCode])
+    if(![IGRegularExpression isValidInvitationCode:invitationCode])
     {
         [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码格式错误"];
         return;

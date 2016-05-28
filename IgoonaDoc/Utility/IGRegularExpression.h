@@ -14,6 +14,8 @@
 +(BOOL)isValidConfirmationNum:(NSString*)confirmationNum;
 +(BOOL)isValidPassword:(NSString*)password;
 +(BOOL)isValidName:(NSString*)name;
++(BOOL)isValidInvitationCode:(NSString*)invitationCode;
+
 
 +(BOOL)isValidHeight:(NSString *)height;
 +(BOOL)isValidWeight:(NSString*)weight;

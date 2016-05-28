@@ -39,7 +39,7 @@
     
     
     //JPush
-    [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+    [JPUSHService registerForRemoteNotificationTypes:(/*UIUserNotificationTypeBadge |*/
                                                       UIUserNotificationTypeSound |
                                                       UIUserNotificationTypeAlert)
                                           categories:nil];
@@ -56,6 +56,8 @@
                           name:kJPFNetworkDidReceiveMessageNotification
                         object:nil];
     
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     return YES;
 }
 

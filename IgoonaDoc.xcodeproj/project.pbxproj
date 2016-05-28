@@ -35,7 +35,6 @@
 		6B0002061C9D221900085229 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001A01C9D221800085229 /* LaunchScreen.storyboard */; };
 		6B0002071C9D221900085229 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001A21C9D221800085229 /* Login.storyboard */; };
 		6B0002081C9D221900085229 /* IGCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001A71C9D221800085229 /* IGCommonUI.m */; };
-		6B0002091C9D221900085229 /* IGCommonValidExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001A91C9D221800085229 /* IGCommonValidExpression.m */; };
 		6B00020A1C9D221900085229 /* IGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001AC1C9D221800085229 /* IGUserDefaults.m */; };
 		6B00020B1C9D221900085229 /* IGHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001AF1C9D221800085229 /* IGHTTPClient.m */; };
 		6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001B31C9D221800085229 /* AFHTTPSessionManager.m */; };
@@ -282,8 +281,6 @@
 		6B0001A51C9D221800085229 /* IGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCommon.h; sourceTree = "<group>"; };
 		6B0001A61C9D221800085229 /* IGCommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCommonUI.h; sourceTree = "<group>"; };
 		6B0001A71C9D221800085229 /* IGCommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCommonUI.m; sourceTree = "<group>"; };
-		6B0001A81C9D221800085229 /* IGCommonValidExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCommonValidExpression.h; sourceTree = "<group>"; };
-		6B0001A91C9D221800085229 /* IGCommonValidExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCommonValidExpression.m; sourceTree = "<group>"; };
 		6B0001AB1C9D221800085229 /* IGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGUserDefaults.h; sourceTree = "<group>"; };
 		6B0001AC1C9D221800085229 /* IGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGUserDefaults.m; sourceTree = "<group>"; };
 		6B0001AE1C9D221800085229 /* IGHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGHTTPClient.h; sourceTree = "<group>"; };
@@ -757,8 +754,6 @@
 				6B0001A51C9D221800085229 /* IGCommon.h */,
 				6B0001A61C9D221800085229 /* IGCommonUI.h */,
 				6B0001A71C9D221800085229 /* IGCommonUI.m */,
-				6B0001A81C9D221800085229 /* IGCommonValidExpression.h */,
-				6B0001A91C9D221800085229 /* IGCommonValidExpression.m */,
 			);
 			path = IGCommon;
 			sourceTree = "<group>";
@@ -1603,7 +1598,6 @@
 				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */,
-				6B0002091C9D221900085229 /* IGCommonValidExpression.m in Sources */,
 				6BA60F051CD70DDD00E39D54 /* IGMyPatientsViewController.m in Sources */,
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
 				6B13257B1CE8B2DB00C2A8C3 /* IGInvitedCustomersViewController.m in Sources */,

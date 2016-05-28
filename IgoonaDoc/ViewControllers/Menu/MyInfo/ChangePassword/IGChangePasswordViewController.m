@@ -39,12 +39,12 @@
     NSString *newPwd2=self.confirmPwdTF.text;
     
     if(![IGRegularExpression isValidPassword:oldPwd]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"原密码格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"原密码至少为6个字符"];
         return;
     }
     
     if(![IGRegularExpression isValidPassword:newPwd1]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码至少为6个字符"];
         return;
     }
     

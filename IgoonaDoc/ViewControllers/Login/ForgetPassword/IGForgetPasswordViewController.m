@@ -61,7 +61,7 @@
     
     NSString *password=self.changePwdTF.text;
     if(![IGRegularExpression isValidPassword:password]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码至少为6个字符"];
         return;
     }
     

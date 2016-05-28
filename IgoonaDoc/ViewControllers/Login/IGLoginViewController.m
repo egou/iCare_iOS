@@ -15,6 +15,7 @@
 #import "IGIncomeMembersViewController.h"
 
 #import "JPUSHService.h"
+#import "IGRegularExpression.h"
 
 @interface IGLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textfieldBgView;
@@ -143,15 +144,15 @@
     NSString *username=[self.usernameTF.text copy];
     NSString *password=[self.passwordTF.text copy];
     
-    if(![IGCommonValidExpression isValidUsername:self.usernameTF.text])
+    if(!username.length>0)
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户名格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户名不能为空"];
         return;
     }
     
-    if(![IGCommonValidExpression isValidPassword:self.passwordTF.text])
+    if(!password.length>0)
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码格式错误"];
+        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码不能为空"];
         return;
     }
     
