@@ -96,6 +96,8 @@
 		6B0D94A21CE2347300C5BA6D /* IGIncomeMembersDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A11CE2347200C5BA6D /* IGIncomeMembersDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6B0D94A71CE2358300C5BA6D /* IGIncomeMemeberObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A61CE2358300C5BA6D /* IGIncomeMemeberObj.m */; settings = {ASSET_TAGS = (); }; };
 		6B0D94AA1CE2382B00C5BA6D /* IGIncomeMembersViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A91CE2382B00C5BA6D /* IGIncomeMembersViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6B0E84101CFAEB680000E62E /* IGEkgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E840F1CFAEB680000E62E /* IGEkgView.m */; settings = {ASSET_TAGS = (); }; };
 		6B1325701CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B13256B1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		6B1325711CE8725900C2A8C3 /* IGChangeMyPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B13256D1CE8725900C2A8C3 /* IGChangeMyPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1325731CE8729200C2A8C3 /* IGChangePasswordViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -409,6 +411,10 @@
 		6B0D94A61CE2358300C5BA6D /* IGIncomeMemeberObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMemeberObj.m; sourceTree = "<group>"; };
 		6B0D94A81CE2382B00C5BA6D /* IGIncomeMembersViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersViewCell.h; sourceTree = "<group>"; };
 		6B0D94A91CE2382B00C5BA6D /* IGIncomeMembersViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMembersViewCell.m; sourceTree = "<group>"; };
+		6B0E84091CFAEADE0000E62E /* IGEkgDataV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgDataV2ViewController.h; sourceTree = "<group>"; };
+		6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgDataV2ViewController.m; sourceTree = "<group>"; };
+		6B0E840E1CFAEB680000E62E /* IGEkgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgView.h; sourceTree = "<group>"; };
+		6B0E840F1CFAEB680000E62E /* IGEkgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgView.m; sourceTree = "<group>"; };
 		6B13256A1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewCell.h; sourceTree = "<group>"; };
 		6B13256B1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyPhotoViewCell.m; sourceTree = "<group>"; };
 		6B13256C1CE8725900C2A8C3 /* IGChangeMyPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewController.h; sourceTree = "<group>"; };
@@ -1281,6 +1287,10 @@
 			children = (
 				6B87C03D1CD513F20050495B /* IGEkgDataViewController.h */,
 				6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */,
+				6B0E84091CFAEADE0000E62E /* IGEkgDataV2ViewController.h */,
+				6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */,
+				6B0E840E1CFAEB680000E62E /* IGEkgView.h */,
+				6B0E840F1CFAEB680000E62E /* IGEkgView.m */,
 			);
 			path = ekg;
 			sourceTree = "<group>";
@@ -1614,6 +1624,7 @@
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
+				6B0E84101CFAEB680000E62E /* IGEkgView.m in Sources */,
 				6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */,
 				6B032E031CC125190027DDAD /* IGToDoListInteractor.m in Sources */,
 				6B0D949E1CE2326300C5BA6D /* IGPatientServicesViewController.m in Sources */,
@@ -1667,6 +1678,7 @@
 				6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
+				6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */,
 				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
 				6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */,

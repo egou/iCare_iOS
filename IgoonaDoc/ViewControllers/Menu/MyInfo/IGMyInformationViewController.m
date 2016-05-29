@@ -142,7 +142,7 @@
     
     self.userNameLabel.text=MYINFO.username;
     self.nameLabel.text=self.detailInfo.dName;
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",self.detailInfo.dIconId]];
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head%@",self.detailInfo.dIconId]];
     
     NSArray *levels=@[@"主治",@"副主任",@"主任"];
     NSInteger level=self.detailInfo.dLevel;

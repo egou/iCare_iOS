@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger,IGMoreStuffEvent){
     
     IGMoreStuffEventTouchLogoutButton,
     
-    IGMoreStuffEventSwipe
+    IGMoreStuffEventSwipe,
+    IGMoreStuffEventTap
 };
 
 @protocol IGMoreStuffViewControllerDelegate;

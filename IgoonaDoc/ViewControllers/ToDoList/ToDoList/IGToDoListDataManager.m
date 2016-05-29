@@ -35,8 +35,10 @@
         _hasLoadedAll=NO;
         _isWorking=NO;
         
-        //注册消息
+        //注册消息jpush
          [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onJPushMsgNote:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+        //对话，报告完成会发一个通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTaskFinishedNote:) name:@"kTaskFinishedNotification" object:nil];
        
     }
     return self;
@@ -195,7 +197,31 @@
     [mTodoList removeObjectsInArray:finishedTasks];
     self.toDoListArray=[mTodoList copy];
     
-    [self.delegate toDoListDataManagerdidReceiveTaskStatusChangedNote:self];
+    [self.delegate toDoListDataManagerdidChangedTaskStatus:self];
 }
+
+
+-(void)onTaskFinishedNote:(NSNotification*)note{
+    
+    NSString *taskId=note.userInfo[@"taskId"];
+    
+    NSMutableArray *mTasks=[self.toDoListArray mutableCopy];
+    
+    __block IGTaskObj * taskFinished;
+    [mTasks enumerateObjectsUsingBlock:^(IGTaskObj *t, NSUInteger idx, BOOL * _Nonnull stop) {
+        if([t.tId isEqualToString:taskId]){
+            *stop=YES;
+            taskFinished=t;
+        }
+    }];
+    
+    if(taskFinished){
+       [mTasks removeObject:taskFinished];
+        self.toDoListArray=[mTasks copy];
+        [self.delegate toDoListDataManagerdidChangedTaskStatus:self];
+    }
+    
+}
+
 
 @end

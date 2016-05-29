@@ -524,6 +524,57 @@
             </objects>
             <point key="canvasLocation" x="2110" y="372"/>
         </scene>
+        <!--Ekg DataV2 View Controller-->
+        <scene sceneID="qdn-0J-orI">
+            <objects>
+                <viewController storyboardIdentifier="IGEkgDataV2ViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I1a-jW-r6e" customClass="IGEkgDataV2ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AcS-hc-iVO"/>
+                        <viewControllerLayoutGuide type="bottom" id="5yk-1k-OTW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Fc-hL-VF3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgb-V3-oNd">
+                                <rect key="frame" x="0.0" y="156" width="600" height="288"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-xX-nAn" customClass="IGEkgView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1800" height="288"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="288" id="JSj-Ex-uX6"/>
+                                            <constraint firstAttribute="width" constant="1800" id="cOo-nf-QuU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="TMS-xX-nAn" firstAttribute="leading" secondItem="dgb-V3-oNd" secondAttribute="leading" id="1Rp-yM-Q6I"/>
+                                    <constraint firstAttribute="trailing" secondItem="TMS-xX-nAn" secondAttribute="trailing" id="5xW-ZU-wbG"/>
+                                    <constraint firstAttribute="height" constant="288" id="fGx-GD-VWO"/>
+                                    <constraint firstAttribute="bottom" secondItem="TMS-xX-nAn" secondAttribute="bottom" id="k2D-m0-nja"/>
+                                    <constraint firstItem="TMS-xX-nAn" firstAttribute="top" secondItem="dgb-V3-oNd" secondAttribute="top" id="pHn-Y6-1na"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dgb-V3-oNd" firstAttribute="centerY" secondItem="2Fc-hL-VF3" secondAttribute="centerY" id="Mo1-VJ-JDF"/>
+                            <constraint firstItem="dgb-V3-oNd" firstAttribute="leading" secondItem="2Fc-hL-VF3" secondAttribute="leading" id="jgx-DY-VWO"/>
+                            <constraint firstAttribute="trailing" secondItem="dgb-V3-oNd" secondAttribute="trailing" id="mii-kH-Dmb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ekgView" destination="TMS-xX-nAn" id="euw-kC-wRy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zao-f6-Mnn" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1411" y="1061"/>
+        </scene>
     </scenes>
     <resources>
         <image name="img_healthLv0" width="30" height="30"/>

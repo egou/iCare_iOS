@@ -10,6 +10,7 @@
 
 @interface IGMoreStuffViewController()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *blankView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 @end
@@ -47,6 +48,9 @@
     [self.delegate moreStuffViewController:self onEvent:IGMoreStuffEventSwipe];
 }
 
+- (IBAction)onTapBlankViewGesture:(id)sender {
+    [self.delegate moreStuffViewController:self onEvent:IGMoreStuffEventTap];
+}
 
 #pragma mark -  tableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -80,7 +84,7 @@
         
         IGMoreStuffViewMyInfoCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGMoreStuffViewMyInfoCell"];
         
-        cell.myPhotoIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",MYINFO.iconId]];
+        cell.myPhotoIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head%@",MYINFO.iconId]];
         cell.myPhoneNumLabel.text=MYINFO.username;
         
         __weak typeof(self) wSelf=self;

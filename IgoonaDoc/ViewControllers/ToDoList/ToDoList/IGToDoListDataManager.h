@@ -59,7 +59,7 @@
 -(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
 
 /*任务状态发生变化**/
--(void)toDoListDataManagerdidReceiveTaskStatusChangedNote:(IGToDoListDataManager *)manager;
+-(void)toDoListDataManagerdidChangedTaskStatus:(IGToDoListDataManager *)manager;
 
 @end
 

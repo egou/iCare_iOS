@@ -43,7 +43,7 @@
     IGChangeMyPhotoViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"IGChangeMyPhotoViewCell" forIndexPath:indexPath];
     
     
-    NSString *photoName=[NSString stringWithFormat:@"doctor%@",self.allPhotoIds[indexPath.row]];
+    NSString *photoName=[NSString stringWithFormat:@"head%@",self.allPhotoIds[indexPath.row]];
     cell.photoIV.image=[UIImage imageNamed:photoName];
 
     if(self.selectedIndex==indexPath.row){

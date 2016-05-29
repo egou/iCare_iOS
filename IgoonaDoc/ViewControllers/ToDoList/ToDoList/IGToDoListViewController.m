@@ -195,7 +195,7 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
 }
 
 
--(void)toDoListDataManagerdidReceiveTaskStatusChangedNote:(IGToDoListDataManager *)manager{
+-(void)toDoListDataManagerdidChangedTaskStatus:(IGToDoListDataManager *)manager{
     [self p_reloadData];
 }
 

@@ -92,7 +92,7 @@
 }
 -(void)setMsg:(IGMsgDetailObj *)msg{
     
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",msg.mPhotoId]];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head%@",msg.mPhotoId]];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.msgLabel.text=msg.mText;
 }
@@ -122,7 +122,7 @@
 }
 -(void)setMsg:(IGMsgDetailObj *)msg{
     
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",msg.mPhotoId]];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head%@",msg.mPhotoId]];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.audioDurationLabel.text=[NSString stringWithFormat:@"%d\"",(int)msg.mAudioDuration];
     
@@ -158,7 +158,7 @@
 
 }
 -(void)setMsg:(IGMsgDetailObj *)msg{
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"patient%@",msg.mPhotoId]];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",msg.mPhotoId]];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.msgLabel.text=msg.mText;
 }
@@ -193,7 +193,7 @@
 }
 
 -(void)setMsg:(IGMsgDetailObj *)msg{
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"patient%@",msg.mPhotoId]];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",msg.mPhotoId]];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.audioDurationLabel.text=[NSString stringWithFormat:@"%d\"",(int)msg.mAudioDuration];
 }
@@ -224,7 +224,7 @@
     self.contentView.backgroundColor=IGUI_NormalBgColor;
     self.iconIV.layer.cornerRadius=4;
     
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"patient%@",msg.mPhotoId]];//此处应根据头像标识判断
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",msg.mPhotoId]];//此处应根据头像标识判断
     self.timeLabel.text=msg.mTime;
     self.imageMsgIV.image=[UIImage imageWithData:msg.mThumbnail];
 }

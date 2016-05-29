@@ -43,7 +43,7 @@
     
     
     if(status==0){
-        self.statusLabel.text=@"空闲";
+        self.statusLabel.text=@"离线";
         self.statusLabel.textColor=[UIColor lightGrayColor];
         
          self.editBtn.layer.borderColor=[UIColor lightGrayColor].CGColor;

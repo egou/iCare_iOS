@@ -20,6 +20,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-Ze-YNU" userLabel="blank View">
+                                <rect key="frame" x="510" y="0.0" width="90" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jw1-jR-7OU" appends="YES" id="Ej4-Ug-ntf"/>
+                                </connections>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cXe-5R-SIT">
                                 <rect key="frame" x="0.0" y="0.0" width="510" height="600"/>
                                 <animations/>
@@ -64,7 +73,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="510" height="189"/>
                                                     <animations/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor1" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-yz-ist">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="Ypu-yz-ist">
                                                     <rect key="frame" x="205" y="45" width="100" height="100"/>
                                                     <animations/>
                                                     <gestureRecognizers/>
@@ -111,17 +120,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="QMr-mp-Fvk" firstAttribute="top" secondItem="Gax-Ze-YNU" secondAttribute="bottom" id="BZh-zN-P9Y"/>
                             <constraint firstItem="QMr-mp-Fvk" firstAttribute="top" secondItem="cXe-5R-SIT" secondAttribute="bottom" id="LYE-tX-cAA"/>
                             <constraint firstItem="cXe-5R-SIT" firstAttribute="top" secondItem="j35-h1-WLN" secondAttribute="top" id="Lh6-9i-5Ba"/>
                             <constraint firstItem="cXe-5R-SIT" firstAttribute="leading" secondItem="j35-h1-WLN" secondAttribute="leading" id="NBt-DG-5rJ"/>
+                            <constraint firstItem="Gax-Ze-YNU" firstAttribute="top" secondItem="j35-h1-WLN" secondAttribute="top" id="RDl-n1-bMy"/>
+                            <constraint firstItem="Gax-Ze-YNU" firstAttribute="leading" secondItem="cXe-5R-SIT" secondAttribute="trailing" id="VRt-81-6He"/>
                             <constraint firstAttribute="trailing" secondItem="cXe-5R-SIT" secondAttribute="trailing" constant="90" id="ot1-XY-rEq"/>
+                            <constraint firstAttribute="trailing" secondItem="Gax-Ze-YNU" secondAttribute="trailing" id="zCx-4o-Lod"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="OQk-aP-dFk" appends="YES" id="O62-um-Yxr"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="logoutBtn" destination="lDh-0O-aLv" id="Dz5-g5-FOP"/>
+                        <outlet property="blankView" destination="Gax-Ze-YNU" id="cfS-Po-1S0"/>
+                        <outlet property="logoutBtn" destination="lDh-0O-aLv" id="l6U-Xe-fTF"/>
                         <outlet property="tableView" destination="cXe-5R-SIT" id="iC7-FW-wdi"/>
                     </connections>
                 </viewController>
@@ -131,6 +145,11 @@
                         <action selector="onSwipeGesture:" destination="Ivd-dy-WZy" id="ahV-ub-73t"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="jw1-jR-7OU">
+                    <connections>
+                        <action selector="onTapBlankViewGesture:" destination="Ivd-dy-WZy" id="GZo-Qp-NBH"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-55" y="352"/>
         </scene>
@@ -846,7 +865,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">4002312345[</string>
+                                        <string key="content">4002312345
+[</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -871,7 +891,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">http://www.igoona.cn</string>
+                                        <string key="content">http://www.igoona.cn
+</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -924,7 +945,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">1</string>
+                                        <string key="content">
+1</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -935,7 +957,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">2</string>
+                                        <string key="content">
+2</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -946,7 +969,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">3</string>
+                                        <string key="content">
+3</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -970,7 +994,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">1</string>
+                                        <string key="content">
+1</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -982,7 +1007,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">2</string>
+                                        <string key="content">
+2</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -1053,7 +1079,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">3</string>
+                                        <string key="content">
+3</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -1094,7 +1121,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">4</string>
+                                        <string key="content">
+4</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -1115,7 +1143,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">5</string>
+                                        <string key="content">
+5</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -1136,7 +1165,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">6</string>
+                                        <string key="content">
+6</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -1147,7 +1177,8 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">7</string>
+                                        <string key="content">
+7</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>
                                         </attributes>
@@ -3386,6 +3417,6 @@ DQ0
         <image name="bg_me" width="285" height="193"/>
         <image name="btn_circle_selected" width="17" height="17"/>
         <image name="btn_circle_unselected" width="17" height="17"/>
-        <image name="doctor1" width="75" height="75"/>
+        <image name="head0" width="75" height="75"/>
     </resources>
 </document>

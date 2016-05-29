@@ -125,7 +125,8 @@
                     parameters:@{@"action":@"register",
                                  @"userId":username,
                                  @"password":password,
-                                 @"code":invitationCode}
+                                 @"code":invitationCode,
+                                 @"type":@"10"}
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
             

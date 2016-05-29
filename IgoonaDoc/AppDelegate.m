@@ -37,7 +37,7 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:IGUI_MainAppearanceColor} forState:UIControlStateHighlighted];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
     
-    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     //JPush
     [JPUSHService registerForRemoteNotificationTypes:(/*UIUserNotificationTypeBadge |*/
                                                       UIUserNotificationTypeSound |

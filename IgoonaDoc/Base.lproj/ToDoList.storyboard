@@ -26,7 +26,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmK-qd-czS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient1" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-vJ-iWI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-vJ-iWI">
                                                     <rect key="frame" x="18" y="8" width="60" height="60"/>
                                                     <animations/>
                                                     <constraints>
@@ -265,7 +265,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor1" translatesAutoresizingMaskIntoConstraints="NO" id="ou2-Dx-MCO">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="ou2-Dx-MCO">
                                                     <rect key="frame" x="548" y="41" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
@@ -321,7 +321,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient1" translatesAutoresizingMaskIntoConstraints="NO" id="msf-oh-ghG">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="msf-oh-ghG">
                                                     <rect key="frame" x="8" y="41" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
@@ -391,7 +391,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doctor1" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-YA-tNt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-YA-tNt">
                                                     <rect key="frame" x="548" y="36" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
@@ -470,7 +470,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient1" translatesAutoresizingMaskIntoConstraints="NO" id="5Gc-Lv-hJZ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="5Gc-Lv-hJZ">
                                                     <rect key="frame" x="8" y="36" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
@@ -541,7 +541,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patient1" translatesAutoresizingMaskIntoConstraints="NO" id="Qot-vU-6av">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head0" translatesAutoresizingMaskIntoConstraints="NO" id="Qot-vU-6av">
                                                     <rect key="frame" x="8" y="42" width="44" height="44"/>
                                                     <animations/>
                                                     <constraints>
@@ -814,12 +814,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="doctor1" width="75" height="75"/>
+        <image name="head0" width="75" height="75"/>
         <image name="img_sound_me" width="15" height="23"/>
         <image name="img_sound_other" width="15" height="23"/>
         <image name="item_menu" width="23" height="17"/>
         <image name="item_microphone" width="31" height="31"/>
         <image name="item_rest" width="22" height="21"/>
-        <image name="patient1" width="75" height="75"/>
     </resources>
 </document>

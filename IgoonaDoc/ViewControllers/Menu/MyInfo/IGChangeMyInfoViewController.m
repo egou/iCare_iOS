@@ -126,8 +126,8 @@
     if(indexPath.row==0){
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
         IGChangeMyPhotoViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGChangeMyPhotoViewController"];
-        NSArray *photoIds=@[@"1",@"2",@"3",@"4",@"5",
-                            @"6",@"7",@"8",@"9",@"10"];
+        NSArray *photoIds=@[@"0",@"1",@"2",@"3",@"4",@"5",
+                            @"6",@"7"];
         
         __block NSInteger selectedIndex=-1;
         [photoIds enumerateObjectsUsingBlock:^(NSString *pId, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -262,7 +262,7 @@
 -(void)p_reloadAllData{
     
     self.nameTF.text=self.detailInfo.dName;
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"doctor%@",self.detailInfo.dIconId]];
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head%@",self.detailInfo.dIconId]];
     
     [self p_updateGenderSelection:self.detailInfo.dGender];
     

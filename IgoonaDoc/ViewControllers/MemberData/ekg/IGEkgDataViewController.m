@@ -46,7 +46,7 @@
     
     
     chart.backgroundColor = [UIColor colorWithWhite:204/255.f alpha:1.f];
-    chart.drawGridBackgroundEnabled = NO;
+    chart.drawGridBackgroundEnabled = YES;
     
     
     chart.dragEnabled = YES;
@@ -64,10 +64,17 @@
     chart.legend.textColor = UIColor.whiteColor;
     chart.legend.position = ChartLegendPositionBelowChartLeft;
     
+
+    chart.rightAxis.enabled=NO;
+    
     chart.leftAxis.customAxisMin=0;
-    chart.leftAxis.customAxisMax=255;
+    chart.leftAxis.customAxisMax=250;//255
+    chart.leftAxis.labelCount=20;
+    chart.leftAxis.gridColor=[UIColor redColor];
     
-    
+//    chart.xAxis.spaceBetweenLabels=32;
+    chart.xAxis.gridColor=[UIColor redColor];
+    chart.xAxis.drawGridLinesEnabled=YES;
     
     //赋值
     self.ekgChart=chart;

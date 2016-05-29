@@ -85,6 +85,7 @@
             
             [self.navigationController popViewControllerAnimated:YES];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
         }else{
             
             [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"提交报告失败"];

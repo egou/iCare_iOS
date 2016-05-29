@@ -14,7 +14,9 @@
 #import "MJRefresh.h"
 
 #import "IGBpDataViewController.h"
-#import "IGEkgDataViewController.h"
+//#import "IGEkgDataViewController.h"
+#import "IGEkgDataV2ViewController.h"
+
 #import "IGReportViewController.h"
 
 #import "IGReportContentObj.h"
@@ -118,7 +120,8 @@
         case 2:{
             
             if([data isKindOfClass:[NSData class]]){
-                IGEkgDataViewController *vc=[[IGEkgDataViewController alloc] init];
+                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
                 vc.ekgData=data;
                 [self.navigationController pushViewController:vc animated:YES];
             }

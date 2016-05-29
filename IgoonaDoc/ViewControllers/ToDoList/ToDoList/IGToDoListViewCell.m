@@ -43,7 +43,7 @@
     else
         self.timeLabel.textColor=[UIColor darkGrayColor];
     
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"patient%@",toDoData.tMemberIconId]];
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",toDoData.tMemberIconId]];
     
     self.typeLabel.text=toDoData.tType==1?@"求助":@"报告";
 }
@@ -65,7 +65,7 @@
     NSComparisonResult result=[dueDate compare:now];
     if(result==NSOrderedAscending){
         *statusCode=-1;
-        return @"已过";
+        return @"过期违约";
     }
     
     NSDate* thirtyMinLater=[NSDate dateWithTimeInterval:30*60.0 sinceDate:now];

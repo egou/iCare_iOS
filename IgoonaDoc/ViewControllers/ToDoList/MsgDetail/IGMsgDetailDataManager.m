@@ -147,6 +147,8 @@
                              completed:finished
                          finishHandler:^(BOOL success) {
                             [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
+                             //任务完成通知
+                             [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
                          }];
 }
 
@@ -293,9 +295,6 @@
             [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"【我好了】新对话消息" description:msg type:TWMessageBarMessageTypeInfo duration:2];
         }
     }
-    
-    
-
 }
 
 @end
