@@ -169,6 +169,7 @@
 		6BA60F1A1CD76A0800E39D54 /* IGIncomeObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */; settings = {ASSET_TAGS = (); }; };
 		6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; };
+		6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */; settings = {ASSET_TAGS = (); }; };
 		6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */; };
 		6BF86C581CF34AC00061857C /* IGAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF86C571CF34AC00061857C /* IGAgreementViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */; };
@@ -546,6 +547,8 @@
 		6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyIncomeDataManager.m; sourceTree = "<group>"; };
 		6BD6DA2B1CC525BD00E44C18 /* IGToDoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewCell.h; sourceTree = "<group>"; };
 		6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
+		6BDC05DA1CFB3318006D96E8 /* UIViewController+PortraitOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PortraitOrientation.h"; sourceTree = "<group>"; };
+		6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PortraitOrientation.m"; sourceTree = "<group>"; };
 		6BF54C0B1CC3736100B95CD8 /* IGToDoListRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListRouting.h; sourceTree = "<group>"; };
 		6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListRouting.m; sourceTree = "<group>"; };
 		6BF86C561CF34AC00061857C /* IGAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAgreementViewController.h; sourceTree = "<group>"; };
@@ -955,6 +958,8 @@
 				6B0D948B1CE21B5100C5BA6D /* IGRegularExpression.m */,
 				6B6A6EB31CF1830D00E8AEFD /* NSNull+PRJsonNull.h */,
 				6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */,
+				6BDC05DA1CFB3318006D96E8 /* UIViewController+PortraitOrientation.h */,
+				6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1679,6 +1684,7 @@
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
 				6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */,
+				6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */,
 				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
 				6B032DFE1CC125190027DDAD /* IGMsgDetailInteractor.m in Sources */,

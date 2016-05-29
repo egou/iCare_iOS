@@ -24,7 +24,16 @@
     // Do any additional setup after loading the view.
     
     self.ekgView.data=self.ekgData;
+    
+
+//    self.view.transform=CGAffineTransformMakeRotation(M_PI_2);
 }
 
+- (BOOL)shouldAutorotate{
+    return YES;
+}
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
 
 @end

@@ -123,26 +123,31 @@ static const int unitsPerMargin=2;
     CGContextStrokePath(curContext);
 
     
-    //数据
-     CGContextSetStrokeColorWithColor(curContext, self.dataColor.CGColor);
+    //数据(使用bezier曲线优化)
+    CGContextSetStrokeColorWithColor(curContext, self.dataColor.CGColor);
+    
+    UIBezierPath *dataPath=[UIBezierPath bezierPath];
+    dataPath.lineWidth=1.;
+    dataPath.lineCapStyle=kCGLineCapRound;
+    dataPath.lineJoinStyle=kCGLineCapRound;
+    
     
     const char *rawData=self.data.bytes;
     NSInteger dataLength=self.data.length;
+    
     for(int i=0;i<dataLength;i++){
         uint8_t d=rawData[i];
         
-//        CGFloat x=CGRectGetWidth(rect)*i/dataLength;
-//        CGFloat y=marginY+(CGRectGetHeight(rect)-2*marginY)*(255-d)/255.0;
-//        CGContextFillRect(curContext, CGRectMake(x,y,1,1));
+        CGPoint point =CGPointMake(CGRectGetWidth(rect)*i/dataLength, marginY+(CGRectGetHeight(rect)-2*marginY)*(255-d)/255.0);
+        
         if(i==0)
-            CGContextMoveToPoint(curContext, CGRectGetWidth(rect)*i/dataLength, marginY+(CGRectGetHeight(rect)-2*marginY)*(255-d)/255.0);
-        CGContextAddLineToPoint(curContext, CGRectGetWidth(rect)*i/dataLength, marginY+(CGRectGetHeight(rect)-2*marginY)*(255-d)/255.0);
+            [dataPath moveToPoint:point];
+        else
+            [dataPath addLineToPoint:point];
+
     }
     
-    
-    
-   
-    CGContextStrokePath(curContext);
+    [dataPath stroke];
 }
 
 

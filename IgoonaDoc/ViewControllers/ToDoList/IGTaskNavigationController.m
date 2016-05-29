@@ -31,7 +31,13 @@
     }
 }
 
+-(BOOL)shouldAutorotate{
+    return [[self.viewControllers lastObject] shouldAutorotate];
+}
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
 
 
 @end
