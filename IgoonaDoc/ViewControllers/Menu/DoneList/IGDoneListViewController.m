@@ -74,6 +74,7 @@
         IGMsgDetailViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
         
         msgVC.memberId=task.tMemberId;
+        msgVC.memberIconId=[IGLOCALMANAGER loadIconIdWithPatientId:task.tMemberId];
         msgVC.memberName=task.tMemberName;
         msgVC.msgReadOnly=YES;
         

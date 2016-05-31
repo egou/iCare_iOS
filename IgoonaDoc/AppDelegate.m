@@ -38,6 +38,9 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
     
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    
+    
+    
     //JPush
     [JPUSHService registerForRemoteNotificationTypes:(/*UIUserNotificationTypeBadge |*/
                                                       UIUserNotificationTypeSound |
@@ -46,7 +49,7 @@
     
     static NSString *appKey = @"be8e846e07f74ec9b6fed7c3";
     static NSString *channel = @"Publish channel";
-    static BOOL isProduction = FALSE;
+    static BOOL isProduction = YES;
     
     [JPUSHService setupWithOption:launchOptions appKey:appKey
                           channel:channel apsForProduction:isProduction];
@@ -140,5 +143,8 @@
 //        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"【我好了】任务更新" description:@"你有了新任务" type:TWMessageBarMessageTypeInfo duration:2];
 //    }
 }
+
+
+
 
 @end

@@ -49,6 +49,11 @@
 -(void)saveDoneTasks:(NSArray*)donetasks;
 -(void)clearAllDoneTasks;
 
+
+//用户头像管理
+-(void)saveIconId:(NSString*)iconId withPatientId:(NSString*)patientId;
+-(NSString*)loadIconIdWithPatientId:(NSString*)patientId;
+-(void)clearAllIconsInfo;
 @end
 
 

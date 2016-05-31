@@ -13,6 +13,7 @@
 
 
 static NSString * const IGDoneTaskTableName=@"IGDoneTaskTableName";
+static NSString * const IGIconInfoTableName=@"IGIconInfoTableName";
 
 @interface IGLocalDataManager()
 
@@ -265,6 +266,60 @@ static NSString * const IGDoneTaskTableName=@"IGDoneTaskTableName";
     NSString *queryStr=[NSString stringWithFormat:@"DROP TABLE IF EXISTS %@",IGDoneTaskTableName];
     [self.database executeUpdate:queryStr];
 }
+
+
+
+
+-(void)saveIconId:(NSString*)iconId withPatientId:(NSString*)patientId{
+    //create table if needed
+    if(![self.database tableExists:IGIconInfoTableName])
+    {
+        NSString *createTableSQL=[NSString stringWithFormat:@"create table %@ (id text primary key, icon_id text)",IGIconInfoTableName];
+        [self.database executeUpdate:createTableSQL];
+    }
+    
+    
+    [self.database beginTransaction];
+    
+    
+    
+        NSString *queryStr=[NSString stringWithFormat:@"replace into %@ (id, icon_id) values (?, ?)",IGIconInfoTableName];
+        [self.database executeUpdate:queryStr,
+         patientId,
+         iconId];//注意参数必需为object
+    
+    
+    [self.database commit];
+}
+
+-(NSString*)loadIconIdWithPatientId:(NSString*)patientId{
+    
+    if(![self.database tableExists:IGIconInfoTableName])
+    {
+        return @"";
+    }
+    
+    NSString *queryStr=[NSString stringWithFormat:@"select * from %@ where id ='%@'",IGIconInfoTableName,patientId];
+    
+
+    
+    FMResultSet *rs=[self.database executeQuery:queryStr];
+    if([rs next]) {
+        
+        
+        return [rs stringForColumn:@"icon_id"];
+        
+        
+    }
+    
+    return @"";
+}
+
+-(void)clearAllIconsInfo{
+    NSString *queryStr=[NSString stringWithFormat:@"DROP TABLE IF EXISTS %@",IGIconInfoTableName];
+    [self.database executeUpdate:queryStr];
+}
+
 
 #pragma mark - private methods
 

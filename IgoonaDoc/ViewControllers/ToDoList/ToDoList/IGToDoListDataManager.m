@@ -80,6 +80,8 @@
         if(success){
             self.toDoListArray=todoArray;
             self.hasLoadedAll=loadAll;
+            
+            [self saveIconsWithTasks:todoArray];
         }
         [self.delegate toDoListDataManager:self didRefreshToDoListSuccess:success];
     }];
@@ -94,6 +96,8 @@
             if(success){
                 self.toDoListArray=[self.toDoListArray arrayByAddingObjectsFromArray:todoArray];
                 self.hasLoadedAll=loadAll;
+                
+                [self saveIconsWithTasks:todoArray];
             }
             [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:success];
             
@@ -223,5 +227,14 @@
     
 }
 
+
+#pragma mark - save IconIds
+-(void)saveIconsWithTasks:(NSArray*)tasks{
+    [tasks enumerateObjectsUsingBlock:^(IGTaskObj* task, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *pId=task.tMemberId;
+        NSString *iconId=task.tMemberIconId;
+        [IGLOCALMANAGER saveIconId:iconId withPatientId:pId];
+    }];
+}
 
 @end
