@@ -36,6 +36,7 @@
 
 +(UIView*)showLoadingHUDForView:(UIView *)view alertMsg:(NSString *)msg
 {
+    
     MBProgressHUD *HUD= [MBProgressHUD showHUDAddedTo:view animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
     HUD.removeFromSuperViewOnHide=YES;
@@ -55,6 +56,9 @@
 
 +(void)showHUDShortlyAddedTo:(UIView *)view alertMsg:(NSString *)msg completion:(void (^)())completionHandler
 {
+    if(!view)
+        return;
+    
     MBProgressHUD *HUD= [MBProgressHUD showHUDAddedTo:view animated:YES];
     HUD.mode=MBProgressHUDModeText;
     HUD.labelText=msg;

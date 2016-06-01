@@ -836,8 +836,8 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVe-qL-VaU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVe-qL-VaU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="625"/>
                                 <animations/>
                                 <attributedString key="attributedText">
                                     <fragment content="[">
@@ -865,7 +865,7 @@ DQ
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">4002312345
+                                        <string key="content">4006546698
 [</string>
                                         <attributes>
                                             <font key="NSFont" size="14" name="HelveticaNeue"/>

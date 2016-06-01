@@ -148,7 +148,9 @@
                          finishHandler:^(BOOL success) {
                             [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
                              //任务完成通知
-                             [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
+                             if(success&&finished){
+                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
+                             }
                          }];
 }
 

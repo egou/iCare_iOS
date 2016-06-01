@@ -65,7 +65,7 @@
     NSComparisonResult result=[dueDate compare:now];
     if(result==NSOrderedAscending){
         *statusCode=-1;
-        return @"过期违约";
+        return @"已超时";
     }
     
     NSDate* thirtyMinLater=[NSDate dateWithTimeInterval:30*60.0 sinceDate:now];

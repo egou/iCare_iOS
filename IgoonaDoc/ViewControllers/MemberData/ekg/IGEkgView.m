@@ -11,7 +11,7 @@
 
 
 static const int ekgInterval=30;
-
+static const int cellsPerSecond=5;
 static const int unitsPerCell=5;
 static const int numsOfCellY=4;
 
@@ -78,7 +78,7 @@ static const int unitsPerMargin=2;
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     
-    CGFloat unitX=CGRectGetWidth(rect)/(ekgInterval*unitsPerCell);
+    CGFloat unitX=CGRectGetWidth(rect)/(ekgInterval*unitsPerCell*cellsPerSecond);
     CGFloat unitY=CGRectGetHeight(rect)/(numsOfCellY *unitsPerCell+2*unitsPerMargin);
     CGFloat marginY=unitsPerMargin*unitY;   //上下空白
     
@@ -91,7 +91,7 @@ static const int unitsPerMargin=2;
         CGContextAddLineToPoint(curContext, CGRectGetMaxX(rect), CGRectGetMinY(rect)+unitY*i+marginY);
     }
     
-    int vLineNums=ekgInterval*unitsPerCell+1;
+    int vLineNums=ekgInterval*cellsPerSecond*unitsPerCell+1;
     for(int i=0;i<vLineNums;i++){
         CGContextMoveToPoint(curContext, CGRectGetMinX(rect)+unitX*i, CGRectGetMinY(rect)+marginY);
         CGContextAddLineToPoint(curContext, CGRectGetMinX(rect)+unitX*i, CGRectGetMaxY(rect)-marginY);
@@ -100,13 +100,13 @@ static const int unitsPerMargin=2;
     CGContextSetStrokeColorWithColor(curContext,self.unitColor.CGColor);
     CGContextStrokePath(curContext);
     
-    //红色单元格
+    //红色最小单元格
     for(int i=0;i<numsOfCellY+1;i++){
         CGContextMoveToPoint(curContext, CGRectGetMinX(rect),CGRectGetMinY(rect)+unitY*unitsPerCell*i+marginY);
         CGContextAddLineToPoint(curContext, CGRectGetMaxX(rect), CGRectGetMinY(rect)+unitY*unitsPerCell*i+marginY);
     }
     
-    for(int i=0;i<ekgInterval+1;i++){
+    for(int i=0;i<ekgInterval*cellsPerSecond+1;i++){
         CGContextMoveToPoint(curContext, CGRectGetMinY(rect)+unitX*unitsPerCell*i, CGRectGetMinY(rect)+marginY);
         CGContextAddLineToPoint(curContext, CGRectGetMinX(rect)+unitX*unitsPerCell*i, CGRectGetMaxY(rect)-marginY);
 
@@ -114,8 +114,8 @@ static const int unitsPerMargin=2;
     CGContextSetStrokeColorWithColor(curContext, self.cellColor.CGColor);
     CGContextStrokePath(curContext);
     
-    //每5s区分
-    for(int i=0;i<ekgInterval/5+1;i++){
+    //每1s区分
+    for(int i=0;i<ekgInterval+1;i++){
         CGContextMoveToPoint(curContext, CGRectGetMinY(rect)+5*unitX*unitsPerCell*i, CGRectGetMinY(rect)+marginY/2.);
         CGContextAddLineToPoint(curContext, CGRectGetMinX(rect)+5*unitX*unitsPerCell*i, CGRectGetMaxY(rect)-marginY);
     }

@@ -157,7 +157,7 @@
     self.tableView.tableFooterView=[[UIView alloc] init];
     
     //navigationbar
-    self.navigationItem.title=@"我的病友";
+    self.navigationItem.title=@"我的病粉";
     UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=backItem;
