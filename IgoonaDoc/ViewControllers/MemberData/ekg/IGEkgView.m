@@ -10,16 +10,14 @@
 
 
 
-static const int ekgInterval=30;
+static const int ekgInterval=50;
 static const int cellsPerSecond=5;
 static const int unitsPerCell=5;
 static const int numsOfCellY=4;
 
 static const int unitsPerMargin=2;
 
-@interface IGEkgView(){
-    char _showData[1200];
-}
+@interface IGEkgView()
 
 @property (nonatomic,strong) UIColor *unitColor;
 @property (nonatomic,strong) UIColor *cellColor;
@@ -60,11 +58,11 @@ static const int unitsPerMargin=2;
 -(void)setData:(NSData *)data{
 //    NSAssert(data.length==4800, @"ekg data length must be 4800");
     
-    if(data.length!=4800){
+    if(data.length!=8000){
         NSLog(@"ekg data length must be 4800");
         
-        char data[4800];
-        for(int i=0;i<4800;i++){
+        char data[8000];
+        for(int i=0;i<8000;i++){
             data[i]=128;
         }
         _data=[[NSData alloc] initWithBytes:data length:sizeof(data)];

@@ -541,12 +541,12 @@
                                 <rect key="frame" x="0.0" y="225" width="600" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-xX-nAn" customClass="IGEkgView">
-                                        <rect key="frame" x="0.0" y="0.0" width="4688" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="7813" height="150"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="JSj-Ex-uX6"/>
-                                            <constraint firstAttribute="width" secondItem="TMS-xX-nAn" secondAttribute="height" multiplier="125:4" id="dI5-ql-wHq"/>
+                                            <constraint firstAttribute="width" secondItem="TMS-xX-nAn" secondAttribute="height" multiplier="625:12" id="dI5-ql-wHq"/>
                                         </constraints>
                                     </view>
                                 </subviews>
