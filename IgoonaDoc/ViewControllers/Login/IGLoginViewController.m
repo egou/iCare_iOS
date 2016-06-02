@@ -190,15 +190,6 @@
                                MYINFO.hasAgreed=[responseObject[@"need_agreement"] intValue]!=1;
                                
                                
-                               //连接数据库
-                               if(MYINFO.type==10||MYINFO.type==11)
-                                   [IGLOCALMANAGER connectToDataRepositoryWithDocId:username];
-                               
-                               
-                               
-                               //推送别名绑定
-                               [self p_bindJPushAlias:username];
-                               
                                //进入主页面
                                [wSelf p_didLoginSuccess];
                                
@@ -223,6 +214,15 @@
 
 -(void)p_didLoginSuccess
 {
+    //连接数据库
+    if(MYINFO.type==10||MYINFO.type==11)
+        [IGLOCALMANAGER connectToDataRepositoryWithDocId:MYINFO.username];
+    
+    
+    //推送别名绑定
+    [self p_bindJPushAlias:MYINFO.username];
+    
+    
     if(MYINFO.type==10||MYINFO.type==11){
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
         UIViewController *mainVC=[sb instantiateInitialViewController];

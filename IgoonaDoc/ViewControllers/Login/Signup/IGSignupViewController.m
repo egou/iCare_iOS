@@ -161,6 +161,10 @@
         
         //存储用户信息
         MYINFO.username=self.usernameTF.text;
+        MYINFO.iconId=[resDic[@"icon_idx"] stringValue];
+        MYINFO.type=[resDic[@"type"] integerValue];
+        
+        
         
         //退出界面
         [self performSegueWithIdentifier:@"SignupSuccessSID" sender:self];
@@ -176,7 +180,7 @@
                     [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码错误"];
                     break;
                 case 3:
-                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"本邀请码已经注册，需联系客服重置密码"];
+                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码已注册，需联系客服重置密码"];
                     break;
                 case 4:
                     [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户信息错误"];
