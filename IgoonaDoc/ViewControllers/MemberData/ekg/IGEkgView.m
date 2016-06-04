@@ -13,7 +13,7 @@
 static const int ekgInterval=50;
 static const int cellsPerSecond=5;
 static const int unitsPerCell=5;
-static const int numsOfCellY=4;
+static const int numsOfCellY=12;
 
 static const int unitsPerMargin=2;
 
