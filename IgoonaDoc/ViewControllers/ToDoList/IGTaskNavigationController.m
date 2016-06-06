@@ -21,7 +21,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    if(MYINFO.hasAgreed==NO){
+    if(MYINFO.hasAgreed==NO&&MYINFO.type!=11){
+        
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
         IGAgreementViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGAgreementViewController"];
         vc.agreeSuccessHandler=^(IGAgreementViewController*agreeVC){

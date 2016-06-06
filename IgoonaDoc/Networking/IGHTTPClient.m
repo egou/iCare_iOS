@@ -23,7 +23,7 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
     static IGHTTPClient *_sharedClient=nil;
     static dispatch_once_t IGHTTPClient_token;
     dispatch_once(&IGHTTPClient_token, ^{
-        NSURL *baseURL=[NSURL URLWithString:IGURL];
+        NSURL *baseURL=[NSURL URLWithString:IGURLBAIDU];
         _sharedClient=[[IGHTTPClient alloc] initWithBaseURL:baseURL];
         _sharedClient.requestSerializer=[AFHTTPRequestSerializer serializer];
         _sharedClient.requestSerializer.timeoutInterval=10;
@@ -163,7 +163,7 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
                   success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                       
                       NSLog(@"%@",responseObject);
-                      if(IG_DIC_ASSERT(responseObject, @"success", @0))//成功
+                      if(IG_DIC_ASSERT(responseObject, @"success", @1))//成功
                       {
                           //需要则保存用户名密码
                           BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];

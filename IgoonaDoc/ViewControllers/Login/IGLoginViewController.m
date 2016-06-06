@@ -182,6 +182,8 @@
                                }
                                
                                //存储用户信息
+                               [MYINFO clear];
+                               
                                MYINFO.username=username;
                                MYINFO.password=password;
                                MYINFO.type=[responseObject[@"type"] integerValue];

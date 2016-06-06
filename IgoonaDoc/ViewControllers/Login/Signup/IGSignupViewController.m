@@ -159,11 +159,14 @@
                 [IGUserDefaults saveValue:self.passwordTF.text forKey:kIGUserDefaultsPassword];
         }
         
+        //先清空
+        [MYINFO clear];
+        
         //存储用户信息
         MYINFO.username=self.usernameTF.text;
         MYINFO.iconId=[resDic[@"icon_idx"] stringValue];
         MYINFO.type=[resDic[@"type"] integerValue];
-        
+        MYINFO.password=self.passwordTF.text;
         
         
         //退出界面
