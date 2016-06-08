@@ -95,6 +95,7 @@
     
     [IGCommonUI showLoadingHUDForView:self.navigationController.view];
     [IGLoginRequestEntity requestToSendConfirmationNumToPhone:phoneNum finishHandler:^(BOOL success) {
+        [IGCommonUI hideHUDForView:self.navigationController.view];
         if(success){
             [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取验证码成功"];
             [self p_startConfirmationNumTimer];

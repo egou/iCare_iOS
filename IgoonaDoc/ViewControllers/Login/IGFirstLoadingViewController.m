@@ -34,7 +34,8 @@
     
     __weak typeof(self) wSelf=self;
     [IGHTTPCLIENT GET:@"php/version.php"
-                    parameters:@{@"version":@"1.0"}
+                    parameters:@{@"version":IG_VERSION,
+                                 @"type":@"10"}
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                            

@@ -14,7 +14,7 @@
 
 
 
-#define IG_VERSION @"1.0"
+#define IG_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define IG_APPID @"1118679937"
 #define IG_APPSTOREURL [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8",IG_APPID]
 
