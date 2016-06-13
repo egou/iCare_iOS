@@ -142,6 +142,7 @@
 		6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53D51CF49C38009FF2B7 /* IGIgoonaInfoViewController.m */; };
 		6B7A53DC1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53DB1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m */; };
 		6B7A53DF1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53DE1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m */; };
+		6B7AA7701D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */; };
 		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; };
 		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; };
 		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; };
@@ -495,6 +496,8 @@
 		6B7A53DB1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGInviteDoctroViewController.m; sourceTree = "<group>"; };
 		6B7A53DD1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGInviteAgencyViewController.h; sourceTree = "<group>"; };
 		6B7A53DE1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGInviteAgencyViewController.m; sourceTree = "<group>"; };
+		6B7AA76E1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgSmoothFilter.h; sourceTree = "<group>"; };
+		6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgSmoothFilter.m; sourceTree = "<group>"; };
 		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
 		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
 		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
@@ -1296,6 +1299,8 @@
 				6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */,
 				6B0E840E1CFAEB680000E62E /* IGEkgView.h */,
 				6B0E840F1CFAEB680000E62E /* IGEkgView.m */,
+				6B7AA76E1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.h */,
+				6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */,
 			);
 			path = ekg;
 			sourceTree = "<group>";
@@ -1626,6 +1631,7 @@
 				6B057CB11CD5F8AD0059D2F3 /* IGTaskRequestEntity.m in Sources */,
 				6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */,
 				6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */,
+				6B7AA7701D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m in Sources */,
 				6B032E001CC125190027DDAD /* IGMsgDetailViewController.m in Sources */,
 				6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,

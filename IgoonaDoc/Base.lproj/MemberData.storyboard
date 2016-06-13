@@ -485,13 +485,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgb-V3-oNd">
-                                <rect key="frame" x="0.0" y="200" width="600" height="200"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-xX-nAn" customClass="IGEkgView">
-                                        <rect key="frame" x="0.0" y="0.0" width="3907" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="5469" height="280"/>
                                         <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="JSj-Ex-uX6"/>
+                                            <constraint firstAttribute="height" constant="280" id="JSj-Ex-uX6"/>
                                             <constraint firstAttribute="width" secondItem="TMS-xX-nAn" secondAttribute="height" multiplier="625:32" id="dI5-ql-wHq"/>
                                         </constraints>
                                     </view>
@@ -499,7 +499,7 @@
                                 <constraints>
                                     <constraint firstItem="TMS-xX-nAn" firstAttribute="leading" secondItem="dgb-V3-oNd" secondAttribute="leading" id="1Rp-yM-Q6I"/>
                                     <constraint firstAttribute="trailing" secondItem="TMS-xX-nAn" secondAttribute="trailing" id="5xW-ZU-wbG"/>
-                                    <constraint firstAttribute="height" constant="200" id="fGx-GD-VWO"/>
+                                    <constraint firstAttribute="height" constant="280" id="fGx-GD-VWO"/>
                                     <constraint firstAttribute="bottom" secondItem="TMS-xX-nAn" secondAttribute="bottom" id="k2D-m0-nja"/>
                                     <constraint firstItem="TMS-xX-nAn" firstAttribute="top" secondItem="dgb-V3-oNd" secondAttribute="top" id="pHn-Y6-1na"/>
                                 </constraints>

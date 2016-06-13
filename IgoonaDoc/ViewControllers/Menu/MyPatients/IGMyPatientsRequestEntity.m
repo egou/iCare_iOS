@@ -59,6 +59,7 @@
                       
                       p.pId=responseObject[@"id"];
                       p.pUserId=responseObject[@"user_id"];
+                      p.pIconIdx=responseObject[@"icon_idx"];
                       p.pName=responseObject[@"name"];
                       p.pAge=[responseObject[@"age"] integerValue];
                       p.pIsMale=[responseObject[@"is_male"] boolValue];

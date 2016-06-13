@@ -42,7 +42,7 @@
     
     NSArray *items=@[];
     if(MYINFO.type==10||MYINFO.type==11){
-        items=@[[KxMenuItem menuItem:@"收入成员"
+        items=@[[KxMenuItem menuItem:@"创收成员"
                                image:nil
                               target:self
                               action:@selector(onSubMenuMembers)],

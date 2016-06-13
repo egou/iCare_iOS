@@ -55,6 +55,7 @@
     
     msgVC.memberId=self.detailInfo.pId;
     msgVC.memberName=self.detailInfo.pName;
+    msgVC.memberIconId=self.detailInfo.pIconIdx;
     msgVC.msgReadOnly=YES;
     
     [self.navigationController pushViewController:msgVC animated:YES];

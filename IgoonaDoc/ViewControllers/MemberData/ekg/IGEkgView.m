@@ -7,7 +7,7 @@
 //
 
 #import "IGEkgView.h"
-
+#import "IGEkgSmoothFilter.h"
 
 
 static const int ekgInterval=50;
@@ -58,18 +58,12 @@ static const int unitsPerMargin=2;
 -(void)setData:(NSData *)data{
 //    NSAssert(data.length==4800, @"ekg data length must be 4800");
     
-    if(data.length!=8000){
-        NSLog(@"ekg data length must be 4800");
-        
-        char data[8000];
-        for(int i=0;i<8000;i++){
-            data[i]=128;
-        }
-        _data=[[NSData alloc] initWithBytes:data length:sizeof(data)];
-    }
-    else{
-        _data=data;
-    }
+    if(_data==data)
+        return;
+    
+    _data=data;
+    
+    [self setNeedsDisplay];
 }
 
 
@@ -130,8 +124,12 @@ static const int unitsPerMargin=2;
     dataPath.lineJoinStyle=kCGLineCapRound;
     
     
-    const char *rawData=self.data.bytes;
-    NSInteger dataLength=self.data.length;
+    
+    
+    
+    NSData *standardData=[self p_standardData:self.data];
+    const char *rawData=standardData.bytes;
+    NSInteger dataLength=standardData.length;
     
     for(int i=0;i<dataLength;i++){
         uint8_t d=rawData[i];
@@ -142,11 +140,43 @@ static const int unitsPerMargin=2;
             [dataPath moveToPoint:point];
         else
             [dataPath addLineToPoint:point];
-
+        
     }
     
     [dataPath stroke];
 }
 
-
+-(NSData*)p_standardData:(NSData*)data{
+    
+    NSData *stdData;
+    
+    if(data.length!=8000){
+        NSLog(@"ekg data length should be 8000, porco fix");
+        
+        if(data.length>8000){
+            stdData=[data subdataWithRange:NSMakeRange(0, 8000)];
+        }else{
+            
+            char const *rawData=data.bytes;
+            
+            char newData[8000];
+            for(int i=0;i<8000;i++){
+                
+                if(i<data.length)
+                    newData[i]=rawData[i];
+                else
+                    newData[i]=0;
+            }
+            stdData=[[NSData alloc] initWithBytes:newData length:sizeof(newData)];
+        }
+        
+    }else{
+        stdData=data;
+    }
+    
+    
+    NSData *filteredData=[IGEkgSmoothFilter filteredDataWithData:stdData];
+    
+    return filteredData;
+}
 @end
