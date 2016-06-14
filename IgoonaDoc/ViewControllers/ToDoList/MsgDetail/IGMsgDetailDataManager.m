@@ -214,29 +214,29 @@
                                taskId:self.taskId
                         finishHandler:^(BOOL success, NSString *msgId) {
                             if(success){
-                                IGMsgDetailObj *msg=[[IGMsgDetailObj alloc] init];
-                                
-                                msg.mId=msgId;
-                                msg.mPhotoId=@"1";
-                                msg.mSessionId=self.taskId;
-                                msg.mIsOut=YES;
-                                
-                                NSDate *now=[NSDate date];
-                                NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
-                                [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                                NSString *dateStr=[dateForm stringFromDate:now];
-                                msg.mTime=dateStr;
-                                
-                                if(textMsg.length>0)
-                                    msg.mText=textMsg;
-                                else{
-                                    msg.mAudioData=audioMsg;
-                                    msg.mAudioDuration=duration;//修改
-                                }
-                                
-                                self.allMsgs=[self p_insertMsg:msg toAllMsgs:self.allMsgs];
-                                [IGLOCALMANAGER saveMessagesData:@[msg] withPatientId:self.patientId];
-                            }
+//                                IGMsgDetailObj *msg=[[IGMsgDetailObj alloc] init];
+//                                
+//                                msg.mId=msgId;
+//                                msg.mPhotoId=@"1";
+//                                msg.mSessionId=self.taskId;
+//                                msg.mIsOut=YES;
+//                                
+//                                NSDate *now=[NSDate date];
+//                                NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
+//                                [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//                                NSString *dateStr=[dateForm stringFromDate:now];
+//                                msg.mTime=dateStr;
+//                                
+//                                if(textMsg.length>0)
+//                                    msg.mText=textMsg;
+//                                else{
+//                                    msg.mAudioData=audioMsg;
+//                                    msg.mAudioDuration=duration;//修改
+//                                }
+//                                
+//                                self.allMsgs=[self p_insertMsg:msg toAllMsgs:self.allMsgs];
+//                                [IGLOCALMANAGER saveMessagesData:@[msg] withPatientId:self.patientId];
+                            }//这里成功后，会由delegate主动请求一次消息，而不是直接存储该消息（直接存储会有可能出现漏消息的情况）
                             
                             [self.delegate dataManager:self didSendMsgSuccess:success msgType:textMsg.length>0?0:1];
                         }];

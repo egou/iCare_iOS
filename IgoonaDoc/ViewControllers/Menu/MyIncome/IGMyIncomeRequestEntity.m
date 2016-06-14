@@ -186,7 +186,7 @@
 }
 
 +(void)requestToReInviteDocOrAgency:(NSString *)inviteId finishHandler:(void (^)(BOOL))finishHandler{
-    [IGHTTPCLIENT GET:@"php/doctor.php"
+    [IGHTTPCLIENT GET:@"php/login.php"
            parameters:@{@"action":@"invite_doctor",
                         @"doctorId":inviteId}
              progress:nil

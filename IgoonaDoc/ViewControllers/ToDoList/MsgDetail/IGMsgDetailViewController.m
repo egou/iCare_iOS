@@ -306,10 +306,12 @@
             self.msgTV.text=@"";    //清空
             [self p_updateSendBtnStatus];
         }else{
-            
+            //语音不做处理
         }
         
-        [self p_reloadAllMsgsWithNewMsg:YES];
+        //发送成功后，会主动向服务器请求一次消息
+        [self.tableView.mj_footer beginRefreshing];
+//        [self p_reloadAllMsgsWithNewMsg:YES];
     }
 }
 

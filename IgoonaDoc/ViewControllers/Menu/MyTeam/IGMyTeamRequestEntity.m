@@ -92,7 +92,7 @@
 }
 
 +(void)requestToReInviteAssistant:(NSString *)docId finishHandler:(void (^)(BOOL))finishHandler{
-    [IGHTTPCLIENT GET:@"php/doctor.php"
+    [IGHTTPCLIENT GET:@"php/login.php"
            parameters:@{@"action":@"invite_assistant",
                         @"id":docId}
              progress:nil
