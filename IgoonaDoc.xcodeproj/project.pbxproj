@@ -284,7 +284,7 @@
 		2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportCategoryObj.m; sourceTree = "<group>"; };
 		2C56EB231CCB60EB0083726C /* IGAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAudioManager.h; sourceTree = "<group>"; };
 		2C56EB241CCB60EB0083726C /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
-		6B0001851C9D1E9500085229 /* IgoonaDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgoonaDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0001851C9D1E9500085229 /* 大夫我好了.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "大夫我好了.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0001891C9D1E9500085229 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B00018B1C9D1E9500085229 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B00018C1C9D1E9500085229 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -728,7 +728,7 @@
 		6B0001861C9D1E9500085229 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B0001851C9D1E9500085229 /* IgoonaDoc.app */,
+				6B0001851C9D1E9500085229 /* 大夫我好了.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1487,7 +1487,7 @@
 			);
 			name = IgoonaDoc;
 			productName = IgoonaDoc;
-			productReference = 6B0001851C9D1E9500085229 /* IgoonaDoc.app */;
+			productReference = 6B0001851C9D1E9500085229 /* 大夫我好了.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1897,7 +1897,7 @@
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.igoona.iCare;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "大夫我好了";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1921,7 +1921,7 @@
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.igoona.iCare;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "大夫我好了";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
