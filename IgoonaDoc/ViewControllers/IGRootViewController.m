@@ -92,24 +92,22 @@
 
 -(void)onIGHTTPClientWillTryReLoginNotification:(NSNotification*)note
 {
-    [IGCommonUI showLoadingHUDForView:[UIApplication sharedApplication].keyWindow alertMsg:@"连接中..."];
+    [SVProgressHUD showInfoWithStatus:@"连接中..."];
 }
 
 -(void)onIGHTTPClientReLoginDidFailureNotification:(NSNotification*)note
 {
-    [IGCommonUI hideHUDForView:[UIApplication sharedApplication].keyWindow];
-    
-    __weak typeof(self) wSelf=self;
-    [IGCommonUI showHUDShortlyAddedTo:[UIApplication sharedApplication].keyWindow alertMsg:@"身份过期，请重新登录" completion:^{
+    [SVProgressHUD dismissWithCompletion:^{
+        [SVProgressHUD showInfoWithStatus:@"身份过期，请重新登录"];
         
-        [wSelf dismissViewControllerAnimated:YES completion:nil];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+
 }
 
 -(void)onIGHTTPClientReLoignDidSuccessNotification:(NSNotification*)note
 {
-    [IGCommonUI hideHUDForView:[UIApplication sharedApplication].keyWindow];
+    [SVProgressHUD dismiss];
 }
 
 

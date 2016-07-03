@@ -46,30 +46,28 @@
     
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
     
     NSString *confirmNum=self.confirmationNumTF.text;
     if(![IGRegularExpression isValidConfirmationNum:confirmNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"验证码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"验证码格式错误"];
         return;
     }
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGMyInformationRequestEntity requestToChangePhoneNum:phoneNum confirmationNum:confirmNum finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
         
         if(success){
             MYINFO.username=phoneNum;
             
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改手机号成功" completion:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            }];
+            [SVProgressHUD showSuccessWithStatus:@"修改手机号成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改失败" ];
+            [SVProgressHUD showInfoWithStatus:@"修改失败" ];
         }
     }];
     
@@ -80,18 +78,17 @@
     NSString *phoneNum=self.phoneNumTF.text;
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGMyInformationRequestEntity requestToSendConfirmationNumToPhone:phoneNum finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
         if(success){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取验证码成功"];
+            [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
             [self p_startConfirmationNumTimer];
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取验证码失败"];
+            [SVProgressHUD showInfoWithStatus:@"获取验证码失败"];
         }
     }];
 }

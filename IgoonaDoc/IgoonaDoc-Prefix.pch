@@ -21,7 +21,8 @@
 #import "IGLocalDataManager.h"
 #import "IGCommon/IGCommon.h"
 
-#import "MBProgressHUD.h"
+
+#import "SVProgressHUD.h"
 
 #import "UserInfo/IGDoctorInformation.h"
 #import "Masonry.h"

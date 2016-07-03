@@ -39,32 +39,32 @@
     NSString *name=self.nameTF.text;
     
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidName:name]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"姓名格式错误"];
         return;
     }
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGMyIncomeRequestEntity requestToInviteAgencyWithPhoneNum:phoneNum name:name finishHandler:^(NSInteger resultCode, NSString *inviteId) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
+     
         if(resultCode==1){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功"];
+            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
             [self.navigationController popViewControllerAnimated:YES];
             return ;
         }
         
         
         if(resultCode==2){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"该用户已注册"];
+            [SVProgressHUD showInfoWithStatus:@"该用户已注册"];
             return;
         }
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请失败"];
+        [SVProgressHUD showInfoWithStatus:@"邀请失败"];
     }];
     
 

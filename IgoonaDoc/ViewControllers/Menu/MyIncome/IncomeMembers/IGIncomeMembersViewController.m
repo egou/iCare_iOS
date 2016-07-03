@@ -81,10 +81,10 @@
     [cell setMemberInfo:member];
     cell.onReInviteBtnHanlder=^(IGIncomeMembersViewCell* cell){
         NSLog(@"reinvite,%@",member.mId);
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         [IGMyIncomeRequestEntity requestToReInviteDocOrAgency:member.mId finishHandler:^(BOOL success) {
-            [IGCommonUI hideHUDForView:self.navigationController.view];
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"邀请成功":@"邀请失败"];
+          
+            [SVProgressHUD showInfoWithStatus:success?@"邀请成功":@"邀请失败"];
         }];
     };
     
@@ -110,7 +110,7 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 
@@ -119,7 +119,7 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 

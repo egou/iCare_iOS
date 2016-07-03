@@ -64,27 +64,27 @@
     NSString *weight=self.weightTF.text;
     
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidName:name]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"姓名格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidAge:age]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"年龄格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"年龄格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidHeight:height]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"身高格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"身高格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidWeight:weight]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"体重格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"体重格式错误"];
         return;
     }
     
@@ -97,22 +97,21 @@
     customer.cHeight=[height integerValue];
     customer.cWeight=[weight integerValue];
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     
     [IGMyIncomeRequestEntity requestToInviteCustomer:customer finishHandler:^(BOOL success, NSString *invitationId,BOOL sent) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
         if(success){
             
             if(!sent)
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功，请确认对方号码是否正确"];
+                [SVProgressHUD showInfoWithStatus:@"邀请成功，请确认对方号码是否正确"];
             else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功" completion:^{
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];
+                [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+                
             }
             
         }else{
-             [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请失败"];
+             [SVProgressHUD showInfoWithStatus:@"邀请失败"];
         }
     }];
     

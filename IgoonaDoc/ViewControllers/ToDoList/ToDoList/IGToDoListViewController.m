@@ -22,6 +22,8 @@
 
 @property (nonatomic,strong) IGToDoListRouting *routing;
 @property (nonatomic,strong) IGToDoListDataManager  *dataManager;
+
+@property (nonatomic,strong) UILabel *noDataLabel;
 @end
 
 @implementation IGToDoListViewController
@@ -41,13 +43,9 @@
     [self p_initUI];
     
     //自动请求进入工作状态
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager tapToChangeWorkStatus];
-    
-    //pull to refresh
-    [self.tableView.mj_header beginRefreshing];
-    
-    
+
 
 }
 
@@ -56,6 +54,8 @@
 {
     [super viewWillAppear:animated];
     
+    //pull to refresh
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - events
@@ -66,7 +66,7 @@
 }
 
 - (IBAction)onWorkStatusBtn:(id)sender {
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager tapToChangeWorkStatus];
 }
 
@@ -77,7 +77,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
+    
+    
     return self.toDoListCopyArray.count;
 }
 
@@ -95,13 +97,13 @@
     //先检测是否处于工作状态
     if(!self.dataManager.isWorking){
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"您目前未处于工作状态"];
+        [SVProgressHUD showInfoWithStatus:@"您目前未处于工作状态"];
         return;
     }
     
     
     [self.dataManager tapToRequestToHandleTaskAtIndex:indexPath.row];
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
 }
 
 
@@ -132,14 +134,15 @@
 
 -(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)manager{
     
-    [IGCommonUI hideHUDForView:self.navigationController.view];
+    [SVProgressHUD dismissWithCompletion:^{
+        if(manager.isWorking){
+            [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
+            
+        }else{
+            [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
+        }
+    }];
     
-    if(manager.isWorking){
-        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
-        
-    }else{
-        [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
-    }
 }
 
 
@@ -153,45 +156,47 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
                   taskInfo:(IGTaskObj *)taskInfo
                 reportInfo:(NSDictionary *)reportInfo{
 
-    [IGCommonUI hideHUDForView:self.navigationController.view];
-    if(statusCode==0){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"未知错误"];
-        return;
-    }
-    
-    if(statusCode==1){
-        
-        if(taskInfo.tType==1){
-            //求助
-            [self.routing transToMsgDetailViewWithTaskInfo:taskInfo];
-
+    [SVProgressHUD dismissWithCompletion:^{
+        if(statusCode==0){
+            [SVProgressHUD showInfoWithStatus:@"未知错误"];
             return;
         }
         
-        if(taskInfo.tType==2){
-           
-            //报告
-            [self.routing transToReportDetailViewWithTaskInfo:taskInfo autoReport:reportInfo];
+        if(statusCode==1){
+            
+            if(taskInfo.tType==1){
+                //求助
+                [self.routing transToMsgDetailViewWithTaskInfo:taskInfo];
+                
+                return;
+            }
+            
+            if(taskInfo.tType==2){
+                
+                //报告
+                [self.routing transToReportDetailViewWithTaskInfo:taskInfo autoReport:reportInfo];
+                return;
+            }
+            
             return;
         }
         
-        return;
-    }
+        if(statusCode==2){   //不存在，更新删除相应任务
+            [SVProgressHUD showInfoWithStatus:@"任务不存在"];
+            [self p_reloadData];
+            return;
+        }
+        if(statusCode==3){   //正在处理
+            [SVProgressHUD showInfoWithStatus:@"任务正有人处理"];
+            return;
+        }
+        if(statusCode==4){   //已经处理完成，更新删除相应任务
+            [SVProgressHUD showInfoWithStatus:@"任务已完成"];
+            [self p_reloadData];
+            return;
+        }
+    }];
     
-    if(statusCode==2){   //不存在，更新删除相应任务
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务不存在"];
-        [self p_reloadData];
-        return;
-    }
-    if(statusCode==3){   //正在处理
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务正有人处理"];
-        return;
-    }
-    if(statusCode==4){   //已经处理完成，更新删除相应任务
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"任务已完成"];
-        [self p_reloadData];
-        return;
-    }
 }
 
 
@@ -228,6 +233,18 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
         [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_rest"]];
     }
 
+    
+    self.noDataLabel=[UILabel new];
+    self.noDataLabel.text=@"暂无数据";
+    self.noDataLabel.textColor=[UIColor darkGrayColor];
+    self.noDataLabel.font=[UIFont systemFontOfSize:15];
+    [self.noDataLabel sizeToFit];
+    [self .view addSubview:self.noDataLabel];
+    [self.noDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).mas_offset(10);
+    }];
+    self.noDataLabel.hidden =YES;
 }
 
 -(void)p_reloadData{
@@ -240,6 +257,9 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
     }else{
         [self.tableView.mj_footer resetNoMoreData];
     }
+    
+    self.noDataLabel.hidden= self.toDoListCopyArray.count >0?YES:NO;
+    
 }
 
 

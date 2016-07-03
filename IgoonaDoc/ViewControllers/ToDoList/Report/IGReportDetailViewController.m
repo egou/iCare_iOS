@@ -15,6 +15,9 @@
 #import "IGMemberDataViewController.h"
 
 #import "IGTaskRequestEntity.h"
+#import "IGMemberDataEntity.h"
+
+#import "IGEkgDataV2ViewController.h"
 
 @interface IGReportDetailViewController ()
 
@@ -41,11 +44,45 @@
 #pragma mark - events
 
 -(void)onDataBtn:(id)sender{
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
-    vc.memberId=self.taskInfo.tMemberId;
-    vc.memberName=self.taskInfo.tMemberName;
-    [self.navigationController pushViewController:vc animated:YES];
+//    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+//    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
+//    vc.memberId=self.taskInfo.tMemberId;
+//    vc.memberName=self.taskInfo.tMemberName;
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    //改为显示对应数据
+    
+    NSInteger dataType=[self.autoReportDic[@"source_type"] integerValue];
+    NSString *dataRefId=self.autoReportDic[@"reference_id"];
+                         
+    if(dataType==1){    //心电仪数据
+        
+        [SVProgressHUD show];
+
+        [IGMemberDataEntity requestForEkgDataDetailWithID:dataRefId finishHandler:^(BOOL success, NSData *ekgData) {
+            [SVProgressHUD dismissWithCompletion:^{
+                
+                if(success){
+                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                    IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
+                    vc.ekgData=ekgData;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                }else{
+                    [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                }
+
+            }];
+        }];
+        
+        return;
+    }
+    
+    if(dataType==2){
+        
+        return;
+    }
+    
 }
 
 -(void)onCompleteBtn:(id)sender{
@@ -75,21 +112,22 @@
                                @"suggestion":self.suggestions};
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGTaskRequestEntity requestToSubmitReportWithContentInfo:reportInfo finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
-        
-        if(success){
-            //发送状态改变给服务器，不用管结果
-            [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId completed:YES finishHandler:nil];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
-        }else{
-            
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"提交报告失败"];
-        }
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                //发送状态改变给服务器，不用管结果
+                [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId completed:YES finishHandler:nil];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
+            }else{
+                
+                [SVProgressHUD showInfoWithStatus:@"提交报告失败"];
+            }
+
+        }];
     }];
     
 }
@@ -100,17 +138,19 @@
     
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [ac addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         
         [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId
                                      completed:NO
                                  finishHandler:^(BOOL success) {
-                                     [IGCommonUI hideHUDForView:self.navigationController.view];
-                                     if(success){
-                                         [self.navigationController popViewControllerAnimated:YES];
-                                     }else{
-                                          [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"放弃任务失败"];
-                                     }
+                                     [SVProgressHUD dismissWithCompletion:^{
+                                         if(success){
+                                             [self.navigationController popViewControllerAnimated:YES];
+                                         }else{
+                                             [SVProgressHUD showInfoWithStatus:@"放弃任务失败"];
+                                         }
+
+                                     }];
                                  }];
         
     }]];
@@ -442,7 +482,7 @@
     self.navigationItem.title=@"异常处理";
     
     self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"资料" style:UIBarButtonItemStylePlain target:self action:@selector(onDataBtn:)];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"数据" style:UIBarButtonItemStylePlain target:self action:@selector(onDataBtn:)];
     
     
     UIBarButtonItem *completeItem=[[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(onCompleteBtn:)];

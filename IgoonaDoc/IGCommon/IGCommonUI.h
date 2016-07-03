@@ -20,19 +20,5 @@
                    presentingVC:(UIViewController*)presentingVC;
 
 
-/*
- 封装MBProgressHUD
- */
 
-+(UIView *)showProgressHUDForView:(UIView *)view;
-
-
-+(UIView*)showLoadingHUDForView:(UIView*)view;
-+(UIView*)showLoadingHUDForView:(UIView *)view alertMsg:(NSString*)msg;
-+(void)hideHUDForView:(UIView*)view;
-
-+(void)showHUDShortlyAddedTo:(UIView *)view alertMsg:(NSString *)msg completion:(void(^)())completionHandler;
-+(void)showHUDShortlyAddedTo:(UIView*)view alertMsg:(NSString*)msg;
-+(void)showHUDShortlyWithNetworkErrorMsgAddedTo:(UIView *)view;
-+(void)showHUDShortlyWithUnknownErrorMsgAddedTo:(UIView*)view;
 @end

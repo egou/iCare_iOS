@@ -74,7 +74,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     
     [self.dataManager selectRowAtIndex:indexPath.row];
  }
@@ -98,55 +98,57 @@
 
 -(void)dataManager:(IGMemberDataManager *)dataManager didReceivedDataSuccess:(BOOL)success dataSummary:(IGMemberDataObj *)dataSummary data:(id)data{
     //1血压计 2心电仪 3报告 4通知
-    [IGCommonUI hideHUDForView:self.navigationController.view];
-    if(!success){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
-        return;
-    }
-    
-    switch (dataSummary.dType) {
-        case 1:{
-            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-            IGBpDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGBpDataViewController"];
-            vc.selectedBpID=dataSummary.dRefId;
-            if([data isKindOfClass:[NSArray class]]){
-                vc.bpDataArray=data;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            
+    [SVProgressHUD dismissWithCompletion:^{
+        if(!success){
+            [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+            return;
         }
-            
-            break;
-        case 2:{
-            
-            if([data isKindOfClass:[NSData class]]){
+        
+        switch (dataSummary.dType) {
+            case 1:{
                 UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
-                vc.ekgData=data;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-        }
-            break;
-        case 3:{
-            
-            if([data isKindOfClass:[IGReportContentObj class]]){
-                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
+                IGBpDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGBpDataViewController"];
+                vc.selectedBpID=dataSummary.dRefId;
+                if([data isKindOfClass:[NSArray class]]){
+                    vc.bpDataArray=data;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
                 
-                vc.reportContent=data;
-                vc.reportContent.rMemberName=self.memberName;
-                [self.navigationController pushViewController:vc animated:YES];
             }
-            
+                
+                break;
+            case 2:{
+                
+                if([data isKindOfClass:[NSData class]]){
+                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                    IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
+                    vc.ekgData=data;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            }
+                break;
+            case 3:{
+                
+                if([data isKindOfClass:[IGReportContentObj class]]){
+                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                    IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
+                    
+                    vc.reportContent=data;
+                    vc.reportContent.rMemberName=self.memberName;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                
+            }
+                break;
+                
+            case 4:
+                break;
+                
+            default:
+                break;
         }
-            break;
-            
-        case 4:
-            break;
-            
-        default:
-            break;
-    }
+
+    }];
     
 }
 

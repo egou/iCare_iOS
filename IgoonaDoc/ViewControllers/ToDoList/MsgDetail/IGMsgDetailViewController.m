@@ -158,12 +158,12 @@
 }
 
 -(void)onCompleteBtn:(id)sender{
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager tapToExitTaskFinished:YES];
 }
 
 -(void)onCancelBtn:(id)sender{
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager tapToExitTaskFinished:NO];
 }
 
@@ -176,7 +176,7 @@
 - (IBAction)onSendBtn:(id)sender {
     
     if(self.currentMsgType==0){ //text
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         [self.dataManager sendTextMsg:self.msgTV.text];
         
     }else{  //audio
@@ -294,34 +294,36 @@
 
 
 -(void)dataManager:(IGMsgDetailDataManager *)manager didSendMsgSuccess:(BOOL)success msgType:(NSInteger)msgType{
-    [IGCommonUI hideHUDForView:self.navigationController.view];
-    
-    if(!success){
-        
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"发送失败"];
-        
-    }else{
-        
-        if(msgType==0){
-            self.msgTV.text=@"";    //清空
-            [self p_updateSendBtnStatus];
+    [SVProgressHUD dismissWithCompletion:^{
+        if(!success){
+            
+            [SVProgressHUD showInfoWithStatus:@"发送失败"];
+            
         }else{
-            //语音不做处理
+            
+            if(msgType==0){
+                self.msgTV.text=@"";    //清空
+                [self p_updateSendBtnStatus];
+            }else{
+                //语音不做处理
+            }
+            
+            //发送成功后，会主动向服务器请求一次消息
+            [self.tableView.mj_footer beginRefreshing];
+            //        [self p_reloadAllMsgsWithNewMsg:YES];
         }
-        
-        //发送成功后，会主动向服务器请求一次消息
-        [self.tableView.mj_footer beginRefreshing];
-//        [self p_reloadAllMsgsWithNewMsg:YES];
-    }
+
+    }];
+    
 }
 
 -(void)dataManager:(IGMsgDetailDataManager *)manager didExitTaskSuccess:(BOOL)success taskCompleted:(BOOL)completed{
     
     if(success){
-        [IGCommonUI hideHUDForView:self.navigationController.view];
+        [SVProgressHUD dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"未知错误"];
+        [SVProgressHUD showInfoWithStatus:@"未知错误"];
     }
 }
 #pragma mark - audio manager delegate
@@ -329,7 +331,7 @@
     
     [self p_showRecordingBg:NO];
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager sendAudioMsg:data duration:duration];
     
 }

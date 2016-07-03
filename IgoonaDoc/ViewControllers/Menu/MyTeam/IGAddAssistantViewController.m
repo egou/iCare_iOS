@@ -40,26 +40,27 @@
     NSString *name=self.nameTF.text;
     
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidName:name]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"姓名格式错误"];
         return;
     }
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
+    
     [IGMyTeamRequestEntity requestToAddAssistantWithPhoneNum:phoneNum name:name finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
         
         if(success){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功" completion:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            }];
+            
+            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请失败"];
+            [SVProgressHUD showInfoWithStatus:@"邀请失败"];
         }
     }];
 }

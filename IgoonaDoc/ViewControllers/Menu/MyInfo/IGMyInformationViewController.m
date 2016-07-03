@@ -56,7 +56,7 @@
                 [wSelf p_reloadAllData];
                 self.navigationItem.rightBarButtonItem.enabled=YES;
             }else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+                [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
             }
         }];
         

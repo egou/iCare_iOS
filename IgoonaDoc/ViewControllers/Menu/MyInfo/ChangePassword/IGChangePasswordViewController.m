@@ -39,23 +39,23 @@
     NSString *newPwd2=self.confirmPwdTF.text;
     
     if(![IGRegularExpression isValidPassword:oldPwd]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"原密码至少为6个字符"];
+        [SVProgressHUD showInfoWithStatus:@"原密码至少为6个字符"];
         return;
     }
     
     if(![IGRegularExpression isValidPassword:newPwd1]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码至少为6个字符"];
+        [SVProgressHUD showInfoWithStatus:@"新密码至少为6个字符"];
         return;
     }
     
     if(![newPwd1 isEqualToString:newPwd2]){
-         [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"两次新密码不一致"];
+         [SVProgressHUD showInfoWithStatus:@"两次新密码不一致"];
         return;
     }
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGMyInformationRequestEntity requestToChangePasswordWithOldPassword:oldPwd newPassword:newPwd1 finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
+     
         if(success){
             
             MYINFO.password=newPwd1;
@@ -65,11 +65,11 @@
                 [IGUserDefaults saveValue:newPwd1 forKey:kIGUserDefaultsPassword];
             }
             
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改密码成功" completion:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            }];
+            [SVProgressHUD showSuccessWithStatus:@"修改密码成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改密码失败"];
+            [SVProgressHUD showInfoWithStatus:@"修改密码失败"];
         }
     }];
     

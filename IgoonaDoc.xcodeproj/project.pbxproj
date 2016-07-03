@@ -53,7 +53,6 @@
 		6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001D41C9D221800085229 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001D61C9D221800085229 /* View+MASAdditions.m */; };
 		6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001D91C9D221800085229 /* ViewController+MASAdditions.m */; };
-		6B00021C1C9D221900085229 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001DC1C9D221800085229 /* MBProgressHUD.m */; };
 		6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001DF1C9D221800085229 /* AFAutoPurgingImageCache.m */; };
 		6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001E11C9D221800085229 /* AFImageDownloader.m */; };
 		6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001E31C9D221800085229 /* AFNetworkActivityIndicatorManager.m */; };
@@ -82,7 +81,6 @@
 		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; };
 		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; };
 		6B03E3591CCFB6640020FE8F /* IGReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B03E3581CCFB6640020FE8F /* IGReportDetailViewController.m */; };
-		6B057CA31CD5C11C0059D2F3 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B87C0301CD4FF6C0050495B /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B057CAC1CD5EC490059D2F3 /* IGTaskNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B057CAB1CD5EC490059D2F3 /* IGTaskNavigationController.m */; };
 		6B057CB11CD5F8AD0059D2F3 /* IGTaskRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B057CB01CD5F8AD0059D2F3 /* IGTaskRequestEntity.m */; };
 		6B0C119F1CDA2B83004EFE11 /* IGPatientDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */; };
@@ -117,6 +115,13 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77E81D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m */; };
+		6B1C77F21D28F2BE0057FB50 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77EA1D28F2BE0057FB50 /* SVProgressAnimatedView.m */; };
+		6B1C77F31D28F2BE0057FB50 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B1C77EC1D28F2BE0057FB50 /* SVProgressHUD.bundle */; };
+		6B1C77F41D28F2BE0057FB50 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77EE1D28F2BE0057FB50 /* SVProgressHUD.m */; };
+		6B1C77F51D28F2BE0057FB50 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77F01D28F2BE0057FB50 /* SVRadialGradientLayer.m */; };
+		6B1C78071D28F8530057FB50 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C78001D28F8240057FB50 /* Charts.framework */; };
+		6B1C78081D28F8530057FB50 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C78001D28F8240057FB50 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2049CE1CF752140032297D /* TWMessageBarManager.m */; };
 		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; };
 		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; };
@@ -150,10 +155,8 @@
 		6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */; };
 		6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */; };
 		6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */; };
-		6B87C0351CD4FFA60050495B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B87C0301CD4FF6C0050495B /* Charts.framework */; };
 		6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0371CD501210050495B /* IGBPChartManager.m */; };
 		6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */; };
-		6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */; };
 		6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EE71CD70DDD00E39D54 /* IGDoneListDataManager.m */; };
 		6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EE91CD70DDD00E39D54 /* IGDoneListEntity.m */; };
 		6BA60F011CD70DDD00E39D54 /* IGDoneListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EEB1CD70DDD00E39D54 /* IGDoneListViewCell.m */; };
@@ -185,33 +188,40 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6B057CA41CD5C11C0059D2F3 /* PBXContainerItemProxy */ = {
+		6B1C77FF1D28F8240057FB50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-		6B87C02F1CD4FF6C0050495B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			containerPortal = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
-		6B87C0311CD4FF6C0050495B /* PBXContainerItemProxy */ = {
+		6B1C78011D28F8240057FB50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			containerPortal = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
 			remoteInfo = "Charts-TV";
 		};
-		6B87C0331CD4FF6C0050495B /* PBXContainerItemProxy */ = {
+		6B1C78031D28F8240057FB50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+			containerPortal = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		6B1C78051D28F8240057FB50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
 			remoteInfo = ChartsTests;
+		};
+		6B1C78091D28F8530057FB50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -222,7 +232,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6B057CA31CD5C11C0059D2F3 /* Charts.framework in Embed Frameworks */,
+				6B1C78081D28F8530057FB50 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,8 +337,6 @@
 		6B0001D71C9D221800085229 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		6B0001D81C9D221800085229 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		6B0001D91C9D221800085229 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		6B0001DB1C9D221800085229 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		6B0001DC1C9D221800085229 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6B0001DE1C9D221800085229 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAutoPurgingImageCache.h; sourceTree = "<group>"; };
 		6B0001DF1C9D221800085229 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAutoPurgingImageCache.m; sourceTree = "<group>"; };
 		6B0001E01C9D221800085229 /* AFImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageDownloader.h; sourceTree = "<group>"; };
@@ -446,6 +454,17 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B1C77E71D28F2BE0057FB50 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		6B1C77E81D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		6B1C77E91D28F2BE0057FB50 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		6B1C77EA1D28F2BE0057FB50 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		6B1C77EB1D28F2BE0057FB50 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		6B1C77EC1D28F2BE0057FB50 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		6B1C77ED1D28F2BE0057FB50 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		6B1C77EE1D28F2BE0057FB50 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		6B1C77EF1D28F2BE0057FB50 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		6B1C77F01D28F2BE0057FB50 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		6B2049CD1CF752140032297D /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		6B2049CE1CF752140032297D /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
 		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
@@ -511,13 +530,10 @@
 		6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewController.m; sourceTree = "<group>"; };
 		6B87C0261CD4EA1F0050495B /* IGMemberDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewCell.h; sourceTree = "<group>"; };
 		6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewCell.m; sourceTree = "<group>"; };
-		6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		6B87C0361CD501210050495B /* IGBPChartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBPChartManager.h; sourceTree = "<group>"; };
 		6B87C0371CD501210050495B /* IGBPChartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBPChartManager.m; sourceTree = "<group>"; };
 		6B87C0391CD501980050495B /* IGBpDataDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataDetailObj.h; sourceTree = "<group>"; };
 		6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataDetailObj.m; sourceTree = "<group>"; };
-		6B87C03D1CD513F20050495B /* IGEkgDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgDataViewController.h; sourceTree = "<group>"; };
-		6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgDataViewController.m; sourceTree = "<group>"; };
 		6BA60EE61CD70DDD00E39D54 /* IGDoneListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListDataManager.h; sourceTree = "<group>"; };
 		6BA60EE71CD70DDD00E39D54 /* IGDoneListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDoneListDataManager.m; sourceTree = "<group>"; };
 		6BA60EE81CD70DDD00E39D54 /* IGDoneListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListEntity.h; sourceTree = "<group>"; };
@@ -580,7 +596,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B87C0351CD4FFA60050495B /* Charts.framework in Frameworks */,
 				6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */,
 				6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */,
 				6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */,
@@ -590,6 +605,7 @@
 				6B1584C51CB130B9009C4EAD /* Foundation.framework in Frameworks */,
 				6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */,
 				6B1584C11CB130AF009C4EAD /* UIKit.framework in Frameworks */,
+				6B1C78071D28F8530057FB50 /* Charts.framework in Frameworks */,
 				6B1584BF1CB130A9009C4EAD /* libz.tbd in Frameworks */,
 				6B1584BD1CB130A4009C4EAD /* Security.framework in Frameworks */,
 			);
@@ -705,7 +721,7 @@
 			children = (
 				6B0001871C9D1E9500085229 /* IgoonaDoc */,
 				6B0001861C9D1E9500085229 /* Products */,
-				6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */,
+				6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -825,9 +841,9 @@
 		6B0001BF1C9D221800085229 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6B1C77E61D28F2BE0057FB50 /* SVProgressHUD */,
 				2C008D761CAF760F00ECE4B5 /* MJRefresh */,
 				6B0001C01C9D221800085229 /* Masonry */,
-				6B0001DA1C9D221800085229 /* MBProgressHUD */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -862,15 +878,6 @@
 				6B0001D91C9D221800085229 /* ViewController+MASAdditions.m */,
 			);
 			path = Masonry;
-			sourceTree = "<group>";
-		};
-		6B0001DA1C9D221800085229 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6B0001DB1C9D221800085229 /* MBProgressHUD.h */,
-				6B0001DC1C9D221800085229 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		6B0001DD1C9D221800085229 /* UIKit+AFNetworking */ = {
@@ -1203,6 +1210,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B1C77E61D28F2BE0057FB50 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6B1C77E71D28F2BE0057FB50 /* SVIndefiniteAnimatedView.h */,
+				6B1C77E81D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m */,
+				6B1C77E91D28F2BE0057FB50 /* SVProgressAnimatedView.h */,
+				6B1C77EA1D28F2BE0057FB50 /* SVProgressAnimatedView.m */,
+				6B1C77EB1D28F2BE0057FB50 /* SVProgressHUD-Prefix.pch */,
+				6B1C77EC1D28F2BE0057FB50 /* SVProgressHUD.bundle */,
+				6B1C77ED1D28F2BE0057FB50 /* SVProgressHUD.h */,
+				6B1C77EE1D28F2BE0057FB50 /* SVProgressHUD.m */,
+				6B1C77EF1D28F2BE0057FB50 /* SVRadialGradientLayer.h */,
+				6B1C77F01D28F2BE0057FB50 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		6B1C77F91D28F8230057FB50 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B1C78001D28F8240057FB50 /* Charts.framework */,
+				6B1C78021D28F8240057FB50 /* Charts.framework */,
+				6B1C78041D28F8240057FB50 /* Charts.framework */,
+				6B1C78061D28F8240057FB50 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6B2049CC1CF752140032297D /* TWMessageBarManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1280,21 +1315,9 @@
 			path = dataList;
 			sourceTree = "<group>";
 		};
-		6B87C02A1CD4FF6B0050495B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6B87C0301CD4FF6C0050495B /* Charts.framework */,
-				6B87C0321CD4FF6C0050495B /* Charts.framework */,
-				6B87C0341CD4FF6C0050495B /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		6B87C03C1CD5135C0050495B /* ekg */ = {
 			isa = PBXGroup;
 			children = (
-				6B87C03D1CD513F20050495B /* IGEkgDataViewController.h */,
-				6B87C03E1CD513F20050495B /* IGEkgDataViewController.m */,
 				6B0E84091CFAEADE0000E62E /* IGEkgDataV2ViewController.h */,
 				6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */,
 				6B0E840E1CFAEB680000E62E /* IGEkgView.h */,
@@ -1460,7 +1483,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6B057CA51CD5C11C0059D2F3 /* PBXTargetDependency */,
+				6B1C780A1D28F8530057FB50 /* PBXTargetDependency */,
 			);
 			name = IgoonaDoc;
 			productName = IgoonaDoc;
@@ -1496,8 +1519,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 6B87C02A1CD4FF6B0050495B /* Products */;
-					ProjectRef = 6B87C0291CD4FF6B0050495B /* Charts.xcodeproj */;
+					ProductGroup = 6B1C77F91D28F8230057FB50 /* Products */;
+					ProjectRef = 6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1508,25 +1531,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6B87C0301CD4FF6C0050495B /* Charts.framework */ = {
+		6B1C78001D28F8240057FB50 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 6B87C02F1CD4FF6C0050495B /* PBXContainerItemProxy */;
+			remoteRef = 6B1C77FF1D28F8240057FB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6B87C0321CD4FF6C0050495B /* Charts.framework */ = {
+		6B1C78021D28F8240057FB50 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 6B87C0311CD4FF6C0050495B /* PBXContainerItemProxy */;
+			remoteRef = 6B1C78011D28F8240057FB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6B87C0341CD4FF6C0050495B /* ChartsTests.xctest */ = {
+		6B1C78041D28F8240057FB50 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 6B1C78031D28F8240057FB50 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6B1C78061D28F8240057FB50 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 6B87C0331CD4FF6C0050495B /* PBXContainerItemProxy */;
+			remoteRef = 6B1C78051D28F8240057FB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1537,6 +1567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0001951C9D1E9500085229 /* Assets.xcassets in Resources */,
+				6B1C77F31D28F2BE0057FB50 /* SVProgressHUD.bundle in Resources */,
 				6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */,
 				6B0002061C9D221900085229 /* LaunchScreen.storyboard in Resources */,
 				2C008DB11CAF760F00ECE4B5 /* MJRefresh.bundle in Resources */,
@@ -1559,7 +1590,6 @@
 				6B00020B1C9D221900085229 /* IGHTTPClient.m in Sources */,
 				6B0002181C9D221900085229 /* NSArray+MASAdditions.m in Sources */,
 				6B0002211C9D221900085229 /* UIButton+AFNetworking.m in Sources */,
-				6B00021C1C9D221900085229 /* MBProgressHUD.m in Sources */,
 				6B1325701CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m in Sources */,
 				2C008DAD1CAF760F00ECE4B5 /* MJRefreshBackStateFooter.m in Sources */,
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
@@ -1569,6 +1599,7 @@
 				6BFBB2BE1CD0F8C40096A02A /* IGReportDetailViewCell.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
 				6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */,
+				6B1C77F41D28F2BE0057FB50 /* SVProgressHUD.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
 				6B1325771CE872AA00C2A8C3 /* IGChangePhoneNumViewController.m in Sources */,
@@ -1612,8 +1643,8 @@
 				6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */,
 				6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
+				6B1C77F51D28F2BE0057FB50 /* SVRadialGradientLayer.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
-				6B87C03F1CD513F20050495B /* IGEkgDataViewController.m in Sources */,
 				6B76D7691CEB6779007D150A /* IGForgetPasswordViewController.m in Sources */,
 				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
@@ -1625,6 +1656,7 @@
 				6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */,
 				6B0002171C9D221900085229 /* MASViewConstraint.m in Sources */,
 				6B00018A1C9D1E9500085229 /* main.m in Sources */,
+				6B1C77F21D28F2BE0057FB50 /* SVProgressAnimatedView.m in Sources */,
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
 				6B7A35B61CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m in Sources */,
@@ -1689,6 +1721,7 @@
 				6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
+				6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */,
 				6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */,
 				6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */,
 				6B032E041CC125190027DDAD /* IGToDoListViewController.m in Sources */,
@@ -1714,10 +1747,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6B057CA51CD5C11C0059D2F3 /* PBXTargetDependency */ = {
+		6B1C780A1D28F8530057FB50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
-			targetProxy = 6B057CA41CD5C11C0059D2F3 /* PBXContainerItemProxy */;
+			targetProxy = 6B1C78091D28F8530057FB50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1853,6 +1886,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lina Wu (G2SQXVGP4L)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IgoonaDoc/IgoonaDoc-Prefix.pch";
 				INFOPLIST_FILE = IgoonaDoc/Info.plist;
@@ -1876,6 +1910,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: iGoona LLC (8LBT45S8ZM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: iGoona LLC (8LBT45S8ZM)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IgoonaDoc/IgoonaDoc-Prefix.pch";
 				INFOPLIST_FILE = IgoonaDoc/Info.plist;

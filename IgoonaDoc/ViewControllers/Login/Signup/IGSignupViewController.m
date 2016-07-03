@@ -102,24 +102,24 @@
     
     if(![IGRegularExpression isValidPhoneNum:username])
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户名格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"用户名格式错误"];
         return;
     }
     
     if(![IGRegularExpression isValidPassword:password])
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码至少为6个字符"];
+        [SVProgressHUD showInfoWithStatus:@"密码至少为6个字符"];
         return;
     }
     
     if(![IGRegularExpression isValidInvitationCode:invitationCode])
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"邀请码格式错误"];
         return;
     }
     
     
-    [IGCommonUI showLoadingHUDForView:self.view];
+    [SVProgressHUD show];
     __weak typeof(self) wSelf=self;
     [IGHTTPCLIENT GET:@"php/login.php"
                     parameters:@{@"action":@"register",
@@ -130,11 +130,11 @@
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
             
-                           [IGCommonUI hideHUDForView:wSelf.view];
+                           [SVProgressHUD dismiss];
                            [wSelf p_responseForSignup:responseObject];
                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           [IGCommonUI hideHUDForView:wSelf.view];
-                           [IGCommonUI showHUDShortlyWithNetworkErrorMsgAddedTo:wSelf.view];
+                           
+                           [SVProgressHUD showInfoWithStatus:@"网络错误"];
                        }];
 }
 
@@ -180,27 +180,27 @@
             
             switch (reason) {
                 case 2:
-                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码错误"];
+                    [SVProgressHUD showInfoWithStatus:@"邀请码错误"];
                     break;
                 case 3:
-                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"邀请码已注册，需联系客服重置密码"];
+                    [SVProgressHUD showInfoWithStatus:@"邀请码已注册，需联系客服重置密码"];
                     break;
                 case 4:
-                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户信息错误"];
+                    [SVProgressHUD showInfoWithStatus:@"用户信息错误"];
                     break;
                 case 5:
-                    [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"手机号已被注册"];
+                    [SVProgressHUD showInfoWithStatus:@"手机号已被注册"];
                     break;
                     
                 default:
-                    [IGCommonUI showHUDShortlyWithUnknownErrorMsgAddedTo:self.view];
+                    [SVProgressHUD showInfoWithStatus:@"未知错误"];
                     break;
             }
             
         }
         else
         {
-            [IGCommonUI showHUDShortlyWithUnknownErrorMsgAddedTo:self.view];
+            [SVProgressHUD showInfoWithStatus:@"未知错误"];
         }
     }
 }

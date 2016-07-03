@@ -65,14 +65,14 @@
     IGInvitedCustomerObj *customer=self.customersList[indexPath.row];
     [cell setInvitedCustomerInfo:customer];
     cell.onReSendBtnHandler=^(IGInvitedCustomersViewCell* cell){
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         [IGMyIncomeRequestEntity requestToReInvitedCustomer:customer.cId finishHandler:^(BOOL success) {
-            [IGCommonUI hideHUDForView:self.navigationController.view];
+          
             
             if(success){
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"重发成功"];
+                [SVProgressHUD showSuccessWithStatus:@"重发成功"];
             }else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"重发失败"];
+                [SVProgressHUD showInfoWithStatus:@"重发失败"];
             }
         }];
     };
@@ -109,7 +109,7 @@
                 wSelf.customersList=customersInfo;
                 [wSelf.tableView reloadData];
             }else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+                [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
             }
         }];
     }];

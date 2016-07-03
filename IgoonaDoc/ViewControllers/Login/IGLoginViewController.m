@@ -146,17 +146,17 @@
     
     if(!username.length>0)
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"用户名不能为空"];
+        [SVProgressHUD showInfoWithStatus:@"用户名不能为空"];
         return;
     }
     
     if(!password.length>0)
     {
-        [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"密码不能为空"];
+        [SVProgressHUD showInfoWithStatus:@"密码不能为空"];
         return;
     }
     
-    [IGCommonUI showLoadingHUDForView:self.view];
+   [SVProgressHUD show];
     
     __weak typeof(self) wSelf=self;
     [IGHTTPCLIENT GET:@"php/login.php"
@@ -167,49 +167,50 @@
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                            
-                           [IGCommonUI hideHUDForView:wSelf.view];
-                           NSLog(@"%@",responseObject);
-                           if(IG_DIC_ASSERT(responseObject, @"success", @1))//成功
-                           {
-                               //需要则保存用户名密码
-                               BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
-                               if(needsSaveUsername)
+                           [SVProgressHUD dismissWithCompletion:^{
+                               NSLog(@"%@",responseObject);
+                               if(IG_DIC_ASSERT(responseObject, @"success", @1))//成功
                                {
-                                   [IGUserDefaults saveValue:username forKey:kIGUserDefaultsUserName];
-                                   BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
-                                   if(needsSavePassword)
-                                       [IGUserDefaults saveValue:password forKey:kIGUserDefaultsPassword];
+                                   //需要则保存用户名密码
+                                   BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
+                                   if(needsSaveUsername)
+                                   {
+                                       [IGUserDefaults saveValue:username forKey:kIGUserDefaultsUserName];
+                                       BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
+                                       if(needsSavePassword)
+                                           [IGUserDefaults saveValue:password forKey:kIGUserDefaultsPassword];
+                                   }
+                                   
+                                   //存储用户信息
+                                   [MYINFO clear];
+                                   
+                                   MYINFO.username=username;
+                                   MYINFO.password=password;
+                                   MYINFO.type=[responseObject[@"type"] integerValue];
+                                   MYINFO.iconId=responseObject[@"icon_idx"];
+                                   
+                                   MYINFO.hasAgreed=[responseObject[@"need_agreement"] intValue]!=1;
+                                   
+                                   
+                                   //进入主页面
+                                   [wSelf p_didLoginSuccess];
+                                   
                                }
-                               
-                               //存储用户信息
-                               [MYINFO clear];
-                               
-                               MYINFO.username=username;
-                               MYINFO.password=password;
-                               MYINFO.type=[responseObject[@"type"] integerValue];
-                               MYINFO.iconId=responseObject[@"icon_idx"];
-                               
-                               MYINFO.hasAgreed=[responseObject[@"need_agreement"] intValue]!=1;
-                               
-                               
-                               //进入主页面
-                               [wSelf p_didLoginSuccess];
-                               
-                           }
-                           else if(IG_DIC_ASSERT(responseObject, @"success", @0))
-                           {
-                               [IGCommonUI showHUDShortlyAddedTo:wSelf.view alertMsg:@"登录失败"];
-                           }
-                           else
-                           {
-                               [IGCommonUI showHUDShortlyWithUnknownErrorMsgAddedTo:wSelf.view];
-                           }
-                           
+                               else if(IG_DIC_ASSERT(responseObject, @"success", @0))
+                               {
+                                   [SVProgressHUD showInfoWithStatus:@"登录失败"];
+                                   
+                               }
+                               else
+                               {
+                                   [SVProgressHUD showInfoWithStatus:@"未知错误"];
+                               }
+
+                           }];
                            
                            
                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           [IGCommonUI hideHUDForView:wSelf.view];
-                           [IGCommonUI showHUDShortlyWithNetworkErrorMsgAddedTo:wSelf.view];
+                           [SVProgressHUD showInfoWithStatus:@"网络错误"];
                        }];
     
 }

@@ -8,7 +8,7 @@
 
 #import "IGFirstLoadingViewController.h"
 #import "IGRootViewController.h"
-#import "MBProgressHUD.h"
+
 
 
 @interface IGFirstLoadingViewController ()
@@ -30,7 +30,7 @@
 
 -(void)checkVersionRequest
 {
-    [IGCommonUI showLoadingHUDForView:self.view];
+    [SVProgressHUD show];
     
     __weak typeof(self) wSelf=self;
     [IGHTTPCLIENT GET:@"php/version.php"
@@ -39,39 +39,43 @@
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                            
-                           [IGCommonUI hideHUDForView:wSelf.view];
-                           
-                           
-                           if(IG_DIC_ASSERT(responseObject, @"upgrade", @0))//无需更新
-                           {
-                               [wSelf didFinishLoading];
-                           }
-                           else if(IG_DIC_ASSERT(responseObject, @"upgrade", @1))//非强制更新
-                           {
-                               
-                           }
-                           else if(IG_DIC_ASSERT(responseObject, @"upgrade", @2))//必须更新
-                           {
-                               [IGCommonUI showSimpleAlertWithTitle:nil alertMsg:@"请前往App Store下载最新版本" actionTitle:@"去下载" actionHandler:^(UIAlertAction *action) {
+                           [SVProgressHUD dismissWithCompletion:^{
+                               if(IG_DIC_ASSERT(responseObject, @"upgrade", @0))//无需更新
+                               {
+                                   [wSelf didFinishLoading];
+                               }
+                               else if(IG_DIC_ASSERT(responseObject, @"upgrade", @1))//非强制更新
+                               {
                                    
-                                   NSURL *AppStoreURL=[NSURL URLWithString:IG_APPSTOREURL];
-                                   [[UIApplication sharedApplication] openURL:AppStoreURL];
-                               } presentingVC:wSelf];
-                           }
-                           else
-                           {
-                               [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"未知错误" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
-                                   [wSelf checkVersionRequest];
-                               } presentingVC:wSelf];
-                           }
+                               }
+                               else if(IG_DIC_ASSERT(responseObject, @"upgrade", @2))//必须更新
+                               {
+                                   [IGCommonUI showSimpleAlertWithTitle:nil alertMsg:@"请前往App Store下载最新版本" actionTitle:@"去下载" actionHandler:^(UIAlertAction *action) {
+                                       
+                                       NSURL *AppStoreURL=[NSURL URLWithString:IG_APPSTOREURL];
+                                       [[UIApplication sharedApplication] openURL:AppStoreURL];
+                                   } presentingVC:wSelf];
+                               }
+                               else
+                               {
+                                   [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"未知错误" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
+                                       [wSelf checkVersionRequest];
+                                   } presentingVC:wSelf];
+                               }
+                           }];
+                           
+                           
+                          
                            
                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                            
-                           [IGCommonUI hideHUDForView:wSelf.view];
+                           [SVProgressHUD dismissWithCompletion:^{
+                               [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"无法连接到服务器" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
+                                   [wSelf checkVersionRequest];
+                               } presentingVC:wSelf];
+                           }];
                            
-                           [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"无法连接到服务器" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
-                               [wSelf checkVersionRequest];
-                           } presentingVC:wSelf];
+                           
                        }];
   
 }

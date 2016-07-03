@@ -71,58 +71,58 @@
     //先检测填写有效性
     NSString *phoneNum=self.detailInfo.dPhoneNum;
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机格式错误"];
         return;
     }
     
     NSString *name=self.detailInfo.dName;
     if(![IGRegularExpression isValidName:name]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"姓名格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"姓名格式错误"];
         return;
     }
     
     NSInteger level=self.detailInfo.dLevel;
     if(level<1||level>3){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择级别"];
+        [SVProgressHUD showInfoWithStatus:@"请选择级别"];
         return;
     }
     
     NSString *provinceId=self.detailInfo.dProvinceId;
     if(!provinceId.length>0){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择省级"];
+        [SVProgressHUD showInfoWithStatus:@"请选择省级"];
         return;
     }
     
     NSString *cityId=self.detailInfo.dCityId;
     if(!cityId.length>0){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请选择市区"];
+        [SVProgressHUD showInfoWithStatus:@"请选择市区"];
         return;
     }
     
     NSString *hospital=self.hospitalTF.text;
     if(!hospital.length>0){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请填写医院"];
+        [SVProgressHUD showInfoWithStatus:@"请填写医院"];
         return;
     }
     
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGMyIncomeRequestEntity requestToInviteDoctorWithDocInfo:self.detailInfo finishHandler:^(NSInteger resultCode, NSString *inviteId) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
+        
         if(resultCode==1){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请成功"];
+            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
             [self.navigationController popViewControllerAnimated:YES];
             return ;
         }
     
         
         if(resultCode==2){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"该用户已注册"];
+            [SVProgressHUD showInfoWithStatus:@"该用户已注册"];
             return;
         }
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"邀请失败"];
+        [SVProgressHUD showInfoWithStatus:@"邀请失败"];
     }];
 }
 
@@ -195,51 +195,53 @@
         
         NSString *provinceId=self.detailInfo.dProvinceId;
         if(provinceId.length>0){
-            [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+            [SVProgressHUD show];
             [IGMyInformationRequestEntity requestForAllCitiesOfProvince:provinceId finishHandler:^(NSArray *allCities) {
-                [IGCommonUI hideHUDForView:self.navigationController.view];
-                if(allCities){
-                    
-                    if(allCities.count==0){
-                        //直辖市之类的
-                        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"无城市信息"];
-                        return;
-                    }
-                    
-                    IGSingleSelectionTableViewController *vc=[[IGSingleSelectionTableViewController alloc] init];
-                    
-                    __block NSMutableArray* cityNames=[NSMutableArray array];
-                    __block NSInteger selectedCityIndex=-1; //当前城市，所在位置
-                    
-                    [allCities enumerateObjectsUsingBlock:^(IGCityInfoObj* cityInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-                        NSString *cityName=cityInfo.cName;
-                        [cityNames addObject:cityName];
+                [SVProgressHUD dismissWithCompletion:^{
+                    if(allCities){
                         
-                        if([self.detailInfo.dCityId isEqualToString:cityInfo.cId])
-                            selectedCityIndex=idx;
-                    }];
-                    vc.allItems=cityNames;
-                    vc.selectedIndex=selectedCityIndex;
-                    
-                    vc.selectionHandler=^(IGSingleSelectionTableViewController* viewController,NSInteger selectedRow){
-                        IGCityInfoObj *selectedCity=allCities[selectedRow];
-                        self.detailInfo.dCityId=selectedCity.cId;
-                        self.detailInfo.dCityName=selectedCity.cName;
-                        [self.navigationController popViewControllerAnimated:YES];
-                        [self p_reloadAllData];
-                    };
-                    
-                    [self.navigationController pushViewController:vc animated:YES];
-                    
-                    
-                }else{
-                    [IGCommonUI hideHUDForView:self.navigationController.view];
-                    [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取城市失败"];
-                }
+                        if(allCities.count==0){
+                            //直辖市之类的
+                            [SVProgressHUD showInfoWithStatus:@"无城市信息"];
+                            return;
+                        }
+                        
+                        IGSingleSelectionTableViewController *vc=[[IGSingleSelectionTableViewController alloc] init];
+                        
+                        __block NSMutableArray* cityNames=[NSMutableArray array];
+                        __block NSInteger selectedCityIndex=-1; //当前城市，所在位置
+                        
+                        [allCities enumerateObjectsUsingBlock:^(IGCityInfoObj* cityInfo, NSUInteger idx, BOOL * _Nonnull stop) {
+                            NSString *cityName=cityInfo.cName;
+                            [cityNames addObject:cityName];
+                            
+                            if([self.detailInfo.dCityId isEqualToString:cityInfo.cId])
+                                selectedCityIndex=idx;
+                        }];
+                        vc.allItems=cityNames;
+                        vc.selectedIndex=selectedCityIndex;
+                        
+                        vc.selectionHandler=^(IGSingleSelectionTableViewController* viewController,NSInteger selectedRow){
+                            IGCityInfoObj *selectedCity=allCities[selectedRow];
+                            self.detailInfo.dCityId=selectedCity.cId;
+                            self.detailInfo.dCityName=selectedCity.cName;
+                            [self.navigationController popViewControllerAnimated:YES];
+                            [self p_reloadAllData];
+                        };
+                        
+                        [self.navigationController pushViewController:vc animated:YES];
+                        
+                        
+                    }else{
+                        
+                        [SVProgressHUD showInfoWithStatus:@"获取城市失败"];
+                    }
+                }];
+                
                 
             }];
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"请先选择省份"];
+            [SVProgressHUD showInfoWithStatus:@"请先选择省份"];
         }
     }
 }

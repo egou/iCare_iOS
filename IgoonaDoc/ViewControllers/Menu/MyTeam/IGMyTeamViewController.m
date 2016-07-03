@@ -74,13 +74,13 @@
     
     cell.onEditBtnHandler=^(IGMyTeamViewCell* inTeamCell){
         
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         
         
         if(docInfo.dStatus==2){//重发邀请
             [IGMyTeamRequestEntity requestToReInviteAssistant:docInfo.dId finishHandler:^(BOOL success) {
-                [IGCommonUI hideHUDForView:self.navigationController.view];
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"发送成功":@"发送失败"];
+                
+                [SVProgressHUD showInfoWithStatus:success?@"发送成功":@"发送失败"];
                 
             }];
             
@@ -89,8 +89,8 @@
         
             [IGMyTeamRequestEntity requestToDeleteAssistant:docInfo.dId finishHandler:^(BOOL success) {
 
-                [IGCommonUI hideHUDForView:self.navigationController.view];
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:success?@"删除成功":@"删除失败"];
+              
+                [SVProgressHUD showInfoWithStatus:success?@"删除成功":@"删除失败"];
                 
                 //此处应删除相应数据
                 if(success){
@@ -144,7 +144,7 @@
                 wSelf.memberList=teamInfo;
                 [wSelf.tableView reloadData];
             }else{
-                [IGCommonUI showHUDShortlyAddedTo:wSelf.navigationController.view alertMsg:@"获取信息失败"];
+                [SVProgressHUD showInfoWithStatus:@"获取信息失败"];
             }
         }];
         

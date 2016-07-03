@@ -48,35 +48,34 @@
     
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
     
     NSString *confirmNum=self.confirmationNumTF.text;
     if(![IGRegularExpression isValidConfirmationNum:confirmNum]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"验证码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"验证码格式错误"];
         return;
     }
     
     NSString *password=self.changePwdTF.text;
     if(![IGRegularExpression isValidPassword:password]){
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"新密码至少为6个字符"];
+        [SVProgressHUD showInfoWithStatus:@"新密码至少为6个字符"];
         return;
     }
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     
     [IGLoginRequestEntity requestToResetPasswordWithPhoneNum:phoneNum confirmNum:confirmNum newPwd:password finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
         if(success){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改密码成功" completion:^{
-                if(self.onFinishHandler){
-                    self.onFinishHandler(self,phoneNum,password);
-                }
-            }];
+            [SVProgressHUD showSuccessWithStatus:@"修改密码成功" ];
+            if(self.onFinishHandler){
+                self.onFinishHandler(self,phoneNum,password);
+            }
+            
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"修改密码失败" ];
+            [SVProgressHUD showInfoWithStatus:@"修改密码失败" ];
         }
     }];
     
@@ -89,18 +88,18 @@
     NSString *phoneNum=self.phoneNumTF.text;
     if(![IGRegularExpression isValidPhoneNum:phoneNum]){
         
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"手机号码格式错误"];
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
         return;
     }
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [IGLoginRequestEntity requestToSendConfirmationNumToPhone:phoneNum finishHandler:^(BOOL success) {
-        [IGCommonUI hideHUDForView:self.navigationController.view];
+    
         if(success){
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取验证码成功"];
+            [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
             [self p_startConfirmationNumTimer];
         }else{
-            [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取验证码失败"];}
+            [SVProgressHUD showInfoWithStatus:@"获取验证码失败"];}
     }];
     
 }

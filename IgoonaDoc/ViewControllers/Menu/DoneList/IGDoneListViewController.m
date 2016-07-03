@@ -85,23 +85,23 @@
     
     if(task.tType==2){  //报告
         
-        [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+        [SVProgressHUD show];
         
         [IGDoneListEntity requestForReportDetailWithTaskId:task.tId finishHandler:^(BOOL success, IGReportContentObj *report) {
-            [IGCommonUI hideHUDForView:self.navigationController.view];
-            
-            if(success){
-                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
-            
-                vc.reportContent=report;
-                vc.reportContent.rMemberName=task.tMemberName;
-                [self.navigationController pushViewController:vc animated:YES];
-                
-            }else{
-                [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
-            }
-            
+            [SVProgressHUD dismissWithCompletion:^{
+                if(success){
+                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                    IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
+                    
+                    vc.reportContent=report;
+                    vc.reportContent.rMemberName=task.tMemberName;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                }else{
+                    [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                }
+
+            }];
         }];
 
         

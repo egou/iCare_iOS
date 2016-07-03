@@ -67,7 +67,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    [IGCommonUI showLoadingHUDForView:self.navigationController.view];
+    [SVProgressHUD show];
     [self.dataManager selectRowAtIndex:indexPath.row];
     
 }
@@ -121,7 +121,7 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 
@@ -130,23 +130,23 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 
 -(void)dataManager:(IGMyPatientsDataManager *)manager didGotPatientDetailInfo:(IGPatientDetailInfoObj *)detailInfo{
-    [IGCommonUI hideHUDForView:self.navigationController.view];
-    
-    if(detailInfo){
-        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
-        IGPatientDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGPatientDetailViewController"];
-        vc.detailInfo=detailInfo;
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
-    }
-    
+    [SVProgressHUD dismissWithCompletion:^{
+        if(detailInfo){
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
+            IGPatientDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGPatientDetailViewController"];
+            vc.detailInfo=detailInfo;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+        }
+
+    }];
 }
 
 #pragma mark - private methods

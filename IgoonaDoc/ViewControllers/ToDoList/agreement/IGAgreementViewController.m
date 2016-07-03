@@ -41,25 +41,29 @@
 
 - (IBAction)onConfirmBtn:(id)sender {
     
-    [IGCommonUI showLoadingHUDForView:self.view];
+    [SVProgressHUD show];
     [IGHTTPCLIENT GET:@"php/login.php"
            parameters:@{@"action":@"agreement"}
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  [IGCommonUI hideHUDForView:self.view];
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
-                      MYINFO.hasAgreed=YES;
-                      if(self.agreeSuccessHandler){
-                          self.agreeSuccessHandler(self);
+                  [SVProgressHUD dismissWithCompletion:^{
+                      
+                      
+                      if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                          MYINFO.hasAgreed=YES;
+                          if(self.agreeSuccessHandler){
+                              self.agreeSuccessHandler(self);
+                          }
+                      }else{
+                        
+                          [SVProgressHUD showInfoWithStatus:@"未知错误"];
                       }
-                  }else{
-                      [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"未知错误"];
-                  }
+                  }];
                   
               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                  [IGCommonUI hideHUDForView:self.view];
-                  [IGCommonUI showHUDShortlyAddedTo:self.view alertMsg:@"请检查网络连接"];
+
+                  [SVProgressHUD showInfoWithStatus:@"请检查网络连接"];
               }];
     
 }

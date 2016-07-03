@@ -76,7 +76,7 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 
@@ -85,7 +85,7 @@
     if(success){
         [self p_reloadAllData];
     }else{
-        [IGCommonUI showHUDShortlyAddedTo:self.navigationController.view alertMsg:@"获取数据失败"];
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
     }
 }
 
