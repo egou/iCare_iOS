@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B0001841C9D1E9500085229"
-               BuildableName = "IgoonaDoc.app"
+               BuildableName = "&#x5927;&#x592b;&#x6211;&#x597d;&#x4e86;.app"
                BlueprintName = "IgoonaDoc"
                ReferencedContainer = "container:IgoonaDoc.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B0001841C9D1E9500085229"
-            BuildableName = "IgoonaDoc.app"
+            BuildableName = "&#x5927;&#x592b;&#x6211;&#x597d;&#x4e86;.app"
             BlueprintName = "IgoonaDoc"
             ReferencedContainer = "container:IgoonaDoc.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B0001841C9D1E9500085229"
-            BuildableName = "IgoonaDoc.app"
+            BuildableName = "&#x5927;&#x592b;&#x6211;&#x597d;&#x4e86;.app"
             BlueprintName = "IgoonaDoc"
             ReferencedContainer = "container:IgoonaDoc.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B0001841C9D1E9500085229"
-            BuildableName = "IgoonaDoc.app"
+            BuildableName = "&#x5927;&#x592b;&#x6211;&#x597d;&#x4e86;.app"
             BlueprintName = "IgoonaDoc"
             ReferencedContainer = "container:IgoonaDoc.xcodeproj">
          </BuildableReference>

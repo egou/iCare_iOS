@@ -163,7 +163,13 @@
     
     //这一版只做新任务的推送
     IGTaskObj *task=[IGTaskObj new];
-    task.tId=[extrasDic[@"id"] stringValue];
+    
+    id tId=extrasDic[@"id"];
+    if(![tId isKindOfClass:[NSString class]]){
+        tId=[tId stringValue];
+    }
+    
+    task.tId=tId;
     task.tStatus=1;
     task.tMsg=extrasDic[@"msg"];
     task.tMemberIconId=extrasDic[@"iconIdx"];
