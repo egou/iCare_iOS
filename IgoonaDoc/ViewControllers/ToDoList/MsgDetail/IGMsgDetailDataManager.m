@@ -288,7 +288,12 @@
     NSInteger msgType=  [extrasDic[@"type"] integerValue];
     
     if(msgType==2){
-        NSString *memberId=[extrasDic[@"memberId"] stringValue];
+        id mId =extrasDic[@"memberId"];
+        if(![mId isKindOfClass:[NSString class]]){
+            mId=[mId stringValue];
+        }
+        
+        NSString *memberId=mId;
         if([memberId isEqualToString:self.patientId]){  //正在通话
            [self pullToGetNewMsgs];
             
