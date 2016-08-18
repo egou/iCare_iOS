@@ -26,7 +26,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
                   NSLog(@"%@",responseObject);
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       NSInteger total=[responseObject[@"total"] integerValue];
                       NSArray *dataArray=responseObject[@"data"];
@@ -72,7 +72,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                   NSLog(@"%@",responseObject);
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1))
+                  if(IGRespSuccess)
                   {
                       NSArray *dataArray=responseObject[@"data"];
                       NSMutableArray *bpArray=[NSMutableArray array];
@@ -115,7 +115,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                   //member_id  measure_time   data  success
                   NSLog(@"%@",responseObject);
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1))
+                  if(IGRespSuccess)
                   {
                       NSString *ekgBase64DataStr=responseObject[@"data"];
                       NSData *ekgData=[[NSData alloc] initWithBase64EncodedString:ekgBase64DataStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -140,7 +140,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       IGReportContentObj *report=[IGReportContentObj new];
                       
                       report.rHealthLevel=[responseObject[@"health_level"] integerValue];

@@ -34,7 +34,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   NSLog(@"%@",responseObject);
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       __block NSMutableArray *doneTasks=[NSMutableArray array];
                       
@@ -76,7 +76,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       IGReportContentObj *report=[IGReportContentObj new];
                       
                       report.rHealthLevel=[responseObject[@"health_level"] integerValue];

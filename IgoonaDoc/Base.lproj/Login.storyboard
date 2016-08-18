@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mYJ-Aw-Hmh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mYJ-Aw-Hmh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -131,7 +131,7 @@
                                     <color key="titleColor" red="0.32549019610000002" green="0.73725490199999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Icu-5R-CRA" kind="unwind" unwindAction="unwindSegue:" id="23Y-8A-fo0"/>
+                                    <action selector="onBackBtn:" destination="6bu-kD-059" eventType="touchUpInside" id="W0g-Xl-46l"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUI-L6-vnv">
@@ -261,9 +261,6 @@
                     <navigationItem key="navigationItem" title="绑定手机" id="1gB-Bh-IAG">
                         <barButtonItem key="leftBarButtonItem" image="btn_back" id="Jqf-GL-Mzy">
                             <color key="tintColor" red="0.22984114480000001" green="0.68084193000000004" blue="0.23535584979999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="AWh-CU-jSP" kind="unwind" identifier="BackToLoginSID" unwindAction="unwindSegue:" id="v8H-cw-xD8"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -275,11 +272,9 @@
                         <outlet property="textFieldBgView" destination="lUI-L6-vnv" id="EqR-bO-ZOW"/>
                         <outlet property="textFieldBgViewBottomLC" destination="acI-gr-00k" id="fyQ-pR-fdD"/>
                         <outlet property="usernameTF" destination="5jf-46-o1A" id="mc7-oJ-c25"/>
-                        <segue destination="Icu-5R-CRA" kind="unwind" identifier="SignupSuccessSID" unwindAction="unwindSegue:" id="ie8-z5-yXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGB-jD-J1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Icu-5R-CRA" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="b8j-gJ-GNB">
                     <connections>
                         <action selector="tapBackground:" destination="6bu-kD-059" id="MJv-Jw-Jpw"/>
@@ -316,7 +311,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6bu-kD-059" kind="presentation" modalTransitionStyle="flipHorizontal" id="Pge-vI-2Cb"/>
+                                    <action selector="onSignupBtn:" destination="xMj-Ao-yHF" eventType="touchUpInside" id="Pfb-l7-Mmc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4K-8e-fFQ">
@@ -475,7 +470,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTX-jQ-xqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="AWh-CU-jSP" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="12d-rj-S0p">
                     <connections>
                         <action selector="tapBackground:" destination="xMj-Ao-yHF" id="oKI-fJ-HPg"/>
@@ -499,7 +493,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VxX-p8-9Qz" id="9vl-UL-IN9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYg-Ie-UCU">
@@ -530,7 +524,7 @@
                                         <rect key="frame" x="0.0" y="60" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JYk-ZG-7iH" id="Aih-it-c1R">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6v4-Cz-pCq">
@@ -577,7 +571,7 @@
                                         <rect key="frame" x="0.0" y="120" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NbW-vW-r4Q" id="Urb-nl-WVd">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATU-a9-Iiw">

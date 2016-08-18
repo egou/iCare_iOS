@@ -18,7 +18,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       handler(YES);
                   }else{
                       handler(NO);
@@ -55,7 +55,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       NSLog(@"%@",responseObject);
                       
@@ -101,7 +101,7 @@
                         @"status":@2}
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       handler(1);
                   }else{
                           
@@ -139,7 +139,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * task, NSDictionary* responseObject) {
                   NSLog(@"%@",responseObject);
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       handler(YES,responseObject);
                       
                   }else{

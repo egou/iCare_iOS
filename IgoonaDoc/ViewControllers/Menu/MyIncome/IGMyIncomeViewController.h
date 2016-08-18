@@ -10,4 +10,6 @@
 
 @interface IGMyIncomeViewController : UITableViewController
 
+@property (nonatomic,copy) void(^LogoutHandler)(IGMyIncomeViewController *vc);
+
 @end

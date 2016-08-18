@@ -50,7 +50,7 @@
                   [SVProgressHUD dismissWithCompletion:^{
                       
                       
-                      if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      if(IGRespSuccess){
                           MYINFO.hasAgreed=YES;
                           if(self.agreeSuccessHandler){
                               self.agreeSuccessHandler(self);

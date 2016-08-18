@@ -25,7 +25,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       __block NSMutableArray *incomeList=[NSMutableArray array];
                       [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* iDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -59,7 +59,7 @@
                         @"limit":@(20)}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                      
                      __block NSMutableArray *incomeList=[NSMutableArray array];
                      [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* mDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -98,7 +98,7 @@
                         @"limit":@(20)}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                      
                      __block NSMutableArray *incomeList=[NSMutableArray array];
                      [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* mDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -138,7 +138,7 @@
                         @"hospital":docInfo.dHospitalName}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                  NSLog(@"%@",responseObject);
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                     
                      NSString* inviteId=responseObject[@"invite_id"];
                      finishHanlder(1,inviteId);
@@ -166,7 +166,7 @@
                         @"name":name}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                  NSLog(@"%@",responseObject);
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                      
                      NSString* inviteId=responseObject[@"invite_id"];
                      finishHanlder(1,inviteId);
@@ -192,7 +192,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                   }else{
                       finishHandler(NO);
@@ -211,7 +211,7 @@
                         @"limit":@(20)}
              progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                      
                      __block NSMutableArray *financialList=[NSMutableArray array];
                      [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* fDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -247,7 +247,7 @@
                  
                  NSLog(@"%@",responseObject);
                  
-                 if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                 if(IGRespSuccess){
                      
                      __block NSMutableArray *servicesList=[NSMutableArray array];
                      [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* sDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -282,7 +282,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       __block NSMutableArray *customers=[NSMutableArray array];
                       [(NSArray*)responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* cDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -310,7 +310,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                   }else{
                       finishHandler(NO);
@@ -334,7 +334,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       id sent=responseObject[@"sent"];
                       if(sent&&[sent boolValue]==0){

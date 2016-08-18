@@ -20,7 +20,7 @@
                   
                   NSLog(@"%@",responseObject);
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                   
                       
                     
@@ -53,7 +53,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       finishHandler(YES);
                       
@@ -77,7 +77,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       finishHandler(YES);
                       
@@ -98,7 +98,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       finishHandler(YES);
                       

@@ -10,4 +10,7 @@
 
 @interface IGSignupViewController : UIViewController
 
+@property (nonatomic,copy) void(^onBackHandler)(IGSignupViewController* vc);
+@property (nonatomic,copy) void(^onSignupSuccessHandler)(IGSignupViewController *vc ,NSString *phoneNum,NSString *newPwd);
+
 @end

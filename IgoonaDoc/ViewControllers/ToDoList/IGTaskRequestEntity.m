@@ -18,7 +18,7 @@
                         @"status":completed?@3:@1}
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       if(finishHandler)
                           finishHandler(YES);
                   }else{
@@ -39,7 +39,7 @@
             parameters:info
               progress:nil
                success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
-                   if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                   if(IGRespSuccess){
                        if(finishHandler)
                            finishHandler(YES);
                    }else{

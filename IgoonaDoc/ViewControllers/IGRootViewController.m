@@ -12,7 +12,6 @@
 
 @interface IGRootViewController ()<IGFirstLoadingViewControllerDelegate>
 
-@property (nonatomic,strong) UIViewController* currentVC;//当前的VC
 
 @end
 
@@ -22,7 +21,7 @@
     [super viewDidLoad];
 
     [self registerNotifications];
-    [self initLoadingView];
+    [self startLoading];
 }
 
 -(void)dealloc
@@ -39,7 +38,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onIGHTTPClientReLoignDidSuccessNotification:) name:IGHTTPClientReLoignDidSuccessNotification object:IGHTTPCLIENT];
 }
 
--(void)initLoadingView
+-(void)startLoading
 {
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
     IGFirstLoadingViewController* loadingVC=[sb instantiateViewControllerWithIdentifier:@"IGFirstLoadingViewControllerID"];
@@ -48,8 +47,6 @@
     [self addChildViewController:loadingVC];
     [self.view addSubview:loadingVC.view];
     [loadingVC didMoveToParentViewController:self];
-    
-    self.currentVC=loadingVC;
 }
 
 
@@ -61,24 +58,22 @@
 -(void)firstLoadingViewControllerDidFinishLoading:(IGFirstLoadingViewController *)loadingViewController
 {
     
-    [self.currentVC willMoveToParentViewController:nil];
+    UIViewController *curVC=[self.childViewControllers firstObject];
     
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    IGLoginViewController *loginVC=[sb instantiateViewControllerWithIdentifier:@"IGLoginViewControllerID"];
-    loginVC.onEnterWork=IGLoginViewControllerOnEnterWorkAutoLogin;
-    
+    UIViewController *loginVC=[sb instantiateViewControllerWithIdentifier:@"IGLoginViewControllerID"];
+
     [self addChildViewController:loginVC];
     
-    [self transitionFromViewController:self.currentVC
+    [self transitionFromViewController:curVC
                       toViewController:loginVC
                               duration:0.3
                                options:UIViewAnimationOptionTransitionCrossDissolve
                             animations:nil
                             completion:^(BOOL finished) {
                                 
-                                [self.currentVC removeFromParentViewController];
+                                [curVC removeFromParentViewController];
                                 [loginVC didMoveToParentViewController:self];
-                                self.currentVC=loginVC;
                             }];
 }
 

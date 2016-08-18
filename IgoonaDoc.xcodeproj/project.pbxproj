@@ -34,7 +34,6 @@
 		6B0001951C9D1E9500085229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001941C9D1E9500085229 /* Assets.xcassets */; };
 		6B0002061C9D221900085229 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001A01C9D221800085229 /* LaunchScreen.storyboard */; };
 		6B0002071C9D221900085229 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0001A21C9D221800085229 /* Login.storyboard */; };
-		6B0002081C9D221900085229 /* IGCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001A71C9D221800085229 /* IGCommonUI.m */; };
 		6B00020A1C9D221900085229 /* IGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001AC1C9D221800085229 /* IGUserDefaults.m */; };
 		6B00020B1C9D221900085229 /* IGHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001AF1C9D221800085229 /* IGHTTPClient.m */; };
 		6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0001B31C9D221800085229 /* AFHTTPSessionManager.m */; };
@@ -141,7 +140,6 @@
 		6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */; };
 		6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */; };
 		6B76D7691CEB6779007D150A /* IGForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B76D7681CEB6778007D150A /* IGForgetPasswordViewController.m */; };
-		6B76D76C1CEB6848007D150A /* IGLoginRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */; };
 		6B7A35B51CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A35B21CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m */; };
 		6B7A35B61CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A35B41CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m */; };
 		6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53D51CF49C38009FF2B7 /* IGIgoonaInfoViewController.m */; };
@@ -172,6 +170,9 @@
 		6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F161CD7690800E39D54 /* IGMyIncomeRequestEntity.m */; };
 		6BA60F1A1CD76A0800E39D54 /* IGIncomeObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */; };
 		6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */; };
+		6BBF667C1D65E211000FEF9F /* IGErrorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF667B1D65E211000FEF9F /* IGErrorInfo.m */; };
+		6BBF66821D65E847000FEF9F /* IGHTTPClient+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66811D65E847000FEF9F /* IGHTTPClient+Version.m */; };
+		6BBF66851D65ECE1000FEF9F /* IGHTTPClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66841D65ECE1000FEF9F /* IGHTTPClient+Login.m */; };
 		6BD6DA2D1CC525BD00E44C18 /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */; };
 		6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */; };
 		6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF54C0C1CC3736100B95CD8 /* IGToDoListRouting.m */; };
@@ -284,7 +285,7 @@
 		2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportCategoryObj.m; sourceTree = "<group>"; };
 		2C56EB231CCB60EB0083726C /* IGAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAudioManager.h; sourceTree = "<group>"; };
 		2C56EB241CCB60EB0083726C /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
-		6B0001851C9D1E9500085229 /* 大夫我好了.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "大夫我好了.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B0001851C9D1E9500085229 /* 我好了大夫.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "我好了大夫.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0001891C9D1E9500085229 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6B00018B1C9D1E9500085229 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6B00018C1C9D1E9500085229 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -292,9 +293,6 @@
 		6B0001991C9D1E9500085229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B0001A11C9D221800085229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0001A31C9D221800085229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Login.storyboard; sourceTree = "<group>"; };
-		6B0001A51C9D221800085229 /* IGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCommon.h; sourceTree = "<group>"; };
-		6B0001A61C9D221800085229 /* IGCommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCommonUI.h; sourceTree = "<group>"; };
-		6B0001A71C9D221800085229 /* IGCommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCommonUI.m; sourceTree = "<group>"; };
 		6B0001AB1C9D221800085229 /* IGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGUserDefaults.h; sourceTree = "<group>"; };
 		6B0001AC1C9D221800085229 /* IGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGUserDefaults.m; sourceTree = "<group>"; };
 		6B0001AE1C9D221800085229 /* IGHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGHTTPClient.h; sourceTree = "<group>"; };
@@ -503,8 +501,6 @@
 		6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAddAssistantViewController.m; sourceTree = "<group>"; };
 		6B76D7671CEB6778007D150A /* IGForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGForgetPasswordViewController.h; sourceTree = "<group>"; };
 		6B76D7681CEB6778007D150A /* IGForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGForgetPasswordViewController.m; sourceTree = "<group>"; };
-		6B76D76A1CEB6848007D150A /* IGLoginRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGLoginRequestEntity.h; sourceTree = "<group>"; };
-		6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGLoginRequestEntity.m; sourceTree = "<group>"; };
 		6B7A35B11CE376F9007BC42A /* IGIncomeMembersLv2DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersLv2DataManager.h; sourceTree = "<group>"; };
 		6B7A35B21CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMembersLv2DataManager.m; sourceTree = "<group>"; };
 		6B7A35B31CE376F9007BC42A /* IGIncomeMembersLv2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersLv2ViewController.h; sourceTree = "<group>"; };
@@ -564,6 +560,13 @@
 		6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeObj.m; sourceTree = "<group>"; };
 		6BA60F1C1CD76C5800E39D54 /* IGMyIncomeDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyIncomeDataManager.h; sourceTree = "<group>"; };
 		6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyIncomeDataManager.m; sourceTree = "<group>"; };
+		6BBF66791D65E211000FEF9F /* IGDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDefine.h; sourceTree = "<group>"; };
+		6BBF667A1D65E211000FEF9F /* IGErrorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGErrorInfo.h; sourceTree = "<group>"; };
+		6BBF667B1D65E211000FEF9F /* IGErrorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGErrorInfo.m; sourceTree = "<group>"; };
+		6BBF66801D65E847000FEF9F /* IGHTTPClient+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Version.h"; sourceTree = "<group>"; };
+		6BBF66811D65E847000FEF9F /* IGHTTPClient+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Version.m"; sourceTree = "<group>"; };
+		6BBF66831D65ECE1000FEF9F /* IGHTTPClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Login.h"; sourceTree = "<group>"; };
+		6BBF66841D65ECE1000FEF9F /* IGHTTPClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Login.m"; sourceTree = "<group>"; };
 		6BD6DA2B1CC525BD00E44C18 /* IGToDoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewCell.h; sourceTree = "<group>"; };
 		6BD6DA2C1CC525BD00E44C18 /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
 		6BDC05DA1CFB3318006D96E8 /* UIViewController+PortraitOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PortraitOrientation.h"; sourceTree = "<group>"; };
@@ -728,7 +731,7 @@
 		6B0001861C9D1E9500085229 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B0001851C9D1E9500085229 /* 大夫我好了.app */,
+				6B0001851C9D1E9500085229 /* 我好了大夫.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -737,7 +740,6 @@
 			isa = PBXGroup;
 			children = (
 				6B00022E1C9D24CD00085229 /* UserInfo */,
-				6B0001A41C9D221800085229 /* IGCommon */,
 				6B0001AA1C9D221800085229 /* IGUserDefaults */,
 				6B0001F21C9D221800085229 /* ViewControllers */,
 				6B00019F1C9D221800085229 /* Base.lproj */,
@@ -776,16 +778,6 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
-		6B0001A41C9D221800085229 /* IGCommon */ = {
-			isa = PBXGroup;
-			children = (
-				6B0001A51C9D221800085229 /* IGCommon.h */,
-				6B0001A61C9D221800085229 /* IGCommonUI.h */,
-				6B0001A71C9D221800085229 /* IGCommonUI.m */,
-			);
-			path = IGCommon;
-			sourceTree = "<group>";
-		};
 		6B0001AA1C9D221800085229 /* IGUserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,6 +792,10 @@
 			children = (
 				6B0001AE1C9D221800085229 /* IGHTTPClient.h */,
 				6B0001AF1C9D221800085229 /* IGHTTPClient.m */,
+				6BBF66801D65E847000FEF9F /* IGHTTPClient+Version.h */,
+				6BBF66811D65E847000FEF9F /* IGHTTPClient+Version.m */,
+				6BBF66831D65ECE1000FEF9F /* IGHTTPClient+Login.h */,
+				6BBF66841D65ECE1000FEF9F /* IGHTTPClient+Login.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -925,15 +921,13 @@
 		6B0001F51C9D221800085229 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				6B76D7641CEB604F007D150A /* ForgetPassword */,
-				6B032E071CC1493A0027DDAD /* Signup */,
-				6B0001F91C9D221800085229 /* CheckBox */,
 				6B0001FE1C9D221800085229 /* IGFirstLoadingViewController.h */,
 				6B0001FF1C9D221800085229 /* IGFirstLoadingViewController.m */,
 				6B0002001C9D221800085229 /* IGLoginViewController.h */,
 				6B0002011C9D221800085229 /* IGLoginViewController.m */,
-				6B76D76A1CEB6848007D150A /* IGLoginRequestEntity.h */,
-				6B76D76B1CEB6848007D150A /* IGLoginRequestEntity.m */,
+				6B76D7641CEB604F007D150A /* ForgetPassword */,
+				6B032E071CC1493A0027DDAD /* Signup */,
+				6B0001F91C9D221800085229 /* CheckBox */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -961,7 +955,10 @@
 		6B032DE31CC11FC90027DDAD /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6BBF66791D65E211000FEF9F /* IGDefine.h */,
 				6B032DE41CC11FF80027DDAD /* IGUIDefine.h */,
+				6BBF667A1D65E211000FEF9F /* IGErrorInfo.h */,
+				6BBF667B1D65E211000FEF9F /* IGErrorInfo.m */,
 				6B033D421CC2A2B900CD87DC /* IGViewControllerTransitioning.h */,
 				6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */,
 				6B0D948A1CE21B5100C5BA6D /* IGRegularExpression.h */,
@@ -1487,7 +1484,7 @@
 			);
 			name = IgoonaDoc;
 			productName = IgoonaDoc;
-			productReference = 6B0001851C9D1E9500085229 /* 大夫我好了.app */;
+			productReference = 6B0001851C9D1E9500085229 /* 我好了大夫.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1603,6 +1600,7 @@
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
 				6B1325771CE872AA00C2A8C3 /* IGChangePhoneNumViewController.m in Sources */,
+				6BBF66821D65E847000FEF9F /* IGHTTPClient+Version.m in Sources */,
 				6B0D94981CE2321600C5BA6D /* IGIncomeMembersViewController.m in Sources */,
 				6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */,
 				6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */,
@@ -1687,7 +1685,6 @@
 				6BA60F031CD70DDD00E39D54 /* IGMoreStuffViewController.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
-				6B76D76C1CEB6848007D150A /* IGLoginRequestEntity.m in Sources */,
 				6B0D948C1CE21B5100C5BA6D /* IGRegularExpression.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6B00020D1C9D221900085229 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1710,6 +1707,7 @@
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				2C56EB251CCB60EB0083726C /* IGAudioManager.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
+				6BBF66851D65ECE1000FEF9F /* IGHTTPClient+Login.m in Sources */,
 				2C506B971CD1E2CC00B61BB3 /* IGReportCategoryObj.m in Sources */,
 				6BF54C0D1CC3736100B95CD8 /* IGToDoListRouting.m in Sources */,
 				6BA60F021CD70DDD00E39D54 /* IGDoneListViewController.m in Sources */,
@@ -1730,7 +1728,6 @@
 				6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */,
 				6BA60F141CD768CF00E39D54 /* IGMyIncomeViewController.m in Sources */,
 				2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */,
-				6B0002081C9D221900085229 /* IGCommonUI.m in Sources */,
 				6BA60F1A1CD76A0800E39D54 /* IGIncomeObj.m in Sources */,
 				6B0D949B1CE2323900C5BA6D /* IGFinancialDetailViewController.m in Sources */,
 				6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */,
@@ -1739,6 +1736,7 @@
 				6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */,
 				2C008DA31CAF760F00ECE4B5 /* MJRefreshAutoFooter.m in Sources */,
 				6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */,
+				6BBF667C1D65E211000FEF9F /* IGErrorInfo.m in Sources */,
 				6B7A53DF1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m in Sources */,
 				6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */,
 			);
@@ -1897,7 +1895,7 @@
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.igoona.iCare;
-				PRODUCT_NAME = "大夫我好了";
+				PRODUCT_NAME = "我好了大夫";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1921,7 +1919,7 @@
 					"$(PROJECT_DIR)/IgoonaDoc/ThirdParty/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.igoona.iCare;
-				PRODUCT_NAME = "大夫我好了";
+				PRODUCT_NAME = "我好了大夫";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

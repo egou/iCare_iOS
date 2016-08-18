@@ -7,7 +7,7 @@
 //
 
 #import "IGFirstLoadingViewController.h"
-#import "IGRootViewController.h"
+#import "IGHTTPClient+Version.h"
 
 
 
@@ -24,66 +24,74 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self checkVersionRequest];
+    [self requestVersionInfo];
 }
 
 
--(void)checkVersionRequest
+-(void)requestVersionInfo
 {
     [SVProgressHUD show];
     
-    __weak typeof(self) wSelf=self;
-    [IGHTTPCLIENT GET:@"php/version.php"
-                    parameters:@{@"version":IG_VERSION,
-                                 @"type":@"10"}
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                           
-                           [SVProgressHUD dismissWithCompletion:^{
-                               if(IG_DIC_ASSERT(responseObject, @"upgrade", @0))//无需更新
-                               {
-                                   [wSelf didFinishLoading];
-                               }
-                               else if(IG_DIC_ASSERT(responseObject, @"upgrade", @1))//非强制更新
-                               {
-                                   
-                               }
-                               else if(IG_DIC_ASSERT(responseObject, @"upgrade", @2))//必须更新
-                               {
-                                   [IGCommonUI showSimpleAlertWithTitle:nil alertMsg:@"请前往App Store下载最新版本" actionTitle:@"去下载" actionHandler:^(UIAlertAction *action) {
-                                       
-                                       NSURL *AppStoreURL=[NSURL URLWithString:IG_APPSTOREURL];
-                                       [[UIApplication sharedApplication] openURL:AppStoreURL];
-                                   } presentingVC:wSelf];
-                               }
-                               else
-                               {
-                                   [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"未知错误" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
-                                       [wSelf checkVersionRequest];
-                                   } presentingVC:wSelf];
-                               }
-                           }];
-                           
-                           
-                          
-                           
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           
-                           [SVProgressHUD dismissWithCompletion:^{
-                               [IGCommonUI showSimpleAlertWithTitle:@"系统错误" alertMsg:@"无法连接到服务器" actionTitle:@"重试" actionHandler:^(UIAlertAction *action) {
-                                   [wSelf checkVersionRequest];
-                               } presentingVC:wSelf];
-                           }];
-                           
-                           
-                       }];
-  
+    IGGenWSelf;
+    [IGHTTPCLIENT requestVersionInfoWithFinishHandler:^(BOOL success, NSInteger errorCode, NSInteger versionInfo) {
+       [SVProgressHUD dismissWithCompletion:^{
+          
+           
+               if(success){
+                   if(versionInfo==0){//无需更新
+                       
+                       [self finishLoading];
+                       
+                   }else if(versionInfo==1){//非强制更新
+                       
+                       UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"新版本来袭" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                       [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                           [wSelf finishLoading];
+                       }]];
+                       [ac addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                           [wSelf transToAppStore];
+                       }]];
+                       
+                       
+                       [wSelf presentViewController:ac animated:YES completion:nil];
+                       
+                   }else{//强制更新
+                       UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"请前往App Store下载最新版本" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                       [ac addAction:[UIAlertAction actionWithTitle:@"去下载" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                           [wSelf transToAppStore];
+                       }]];
+                       
+                       [wSelf presentViewController:ac animated:YES completion:nil];
+                   }
+                   
+               }else{
+                   
+                   
+                   UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"系统错误" message:IGERR(errorCode) preferredStyle:UIAlertControllerStyleAlert];
+                   [ac addAction:[UIAlertAction actionWithTitle:@"重试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                       [wSelf requestVersionInfo];
+                   }]];
+                   
+                   [wSelf presentViewController:ac animated:YES completion:nil];
+               }
+      
+           
+       }];
+    }];
+    
+    
+    
+    
+    
 }
 
--(void)didFinishLoading
-{
-    if([self.delegate respondsToSelector:@selector(firstLoadingViewControllerDidFinishLoading:)])
-    {
+-(void)transToAppStore{
+    NSURL *AppStoreURL=[NSURL URLWithString:IG_APPSTOREURL];
+    [[UIApplication sharedApplication] openURL:AppStoreURL];
+}
+
+-(void)finishLoading{
+    if([self.delegate respondsToSelector:@selector(firstLoadingViewControllerDidFinishLoading:)]){
         [self.delegate firstLoadingViewControllerDidFinishLoading:self];
     }
 }

@@ -58,7 +58,9 @@
 }
 
 -(void)onLogoutBtn:(id)sender{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
+    if(self.logoutHandler){
+        self.logoutHandler(self);
+    }
 }
 
 #pragma mark - Table view data source

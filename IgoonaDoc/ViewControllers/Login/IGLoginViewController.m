@@ -9,13 +9,18 @@
 #import "IGLoginViewController.h"
 #import "IGUserDefaults.h"
 #import "IGSaveInfoCheckBox.h"
-#import "IGForgetPasswordViewController.h"
 
+#import "IGForgetPasswordViewController.h"
+#import "IGSignupViewController.h"
+
+#import "IGTaskNavigationController.h"
 #import "IGMyIncomeViewController.h"
 #import "IGIncomeMembersViewController.h"
 
 #import "JPUSHService.h"
 #import "IGRegularExpression.h"
+
+#import "IGHTTPClient+Login.h"
 
 @interface IGLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textfieldBgView;
@@ -27,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signupBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordBtn;
+
+@property (nonatomic,assign) BOOL signupSuccess;
 
 @end
 
@@ -45,14 +52,10 @@
     [super viewWillAppear:animated];
     
     [self p_showDefaults];
-    [self p_onEnter];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserDidLogoutNotification:) name:@"kUserDidLogout" object:nil];
+    [self p_autoLoginIfNeeded];
 }
 
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+
 
 #pragma mark - private methods
 
@@ -114,29 +117,26 @@
     }
 }
 
--(void)p_onEnter
+
+
+-(void)p_autoLoginIfNeeded
 {
-    if(self.onEnterWork==IGLoginViewControllerOnEnterWorkAutoLogin)
-    {
-        if(self.usernameTF.text.length>0&&self.passwordTF.text.length>0)
-        {
-            [self p_requestLogin];
-        }
+    //如果是注册成功，则直接登录
+    if(self.signupSuccess){
         
-        self.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
+        [self p_didLoginSuccess];
+        self.signupSuccess=NO;
         return;
     }
     
-    if(self.onEnterWork==IGLoginViewControllerOnEnterWorkAutoLoginWithoutInfo)
+    if(self.usernameTF.text.length>0&&self.passwordTF.text.length>0)
     {
-        //to main view
-        [self p_didLoginSuccess];
-        
-        self.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
-        
-        return;
+        [self p_requestLogin];
     }
+    
 }
+
+
 
 
 -(void)p_requestLogin
@@ -144,74 +144,54 @@
     NSString *username=[self.usernameTF.text copy];
     NSString *password=[self.passwordTF.text copy];
     
-    if(!username.length>0)
+    if(!(username.length>0))
     {
         [SVProgressHUD showInfoWithStatus:@"用户名不能为空"];
         return;
     }
     
-    if(!password.length>0)
+    if(!(password.length>0))
     {
         [SVProgressHUD showInfoWithStatus:@"密码不能为空"];
         return;
     }
     
    [SVProgressHUD show];
-    
-    __weak typeof(self) wSelf=self;
-    [IGHTTPCLIENT GET:@"php/login.php"
-                    parameters:@{@"action":@"login",
-                                 @"userId":username,
-                                 @"password":password,
-                                 @"type":@"10"}
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                           
-                           [SVProgressHUD dismissWithCompletion:^{
-                               NSLog(@"%@",responseObject);
-                               if(IG_DIC_ASSERT(responseObject, @"success", @1))//成功
-                               {
-                                   //需要则保存用户名密码
-                                   BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
-                                   if(needsSaveUsername)
-                                   {
-                                       [IGUserDefaults saveValue:username forKey:kIGUserDefaultsUserName];
-                                       BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
-                                       if(needsSavePassword)
-                                           [IGUserDefaults saveValue:password forKey:kIGUserDefaultsPassword];
-                                   }
-                                   
-                                   //存储用户信息
-                                   [MYINFO clear];
-                                   
-                                   MYINFO.username=username;
-                                   MYINFO.password=password;
-                                   MYINFO.type=[responseObject[@"type"] integerValue];
-                                   MYINFO.iconId=responseObject[@"icon_idx"];
-                                   
-                                   MYINFO.hasAgreed=[responseObject[@"need_agreement"] intValue]!=1;
-                                   
-                                   
-                                   //进入主页面
-                                   [wSelf p_didLoginSuccess];
-                                   
-                               }
-                               else if(IG_DIC_ASSERT(responseObject, @"success", @0))
-                               {
-                                   [SVProgressHUD showInfoWithStatus:@"登录失败"];
-                                   
-                               }
-                               else
-                               {
-                                   [SVProgressHUD showInfoWithStatus:@"未知错误"];
-                               }
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToLoginWithUsername:username password:password finishHandler:^(BOOL success, NSInteger errorCode, NSDictionary *infoDic) {
+       
+        [SVProgressHUD dismissWithCompletion:^{
+            
+            if(success){
+                //需要则保存用户名密码
+                BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
+                if(needsSaveUsername)
+                {
+                    [IGUserDefaults saveValue:username forKey:kIGUserDefaultsUserName];
+                    BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
+                    if(needsSavePassword)
+                        [IGUserDefaults saveValue:password forKey:kIGUserDefaultsPassword];
+                }
+                
+                //存储用户信息
+                [MYINFO clear];
+                
+                MYINFO.username=username;
+                MYINFO.password=password;
+                MYINFO.type=[infoDic[@"type"] integerValue];
+                MYINFO.iconId=infoDic[@"icon_idx"];
+                MYINFO.hasAgreed=[infoDic[@"need_agreement"] intValue]==1?NO:YES;
+                
+                
+                //进入主页面
+                [wSelf p_didLoginSuccess];
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+            }
 
-                           }];
-                           
-                           
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           [SVProgressHUD showInfoWithStatus:@"网络错误"];
-                       }];
+        }];
+        
+    }];
     
 }
 
@@ -227,28 +207,38 @@
     
     
     if(MYINFO.type==10||MYINFO.type==11){
+        IGGenWSelf;
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
-        UIViewController *mainVC=[sb instantiateInitialViewController];
-        mainVC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:mainVC animated:YES completion:nil];
+        IGTaskNavigationController *taskNC=[sb instantiateViewControllerWithIdentifier:@"IGTaskNavigationController"];
+        taskNC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+        taskNC.logoutHandler=^(IGTaskNavigationController* nc){
+            [wSelf p_logoutAndDismissViewController:nc];
+        };
+        [self presentViewController:taskNC animated:YES completion:nil];
         return;
     }
     
     if(MYINFO.type==30){
+        IGGenWSelf;
+        IGMyIncomeViewController *incomeVC=[IGMyIncomeViewController new];
+        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:incomeVC];
         
-        IGMyIncomeViewController *vc=[IGMyIncomeViewController new];
-        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:vc];
+        incomeVC.LogoutHandler=^(IGMyIncomeViewController *vc){
+            [wSelf p_logoutAndDismissViewController:vc.navigationController];
+        };
+        
         [self presentViewController:nc animated:YES completion:nil];
-        
         return;
     }
     
     if(MYINFO.type==31){
-        
+        IGGenWSelf;
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:[NSBundle mainBundle]];
-        IGIncomeMembersViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGIncomeMembersViewController"];
-        
-        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:vc];
+        IGIncomeMembersViewController *iMVC=[sb instantiateViewControllerWithIdentifier:@"IGIncomeMembersViewController"];
+        iMVC.logoutHandler=^(IGIncomeMembersViewController* vc){
+            [wSelf p_logoutAndDismissViewController:vc.navigationController];
+        };
+        UINavigationController *nc=[[UINavigationController alloc] initWithRootViewController:iMVC];
         
         [self presentViewController:nc animated:YES completion:nil];
         
@@ -287,25 +277,13 @@
     IGForgetPasswordViewController *forgetPwdVC=[sb instantiateViewControllerWithIdentifier:@"IGForgetPasswordViewController"];
     
     
-    __weak typeof(self) wSelf=self;
+
     forgetPwdVC.onCancelHandler=^(IGForgetPasswordViewController *vc){
         [vc dismissViewControllerAnimated:YES completion:nil];
-        wSelf.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
+
     };
     forgetPwdVC.onFinishHandler=^(IGForgetPasswordViewController *vc,NSString *phoneNum,NSString *pwd){
         [vc dismissViewControllerAnimated:YES completion:nil];
-        
-        //用户名密码，该存的存起来
-        BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
-        if(needsSaveUsername)
-        {
-            [IGUserDefaults saveValue:phoneNum forKey:kIGUserDefaultsUserName];
-            BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
-            if(needsSavePassword)
-                [IGUserDefaults saveValue:pwd forKey:kIGUserDefaultsPassword];
-        }
-        
-        wSelf.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
     };
     
     
@@ -313,32 +291,39 @@
     [self presentViewController:forgetPwdNC animated:YES completion:nil];
 }
 
-- (IBAction)unwindSegue:(UIStoryboardSegue *)sender
-{
-    if([sender.identifier isEqualToString:@"BackToLoginSID"])
-    {
-        self.onEnterWork=IGLoginViewControllerOnEnterWorkDefault;
-    }
+
+- (IBAction)onSignupBtn:(id)sender {
     
-    if([sender.identifier isEqualToString:@"SignupSuccessSID"])
-    {
-        //直接登录
-        self.onEnterWork=IGLoginViewControllerOnEnterWorkAutoLoginWithoutInfo;
-    }
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    IGSignupViewController *signupVC=[sb instantiateViewControllerWithIdentifier:@"IGSignupViewController"];
     
+    signupVC.onBackHandler=^(IGSignupViewController* vc){
+        [vc dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    __weak typeof(self) wSelf=self;
+    signupVC.onSignupSuccessHandler=^(IGSignupViewController* vc ,NSString *phoneNum, NSString *pwd){
+        [vc dismissViewControllerAnimated:YES  completion:nil];
+        
+        //用以注册成功后直接进入
+        wSelf.signupSuccess=YES;
+    };
+    
+    signupVC.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:signupVC animated:YES completion:nil];
+
 }
 
 
--(void)onUserDidLogoutNotification:(NSNotification*)notification{
-    
+-(void)p_logoutAndDismissViewController:(UIViewController*)vc{
+    [vc dismissViewControllerAnimated:YES completion:nil];
     //清空密码
     [IGUserDefaults saveValue:@"" forKey:kIGUserDefaultsPassword];
     
     //解除推送绑定
     [self p_bindJPushAlias:@""];
     
-    //退出
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

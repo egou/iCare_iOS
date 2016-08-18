@@ -10,6 +10,7 @@
 #import "IGSaveInfoCheckBox.h"
 #import "IGUserDefaults.h"
 #import "IGRegularExpression.h"
+#import "IGHTTPClient+Login.h"
 
 @interface IGSignupViewController ()
 @property (weak, nonatomic) IBOutlet UIView *textFieldBgView;
@@ -49,20 +50,7 @@
     [self p_unRegisterKeyboardNote];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"BackToLoginSID"])
-    {
-        [self.view endEditing:YES];//退出键盘
-        return;
-    }
-    
-    if([segue.identifier isEqualToString:@"SignupSuccessID"])
-    {
-        [self.view endEditing:YES];
-        return;
-    }
-}
+
 
 #pragma mark - private methods
 -(void)p_initUI{
@@ -120,93 +108,59 @@
     
     
     [SVProgressHUD show];
-    __weak typeof(self) wSelf=self;
-    [IGHTTPCLIENT GET:@"php/login.php"
-                    parameters:@{@"action":@"register",
-                                 @"userId":username,
-                                 @"password":password,
-                                 @"code":invitationCode,
-                                 @"type":@"10"}
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-            
-                           [SVProgressHUD dismiss];
-                           [wSelf p_responseForSignup:responseObject];
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           
-                           [SVProgressHUD showInfoWithStatus:@"网络错误"];
-                       }];
-}
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToSignupWithUsername:username password:password invitationCode:invitationCode finishHanlder:^(BOOL success, NSInteger errorCode, NSDictionary *infoDic) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                //注册成功
+                //需要即存储本地
+                BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
+                if(needsSaveUsername)
+                {
+                    [IGUserDefaults saveValue:self.usernameTF.text forKey:kIGUserDefaultsUserName];
+                    BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
+                    if(needsSavePassword)
+                        [IGUserDefaults saveValue:self.passwordTF.text forKey:kIGUserDefaultsPassword];
+                }
+                
+                //先清空
+                [MYINFO clear];
+                
+#warning needs debug
+                
+                //存储用户信息
+                MYINFO.username=username;
+                MYINFO.iconId=[infoDic[@"icon_idx"] stringValue];
+                MYINFO.type=[infoDic[@"type"] integerValue];
+                MYINFO.password=password;
+                MYINFO.hasAgreed=NO;    //新注册用户
+                
+                //退出界面
+                if(wSelf.onSignupSuccessHandler){
+                    wSelf.onSignupSuccessHandler(wSelf,username,password);
+                }
 
-
-
--(void)p_responseForSignup:(NSDictionary*)resDic
-{
-//    //test
-//    [self performSegueWithIdentifier:@"SignupSuccessSID" sender:self];
-//    return;
-    
-    if(IG_DIC_ASSERT(resDic, @"success", @1))
-    {
-        //注册成功
-        //需要即存储本地
-        BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];
-        if(needsSaveUsername)
-        {
-            [IGUserDefaults saveValue:self.usernameTF.text forKey:kIGUserDefaultsUserName];
-            BOOL needsSavePassword=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSavePassword] boolValue];
-            if(needsSavePassword)
-                [IGUserDefaults saveValue:self.passwordTF.text forKey:kIGUserDefaultsPassword];
-        }
-        
-        //先清空
-        [MYINFO clear];
-        
-        //存储用户信息
-        MYINFO.username=self.usernameTF.text;
-        MYINFO.iconId=[resDic[@"icon_idx"] stringValue];
-        MYINFO.type=[resDic[@"type"] integerValue];
-        MYINFO.password=self.passwordTF.text;
-        
-        
-        //退出界面
-        [self performSegueWithIdentifier:@"SignupSuccessSID" sender:self];
-    }
-    else
-    {
-        if(resDic[@"reason"])
-        {
-            NSUInteger reason=[resDic[@"reason"] integerValue];
-            
-            switch (reason) {
-                case 2:
-                    [SVProgressHUD showInfoWithStatus:@"邀请码错误"];
-                    break;
-                case 3:
-                    [SVProgressHUD showInfoWithStatus:@"邀请码已注册，需联系客服重置密码"];
-                    break;
-                case 4:
-                    [SVProgressHUD showInfoWithStatus:@"用户信息错误"];
-                    break;
-                case 5:
-                    [SVProgressHUD showInfoWithStatus:@"手机号已被注册"];
-                    break;
-                    
-                default:
-                    [SVProgressHUD showInfoWithStatus:@"未知错误"];
-                    break;
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
             }
             
-        }
-        else
-        {
-            [SVProgressHUD showInfoWithStatus:@"未知错误"];
-        }
-    }
+        }];
+    }];
+    
 }
+
 
 
 #pragma mark - touch events
+
+
+- (IBAction)onBackBtn:(id)sender {
+    if(self.onBackHandler){
+        self.onBackHandler(self);
+    }
+    
+}
+
 
 - (IBAction)onSignupBtn:(id)sender {
     [self p_requestToSignup];

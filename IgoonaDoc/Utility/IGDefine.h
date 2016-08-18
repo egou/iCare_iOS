@@ -6,12 +6,10 @@
 //  Copyright © 2015年 Porco. All rights reserved.
 //
 
-#ifndef IGCommon_h
-#define IGCommon_h
+#ifndef IGDefine_h
+#define IGDefine_h
 
-#include "IGCommonUI.h"
-
-
+#import "IGUIDefine.h"
 
 
 #define IG_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
@@ -19,16 +17,10 @@
 #define IG_APPSTOREURL [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8",IG_APPID]
 
 
+#define IGGenWSelf typeof(self) __weak wSelf=self
+#define IG_SAFE_STR(str)     (\
+                                [(str) isKindOfClass:[NSString class]]?(NSString*)(str): \
+                                ([(str) respondsToSelector:@selector(stringValue)]?[(id)(str) stringValue]:@"")\
+                             )
 
-
-
-
-
-
-#define IG_DIC_ASSERT(dicName,key,objectValue)   \
-        (dicName[key]&&[dicName[key] isEqual:objectValue])
-
-
-
-
-#endif /* IGCommon_h */
+#endif /* IGDefine_h */

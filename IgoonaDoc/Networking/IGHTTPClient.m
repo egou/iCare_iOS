@@ -9,8 +9,7 @@
 #import "IGHTTPClient.h"
 #import "IGUserDefaults.h"
 
-#define IGURLBAIDU @"http://180.76.147.113/"
-#define IGURL   @"http://52.27.35.195/"
+
 
 NSString *const IGHTTPClientWillTryReLoginNotification=@"IGHTTPClientWillTryReLoginNotification";
 NSString *const IGHTTPClientReLoginDidFailureNotification=@"IGHTTPClientReLoginDidFailureNotification";
@@ -93,34 +92,7 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
 }
 
 
-- (nullable NSURLSessionDataTask *)POST:(NSString *)URLString
-                             parameters:(nullable id)parameters
-              constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
-                               progress:(nullable void (^)(NSProgress *uploadProgress)) uploadProgress
-                                success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
-                                failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure
-{
-    return      [super  POST:URLString
-                  parameters:parameters
-   constructingBodyWithBlock:block
-                    progress:uploadProgress
-                     success:^(NSURLSessionDataTask *task, id _Nullable responseObject){
-                         //所有session过期在此检验
-                         NSDictionary *responseDic=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-                         
-                         if([self p_isSessionValid:responseDic])
-                         {
-                             success(task,responseDic);
-                         }
-                         else
-                         {
-                             success(task,nil);
-                             [self p_tryReLogin];
-                         }
 
-                     }
-                     failure:failure];
-}
 
 
 
@@ -129,9 +101,10 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
 -(BOOL)p_isSessionValid:(NSDictionary*)responseDic
 {
 
-    //失效
-    if(IG_DIC_ASSERT(responseDic, @"success", @0)&&IG_DIC_ASSERT(responseDic, @"reason", @(-1)))
-    {
+    NSInteger success=[responseDic[@"success"] integerValue];
+    NSInteger reason=[responseDic[@"reason"] integerValue];
+    
+    if(success==0&&reason==-1){
         return NO;
     }
     
@@ -163,7 +136,8 @@ NSString *const IGHTTPClientReLoignDidSuccessNotification=@"IGHTTPClientReLoignD
                   success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                       
                       NSLog(@"%@",responseObject);
-                      if(IG_DIC_ASSERT(responseObject, @"success", @1))//成功
+                      NSInteger success=[responseObject[@"success"] integerValue];
+                      if(success==1)//成功
                       {
                           //需要则保存用户名密码
                           BOOL needsSaveUsername=[[IGUserDefaults loadValueByKey:kIGUserDefaultsSaveUsername] boolValue];

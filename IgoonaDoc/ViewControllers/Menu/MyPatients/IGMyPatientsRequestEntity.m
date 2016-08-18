@@ -19,7 +19,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       __block NSMutableArray *patients=[NSMutableArray array];
                       [responseObject[@"data"] enumerateObjectsUsingBlock:^(NSDictionary* pDic, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -54,7 +54,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       IGPatientDetailInfoObj *p=[IGPatientDetailInfoObj new];
                       
                       p.pId=responseObject[@"id"];

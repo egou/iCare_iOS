@@ -7,7 +7,7 @@
 //
 
 #import "IGForgetPasswordViewController.h"
-#import "IGLoginRequestEntity.h"
+#import "IGHTTPClient+Login.h"
 #import "IGRegularExpression.h"
 
 @interface IGForgetPasswordViewController()
@@ -66,21 +66,28 @@
     }
     
     [SVProgressHUD show];
-    
-    [IGLoginRequestEntity requestToResetPasswordWithPhoneNum:phoneNum confirmNum:confirmNum newPwd:password finishHandler:^(BOOL success) {
-        if(success){
-            [SVProgressHUD showSuccessWithStatus:@"修改密码成功" ];
-            if(self.onFinishHandler){
-                self.onFinishHandler(self,phoneNum,password);
-            }
-            
-        }else{
-            [SVProgressHUD showInfoWithStatus:@"修改密码失败" ];
-        }
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToResetPasswordWithPhoneNum:phoneNum confirmNum:confirmNum newPwd:password finishHandler:^(BOOL success, NSInteger errorCode) {
+       [SVProgressHUD dismissWithCompletion:^{
+          
+           if(success){
+               [SVProgressHUD showSuccessWithStatus:@"修改密码成功"];
+               
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   if(wSelf.onFinishHandler){
+                       wSelf.onFinishHandler(wSelf,phoneNum,password);
+                   }
+                   
+               });
+
+               
+           }else{
+               [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+           }
+           
+       }];
     }];
     
-    
-       
 }
 
 - (IBAction)onSendConfirmationNumBtn:(id)sender {
@@ -93,15 +100,19 @@
     }
     
     [SVProgressHUD show];
-    [IGLoginRequestEntity requestToSendConfirmationNumToPhone:phoneNum finishHandler:^(BOOL success) {
     
-        if(success){
-            [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
-            [self p_startConfirmationNumTimer];
-        }else{
-            [SVProgressHUD showInfoWithStatus:@"获取验证码失败"];}
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToSendConfirmationNumWhenForgetPassword:phoneNum finishHandler:^(BOOL success, NSInteger errorCode) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
+                [wSelf p_startConfirmationNumTimer];
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+            }
+        }];
+
     }];
-    
 }
 
 #pragma mark - getter & setter

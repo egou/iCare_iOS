@@ -19,7 +19,8 @@
 
 #import "IGHTTPClient.h"
 #import "IGLocalDataManager.h"
-#import "IGCommon/IGCommon.h"
+
+
 
 
 #import "SVProgressHUD.h"
@@ -27,8 +28,8 @@
 #import "UserInfo/IGDoctorInformation.h"
 #import "Masonry.h"
 
-
-#import "IGUIDefine.h"
+#import "IGDefine.h"
+#import "IGErrorInfo.h"
 #endif
 
 #endif /* IgoonaDoc_Prefix_pch */

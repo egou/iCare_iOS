@@ -98,7 +98,9 @@
 }
 
 -(void)onSubMenuLogout{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
+    if(self.LogoutHandler){
+        self.LogoutHandler(self);
+    }
 }
 
 #pragma mark - Table view data source

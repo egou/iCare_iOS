@@ -27,7 +27,7 @@
                   NSLog(@"%@",responseObject);
                   if(finishHandler){
                       
-                      if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                      if(IGRespSuccess){
                           
                           NSMutableArray *msgs=[NSMutableArray array];
                           
@@ -100,7 +100,7 @@
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
                   NSLog(@"%@",responseObject);
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       finishHandler(YES,[responseObject[@"id"] stringValue]);
                   }else{
@@ -121,7 +121,7 @@
                         @"status":completed?@3:@1}
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary*  _Nullable responseObject) {
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                   }else{
                       

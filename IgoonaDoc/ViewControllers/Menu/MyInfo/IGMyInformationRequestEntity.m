@@ -19,7 +19,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       IGDocInfoDetailObj *docInfo=[IGDocInfoDetailObj new];
                       docInfo.dName=responseObject[@"name"];
                       docInfo.dLevel=[responseObject[@"level"] integerValue];
@@ -52,7 +52,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                   }else{
                       finishHandler(NO);
@@ -70,7 +70,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       
                       NSMutableArray *cities=[NSMutableArray array];
                       
@@ -107,7 +107,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
                   
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                       
                   }else{
@@ -128,7 +128,7 @@
                         @"userId":phoneNum}
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHandler(YES);
                   }else{
                       finishHandler(NO);
@@ -151,7 +151,7 @@
              progress:nil
               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  
-                  if(IG_DIC_ASSERT(responseObject, @"success", @1)){
+                  if(IGRespSuccess){
                       finishHanlder(YES);
                   }else{
                       finishHanlder(NO);

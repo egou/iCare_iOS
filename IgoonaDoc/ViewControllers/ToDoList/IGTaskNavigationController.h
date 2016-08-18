@@ -10,4 +10,6 @@
 
 @interface IGTaskNavigationController : UINavigationController
 
+@property (nonatomic,copy) void(^logoutHandler)(IGTaskNavigationController* nc);
+
 @end
