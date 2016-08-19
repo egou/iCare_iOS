@@ -7,6 +7,7 @@
 //
 
 #import "IGAgreementViewController.h"
+#import "IGHTTPClient+Login.h"
 
 @interface IGAgreementViewController ()
 
@@ -42,29 +43,20 @@
 - (IBAction)onConfirmBtn:(id)sender {
     
     [SVProgressHUD show];
-    [IGHTTPCLIENT GET:@"php/login.php"
-           parameters:@{@"action":@"agreement"}
-             progress:nil
-              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                  
-                  [SVProgressHUD dismissWithCompletion:^{
-                      
-                      
-                      if(IGRespSuccess){
-                          MYINFO.hasAgreed=YES;
-                          if(self.agreeSuccessHandler){
-                              self.agreeSuccessHandler(self);
-                          }
-                      }else{
-                        
-                          [SVProgressHUD showInfoWithStatus:@"未知错误"];
-                      }
-                  }];
-                  
-              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
-                  [SVProgressHUD showInfoWithStatus:@"请检查网络连接"];
-              }];
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToAgreeWithFinishHandler:^(BOOL success, NSInteger errorCode) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                MYINFO.hasAgreed=YES;
+                if(wSelf.agreeSuccessHandler){
+                    wSelf.agreeSuccessHandler(self);
+                }
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+            }
+        }];
+    }];
+    
     
 }
 
