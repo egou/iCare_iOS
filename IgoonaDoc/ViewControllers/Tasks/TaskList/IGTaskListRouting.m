@@ -8,14 +8,15 @@
 
 #import "IGTaskListRouting.h"
 
+#import "IGTaskNavigationController.h"
+
 #import "IGMoreStuffViewController.h"
 #import "IGViewControllerTransitioning.h"
 
 #import "IGMyTeamViewController.h"
 #import "IGMyIncomeViewController.h"
 
-
-#import "IGMsgDetailViewController.h"
+#import "IGMessageViewController.h"
 #import "IGReportDetailViewController.h"
 
 #import "IGTaskObj.h"
@@ -43,7 +44,7 @@
 -(void)transToMsgDetailViewWithTaskInfo:(IGTaskObj *)taskInfo{
 
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-    IGMsgDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
+    IGMessageViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
     vc.memberId=taskInfo.tMemberId;
     vc.memberName=taskInfo.tMemberName;
     vc.memberIconId=taskInfo.tMemberIconId;
@@ -117,9 +118,14 @@
         //登出
         if(event==IGMoreStuffEventTouchLogoutButton){
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"kUserDidLogout" object:nil];
+            if([self.routingOwner.navigationController isKindOfClass:[IGTaskNavigationController class]]){
+                
+                IGTaskNavigationController *taskNC=(IGTaskNavigationController*)self.routingOwner.navigationController;
+                if(taskNC.logoutHandler){
+                    taskNC.logoutHandler(taskNC);
+                }
+            }
             
-//            [self.routingOwner.navigationController dismissViewControllerAnimated:YES completion:nil];
         }
     }];
     

@@ -11,7 +11,7 @@
 #import "IGTaskObj.h"
 
 #import "IGMemberDataViewController.h"
-#import "IGMsgDetailViewController.h"
+#import "IGMessageViewController.h"
 
 @interface IGPatientDetailViewController()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -51,7 +51,7 @@
 
 -(void)onMsgHistoryBtn:(id)sender{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-    IGMsgDetailViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
+    IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
     
     msgVC.memberId=self.detailInfo.pId;
     msgVC.memberName=self.detailInfo.pName;

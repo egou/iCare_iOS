@@ -1,13 +1,13 @@
 //
-//  IGMsgDetailViewController.m
+//  IGMessageViewController.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/20.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGMsgDetailViewController.h"
-#import "IGMsgDetailViewCell.h"
+#import "IGMessageViewController.h"
+#import "IGMessageViewCell.h"
 #import "IGMsgDetailDataManager.h"
 #import "MJRefresh.h"
 #import "IGMsgDetailObj.h"
@@ -17,7 +17,9 @@
 
 #import "IGMemberDataViewController.h"
 
-@interface IGMsgDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
+#import "IGMessageImageViewController.h"
+
+@interface IGMessageViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -45,7 +47,7 @@
 
 @end
 
-@implementation IGMsgDetailViewController
+@implementation IGMessageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -188,11 +190,15 @@
 
 - (IBAction)touchDownRecordBtn:(id)sender {
 
-    NSLog(@"down");
-    [self.audioManager startRecording];
+    if([self.audioManager startRecording]){//成功开启
+        
+        [self p_showRecordingBg:YES];
+        [self p_setHintLabelText:@"手指上滑,取消发送"];
+    }else{
+        //未成功，则请求权限
+        [self.audioManager requestRecordPermission];
+    }
     
-    [self p_showRecordingBg:YES];
-    [self p_setHintLabelText:@"手指上滑,取消发送"];
 }
 
 - (IBAction)touchUpInsideRecordBtn:(id)sender {
@@ -243,23 +249,31 @@
 {
     //最新的消息显示在最下方
     
+    
     NSInteger msgCount=self.allMsgsCopyArray.count;
     IGMsgDetailObj *msg= self.allMsgsCopyArray[msgCount-1-indexPath.row];
-    if(msg.mIsOut){
-        msg.mPhotoId=MYINFO.iconId;
-    }else{
-        msg.mPhotoId=self.memberIconId;
-    }
     
-    __weak typeof(self) wSelf=self;
-    UITableViewCell *msgCell=[IGMsgDetailViewCell tableView:tableView dequeueReusableCellWithMsg:msg onAudioBtnHandler:^(UITableViewCell *cell) {
-        
-        [wSelf.audioManager startPlayingAudioWithData:msg.mAudioData];
- 
-    }];
-    return msgCell;
+    
+    NSString *myIconName=[NSString stringWithFormat:@"head%@", MYINFO.iconId];
+    NSString *otherIconName=[NSString stringWithFormat:@"head%d",self.memberIconId.intValue+200];
+    
+    IGGenWSelf;
+    IGMessageViewCell *cell=[IGMessageViewCell dequeueReusableCellWithTableView:tableView
+                                                                            msg:msg
+                                                                     myIconName:myIconName
+                                                                  otherIconName:otherIconName
+                                                                touchMsgHandler:^(IGMessageViewCell *cell) {
+                                                                    
+                                                                    if(msg.mAudioData.length>0)
+                                                                        [wSelf.audioManager startPlayingAudioWithData:msg.mAudioData];
+                                                                    else if(msg.mThumbnail.length>0)
+                                                                        [wSelf p_showOriginalImageWithId:msg.mId];
+                                                                }];
+    
+    return cell;
 
 }
+
 
 
 
@@ -340,11 +354,13 @@
     [self p_showRecordingBg:NO];
 }
 
--(void)audioManagerRecordPermissionDenied:(IGAudioManager *)audioManager{
+-(void)audioManagerShouldUserGrantPermission:(IGAudioManager *)audioManager{
     UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"请在设置里授权使用麦克风" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:ac animated:YES completion:nil];
+
 }
+
 
 #pragma mark - private methods
 
@@ -478,6 +494,26 @@
     hintLabel.text=text;
     [hintLabel sizeToFit];
 }
+
+
+
+-(void)p_showOriginalImageWithId:(NSString*)msgId{
+    
+    if(msgId.length>0){
+        IGMessageImageViewController *imageVC=[IGMessageImageViewController new];
+        imageVC.msgId=msgId;
+        imageVC.onExitHandler=^(IGMessageImageViewController *vc){
+            [vc dismissViewControllerAnimated:YES completion:nil];
+        };
+        imageVC.modalPresentationStyle=UIModalPresentationOverFullScreen;
+        imageVC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:imageVC animated:YES completion:nil];
+    }
+    
+}
+
+
+
 
 #pragma mark - keyboard Notification
 -(void)onKeyboardWillShowNotification:(NSNotification*)note

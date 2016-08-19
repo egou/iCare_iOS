@@ -18,7 +18,7 @@
 
 @interface IGTaskListViewController ()<IGTaskListDataManagerDelegate>
 
-@property (nonatomic,strong) NSArray<IGTaskObj*>* toDoListCopyArray;  //仅仅为副本
+@property (nonatomic,strong) NSArray<IGTaskObj*>* taskListCopyArray;  //仅仅为副本
 
 @property (nonatomic,strong) IGTaskListRouting *routing;
 @property (nonatomic,strong) IGTaskListDataManager  *dataManager;
@@ -80,13 +80,13 @@
     
     
     
-    return self.toDoListCopyArray.count;
+    return self.taskListCopyArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IGTaskListViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGTaskListViewCell"];
-    cell.toDoData=self.toDoListCopyArray[indexPath.row];
+    cell.task=self.taskListCopyArray[indexPath.row];
     return cell;
 }
 
@@ -110,7 +110,7 @@
 
 #pragma mark - data manager delegate
 
--(void)toDoListDataManager:(IGTaskListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
     [self.tableView.mj_header endRefreshing];
     if(success){
         [self p_reloadData];
@@ -120,7 +120,7 @@
     }
 }
 
--(void)toDoListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
     [self.tableView.mj_footer endRefreshing];
     if(success){
         [self p_reloadData];
@@ -132,9 +132,14 @@
 }
 
 
--(void)toDoListDataManagerDidChangeWorkStatus:(IGTaskListDataManager *)manager{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didChangeWorkStatusSuccess:(BOOL)success{
     
     [SVProgressHUD dismissWithCompletion:^{
+        
+        if(!success){
+            [SVProgressHUD showInfoWithStatus:@"改变工作状态失败，请重试"];
+        }
+        
         if(manager.isWorking){
             [self.navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"item_work"]];
             
@@ -146,24 +151,12 @@
 }
 
 
-//0未知
-//1成功
-//2不存在
-//3处理中
-//4处理完毕
--(void)toDoListDataManager:(IGTaskListDataManager *)manager
-didReceiveHandlingRequestResult:(NSInteger)statusCode
-                  taskInfo:(IGTaskObj *)taskInfo
-                reportInfo:(NSDictionary *)reportInfo{
+
+-(void)taskListDataManager:(IGTaskListDataManager *)manager shouldHandleTaskSuccess:(BOOL)success errCode:(NSInteger)errCode taskInfo:(IGTaskObj *)taskInfo reportInfo:(NSDictionary *)reportInfo{
 
     [SVProgressHUD dismissWithCompletion:^{
-        if(statusCode==0){
-            [SVProgressHUD showInfoWithStatus:@"未知错误"];
-            return;
-        }
         
-        if(statusCode==1){
-            
+        if(success){
             if(taskInfo.tType==1){
                 //求助
                 [self.routing transToMsgDetailViewWithTaskInfo:taskInfo];
@@ -177,30 +170,17 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
                 [self.routing transToReportDetailViewWithTaskInfo:taskInfo autoReport:reportInfo];
                 return;
             }
-            
-            return;
-        }
-        
-        if(statusCode==2){   //不存在，更新删除相应任务
-            [SVProgressHUD showInfoWithStatus:@"任务不存在"];
+
+        }else{
+            [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
             [self p_reloadData];
-            return;
-        }
-        if(statusCode==3){   //正在处理
-            [SVProgressHUD showInfoWithStatus:@"任务正有人处理"];
-            return;
-        }
-        if(statusCode==4){   //已经处理完成，更新删除相应任务
-            [SVProgressHUD showInfoWithStatus:@"任务已完成"];
-            [self p_reloadData];
-            return;
         }
     }];
     
 }
 
 
--(void)toDoListDataManagerdidChangedTaskStatus:(IGTaskListDataManager *)manager{
+-(void)taskListDataManagerdidChangedTaskStatus:(IGTaskListDataManager *)manager{
     [self p_reloadData];
 }
 
@@ -249,7 +229,7 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
 
 -(void)p_reloadData{
     
-    self.toDoListCopyArray=[self.dataManager.toDoListArray copy];
+    self.taskListCopyArray=[self.dataManager.taskListArray copy];
     [self.tableView reloadData];
     
     if(self.dataManager.hasLoadedAll){
@@ -258,7 +238,7 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
         [self.tableView.mj_footer resetNoMoreData];
     }
     
-    self.noDataLabel.hidden= self.toDoListCopyArray.count >0?YES:NO;
+    self.noDataLabel.hidden= self.taskListCopyArray.count >0?YES:NO;
     
 }
 

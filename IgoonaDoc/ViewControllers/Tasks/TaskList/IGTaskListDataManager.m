@@ -8,16 +8,16 @@
 
 #import "IGTaskListDataManager.h"
 #import "IGTaskObj.h"
-#import "IGTaskListInteractor.h"
 #import "JPUSHService.h"
 #import "TWMessageBarManager.h"
 
+#import "IGHTTPClient+Task.h"
+#import "IGHTTPClient+Report.h"
+#import "IGHTTPClient+Doctor.h"
+
 @interface IGTaskListDataManager()
 
-
-@property (nonatomic,strong) IGTaskListInteractor *dataInteractor;
-
-@property (nonatomic,strong,readwrite) NSArray *toDoListArray;
+@property (nonatomic,strong,readwrite) NSArray *taskListArray;
 @property (nonatomic,assign,readwrite) BOOL hasLoadedAll;
 @property (nonatomic,assign,readwrite) BOOL isWorking;
 
@@ -31,7 +31,7 @@
 {
     if(self=[super init])
     {
-        _toDoListArray=@[];
+        _taskListArray=@[];
         _hasLoadedAll=NO;
         _isWorking=NO;
         
@@ -48,101 +48,94 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - getter & setter
--(IGTaskListInteractor*)dataInteractor
-{
-    if(!_dataInteractor)
-    {
-        _dataInteractor=[[IGTaskListInteractor alloc] init];
-    }
-    
-    return _dataInteractor;
-}
+
 
 
 #pragma mark - interfaces
 -(void)tapToChangeWorkStatus{
     NSInteger toStatus=self.isWorking?0:1;
     
-    [self.dataInteractor requestToChangeToWorkStatus:toStatus finishHandler:^(BOOL success) {
+    [IGHTTPCLIENT requestToChangeToWorkStatus:toStatus finishHandler:^(BOOL success, NSInteger errorCode) {
         if(success){
             self.isWorking=!self.isWorking;
         }
-        [self.delegate toDoListDataManagerDidChangeWorkStatus:self];
+        [self.delegate taskListDataManager:self didChangeWorkStatusSuccess:success];
     }];
 }
 
 
 -(void)pullDownToRefreshList
 {
-    [self.dataInteractor requestForToDoListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSArray<IGTaskObj *> *todoArray, BOOL loadAll) {
-        
+    [IGHTTPCLIENT requestForTaskListWithLastDueTime:nil LastMemberId:nil finishHandler:^(BOOL success, NSInteger errorCode, NSArray *tasks, BOOL loadAll) {
+       
         if(success){
-            self.toDoListArray=todoArray;
+            self.taskListArray=tasks;
             self.hasLoadedAll=loadAll;
             
-            [self saveIconsWithTasks:todoArray];
+            [self saveIconsWithTasks:tasks];
         }
-        [self.delegate toDoListDataManager:self didRefreshToDoListSuccess:success];
+        [self.delegate taskListDataManager:self didRefreshToDoListSuccess:success];
     }];
+    
 }
 
 -(void)pullUpToLoadMoreList
 {
-    IGTaskObj *lastTodo=self.toDoListArray.lastObject;
+    IGTaskObj *lastTodo=self.taskListArray.lastObject;
     
     if(lastTodo){
-        [self.dataInteractor requestForToDoListWithLastDueTime:lastTodo.tDueTime LastMemberId:lastTodo.tMemberId finishHandler:^(BOOL success, NSArray<IGTaskObj *> *todoArray, BOOL loadAll) {
+        [IGHTTPCLIENT requestForTaskListWithLastDueTime:lastTodo.tDueTime LastMemberId:lastTodo.tMemberId finishHandler:^(BOOL success, NSInteger errorCode, NSArray *tasks, BOOL loadAll) {
             if(success){
-                self.toDoListArray=[self.toDoListArray arrayByAddingObjectsFromArray:todoArray];
+                self.taskListArray=[self.taskListArray arrayByAddingObjectsFromArray:tasks];
                 self.hasLoadedAll=loadAll;
                 
-                [self saveIconsWithTasks:todoArray];
+                [self saveIconsWithTasks:tasks];
             }
-            [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:success];
-            
+            [self.delegate taskListDataManager:self didLoadMoreToDoListSuccess:success];
         }];
         
     }else{
-        [self.delegate toDoListDataManager:self didLoadMoreToDoListSuccess:NO];
+        [self.delegate taskListDataManager:self didLoadMoreToDoListSuccess:NO];
     }
 }
+
+
 
 -(void)tapToRequestToHandleTaskAtIndex:(NSInteger)index{
+    IGTaskObj *todo=self.taskListArray[index];
     
-    IGTaskObj *todo=self.toDoListArray[index];
     if(todo){
-        [self.dataInteractor requestToHandleTaskWithTaskId:todo.tId finishHandler:^(NSInteger statusCode) {
-            
-            if(statusCode==1&&todo.tType==2){
+        IGGenWSelf;
+        [IGHTTPCLIENT requestToHandleTaskWithTaskId:todo.tId finishHandler:^(BOOL success, NSInteger errorCode) {
+           
+            if(success&&todo.tType==2){
                 //如果请求处理报告成功，则还需一步
-                [self.dataInteractor requestForAutoReportContentWithTaskId:todo.tId finishHandler:^(BOOL success, NSDictionary *autoReportDic) {
-                    if(success){
-                        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:1 taskInfo:todo reportInfo:autoReportDic];
-                    }else{
-                        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:0 taskInfo:todo reportInfo:nil];
-                    }
+                [IGHTTPCLIENT requestForAutoReportContentWithTaskId:todo.tId finishHandler:^(BOOL success, NSInteger errorCode, NSDictionary *autoReportDic) {
+                    
+                    [wSelf.delegate taskListDataManager:wSelf shouldHandleTaskSuccess:success errCode:errorCode taskInfo:todo reportInfo:autoReportDic];
+                    
                 }];
-                
+
             }else{
-            
                 //2不存在 4处理完毕 任务要去掉
-                if(statusCode==2||statusCode==4){
-                    NSMutableArray *temp=[ self.toDoListArray mutableCopy];
+                if(errorCode==14||errorCode==16){
+                    NSMutableArray *temp=[ self.taskListArray mutableCopy];
                     [temp removeObject:todo];
                 }
-
-                [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:statusCode taskInfo:todo reportInfo:nil];
+                [self.delegate taskListDataManager:self shouldHandleTaskSuccess:success errCode:errorCode taskInfo:todo reportInfo:nil];
             }
+            
+            
         }];
-        
     }else{
-
-        [self.delegate toDoListDataManager:self didReceiveHandlingRequestResult:0 taskInfo:nil reportInfo:nil];
+        [self.delegate taskListDataManager:self shouldHandleTaskSuccess:NO errCode:IGErrorSystemProblem taskInfo:nil reportInfo:nil];
     }
+    
 }
 
 
+
+         
 -(void)onJPushMsgNote:(NSNotification*)note{
     
     
@@ -186,7 +179,7 @@
     
     //2处理中,3完成,1未处理
     
-     NSMutableArray *mTodoList= [self.toDoListArray mutableCopy];
+     NSMutableArray *mTodoList= [self.taskListArray mutableCopy];
     __block BOOL newTask=YES;   //判断是否为新任务
     [mTodoList enumerateObjectsUsingBlock:^(IGTaskObj* t, NSUInteger idx, BOOL * _Nonnull stop) {
         if([t.tId isEqualToString:task.tId]){
@@ -205,9 +198,9 @@
     }
     
     [mTodoList removeObjectsInArray:finishedTasks];
-    self.toDoListArray=[mTodoList copy];
+    self.taskListArray=[mTodoList copy];
     
-    [self.delegate toDoListDataManagerdidChangedTaskStatus:self];
+    [self.delegate taskListDataManagerdidChangedTaskStatus:self];
 }
 
 
@@ -215,7 +208,7 @@
     
     NSString *taskId=note.userInfo[@"taskId"];
     
-    NSMutableArray *mTasks=[self.toDoListArray mutableCopy];
+    NSMutableArray *mTasks=[self.taskListArray mutableCopy];
     
     __block IGTaskObj * taskFinished;
     [mTasks enumerateObjectsUsingBlock:^(IGTaskObj *t, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -227,8 +220,8 @@
     
     if(taskFinished){
        [mTasks removeObject:taskFinished];
-        self.toDoListArray=[mTasks copy];
-        [self.delegate toDoListDataManagerdidChangedTaskStatus:self];
+        self.taskListArray=[mTasks copy];
+        [self.delegate taskListDataManagerdidChangedTaskStatus:self];
     }
     
 }

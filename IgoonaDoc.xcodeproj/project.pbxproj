@@ -120,10 +120,15 @@
 		6B4E11501D66AE6F008419A7 /* IGHTTPClient+Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E114F1D66AE6F008419A7 /* IGHTTPClient+Task.m */; };
 		6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */; };
 		6B4E11621D66E330008419A7 /* IGTaskListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */; };
-		6B4E11631D66E330008419A7 /* IGTaskListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */; };
 		6B4E11641D66E330008419A7 /* IGTaskListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */; };
 		6B4E11651D66E330008419A7 /* IGTaskListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */; };
 		6B4E11661D66E330008419A7 /* IGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11611D66E330008419A7 /* IGTaskListViewController.m */; };
+		6B4E11691D66E7F3008419A7 /* IGHTTPClient+Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11681D66E7F3008419A7 /* IGHTTPClient+Doctor.m */; };
+		6B4E116C1D6716CD008419A7 /* IGHTTPClient+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E116B1D6716CD008419A7 /* IGHTTPClient+Message.m */; };
+		6B4E116F1D6724FB008419A7 /* IGMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E116E1D6724FB008419A7 /* IGMessageViewCell.m */; };
+		6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11721D67272F008419A7 /* IGMessageImageViewController.m */; };
+		6B4E11781D67272F008419A7 /* IGMessageToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11741D67272F008419A7 /* IGMessageToolBar.m */; };
+		6B4E11791D67272F008419A7 /* IGRecordingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; };
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; };
@@ -173,9 +178,7 @@
 		6BBF66AF1D660367000FEF9F /* IGTaskNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66901D660367000FEF9F /* IGTaskNavigationController.m */; };
 		6BBF66B11D660367000FEF9F /* IGAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66951D660367000FEF9F /* IGAudioManager.m */; };
 		6BBF66B21D660367000FEF9F /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66971D660367000FEF9F /* IGMsgDetailDataManager.m */; };
-		6BBF66B31D660367000FEF9F /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66991D660367000FEF9F /* IGMsgDetailInteractor.m */; };
-		6BBF66B41D660367000FEF9F /* IGMsgDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF669B1D660367000FEF9F /* IGMsgDetailViewCell.m */; };
-		6BBF66B51D660367000FEF9F /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF669D1D660367000FEF9F /* IGMsgDetailViewController.m */; };
+		6BBF66B51D660367000FEF9F /* IGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF669D1D660367000FEF9F /* IGMessageViewController.m */; };
 		6BBF66B61D660367000FEF9F /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */; };
 		6BBF66B71D660367000FEF9F /* IGReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A21D660367000FEF9F /* IGReportDetailViewController.m */; };
 		6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */; };
@@ -462,14 +465,24 @@
 		6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Report.m"; sourceTree = "<group>"; };
 		6B4E11581D66E330008419A7 /* IGTaskListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListDataManager.h; sourceTree = "<group>"; };
 		6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListDataManager.m; sourceTree = "<group>"; };
-		6B4E115A1D66E330008419A7 /* IGTaskListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListInteractor.h; sourceTree = "<group>"; };
-		6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListInteractor.m; sourceTree = "<group>"; };
 		6B4E115C1D66E330008419A7 /* IGTaskListRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListRouting.h; sourceTree = "<group>"; };
 		6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListRouting.m; sourceTree = "<group>"; };
 		6B4E115E1D66E330008419A7 /* IGTaskListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListViewCell.h; sourceTree = "<group>"; };
 		6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListViewCell.m; sourceTree = "<group>"; };
 		6B4E11601D66E330008419A7 /* IGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListViewController.h; sourceTree = "<group>"; };
 		6B4E11611D66E330008419A7 /* IGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListViewController.m; sourceTree = "<group>"; };
+		6B4E11671D66E7F3008419A7 /* IGHTTPClient+Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Doctor.h"; sourceTree = "<group>"; };
+		6B4E11681D66E7F3008419A7 /* IGHTTPClient+Doctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Doctor.m"; sourceTree = "<group>"; };
+		6B4E116A1D6716CD008419A7 /* IGHTTPClient+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Message.h"; sourceTree = "<group>"; };
+		6B4E116B1D6716CD008419A7 /* IGHTTPClient+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Message.m"; sourceTree = "<group>"; };
+		6B4E116D1D6724FB008419A7 /* IGMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMessageViewCell.h; sourceTree = "<group>"; };
+		6B4E116E1D6724FB008419A7 /* IGMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageViewCell.m; sourceTree = "<group>"; };
+		6B4E11711D67272F008419A7 /* IGMessageImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMessageImageViewController.h; sourceTree = "<group>"; };
+		6B4E11721D67272F008419A7 /* IGMessageImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageImageViewController.m; sourceTree = "<group>"; };
+		6B4E11731D67272F008419A7 /* IGMessageToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMessageToolBar.h; sourceTree = "<group>"; };
+		6B4E11741D67272F008419A7 /* IGMessageToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageToolBar.m; sourceTree = "<group>"; };
+		6B4E11751D67272F008419A7 /* IGRecordingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRecordingHUDView.h; sourceTree = "<group>"; };
+		6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRecordingHUDView.m; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
 		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
@@ -568,12 +581,8 @@
 		6BBF66951D660367000FEF9F /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
 		6BBF66961D660367000FEF9F /* IGMsgDetailDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailDataManager.h; sourceTree = "<group>"; };
 		6BBF66971D660367000FEF9F /* IGMsgDetailDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailDataManager.m; sourceTree = "<group>"; };
-		6BBF66981D660367000FEF9F /* IGMsgDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailInteractor.h; sourceTree = "<group>"; };
-		6BBF66991D660367000FEF9F /* IGMsgDetailInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailInteractor.m; sourceTree = "<group>"; };
-		6BBF669A1D660367000FEF9F /* IGMsgDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewCell.h; sourceTree = "<group>"; };
-		6BBF669B1D660367000FEF9F /* IGMsgDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewCell.m; sourceTree = "<group>"; };
-		6BBF669C1D660367000FEF9F /* IGMsgDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailViewController.h; sourceTree = "<group>"; };
-		6BBF669D1D660367000FEF9F /* IGMsgDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMsgDetailViewController.m; sourceTree = "<group>"; };
+		6BBF669C1D660367000FEF9F /* IGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMessageViewController.h; sourceTree = "<group>"; };
+		6BBF669D1D660367000FEF9F /* IGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageViewController.m; sourceTree = "<group>"; };
 		6BBF669F1D660367000FEF9F /* IGReportDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportDetailViewCell.h; sourceTree = "<group>"; };
 		6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportDetailViewCell.m; sourceTree = "<group>"; };
 		6BBF66A11D660367000FEF9F /* IGReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportDetailViewController.h; sourceTree = "<group>"; };
@@ -803,6 +812,10 @@
 				6B4E114F1D66AE6F008419A7 /* IGHTTPClient+Task.m */,
 				6B4E11541D66AF98008419A7 /* IGHTTPClient+Report.h */,
 				6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */,
+				6B4E11671D66E7F3008419A7 /* IGHTTPClient+Doctor.h */,
+				6B4E11681D66E7F3008419A7 /* IGHTTPClient+Doctor.m */,
+				6B4E116A1D6716CD008419A7 /* IGHTTPClient+Message.h */,
+				6B4E116B1D6716CD008419A7 /* IGHTTPClient+Message.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -915,8 +928,8 @@
 			children = (
 				6B0001F31C9D221800085229 /* IGRootViewController.h */,
 				6B0001F41C9D221800085229 /* IGRootViewController.m */,
-				6BBF668B1D660367000FEF9F /* Tasks */,
 				6B0001F51C9D221800085229 /* Login */,
+				6BBF668B1D660367000FEF9F /* Tasks */,
 				6B87C0081CD4C3B80050495B /* MemberData */,
 				6BA60EE41CD70DDD00E39D54 /* Menu */,
 				6B032DE51CC125190027DDAD /* DataStructures */,
@@ -1194,18 +1207,29 @@
 		6B4E11571D66E330008419A7 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
-				6B4E11581D66E330008419A7 /* IGTaskListDataManager.h */,
-				6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */,
-				6B4E115A1D66E330008419A7 /* IGTaskListInteractor.h */,
-				6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */,
-				6B4E115C1D66E330008419A7 /* IGTaskListRouting.h */,
-				6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */,
-				6B4E115E1D66E330008419A7 /* IGTaskListViewCell.h */,
-				6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */,
 				6B4E11601D66E330008419A7 /* IGTaskListViewController.h */,
 				6B4E11611D66E330008419A7 /* IGTaskListViewController.m */,
+				6B4E11581D66E330008419A7 /* IGTaskListDataManager.h */,
+				6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */,
+				6B4E115E1D66E330008419A7 /* IGTaskListViewCell.h */,
+				6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */,
+				6B4E115C1D66E330008419A7 /* IGTaskListRouting.h */,
+				6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */,
 			);
 			path = TaskList;
+			sourceTree = "<group>";
+		};
+		6B4E11701D67272F008419A7 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11711D67272F008419A7 /* IGMessageImageViewController.h */,
+				6B4E11721D67272F008419A7 /* IGMessageImageViewController.m */,
+				6B4E11731D67272F008419A7 /* IGMessageToolBar.h */,
+				6B4E11741D67272F008419A7 /* IGMessageToolBar.m */,
+				6B4E11751D67272F008419A7 /* IGRecordingHUDView.h */,
+				6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
@@ -1417,16 +1441,15 @@
 		6BBF66931D660367000FEF9F /* MsgDetail */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF66941D660367000FEF9F /* IGAudioManager.h */,
-				6BBF66951D660367000FEF9F /* IGAudioManager.m */,
+				6BBF669C1D660367000FEF9F /* IGMessageViewController.h */,
+				6BBF669D1D660367000FEF9F /* IGMessageViewController.m */,
 				6BBF66961D660367000FEF9F /* IGMsgDetailDataManager.h */,
 				6BBF66971D660367000FEF9F /* IGMsgDetailDataManager.m */,
-				6BBF66981D660367000FEF9F /* IGMsgDetailInteractor.h */,
-				6BBF66991D660367000FEF9F /* IGMsgDetailInteractor.m */,
-				6BBF669A1D660367000FEF9F /* IGMsgDetailViewCell.h */,
-				6BBF669B1D660367000FEF9F /* IGMsgDetailViewCell.m */,
-				6BBF669C1D660367000FEF9F /* IGMsgDetailViewController.h */,
-				6BBF669D1D660367000FEF9F /* IGMsgDetailViewController.m */,
+				6B4E116D1D6724FB008419A7 /* IGMessageViewCell.h */,
+				6B4E116E1D6724FB008419A7 /* IGMessageViewCell.m */,
+				6BBF66941D660367000FEF9F /* IGAudioManager.h */,
+				6BBF66951D660367000FEF9F /* IGAudioManager.m */,
+				6B4E11701D67272F008419A7 /* components */,
 			);
 			path = MsgDetail;
 			sourceTree = "<group>";
@@ -1621,6 +1644,7 @@
 				6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */,
 				6BBF66B71D660367000FEF9F /* IGReportDetailViewController.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
 				6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */,
 				6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */,
@@ -1630,6 +1654,7 @@
 				6B0002281C9D221900085229 /* IGCheckBox.m in Sources */,
 				6BBF66B21D660367000FEF9F /* IGMsgDetailDataManager.m in Sources */,
 				6B0D94A21CE2347300C5BA6D /* IGIncomeMembersDataManager.m in Sources */,
+				6B4E11791D67272F008419A7 /* IGRecordingHUDView.m in Sources */,
 				6B00020A1C9D221900085229 /* IGUserDefaults.m in Sources */,
 				2C008DA51CAF760F00ECE4B5 /* MJRefreshComponent.m in Sources */,
 				6B7A35B51CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m in Sources */,
@@ -1639,6 +1664,7 @@
 				6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */,
 				6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
+				6B4E11781D67272F008419A7 /* IGMessageToolBar.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
 				6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
@@ -1674,13 +1700,13 @@
 				6B0E84101CFAEB680000E62E /* IGEkgView.m in Sources */,
 				6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */,
 				6B0D949E1CE2326300C5BA6D /* IGPatientServicesViewController.m in Sources */,
+				6B4E116C1D6716CD008419A7 /* IGHTTPClient+Message.m in Sources */,
 				6B1325811CE8B53300C2A8C3 /* IGInvitedCustomerObj.m in Sources */,
 				6BA60F061CD70DDD00E39D54 /* IGMyTeamViewCell.m in Sources */,
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
 				6BA60F071CD70DDD00E39D54 /* IGMyTeamViewController.m in Sources */,
 				6B0D94921CE22D3A00C5BA6D /* KxMenu.m in Sources */,
 				6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */,
-				6BBF66B31D660367000FEF9F /* IGMsgDetailInteractor.m in Sources */,
 				6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */,
 				6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */,
 				6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */,
@@ -1689,6 +1715,7 @@
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
 				6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */,
+				6B4E11691D66E7F3008419A7 /* IGHTTPClient+Doctor.m in Sources */,
 				6BA60F031CD70DDD00E39D54 /* IGMoreStuffViewController.m in Sources */,
 				6B00021B1C9D221900085229 /* ViewController+MASAdditions.m in Sources */,
 				6B0002141C9D221900085229 /* MASConstraintMaker.m in Sources */,
@@ -1711,11 +1738,9 @@
 				6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */,
 				6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */,
 				6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */,
-				6BBF66B41D660367000FEF9F /* IGMsgDetailViewCell.m in Sources */,
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
 				6BBF66851D65ECE1000FEF9F /* IGHTTPClient+Login.m in Sources */,
-				6B4E11631D66E330008419A7 /* IGTaskListInteractor.m in Sources */,
 				2C506B971CD1E2CC00B61BB3 /* IGReportCategoryObj.m in Sources */,
 				6BA60F021CD70DDD00E39D54 /* IGDoneListViewController.m in Sources */,
 				6B13257E1CE8B36000C2A8C3 /* IGInvitedCustomersViewCell.m in Sources */,
@@ -1729,8 +1754,9 @@
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
 				6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */,
 				6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */,
-				6BBF66B51D660367000FEF9F /* IGMsgDetailViewController.m in Sources */,
+				6BBF66B51D660367000FEF9F /* IGMessageViewController.m in Sources */,
 				6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */,
+				6B4E116F1D6724FB008419A7 /* IGMessageViewCell.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
 				6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */,
 				6BA60F141CD768CF00E39D54 /* IGMyIncomeViewController.m in Sources */,

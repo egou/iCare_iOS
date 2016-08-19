@@ -11,6 +11,6 @@
 @class IGTaskObj;
 @interface IGTaskListViewCell: UITableViewCell
 
-@property (nonatomic,strong) IGTaskObj *toDoData;
+@property (nonatomic,strong) IGTaskObj *task;
 
 @end

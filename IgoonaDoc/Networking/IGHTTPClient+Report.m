@@ -20,7 +20,8 @@
                    if(IGRespSuccess){
                        finishHandler(YES,0);
                    }else{
-                       finishHandler(NO,IGErrorSystemProblem);
+                       NSInteger errorCode=[responseObject[@"reason"] integerValue];
+                       finishHandler(NO,errorCode);
                    }
                    
                    
@@ -29,6 +30,31 @@
                    
                }];
 
+}
+
+
+
+-(void)requestForAutoReportContentWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSInteger, NSDictionary *))handler{
+    
+    [self  GET:@"php/report.php"
+    parameters:@{@"action":@"get_task_report",
+                 @"taskId":taskId}
+      progress:nil
+       success:^(NSURLSessionDataTask * task, NSDictionary* responseObject) {
+
+           if(IGRespSuccess){
+               handler(YES,0, responseObject);
+               
+           }else{
+               NSInteger errorCode=[responseObject[@"reason"] integerValue];
+               handler(NO,errorCode,nil);
+           }
+           
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           handler(NO, IGErrorNetworkProblem,nil);
+       }];
+
+    
 }
 
 @end

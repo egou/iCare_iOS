@@ -28,14 +28,14 @@
 }
 
 
--(void)setToDoData:(IGTaskObj *)toDoData
+-(void)setTask:(IGTaskObj *)task
 {
-    self.nameLabel.text=toDoData.tMemberName;
-    self.msgLabel.text=toDoData.tMsg;
+    self.nameLabel.text=task.tMemberName;
+    self.msgLabel.text=task.tMsg;
     
     
     int timeStatusCode;
-    self.timeLabel.text=[self p_dueTime:toDoData.tDueTime statusCode:&timeStatusCode];
+    self.timeLabel.text=[self p_dueTime:task.tDueTime statusCode:&timeStatusCode];
     if(timeStatusCode<0)
         self.timeLabel.textColor=[UIColor redColor];
     else if(timeStatusCode==0)
@@ -43,9 +43,9 @@
     else
         self.timeLabel.textColor=[UIColor darkGrayColor];
     
-    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",toDoData.tMemberIconId]];
+    self.iconIV.image=[UIImage imageNamed:[NSString stringWithFormat:@"head20%@",task.tMemberIconId]];
     
-    self.typeLabel.text=toDoData.tType==1?@"求助":@"报告";
+    self.typeLabel.text=task.tType==1?@"求助":@"报告";
 }
 
 

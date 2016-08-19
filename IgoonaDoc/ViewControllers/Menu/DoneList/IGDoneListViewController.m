@@ -12,7 +12,7 @@
 #import "IGTaskObj.h"
 #import "MJRefresh.h"
 
-#import "IGMsgDetailViewController.h"
+#import "IGMessageViewController.h"
 
 #import "IGDoneListEntity.h"
 #import "IGReportViewController.h"
@@ -71,7 +71,7 @@
     IGTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
     if(task.tType==1){  //求助
         UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-        IGMsgDetailViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMsgDetailViewController"];
+        IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
         
         msgVC.memberId=task.tMemberId;
         msgVC.memberIconId=[IGLOCALMANAGER loadIconIdWithPatientId:task.tMemberId];

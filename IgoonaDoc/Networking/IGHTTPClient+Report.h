@@ -14,4 +14,10 @@
 -(void)requestToSubmitReportWithContentInfo:(NSDictionary*)info finishHandler:(void(^)(BOOL success, NSInteger errorCode))finishHandler;
 
 
+
+/**
+ 请求智能报告内容
+ */
+-(void)requestForAutoReportContentWithTaskId:(NSString*)taskId finishHandler:(void(^)(BOOL success, NSInteger errorCode, NSDictionary *autoReportDic))handler;
+
 @end

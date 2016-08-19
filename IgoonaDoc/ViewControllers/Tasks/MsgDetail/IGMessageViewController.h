@@ -1,5 +1,5 @@
 //
-//  IGMsgDetailViewController.h
+//  IGMessageViewController.h
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/20.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface IGMsgDetailViewController : UIViewController
+@interface IGMessageViewController : UIViewController
 
 @property (nonatomic,copy) NSString *memberId;
 @property (nonatomic,copy) NSString *memberName;

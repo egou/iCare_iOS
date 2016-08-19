@@ -7,11 +7,13 @@
 //
 
 #import "IGMsgDetailDataManager.h"
-#import "IGMsgDetailInteractor.h"
 #import "IGMsgDetailObj.h"
 #import "JPUSHService.h"
 
 #import "TWMessageBarManager.h"
+
+#import "IGHTTPClient+Message.h"
+#import "IGHTTPClient+Task.h"
 
 @interface IGMsgDetailDataManager()
 @property (nonatomic,copy) NSString *patientId;
@@ -19,8 +21,6 @@
 
 @property (nonatomic,strong,readwrite) NSArray *allMsgs;
 @property (nonatomic,assign,readwrite) BOOL hasLoadedAllOldMsgs;
-
-@property (nonatomic,strong) IGMsgDetailInteractor *interactor;
 
 @property (nonatomic,strong) NSArray *tempNewMsgs;  //暂存新消息，新消息可能会取好几次
 
@@ -70,21 +70,18 @@
         [self p_requestForAllNewMsgsWithLatestMsgId:msg.mId];
     }else{
         //没有缓存消息，则重新获取
-        [self.interactor requestForMsgsWithMemberId:self.patientId
-                                          lastMsgId:@"0"
-                                            oldMsgs:YES
-                                           startNum:1
-                                           limitNum:20 finishHandler:^(BOOL success, NSInteger total, NSArray *msgs) {
-                                               if(success){
-                                                   self.allMsgs=msgs;
-                                                   [self.delegate dataManager:self didReceiveNewMsgsSuccess:YES];
-                                                   [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
-                                               }else{
-                                                   [self.delegate dataManager:self didReceiveNewMsgsSuccess:NO];
-                                               }
-                                               self.isLoadingNewMsgs=NO;
-                                               
-                                           }];
+        [IGHTTPCLIENT requestForMsgsWithMemberId:self.patientId lastMsgId:@"0" oldMsgs:YES startNum:1 limitNum:20 finishHandler:^(BOOL success, NSInteger errorCode, NSInteger total, NSArray *msgs) {
+            
+            if(success){
+                self.allMsgs=msgs;
+                [self.delegate dataManager:self didReceiveNewMsgsSuccess:YES];
+                [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
+            }else{
+                [self.delegate dataManager:self didReceiveNewMsgsSuccess:NO];
+            }
+            self.isLoadingNewMsgs=NO;
+
+        }];
     }
 }
 
@@ -97,27 +94,23 @@
     
     if(self.allMsgs.count>0){
         IGMsgDetailObj *oldestMsg=[self.allMsgs lastObject];
-        [self.interactor requestForMsgsWithMemberId:self.patientId
-                                          lastMsgId:oldestMsg.mId
-                                            oldMsgs:YES
-                                           startNum:1
-                                           limitNum:20
-                                      finishHandler:^(BOOL success, NSInteger total, NSArray *msgs) {
-                                          if(success){
-                                              
-                                              self.allMsgs=[self.allMsgs arrayByAddingObjectsFromArray:msgs];
-                                              if(total==msgs.count)
-                                                  self.hasLoadedAllOldMsgs=YES;
-                                              
-                                              [self.delegate dataManager:self didReceiveOldMsgsSuccess:YES];
-                                              
-                                              //存入本地
-                                              [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
-                                          }else{
-                                              [self.delegate dataManager:self didReceiveOldMsgsSuccess:NO];
-                                          }
-                                          self.isLoadingOldMsgs=NO;
-                                      }];
+        [IGHTTPCLIENT requestForMsgsWithMemberId:self.patientId lastMsgId:oldestMsg.mId oldMsgs:YES startNum:1 limitNum:20 finishHandler:^(BOOL success, NSInteger errorCode, NSInteger total, NSArray *msgs) {
+            if(success){
+                
+                self.allMsgs=[self.allMsgs arrayByAddingObjectsFromArray:msgs];
+                if(total==msgs.count)
+                    self.hasLoadedAllOldMsgs=YES;
+                
+                [self.delegate dataManager:self didReceiveOldMsgsSuccess:YES];
+                
+                //存入本地
+                [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
+            }else{
+                [self.delegate dataManager:self didReceiveOldMsgsSuccess:NO];
+            }
+            self.isLoadingOldMsgs=NO;
+
+        }];
         
     }else{
         [self.delegate dataManager:self didReceiveOldMsgsSuccess:NO];
@@ -143,24 +136,16 @@
 }
 
 -(void)tapToExitTaskFinished:(BOOL)finished{
-    [self.interactor requestToExitTask:self.taskId
-                             completed:finished
-                         finishHandler:^(BOOL success) {
-                            [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
-                             //任务完成通知
-                             if(success&&finished){
-                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
-                             }
-                         }];
+    [IGHTTPCLIENT requestToExitTask:self.taskId completed:finished finishHandler:^(BOOL success, NSInteger errorCode) {
+        [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
+        //任务完成通知
+        if(success&&finished){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
+        }
+
+    }];
 }
 
-#pragma mark - getter & setter
--(IGMsgDetailInteractor *)interactor
-{
-    if(!_interactor)
-        _interactor=[[IGMsgDetailInteractor alloc] init];
-    return _interactor;
-}
 
 #pragma mark - private methods
 -(void)p_requestForAllNewMsgsWithLatestMsgId:(NSString*)latestMsgId
@@ -172,75 +157,41 @@
 
 -(void)p_requestForAllNewMsgsWithLatestMsgId:(NSString*)latestMsgId fromStartNum:(NSInteger)startNum
 {
-    [self.interactor requestForMsgsWithMemberId:self.patientId
-                                      lastMsgId:latestMsgId
-                                        oldMsgs:NO
-                                       startNum:startNum
-                                       limitNum:20
-                                  finishHandler:^(BOOL success, NSInteger total, NSArray *msgs) {
-                                      if(success){
-                                          
-                                          //这里返回的是id递增，需要倒转一下
-                                          NSArray * descMsgs=[[msgs reverseObjectEnumerator] allObjects];
-                                          
-                                          self.tempNewMsgs=[descMsgs arrayByAddingObjectsFromArray:self.tempNewMsgs];
-                                          
-                                          if(total<=self.tempNewMsgs.count){//完成
-                                              //把新消息融入老消息
-                                              self.allMsgs=[self.tempNewMsgs arrayByAddingObjectsFromArray:self.allMsgs];
-                                              [self.delegate dataManager:self didReceiveNewMsgsSuccess:YES];
-                                              
-                                          }else{//继续积累
-                                              [self p_requestForAllNewMsgsWithLatestMsgId:latestMsgId fromStartNum:self.tempNewMsgs.count+1];
-                                          }
-                                          
-                                          //存入本地
-                                          [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
-                                          
-                                      }else{
-                                          [self.delegate dataManager:self didReceiveNewMsgsSuccess:NO];
-                                          
-                                      }
-                                      self.isLoadingNewMsgs=NO;
-                                  }];
+    [IGHTTPCLIENT requestForMsgsWithMemberId:self.patientId lastMsgId:latestMsgId oldMsgs:NO startNum:startNum limitNum:20 finishHandler:^(BOOL success, NSInteger errorCode, NSInteger total, NSArray *msgs) {
+        if(success){
+            
+            //这里返回的是id递增，需要倒转一下
+            NSArray * descMsgs=[[msgs reverseObjectEnumerator] allObjects];
+            
+            self.tempNewMsgs=[descMsgs arrayByAddingObjectsFromArray:self.tempNewMsgs];
+            
+            if(total<=self.tempNewMsgs.count){//完成
+                //把新消息融入老消息
+                self.allMsgs=[self.tempNewMsgs arrayByAddingObjectsFromArray:self.allMsgs];
+                [self.delegate dataManager:self didReceiveNewMsgsSuccess:YES];
+                
+            }else{//继续积累
+                [self p_requestForAllNewMsgsWithLatestMsgId:latestMsgId fromStartNum:self.tempNewMsgs.count+1];
+            }
+            
+            //存入本地
+            [IGLOCALMANAGER saveMessagesData:msgs withPatientId:self.patientId];
+            
+        }else{
+            [self.delegate dataManager:self didReceiveNewMsgsSuccess:NO];
+            
+        }
+        self.isLoadingNewMsgs=NO;
+    }];
+    
 }
 
 -(void)p_requestToSendTextMsg:(NSString*)textMsg audioMsg:(NSData*)audioMsg audioDuration:(NSInteger)duration{
     
-    [self.interactor requestToSendMsg:textMsg
-                             audioMsg:audioMsg
-                        audioDuration:duration
-                              otherId:self.patientId
-                               taskId:self.taskId
-                        finishHandler:^(BOOL success, NSString *msgId) {
-                            if(success){
-//                                IGMsgDetailObj *msg=[[IGMsgDetailObj alloc] init];
-//                                
-//                                msg.mId=msgId;
-//                                msg.mPhotoId=@"1";
-//                                msg.mSessionId=self.taskId;
-//                                msg.mIsOut=YES;
-//                                
-//                                NSDate *now=[NSDate date];
-//                                NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
-//                                [dateForm setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//                                NSString *dateStr=[dateForm stringFromDate:now];
-//                                msg.mTime=dateStr;
-//                                
-//                                if(textMsg.length>0)
-//                                    msg.mText=textMsg;
-//                                else{
-//                                    msg.mAudioData=audioMsg;
-//                                    msg.mAudioDuration=duration;//修改
-//                                }
-//                                
-//                                self.allMsgs=[self p_insertMsg:msg toAllMsgs:self.allMsgs];
-//                                [IGLOCALMANAGER saveMessagesData:@[msg] withPatientId:self.patientId];
-                            }//这里成功后，会由delegate主动请求一次消息，而不是直接存储该消息（直接存储会有可能出现漏消息的情况）
-                            
-                            [self.delegate dataManager:self didSendMsgSuccess:success msgType:textMsg.length>0?0:1];
-                        }];
-
+    [IGHTTPCLIENT requestToSendMsg:textMsg audioMsg:audioMsg audioDuration:duration otherId:self.patientId taskId:self.taskId finishHandler:^(BOOL success, NSInteger errorCode, NSString *msgId) {
+        //这里成功后，会由delegate主动请求一次消息，而不是直接存储该消息（直接存储会有可能出现漏消息的情况）
+        [self.delegate dataManager:self didSendMsgSuccess:success msgType:textMsg.length>0?0:1];
+    }];
 }
 
 

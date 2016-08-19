@@ -42,39 +42,36 @@
     }
 }
 
--(void)startRecording{
+
+-(void)requestRecordPermission{
     
     AVAudioSessionRecordPermission permission=[AVAudioSession sharedInstance].recordPermission;
     
     if(permission==AVAudioSessionRecordPermissionUndetermined){
         [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
-            if(granted)
-            {
-                NSLog(@"授权成功！");
-            }
-            else
-            {
-                NSLog(@"用户未授权");
-            }
+            //do nothing
         }];
-        return;
+        
+        
+    }else if(permission==AVAudioSessionRecordPermissionDenied){
+        [self.delegate audioManagerShouldUserGrantPermission:self];
     }
+}
+
+-(BOOL)startRecording{
     
-    if(permission==AVAudioSessionRecordPermissionDenied){
-     
-        [self.delegate audioManagerRecordPermissionDenied:self];
-        return;
+    AVAudioSessionRecordPermission permission=[AVAudioSession sharedInstance].recordPermission;
+    
+    if(permission!=AVAudioSessionRecordPermissionGranted)
+        return NO;
+    
+    if (!self.audioRecorder.recording)
+    {
+        self.recordIsCancelled=NO;
+        [self.audioRecorder record];
     }
-    
-    if(permission==AVAudioSessionRecordPermissionGranted){
-        if (!self.audioRecorder.recording)
-        {
-            self.recordIsCancelled=NO;
-            [self.audioRecorder record];
-        }
-        return;
-    }
-    
+    return YES;
+
 }
 
 -(void)stopRecording{
