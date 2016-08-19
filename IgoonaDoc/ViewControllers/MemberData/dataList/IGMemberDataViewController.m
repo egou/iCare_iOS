@@ -14,12 +14,13 @@
 #import "MJRefresh.h"
 
 #import "IGBpDataViewController.h"
-//#import "IGEkgDataViewController.h"
 #import "IGEkgDataV2ViewController.h"
-
 #import "IGReportViewController.h"
+#import "IGABPMDataViewController.h"
 
-#import "IGReportContentObj.h"
+#import "IGMemberReportDataObj.h"
+#import "IGABPMObj.h"
+
 
 @interface IGMemberDataViewController ()<IGMemberDataManagerDelegate>
 
@@ -32,19 +33,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self p_resetDataManager];
     [self p_initAdditionalUI];
     
     [self.tableView.mj_header beginRefreshing];
 }
 
-#pragma mark -getter & setter
--(IGMemberDataManager*)dataManager{
-    if(!_dataManager){
-        _dataManager=[[IGMemberDataManager alloc] initWithMemberId:self.memberId];
-        _dataManager.delegate=self;
-    }
-    return _dataManager;
-}
 
 
 #pragma mark - events
@@ -97,58 +91,66 @@
 
 
 -(void)dataManager:(IGMemberDataManager *)dataManager didReceivedDataSuccess:(BOOL)success dataSummary:(IGMemberDataObj *)dataSummary data:(id)data{
-    //1血压计 2心电仪 3报告 4通知
-    [SVProgressHUD dismissWithCompletion:^{
-        if(!success){
-            [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
-            return;
+    //1血压计 2心电仪 3报告 4血压24
+    [SVProgressHUD dismiss];
+    if(!success){
+        [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+        return;
+    }
+    
+    switch (dataSummary.dType) {
+        case 1:{
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+            IGBpDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGBpDataViewController"];
+            vc.selectedBpID=dataSummary.dRefId;
+            if([data isKindOfClass:[NSArray class]]){
+                vc.bpDataArray=data;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
         }
-        
-        switch (dataSummary.dType) {
-            case 1:{
+            
+            break;
+        case 2:{
+            
+            if([data isKindOfClass:[IGMemberEkgDataObj class]]){
                 UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                IGBpDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGBpDataViewController"];
-                vc.selectedBpID=dataSummary.dRefId;
-                if([data isKindOfClass:[NSArray class]]){
-                    vc.bpDataArray=data;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                
+                IGEkgDataV2ViewController *ekgVC=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
+                ekgVC.data=data;
+                [self.navigationController pushViewController:ekgVC animated:YES];
             }
-                
-                break;
-            case 2:{
-                
-                if([data isKindOfClass:[NSData class]]){
-                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                    IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
-                    vc.ekgData=data;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-            }
-                break;
-            case 3:{
-                
-                if([data isKindOfClass:[IGReportContentObj class]]){
-                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                    IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
-                    
-                    vc.reportContent=data;
-                    vc.reportContent.rMemberName=self.memberName;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                
-            }
-                break;
-                
-            case 4:
-                break;
-                
-            default:
-                break;
         }
-
-    }];
+            break;
+        case 3:{
+            
+            if([data isKindOfClass:[IGMemberReportDataObj class]]){
+                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                IGReportViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportViewController"];
+                
+                vc.reportContent=data;
+                vc.reportContent.rMemberName=self.memberName;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+        }
+            break;
+            
+        case 4:{
+            
+            if([data isKindOfClass:[NSArray class]]){
+                
+                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                IGABPMDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGABPMDataViewController"];
+                vc.ABPMItems=data;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
     
 }
 
@@ -165,13 +167,14 @@
     
     
     //pull
+    IGGenWSelf;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.dataManager pullToRefreshData];
-        [self.tableView.mj_footer resetNoMoreData];
+        [wSelf.dataManager pullToRefreshData];
+        [wSelf.tableView.mj_footer resetNoMoreData];
     }];
     
     self.tableView.mj_footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self.dataManager pullToLoadMore];
+        [wSelf.dataManager pullToLoadMore];
     }];
     self.tableView.mj_footer.automaticallyHidden=YES;
 }
@@ -186,5 +189,10 @@
     }
 }
 
+
+-(void)p_resetDataManager{
+    self.dataManager=[[IGMemberDataManager alloc] initWithMemberId:self.memberId];
+    self.dataManager.delegate=self;
+}
 
 @end

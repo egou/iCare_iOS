@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IGMemberEkgDataObj.h"
 
 @interface IGEkgDataV2ViewController : UIViewController
 
-@property (nonatomic,strong) NSData *ekgData;
+
+@property (nonatomic,strong) IGMemberEkgDataObj *data;
+
 
 @end

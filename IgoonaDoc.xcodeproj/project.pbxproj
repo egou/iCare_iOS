@@ -72,8 +72,6 @@
 		6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B033D3F1CC2895900CD87DC /* MoreStuff.storyboard */; };
 		6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */; };
 		6B0C119F1CDA2B83004EFE11 /* IGPatientDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */; };
-		6B0C85D31CDB8D7C007BBB93 /* IGReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */; };
-		6B0C85D61CDB8F33007BBB93 /* IGReportContentObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */; };
 		6B0D948C1CE21B5100C5BA6D /* IGRegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D948B1CE21B5100C5BA6D /* IGRegularExpression.m */; };
 		6B0D94921CE22D3A00C5BA6D /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94911CE22D3A00C5BA6D /* KxMenu.m */; };
 		6B0D94981CE2321600C5BA6D /* IGIncomeMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94971CE2321600C5BA6D /* IGIncomeMembersViewController.m */; };
@@ -82,8 +80,6 @@
 		6B0D94A21CE2347300C5BA6D /* IGIncomeMembersDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A11CE2347200C5BA6D /* IGIncomeMembersDataManager.m */; };
 		6B0D94A71CE2358300C5BA6D /* IGIncomeMemeberObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A61CE2358300C5BA6D /* IGIncomeMemeberObj.m */; };
 		6B0D94AA1CE2382B00C5BA6D /* IGIncomeMembersViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D94A91CE2382B00C5BA6D /* IGIncomeMembersViewCell.m */; };
-		6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */; };
-		6B0E84101CFAEB680000E62E /* IGEkgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E840F1CFAEB680000E62E /* IGEkgView.m */; };
 		6B1325701CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B13256B1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m */; };
 		6B1325711CE8725900C2A8C3 /* IGChangeMyPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B13256D1CE8725900C2A8C3 /* IGChangeMyPhotoViewController.m */; };
 		6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1325731CE8729200C2A8C3 /* IGChangePasswordViewController.m */; };
@@ -129,6 +125,25 @@
 		6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11721D67272F008419A7 /* IGMessageImageViewController.m */; };
 		6B4E11781D67272F008419A7 /* IGMessageToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11741D67272F008419A7 /* IGMessageToolBar.m */; };
 		6B4E11791D67272F008419A7 /* IGRecordingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */; };
+		6B4E117C1D676253008419A7 /* IGHTTPClient+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E117B1D676253008419A7 /* IGHTTPClient+Version.m */; };
+		6B4E117F1D676275008419A7 /* IGHTTPClient+UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E117E1D676275008419A7 /* IGHTTPClient+UserData.m */; };
+		6B4E11891D67632D008419A7 /* IGMemberBpDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11821D67632D008419A7 /* IGMemberBpDataObj.m */; };
+		6B4E118A1D67632D008419A7 /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11841D67632D008419A7 /* IGMemberDataObj.m */; };
+		6B4E118B1D67632D008419A7 /* IGMemberEkgDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11861D67632D008419A7 /* IGMemberEkgDataObj.m */; };
+		6B4E118C1D67632D008419A7 /* IGMemberReportDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11881D67632D008419A7 /* IGMemberReportDataObj.m */; };
+		6B4E118F1D6763AF008419A7 /* IGABPMObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E118E1D6763AF008419A7 /* IGABPMObj.m */; };
+		6B4E11B81D676F71008419A7 /* IGABPMDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E119D1D676F71008419A7 /* IGABPMDataViewController.m */; };
+		6B4E11B91D676F71008419A7 /* IGBPChartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11A01D676F71008419A7 /* IGBPChartManager.m */; };
+		6B4E11BA1D676F71008419A7 /* IGBpDataOnceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11A21D676F71008419A7 /* IGBpDataOnceViewController.m */; };
+		6B4E11BB1D676F71008419A7 /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11A41D676F71008419A7 /* IGBpDataViewController.m */; };
+		6B4E11BC1D676F71008419A7 /* IGMemberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11A71D676F71008419A7 /* IGMemberDataManager.m */; };
+		6B4E11BD1D676F71008419A7 /* IGMemberDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11A91D676F71008419A7 /* IGMemberDataViewCell.m */; };
+		6B4E11BE1D676F71008419A7 /* IGMemberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11AB1D676F71008419A7 /* IGMemberDataViewController.m */; };
+		6B4E11BF1D676F71008419A7 /* IGEkgDataV2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11AE1D676F71008419A7 /* IGEkgDataV2ViewController.m */; };
+		6B4E11C01D676F71008419A7 /* IGEkgFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B01D676F71008419A7 /* IGEkgFilter.m */; };
+		6B4E11C11D676F71008419A7 /* IGEkgSmoothFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B21D676F71008419A7 /* IGEkgSmoothFilter.m */; };
+		6B4E11C21D676F71008419A7 /* IGEkgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B41D676F71008419A7 /* IGEkgView.m */; };
+		6B4E11C31D676F71008419A7 /* IGReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B71D676F71008419A7 /* IGReportViewController.m */; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; };
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; };
@@ -146,18 +161,9 @@
 		6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53D51CF49C38009FF2B7 /* IGIgoonaInfoViewController.m */; };
 		6B7A53DC1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53DB1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m */; };
 		6B7A53DF1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A53DE1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m */; };
-		6B7AA7701D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */; };
 		6B87C0071CD4C3630050495B /* MemberData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B87C0051CD4C3630050495B /* MemberData.storyboard */; };
-		6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */; };
-		6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */; };
-		6B87C0231CD4CD7E0050495B /* IGMemberDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */; };
-		6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */; };
-		6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */; };
-		6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */; };
-		6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C0371CD501210050495B /* IGBPChartManager.m */; };
 		6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */; };
 		6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EE71CD70DDD00E39D54 /* IGDoneListDataManager.m */; };
-		6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EE91CD70DDD00E39D54 /* IGDoneListEntity.m */; };
 		6BA60F011CD70DDD00E39D54 /* IGDoneListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EEB1CD70DDD00E39D54 /* IGDoneListViewCell.m */; };
 		6BA60F021CD70DDD00E39D54 /* IGDoneListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EED1CD70DDD00E39D54 /* IGDoneListViewController.m */; };
 		6BA60F031CD70DDD00E39D54 /* IGMoreStuffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EEF1CD70DDD00E39D54 /* IGMoreStuffViewController.m */; };
@@ -381,10 +387,6 @@
 		6B033D431CC2A2B900CD87DC /* IGViewControllerTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewControllerTransitioning.m; sourceTree = "<group>"; };
 		6B0C119D1CDA2B83004EFE11 /* IGPatientDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientDetailViewController.h; sourceTree = "<group>"; };
 		6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientDetailViewController.m; sourceTree = "<group>"; };
-		6B0C85D11CDB8D7C007BBB93 /* IGReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportViewController.h; sourceTree = "<group>"; };
-		6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportViewController.m; sourceTree = "<group>"; };
-		6B0C85D41CDB8F33007BBB93 /* IGReportContentObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportContentObj.h; sourceTree = "<group>"; };
-		6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportContentObj.m; sourceTree = "<group>"; };
 		6B0D948A1CE21B5100C5BA6D /* IGRegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRegularExpression.h; sourceTree = "<group>"; };
 		6B0D948B1CE21B5100C5BA6D /* IGRegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRegularExpression.m; sourceTree = "<group>"; };
 		6B0D94901CE22D3A00C5BA6D /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
@@ -401,10 +403,6 @@
 		6B0D94A61CE2358300C5BA6D /* IGIncomeMemeberObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMemeberObj.m; sourceTree = "<group>"; };
 		6B0D94A81CE2382B00C5BA6D /* IGIncomeMembersViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeMembersViewCell.h; sourceTree = "<group>"; };
 		6B0D94A91CE2382B00C5BA6D /* IGIncomeMembersViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeMembersViewCell.m; sourceTree = "<group>"; };
-		6B0E84091CFAEADE0000E62E /* IGEkgDataV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgDataV2ViewController.h; sourceTree = "<group>"; };
-		6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgDataV2ViewController.m; sourceTree = "<group>"; };
-		6B0E840E1CFAEB680000E62E /* IGEkgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgView.h; sourceTree = "<group>"; };
-		6B0E840F1CFAEB680000E62E /* IGEkgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgView.m; sourceTree = "<group>"; };
 		6B13256A1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewCell.h; sourceTree = "<group>"; };
 		6B13256B1CE8725900C2A8C3 /* IGChangeMyPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyPhotoViewCell.m; sourceTree = "<group>"; };
 		6B13256C1CE8725900C2A8C3 /* IGChangeMyPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyPhotoViewController.h; sourceTree = "<group>"; };
@@ -483,6 +481,44 @@
 		6B4E11741D67272F008419A7 /* IGMessageToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageToolBar.m; sourceTree = "<group>"; };
 		6B4E11751D67272F008419A7 /* IGRecordingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRecordingHUDView.h; sourceTree = "<group>"; };
 		6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRecordingHUDView.m; sourceTree = "<group>"; };
+		6B4E117A1D676253008419A7 /* IGHTTPClient+Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Version.h"; sourceTree = "<group>"; };
+		6B4E117B1D676253008419A7 /* IGHTTPClient+Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Version.m"; sourceTree = "<group>"; };
+		6B4E117D1D676275008419A7 /* IGHTTPClient+UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+UserData.h"; sourceTree = "<group>"; };
+		6B4E117E1D676275008419A7 /* IGHTTPClient+UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+UserData.m"; sourceTree = "<group>"; };
+		6B4E11811D67632D008419A7 /* IGMemberBpDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberBpDataObj.h; sourceTree = "<group>"; };
+		6B4E11821D67632D008419A7 /* IGMemberBpDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberBpDataObj.m; sourceTree = "<group>"; };
+		6B4E11831D67632D008419A7 /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
+		6B4E11841D67632D008419A7 /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
+		6B4E11851D67632D008419A7 /* IGMemberEkgDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberEkgDataObj.h; sourceTree = "<group>"; };
+		6B4E11861D67632D008419A7 /* IGMemberEkgDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberEkgDataObj.m; sourceTree = "<group>"; };
+		6B4E11871D67632D008419A7 /* IGMemberReportDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberReportDataObj.h; sourceTree = "<group>"; };
+		6B4E11881D67632D008419A7 /* IGMemberReportDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberReportDataObj.m; sourceTree = "<group>"; };
+		6B4E118D1D6763AF008419A7 /* IGABPMObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGABPMObj.h; sourceTree = "<group>"; };
+		6B4E118E1D6763AF008419A7 /* IGABPMObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGABPMObj.m; sourceTree = "<group>"; };
+		6B4E119C1D676F71008419A7 /* IGABPMDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGABPMDataViewController.h; sourceTree = "<group>"; };
+		6B4E119D1D676F71008419A7 /* IGABPMDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGABPMDataViewController.m; sourceTree = "<group>"; };
+		6B4E119F1D676F71008419A7 /* IGBPChartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBPChartManager.h; sourceTree = "<group>"; };
+		6B4E11A01D676F71008419A7 /* IGBPChartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBPChartManager.m; sourceTree = "<group>"; };
+		6B4E11A11D676F71008419A7 /* IGBpDataOnceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataOnceViewController.h; sourceTree = "<group>"; };
+		6B4E11A21D676F71008419A7 /* IGBpDataOnceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataOnceViewController.m; sourceTree = "<group>"; };
+		6B4E11A31D676F71008419A7 /* IGBpDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataViewController.h; sourceTree = "<group>"; };
+		6B4E11A41D676F71008419A7 /* IGBpDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataViewController.m; sourceTree = "<group>"; };
+		6B4E11A61D676F71008419A7 /* IGMemberDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataManager.h; sourceTree = "<group>"; };
+		6B4E11A71D676F71008419A7 /* IGMemberDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataManager.m; sourceTree = "<group>"; };
+		6B4E11A81D676F71008419A7 /* IGMemberDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewCell.h; sourceTree = "<group>"; };
+		6B4E11A91D676F71008419A7 /* IGMemberDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewCell.m; sourceTree = "<group>"; };
+		6B4E11AA1D676F71008419A7 /* IGMemberDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewController.h; sourceTree = "<group>"; };
+		6B4E11AB1D676F71008419A7 /* IGMemberDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewController.m; sourceTree = "<group>"; };
+		6B4E11AD1D676F71008419A7 /* IGEkgDataV2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgDataV2ViewController.h; sourceTree = "<group>"; };
+		6B4E11AE1D676F71008419A7 /* IGEkgDataV2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgDataV2ViewController.m; sourceTree = "<group>"; };
+		6B4E11AF1D676F71008419A7 /* IGEkgFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgFilter.h; sourceTree = "<group>"; };
+		6B4E11B01D676F71008419A7 /* IGEkgFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgFilter.m; sourceTree = "<group>"; };
+		6B4E11B11D676F71008419A7 /* IGEkgSmoothFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgSmoothFilter.h; sourceTree = "<group>"; };
+		6B4E11B21D676F71008419A7 /* IGEkgSmoothFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgSmoothFilter.m; sourceTree = "<group>"; };
+		6B4E11B31D676F71008419A7 /* IGEkgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgView.h; sourceTree = "<group>"; };
+		6B4E11B41D676F71008419A7 /* IGEkgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgView.m; sourceTree = "<group>"; };
+		6B4E11B61D676F71008419A7 /* IGReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportViewController.h; sourceTree = "<group>"; };
+		6B4E11B71D676F71008419A7 /* IGReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportViewController.m; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
 		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
@@ -517,29 +553,11 @@
 		6B7A53DB1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGInviteDoctroViewController.m; sourceTree = "<group>"; };
 		6B7A53DD1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGInviteAgencyViewController.h; sourceTree = "<group>"; };
 		6B7A53DE1CF4ABE0009FF2B7 /* IGInviteAgencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGInviteAgencyViewController.m; sourceTree = "<group>"; };
-		6B7AA76E1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGEkgSmoothFilter.h; sourceTree = "<group>"; };
-		6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgSmoothFilter.m; sourceTree = "<group>"; };
 		6B87C0061CD4C3630050495B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MemberData.storyboard; sourceTree = "<group>"; };
-		6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataObj.h; sourceTree = "<group>"; };
-		6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataObj.m; sourceTree = "<group>"; };
-		6B87C0191CD4CD7E0050495B /* IGBpDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataViewController.h; sourceTree = "<group>"; };
-		6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataViewController.m; sourceTree = "<group>"; };
-		6B87C01C1CD4CD7E0050495B /* IGMemberDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataEntity.h; sourceTree = "<group>"; };
-		6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataEntity.m; sourceTree = "<group>"; };
-		6B87C01E1CD4CD7E0050495B /* IGMemberDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataManager.h; sourceTree = "<group>"; };
-		6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataManager.m; sourceTree = "<group>"; };
-		6B87C0201CD4CD7E0050495B /* IGMemberDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewController.h; sourceTree = "<group>"; };
-		6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewController.m; sourceTree = "<group>"; };
-		6B87C0261CD4EA1F0050495B /* IGMemberDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMemberDataViewCell.h; sourceTree = "<group>"; };
-		6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMemberDataViewCell.m; sourceTree = "<group>"; };
-		6B87C0361CD501210050495B /* IGBPChartManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBPChartManager.h; sourceTree = "<group>"; };
-		6B87C0371CD501210050495B /* IGBPChartManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBPChartManager.m; sourceTree = "<group>"; };
 		6B87C0391CD501980050495B /* IGBpDataDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGBpDataDetailObj.h; sourceTree = "<group>"; };
 		6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGBpDataDetailObj.m; sourceTree = "<group>"; };
 		6BA60EE61CD70DDD00E39D54 /* IGDoneListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListDataManager.h; sourceTree = "<group>"; };
 		6BA60EE71CD70DDD00E39D54 /* IGDoneListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDoneListDataManager.m; sourceTree = "<group>"; };
-		6BA60EE81CD70DDD00E39D54 /* IGDoneListEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListEntity.h; sourceTree = "<group>"; };
-		6BA60EE91CD70DDD00E39D54 /* IGDoneListEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDoneListEntity.m; sourceTree = "<group>"; };
 		6BA60EEA1CD70DDD00E39D54 /* IGDoneListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListViewCell.h; sourceTree = "<group>"; };
 		6BA60EEB1CD70DDD00E39D54 /* IGDoneListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDoneListViewCell.m; sourceTree = "<group>"; };
 		6BA60EEC1CD70DDD00E39D54 /* IGDoneListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDoneListViewController.h; sourceTree = "<group>"; };
@@ -816,6 +834,10 @@
 				6B4E11681D66E7F3008419A7 /* IGHTTPClient+Doctor.m */,
 				6B4E116A1D6716CD008419A7 /* IGHTTPClient+Message.h */,
 				6B4E116B1D6716CD008419A7 /* IGHTTPClient+Message.m */,
+				6B4E117A1D676253008419A7 /* IGHTTPClient+Version.h */,
+				6B4E117B1D676253008419A7 /* IGHTTPClient+Version.m */,
+				6B4E117D1D676275008419A7 /* IGHTTPClient+UserData.h */,
+				6B4E117E1D676275008419A7 /* IGHTTPClient+UserData.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -994,6 +1016,7 @@
 		6B032DE51CC125190027DDAD /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				6B4E11801D67632D008419A7 /* MemberData */,
 				6B87C0391CD501980050495B /* IGBpDataDetailObj.h */,
 				6B87C03A1CD501980050495B /* IGBpDataDetailObj.m */,
 				6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */,
@@ -1002,16 +1025,12 @@
 				6B032DE71CC125190027DDAD /* IGMsgDetailObj.m */,
 				2C506B951CD1E2CC00B61BB3 /* IGReportCategoryObj.h */,
 				2C506B961CD1E2CC00B61BB3 /* IGReportCategoryObj.m */,
-				6B87C0121CD4C77B0050495B /* IGMemberDataObj.h */,
-				6B87C0131CD4C77B0050495B /* IGMemberDataObj.m */,
 				6BA60F0E1CD759BF00E39D54 /* IGDocMemberObj.h */,
 				6BA60F0F1CD759BF00E39D54 /* IGDocMemberObj.m */,
 				6BA60F181CD76A0800E39D54 /* IGIncomeObj.h */,
 				6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */,
 				6B697D281CD8F43000A12CE1 /* IGPatientInfoObj.h */,
 				6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */,
-				6B0C85D41CDB8F33007BBB93 /* IGReportContentObj.h */,
-				6B0C85D51CDB8F33007BBB93 /* IGReportContentObj.m */,
 				6B6DA7B71CDEEE1700DB5CBF /* IGDocInfoDetailObj.h */,
 				6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */,
 				6B6DA7C21CDF512700DB5CBF /* IGCityInfoObj.h */,
@@ -1037,15 +1056,6 @@
 				6B032E091CC1493A0027DDAD /* IGSignupViewController.m */,
 			);
 			path = Signup;
-			sourceTree = "<group>";
-		};
-		6B0C85CE1CDB8B84007BBB93 /* report */ = {
-			isa = PBXGroup;
-			children = (
-				6B0C85D11CDB8D7C007BBB93 /* IGReportViewController.h */,
-				6B0C85D21CDB8D7C007BBB93 /* IGReportViewController.m */,
-			);
-			path = report;
 			sourceTree = "<group>";
 		};
 		6B0D948F1CE22D3A00C5BA6D /* KxMenu */ = {
@@ -1232,6 +1242,82 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		6B4E11801D67632D008419A7 /* MemberData */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11811D67632D008419A7 /* IGMemberBpDataObj.h */,
+				6B4E11821D67632D008419A7 /* IGMemberBpDataObj.m */,
+				6B4E11831D67632D008419A7 /* IGMemberDataObj.h */,
+				6B4E11841D67632D008419A7 /* IGMemberDataObj.m */,
+				6B4E11851D67632D008419A7 /* IGMemberEkgDataObj.h */,
+				6B4E11861D67632D008419A7 /* IGMemberEkgDataObj.m */,
+				6B4E11871D67632D008419A7 /* IGMemberReportDataObj.h */,
+				6B4E11881D67632D008419A7 /* IGMemberReportDataObj.m */,
+				6B4E118D1D6763AF008419A7 /* IGABPMObj.h */,
+				6B4E118E1D6763AF008419A7 /* IGABPMObj.m */,
+			);
+			path = MemberData;
+			sourceTree = "<group>";
+		};
+		6B4E119B1D676F71008419A7 /* ABPM */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E119C1D676F71008419A7 /* IGABPMDataViewController.h */,
+				6B4E119D1D676F71008419A7 /* IGABPMDataViewController.m */,
+			);
+			path = ABPM;
+			sourceTree = "<group>";
+		};
+		6B4E119E1D676F71008419A7 /* bp */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11A11D676F71008419A7 /* IGBpDataOnceViewController.h */,
+				6B4E11A21D676F71008419A7 /* IGBpDataOnceViewController.m */,
+				6B4E11A31D676F71008419A7 /* IGBpDataViewController.h */,
+				6B4E11A41D676F71008419A7 /* IGBpDataViewController.m */,
+				6B4E119F1D676F71008419A7 /* IGBPChartManager.h */,
+				6B4E11A01D676F71008419A7 /* IGBPChartManager.m */,
+			);
+			path = bp;
+			sourceTree = "<group>";
+		};
+		6B4E11A51D676F71008419A7 /* dataList */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11AA1D676F71008419A7 /* IGMemberDataViewController.h */,
+				6B4E11AB1D676F71008419A7 /* IGMemberDataViewController.m */,
+				6B4E11A61D676F71008419A7 /* IGMemberDataManager.h */,
+				6B4E11A71D676F71008419A7 /* IGMemberDataManager.m */,
+				6B4E11A81D676F71008419A7 /* IGMemberDataViewCell.h */,
+				6B4E11A91D676F71008419A7 /* IGMemberDataViewCell.m */,
+			);
+			path = dataList;
+			sourceTree = "<group>";
+		};
+		6B4E11AC1D676F71008419A7 /* ekg */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11AD1D676F71008419A7 /* IGEkgDataV2ViewController.h */,
+				6B4E11AE1D676F71008419A7 /* IGEkgDataV2ViewController.m */,
+				6B4E11AF1D676F71008419A7 /* IGEkgFilter.h */,
+				6B4E11B01D676F71008419A7 /* IGEkgFilter.m */,
+				6B4E11B11D676F71008419A7 /* IGEkgSmoothFilter.h */,
+				6B4E11B21D676F71008419A7 /* IGEkgSmoothFilter.m */,
+				6B4E11B31D676F71008419A7 /* IGEkgView.h */,
+				6B4E11B41D676F71008419A7 /* IGEkgView.m */,
+			);
+			path = ekg;
+			sourceTree = "<group>";
+		};
+		6B4E11B51D676F71008419A7 /* report */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11B61D676F71008419A7 /* IGReportViewController.h */,
+				6B4E11B71D676F71008419A7 /* IGReportViewController.m */,
+			);
+			path = report;
+			sourceTree = "<group>";
+		};
 		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1266,51 +1352,13 @@
 		6B87C0081CD4C3B80050495B /* MemberData */ = {
 			isa = PBXGroup;
 			children = (
-				6B87C01B1CD4CD7E0050495B /* dataList */,
-				6B87C0181CD4CD7E0050495B /* bp */,
-				6B87C03C1CD5135C0050495B /* ekg */,
-				6B0C85CE1CDB8B84007BBB93 /* report */,
+				6B4E11A51D676F71008419A7 /* dataList */,
+				6B4E119E1D676F71008419A7 /* bp */,
+				6B4E11AC1D676F71008419A7 /* ekg */,
+				6B4E11B51D676F71008419A7 /* report */,
+				6B4E119B1D676F71008419A7 /* ABPM */,
 			);
 			path = MemberData;
-			sourceTree = "<group>";
-		};
-		6B87C0181CD4CD7E0050495B /* bp */ = {
-			isa = PBXGroup;
-			children = (
-				6B87C0361CD501210050495B /* IGBPChartManager.h */,
-				6B87C0371CD501210050495B /* IGBPChartManager.m */,
-				6B87C0191CD4CD7E0050495B /* IGBpDataViewController.h */,
-				6B87C01A1CD4CD7E0050495B /* IGBpDataViewController.m */,
-			);
-			path = bp;
-			sourceTree = "<group>";
-		};
-		6B87C01B1CD4CD7E0050495B /* dataList */ = {
-			isa = PBXGroup;
-			children = (
-				6B87C0201CD4CD7E0050495B /* IGMemberDataViewController.h */,
-				6B87C0211CD4CD7E0050495B /* IGMemberDataViewController.m */,
-				6B87C0261CD4EA1F0050495B /* IGMemberDataViewCell.h */,
-				6B87C0271CD4EA1F0050495B /* IGMemberDataViewCell.m */,
-				6B87C01E1CD4CD7E0050495B /* IGMemberDataManager.h */,
-				6B87C01F1CD4CD7E0050495B /* IGMemberDataManager.m */,
-				6B87C01C1CD4CD7E0050495B /* IGMemberDataEntity.h */,
-				6B87C01D1CD4CD7E0050495B /* IGMemberDataEntity.m */,
-			);
-			path = dataList;
-			sourceTree = "<group>";
-		};
-		6B87C03C1CD5135C0050495B /* ekg */ = {
-			isa = PBXGroup;
-			children = (
-				6B0E84091CFAEADE0000E62E /* IGEkgDataV2ViewController.h */,
-				6B0E840A1CFAEADE0000E62E /* IGEkgDataV2ViewController.m */,
-				6B0E840E1CFAEB680000E62E /* IGEkgView.h */,
-				6B0E840F1CFAEB680000E62E /* IGEkgView.m */,
-				6B7AA76E1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.h */,
-				6B7AA76F1D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m */,
-			);
-			path = ekg;
 			sourceTree = "<group>";
 		};
 		6BA60EE41CD70DDD00E39D54 /* Menu */ = {
@@ -1337,8 +1385,6 @@
 				6BA60EEB1CD70DDD00E39D54 /* IGDoneListViewCell.m */,
 				6BA60EE61CD70DDD00E39D54 /* IGDoneListDataManager.h */,
 				6BA60EE71CD70DDD00E39D54 /* IGDoneListDataManager.m */,
-				6BA60EE81CD70DDD00E39D54 /* IGDoneListEntity.h */,
-				6BA60EE91CD70DDD00E39D54 /* IGDoneListEntity.m */,
 			);
 			path = DoneList;
 			sourceTree = "<group>";
@@ -1620,8 +1666,8 @@
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
 				6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */,
 				6B1325871CE8C34200C2A8C3 /* IGInvitedCustomerDetailObj.m in Sources */,
+				6B4E118C1D67632D008419A7 /* IGMemberReportDataObj.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
-				6B87C0241CD4CD7E0050495B /* IGMemberDataManager.m in Sources */,
 				6B1C77F41D28F2BE0057FB50 /* SVProgressHUD.m in Sources */,
 				6B0002261C9D221900085229 /* IGRootViewController.m in Sources */,
 				2C008DB01CAF760F00ECE4B5 /* MJRefreshStateHeader.m in Sources */,
@@ -1631,6 +1677,7 @@
 				6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */,
 				6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */,
 				6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */,
+				6B4E11B91D676F71008419A7 /* IGBPChartManager.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
 				6B0D94A71CE2358300C5BA6D /* IGIncomeMemeberObj.m in Sources */,
 				6B0002231C9D221900085229 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1640,15 +1687,13 @@
 				6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */,
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
 				6B0D94AA1CE2382B00C5BA6D /* IGIncomeMembersViewCell.m in Sources */,
-				6B0C85D61CDB8F33007BBB93 /* IGReportContentObj.m in Sources */,
-				6BA60F001CD70DDD00E39D54 /* IGDoneListEntity.m in Sources */,
 				6BBF66B71D660367000FEF9F /* IGReportDetailViewController.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
 				6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */,
-				6B87C0281CD4EA1F0050495B /* IGMemberDataViewCell.m in Sources */,
 				6B0002221C9D221900085229 /* UIImageView+AFNetworking.m in Sources */,
+				6B4E117F1D676275008419A7 /* IGHTTPClient+UserData.m in Sources */,
 				6B1325841CE8BCFB00C2A8C3 /* IGAddCustomerViewController.m in Sources */,
 				6B1325711CE8725900C2A8C3 /* IGChangeMyPhotoViewController.m in Sources */,
 				6B0002281C9D221900085229 /* IGCheckBox.m in Sources */,
@@ -1662,6 +1707,7 @@
 				6BA60F011CD70DDD00E39D54 /* IGDoneListViewCell.m in Sources */,
 				6B4E11661D66E330008419A7 /* IGTaskListViewController.m in Sources */,
 				6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */,
+				6B4E11C01D676F71008419A7 /* IGEkgFilter.m in Sources */,
 				6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B4E11781D67272F008419A7 /* IGMessageToolBar.m in Sources */,
@@ -1669,7 +1715,9 @@
 				6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
 				6BA60F041CD70DDD00E39D54 /* IGMyInformationViewController.m in Sources */,
+				6B4E11BE1D676F71008419A7 /* IGMemberDataViewController.m in Sources */,
 				6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */,
+				6B4E11C11D676F71008419A7 /* IGEkgSmoothFilter.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
 				6B1C77F51D28F2BE0057FB50 /* SVRadialGradientLayer.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
@@ -1691,25 +1739,26 @@
 				6B00020C1C9D221900085229 /* AFHTTPSessionManager.m in Sources */,
 				6B00021D1C9D221900085229 /* AFAutoPurgingImageCache.m in Sources */,
 				6B7A35B61CE376F9007BC42A /* IGIncomeMembersLv2ViewController.m in Sources */,
-				6B87C0141CD4C77B0050495B /* IGMemberDataObj.m in Sources */,
+				6B4E118A1D67632D008419A7 /* IGMemberDataObj.m in Sources */,
 				6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */,
 				6BBF66AE1D660367000FEF9F /* IGAgreementViewController.m in Sources */,
-				6B7AA7701D0ECEFB004BB8A1 /* IGEkgSmoothFilter.m in Sources */,
+				6B4E11891D67632D008419A7 /* IGMemberBpDataObj.m in Sources */,
 				6B1325741CE8729200C2A8C3 /* IGChangePasswordViewController.m in Sources */,
 				6B00020F1C9D221900085229 /* AFURLRequestSerialization.m in Sources */,
-				6B0E84101CFAEB680000E62E /* IGEkgView.m in Sources */,
 				6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */,
+				6B4E11BB1D676F71008419A7 /* IGBpDataViewController.m in Sources */,
 				6B0D949E1CE2326300C5BA6D /* IGPatientServicesViewController.m in Sources */,
 				6B4E116C1D6716CD008419A7 /* IGHTTPClient+Message.m in Sources */,
 				6B1325811CE8B53300C2A8C3 /* IGInvitedCustomerObj.m in Sources */,
+				6B4E11C21D676F71008419A7 /* IGEkgView.m in Sources */,
 				6BA60F061CD70DDD00E39D54 /* IGMyTeamViewCell.m in Sources */,
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
 				6BA60F071CD70DDD00E39D54 /* IGMyTeamViewController.m in Sources */,
 				6B0D94921CE22D3A00C5BA6D /* KxMenu.m in Sources */,
 				6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */,
 				6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */,
+				6B4E11BC1D676F71008419A7 /* IGMemberDataManager.m in Sources */,
 				6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */,
-				6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */,
 				6BA60F101CD759BF00E39D54 /* IGDocMemberObj.m in Sources */,
 				6B4E11621D66E330008419A7 /* IGTaskListDataManager.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
@@ -1722,16 +1771,14 @@
 				6B0D948C1CE21B5100C5BA6D /* IGRegularExpression.m in Sources */,
 				6B0002241C9D221900085229 /* UIRefreshControl+AFNetworking.m in Sources */,
 				6B00020D1C9D221900085229 /* AFNetworkReachabilityManager.m in Sources */,
+				6B4E11B81D676F71008419A7 /* IGABPMDataViewController.m in Sources */,
 				2C008DB41CAF760F00ECE4B5 /* UIScrollView+MJRefresh.m in Sources */,
 				6B00021F1C9D221900085229 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6BFBA0371CB7EE5E0087B569 /* FMDatabaseQueue.m in Sources */,
 				6B00022B1C9D221900085229 /* IGLoginViewController.m in Sources */,
-				6B0C85D31CDB8D7C007BBB93 /* IGReportViewController.m in Sources */,
-				6B87C0221CD4CD7E0050495B /* IGBpDataViewController.m in Sources */,
 				2C008DA91CAF760F00ECE4B5 /* MJRefreshAutoNormalFooter.m in Sources */,
 				6B7A53DC1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m in Sources */,
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,
-				6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6BBF66AF1D660367000FEF9F /* IGTaskNavigationController.m in Sources */,
@@ -1748,21 +1795,26 @@
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
 				6B0002201C9D221900085229 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6BA60F0D1CD7575D00E39D54 /* IGMyTeamRequestEntity.m in Sources */,
-				6B87C0231CD4CD7E0050495B /* IGMemberDataEntity.m in Sources */,
 				6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
+				6B4E11BD1D676F71008419A7 /* IGMemberDataViewCell.m in Sources */,
+				6B4E117C1D676253008419A7 /* IGHTTPClient+Version.m in Sources */,
+				6B4E118F1D6763AF008419A7 /* IGABPMObj.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
 				6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */,
-				6B0E840B1CFAEADE0000E62E /* IGEkgDataV2ViewController.m in Sources */,
 				6BBF66B51D660367000FEF9F /* IGMessageViewController.m in Sources */,
 				6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */,
 				6B4E116F1D6724FB008419A7 /* IGMessageViewCell.m in Sources */,
 				2C008DA81CAF760F00ECE4B5 /* MJRefreshAutoGifFooter.m in Sources */,
 				6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */,
+				6B4E11C31D676F71008419A7 /* IGReportViewController.m in Sources */,
 				6BA60F141CD768CF00E39D54 /* IGMyIncomeViewController.m in Sources */,
 				2C008DB51CAF760F00ECE4B5 /* UIView+MJExtension.m in Sources */,
+				6B4E11BF1D676F71008419A7 /* IGEkgDataV2ViewController.m in Sources */,
 				6BA60F1A1CD76A0800E39D54 /* IGIncomeObj.m in Sources */,
 				6B0D949B1CE2323900C5BA6D /* IGFinancialDetailViewController.m in Sources */,
+				6B4E118B1D67632D008419A7 /* IGMemberEkgDataObj.m in Sources */,
+				6B4E11BA1D676F71008419A7 /* IGBpDataOnceViewController.m in Sources */,
 				6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */,
 				6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */,
 				6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */,

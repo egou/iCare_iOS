@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class IGReportContentObj;
+@class IGMemberReportDataObj;
 @interface IGReportViewController : UITableViewController
 
-@property (nonatomic,strong) IGReportContentObj *reportContent;
+@property (nonatomic,strong) IGMemberReportDataObj *reportContent;
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "IGDoneListDataManager.h"
-#import "IGDoneListEntity.h"
 #import "IGTaskObj.h"
+#import "IGHTTPClient+Report.h"
+#import "IGHTTPClient+Task.h"
 
 @interface IGDoneListDataManager()
 
@@ -41,8 +42,7 @@
 
     }else{
         //没有数据的情况，省却参数以获取新消息
-        [IGDoneListEntity requestForDoneTasksWithEndTime:nil memberId:nil isOld:NO finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
-            
+        [IGHTTPCLIENT requestForDoneTasksWithEndTime:nil memberId:nil isOld:NO finishHandler:^(BOOL success, NSInteger errCode, NSArray *tasks, NSInteger total) {
             
             if(success){
                 
@@ -67,7 +67,8 @@
         NSString *time=lastDoneTask.tHandleTime;
         NSString *memberId=lastDoneTask.tMemberId;
         
-        [IGDoneListEntity requestForDoneTasksWithEndTime:time memberId:memberId isOld:YES finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
+        
+        [IGHTTPCLIENT requestForDoneTasksWithEndTime:time memberId:memberId isOld:YES finishHandler:^(BOOL success, NSInteger errCode, NSArray *tasks, NSInteger total) {
             
             if(success){
                 //本地存储
@@ -79,6 +80,7 @@
             }
             
             [self.delegate dataManager:self didGotTheOldSuccess:success];
+
         }];
         
         
@@ -99,7 +101,8 @@
     NSString *time=firstDoneTask.tHandleTime;
     NSString *memberId=firstDoneTask.tMemberId;
     
-    [IGDoneListEntity requestForDoneTasksWithEndTime:time memberId:memberId isOld:NO finishHandler:^(BOOL success, NSArray *tasks, NSInteger total) {
+    
+    [IGHTTPCLIENT requestForDoneTasksWithEndTime:time memberId:memberId isOld:NO finishHandler:^(BOOL success, NSInteger errCode, NSArray *tasks, NSInteger total) {
         if(success){
             
             //本地存储
@@ -124,6 +127,7 @@
             [self.delegate  dataManager:self didGotTheNewSuccess:NO];
         }
     }];
+    
 }
 
 

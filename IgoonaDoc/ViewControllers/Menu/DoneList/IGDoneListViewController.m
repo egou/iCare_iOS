@@ -14,9 +14,10 @@
 
 #import "IGMessageViewController.h"
 
-#import "IGDoneListEntity.h"
 #import "IGReportViewController.h"
-#import "IGReportContentObj.h"
+#import "IGMemberReportDataObj.h"
+
+#import "IGHTTPClient+Report.h"
 
 @interface IGDoneListViewController ()<IGDoneListDataManagerDelegate>
 
@@ -87,7 +88,7 @@
         
         [SVProgressHUD show];
         
-        [IGDoneListEntity requestForReportDetailWithTaskId:task.tId finishHandler:^(BOOL success, IGReportContentObj *report) {
+        [IGHTTPCLIENT requestForReportDetailWithTaskId:task.tId finishHandler:^(BOOL success, NSInteger errCode, IGMemberReportDataObj *report) {
             [SVProgressHUD dismissWithCompletion:^{
                 if(success){
                     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
@@ -98,15 +99,11 @@
                     [self.navigationController pushViewController:vc animated:YES];
                     
                 }else{
-                    [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                    [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
                 }
-
+                
             }];
         }];
-
-        
-        
-
         
         return;
     }

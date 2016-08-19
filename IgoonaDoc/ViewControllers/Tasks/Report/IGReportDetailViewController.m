@@ -17,8 +17,7 @@
 
 #import "IGHTTPClient+Task.h"
 #import "IGHTTPClient+Report.h"
-
-#import "IGMemberDataEntity.h"
+#import "IGHTTPClient+UserData.h"
 
 #import "IGEkgDataV2ViewController.h"
 
@@ -47,11 +46,6 @@
 #pragma mark - events
 
 -(void)onDataBtn:(id)sender{
-//    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-//    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
-//    vc.memberId=self.taskInfo.tMemberId;
-//    vc.memberName=self.taskInfo.tMemberName;
-//    [self.navigationController pushViewController:vc animated:YES];
     
     //改为显示对应数据
     
@@ -62,22 +56,23 @@
         
         [SVProgressHUD show];
 
-        [IGMemberDataEntity requestForEkgDataDetailWithID:dataRefId finishHandler:^(BOOL success, NSData *ekgData) {
+        [IGHTTPCLIENT requestForEkgDataDetailWithID:dataRefId finishHandler:^(BOOL success,NSInteger errCode, IGMemberEkgDataObj *ekgData) {
             [SVProgressHUD dismissWithCompletion:^{
                 
                 if(success){
                     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
                     IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
-                    vc.ekgData=ekgData;
+                    vc.data=ekgData;
                     [self.navigationController pushViewController:vc animated:YES];
                     
                 }else{
                     [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
                 }
-
+                
             }];
+
         }];
-        
+      
         return;
     }
     

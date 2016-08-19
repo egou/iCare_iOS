@@ -32,4 +32,14 @@
 -(void)requestToHandleTaskWithTaskId:(NSString *)taskId finishHandler:(void(^)(BOOL success,NSInteger errorCode))handler;
 
 
+
+
+/**
+ 获取已办事项
+ finishHandler: total,满足查询条件的个数
+ */
+-(void)requestForDoneTasksWithEndTime:(NSString*)endTime
+                             memberId:(NSString*)memberId
+                                isOld:(BOOL)isOld
+                        finishHandler:(void(^)(BOOL success, NSInteger errCode,NSArray *tasks,NSInteger total))finishHandler;
 @end

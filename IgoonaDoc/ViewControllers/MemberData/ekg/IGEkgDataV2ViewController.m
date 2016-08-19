@@ -15,18 +15,24 @@
 
 @property (weak, nonatomic) IBOutlet IGEkgView *ekgView;
 
+@property (weak, nonatomic) IBOutlet UILabel *heartRateLabel;
 @end
 
 @implementation IGEkgDataV2ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.ekgView.data=self.ekgData;
+    self.ekgView.data=self.data.dData;
     
 
-//    self.view.transform=CGAffineTransformMakeRotation(M_PI_2);
+    NSString *infoStr=self.data.dMeasureTime;
+    if(self.data.dStatus==1){
+        NSString *heartRateStr=[NSString stringWithFormat:@"心率%d次/分钟 ",(int)self.data.dHeartRate];
+        infoStr=[heartRateStr stringByAppendingString:infoStr];
+    }
+    
+    self.heartRateLabel.text=infoStr;
 }
 
 - (BOOL)shouldAutorotate{

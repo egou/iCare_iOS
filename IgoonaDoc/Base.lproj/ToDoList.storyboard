@@ -632,8 +632,6 @@
                                         </state>
                                         <connections>
                                             <action selector="touchDownRecordBtn:" destination="0nd-RT-lsh" eventType="touchDown" id="mYH-du-QCm"/>
-                                            <action selector="touchDragInsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchDragInside" id="FRO-KI-FlT"/>
-                                            <action selector="touchDragOutsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchDragOutside" id="hom-1a-Ufb"/>
                                             <action selector="touchEnter:" destination="0nd-RT-lsh" eventType="touchDragEnter" id="vMN-Do-m3N"/>
                                             <action selector="touchExit:" destination="0nd-RT-lsh" eventType="touchDragExit" id="sOl-VR-Kn8"/>
                                             <action selector="touchUpInsideRecordBtn:" destination="0nd-RT-lsh" eventType="touchUpInside" id="fK5-Ul-oQR"/>

@@ -7,7 +7,9 @@
 //
 
 #import "IGBPChartManager.h"
-#import "IGBpDataDetailObj.h"
+
+#import "IGMemberBpDataObj.h"
+#import "IGABPMObj.h"
 
 @implementation IGBPChartManager
 
@@ -20,7 +22,7 @@
     chart.noDataTextDescription = @"暂无数据";
     
     
-    chart.backgroundColor = [UIColor colorWithWhite:204/255.f alpha:1.f];
+    chart.backgroundColor =[UIColor colorWithWhite:0.98 alpha:1.];
     chart.drawGridBackgroundEnabled = NO;
     
     
@@ -36,7 +38,7 @@
     
     chart.legend.form = ChartLegendFormLine;
     chart.legend.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
-    chart.legend.textColor = UIColor.whiteColor;
+    chart.legend.textColor = [UIColor blackColor];
     chart.legend.position = ChartLegendPositionBelowChartLeft;
     
     
@@ -54,12 +56,30 @@
     
     for(int i=0;i<[bpDataArray count];i++)
     {
-        IGBpDataDetailObj *bp=bpDataArray[i];
-        NSString *date=bp.mearsureTime;
         
-        [xVals addObject:date];
-        [y1Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.systolic xIndex:i]];
-        [y2Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.diastolic xIndex:i]];
+        id bp=bpDataArray[i];
+        
+        if([bp isKindOfClass:[IGMemberBpDataObj class]]){
+            
+            IGMemberBpDataObj *bp=bpDataArray[i];
+            NSString *date=bp.measureTime;
+            
+            [xVals addObject:date];
+            [y1Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.systolic xIndex:i]];
+            [y2Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.diastolic xIndex:i]];
+            
+        }else if([bp isKindOfClass:[IGABPMObj class]]){
+            
+            IGABPMObj *bp=bpDataArray[i];
+            NSString *date=bp.time;
+            
+            [xVals addObject:date];
+            [y1Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.systolic xIndex:i]];
+            [y2Vals addObject:[[ChartDataEntry alloc] initWithValue:bp.diastolic xIndex:i]];
+            
+        }
+        
+        
     }
 
     
@@ -94,7 +114,7 @@
     [dataSets addObject:set2];
     
     LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-    [data setValueTextColor:UIColor.whiteColor];
+    [data setValueTextColor:UIColor.darkGrayColor];
     [data setValueFont:[UIFont systemFontOfSize:9.f]];
     
     chart.data = data;

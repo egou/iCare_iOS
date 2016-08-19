@@ -128,6 +128,8 @@ static const int unitsPerMargin=2;
     
     
     NSData *standardData=[self p_standardData:self.data];
+    standardData=[self p_smoothData:standardData];
+    
     const char *rawData=standardData.bytes;
     NSInteger dataLength=standardData.length;
     
@@ -140,12 +142,14 @@ static const int unitsPerMargin=2;
             [dataPath moveToPoint:point];
         else
             [dataPath addLineToPoint:point];
-        
+
     }
     
     [dataPath stroke];
 }
 
+
+/** 矫正数据 */
 -(NSData*)p_standardData:(NSData*)data{
     
     NSData *stdData;
@@ -174,9 +178,13 @@ static const int unitsPerMargin=2;
         stdData=data;
     }
     
-    
-    NSData *filteredData=[IGEkgSmoothFilter filteredDataWithData:stdData];
-    
-    return filteredData;
+    return stdData;
 }
+
+
+-(NSData*)p_smoothData:(NSData*)data{
+    
+    return [IGEkgSmoothFilter filteredDataWithData:data];
+}
+
 @end

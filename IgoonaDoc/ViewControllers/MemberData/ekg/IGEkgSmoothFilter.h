@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ 该类用于在展示心电图的时候用
+ */
 @interface IGEkgSmoothFilter : NSObject
 
 +(NSData*)filteredDataWithData:(NSData*)data;

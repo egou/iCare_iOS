@@ -13,10 +13,11 @@
 #import "IGMsgDetailObj.h"
 #import "IGTaskObj.h"
 
+#import "IGRecordingHUDView.h"
+
 #import "IGAudioManager.h"
 
 #import "IGMemberDataViewController.h"
-
 #import "IGMessageImageViewController.h"
 
 @interface IGMessageViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,IGMsgDetailDataManagerDelegate,IGAudioManagerDelegate>
@@ -34,9 +35,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barHeightLC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *barBottomSpaceLC;
 
-@property (nonatomic,strong) UIView *recordingBgView;
 
 @property (nonatomic,assign) NSInteger currentMsgType;  //0文本 1语音
+
+@property (nonatomic,strong) IGRecordingHUDView *recordingHUDView;
 
 //对话数据管理者
 @property (nonatomic,strong) IGMsgDetailDataManager *dataManager;
@@ -126,24 +128,6 @@
     [self p_updateSendBtnStatus];
 }
 
--(UIView*)recordingBgView{
-    if(!_recordingBgView){
-     
-        UIImage *recordingBg=[UIImage imageNamed:@"bg_recording"];
-        _recordingBgView=[[UIImageView alloc] initWithImage:recordingBg];
-        
-        UILabel *hintLabel=[UILabel new];
-        hintLabel.textColor=[UIColor whiteColor];
-        [_recordingBgView addSubview:hintLabel];
-        [hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.mas_equalTo(_recordingBgView);
-            make.bottom.mas_equalTo(_recordingBgView).offset(-8);
-        }];
-    }
-    
-    return _recordingBgView;
-}
-
 
 #pragma mark - events
 -(void)onBackBtn:(id)sender{
@@ -192,8 +176,8 @@
 
     if([self.audioManager startRecording]){//成功开启
         
-        [self p_showRecordingBg:YES];
-        [self p_setHintLabelText:@"手指上滑,取消发送"];
+        self.recordingHUDView.hidden=NO;
+        [self.recordingHUDView setHint:@"手指上滑,取消发送"];
     }else{
         //未成功，则请求权限
         [self.audioManager requestRecordPermission];
@@ -202,31 +186,20 @@
 }
 
 - (IBAction)touchUpInsideRecordBtn:(id)sender {
-    NSLog(@"up in");
     [self.audioManager stopRecording];
 }
 
 
-
 - (IBAction)touchUpOutsideRecordBtn:(id)sender {
-    NSLog(@"up out");
     //取消发送
     [self.audioManager cancelRecording];
 }
 
-- (IBAction)touchDragOutsideRecordBtn:(id)sender {
-    NSLog(@"drag out");
-}
-- (IBAction)touchDragInsideRecordBtn:(id)sender {
-    NSLog(@"drag inside");
-}
 - (IBAction)touchExit:(id)sender {
-    [self p_setHintLabelText:@"松开手指,取消发送"];
-    NSLog(@"exit");
+    [self.recordingHUDView setHint:@"松开手指,取消发送"];
 }
 - (IBAction)touchEnter:(id)sender {
-    [self p_setHintLabelText:@"手指上滑,取消发送"];
-    NSLog(@"enter");
+    [self.recordingHUDView setHint:@"手指上滑,取消发送"];
 }
 
 
@@ -343,15 +316,14 @@
 #pragma mark - audio manager delegate
 -(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data duration:(NSInteger)duration{
     
-    [self p_showRecordingBg:NO];
-    
+    self.recordingHUDView.hidden=YES;
     [SVProgressHUD show];
     [self.dataManager sendAudioMsg:data duration:duration];
     
 }
 
 -(void)audioManagerDidCancelRecording:(IGAudioManager *)audioManager{
-    [self p_showRecordingBg:NO];
+    self.recordingHUDView.hidden=YES;
 }
 
 -(void)audioManagerShouldUserGrantPermission:(IGAudioManager *)audioManager{
@@ -379,6 +351,16 @@
     
     self.navigationItem.rightBarButtonItems=@[completeItem,cancelItem];
     
+    
+    //recording HUD
+    
+    self.recordingHUDView=[IGRecordingHUDView HUDView];
+    [self.view addSubview:self.recordingHUDView];
+    [self.recordingHUDView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+    }];
+    self.recordingHUDView.hidden=YES;
+
     
     //msg bar
     self.sendBtnLabel.clipsToBounds=YES;
@@ -475,25 +457,7 @@
     }
 }
 
--(void)p_showRecordingBg:(BOOL)show{
-    
-    if(show){
-        [self.view addSubview:self.recordingBgView];
-        
-        [self.recordingBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(self.view);
-        }];
-        
-    }else{
-        [self.recordingBgView removeFromSuperview];
-    }
-}
 
--(void)p_setHintLabelText:(NSString*)text{
-    UILabel *hintLabel= [self.recordingBgView subviews].firstObject;
-    hintLabel.text=text;
-    [hintLabel sizeToFit];
-}
 
 
 

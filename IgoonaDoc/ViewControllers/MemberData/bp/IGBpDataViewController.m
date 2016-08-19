@@ -8,7 +8,8 @@
 
 #import "IGBpDataViewController.h"
 #import "IGBPChartManager.h"
-#import "IGBpDataDetailObj.h"
+#import "IGMemberBpDataObj.h"
+
 
 @interface IGBpDataViewController ()
 
@@ -71,11 +72,11 @@
 -(void)reloadAllData
 {
     //本条目信息
-    for(IGBpDataDetailObj *bp in self.bpDataArray)
+    for(IGMemberBpDataObj *bp in self.bpDataArray)
     {
         if([self.selectedBpID isEqualToString:bp.itemID])
         {
-            self.sTimeLabel.text=bp.mearsureTime;
+            self.sTimeLabel.text=bp.measureTime;
             self.sSystolicLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.systolic];
             self.sDiastolicLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.diastolic];
             self.sHeartRateLabel.text=[NSString stringWithFormat:@"%ld",(long)bp.heartRate];
@@ -87,8 +88,8 @@
     }
     
     //图
-    IGBpDataDetailObj *lastData=[self.bpDataArray lastObject];
-    NSString *endDate=[lastData.mearsureTime substringToIndex:10];
+    IGMemberBpDataObj *lastData=[self.bpDataArray lastObject];
+    NSString *endDate=[lastData.measureTime substringToIndex:10];
     self.endDateLabel.text=endDate;
     
     [self selectTimeIntervalAtIndex:self.timeIntervalSC.selectedSegmentIndex]; //默认为该日数据
@@ -100,6 +101,7 @@
     if(index==0)    //日
     {
         NSArray *dayData=[self p_bpDataADay];
+        
         [IGBPChartManager setChart:self.bpChart bpData:dayData];
     }
     
@@ -144,16 +146,16 @@
 #pragma mark - private methods
 -(NSArray *)p_bpDataADay
 {
-    IGBpDataDetailObj *lastBp=[self.bpDataArray lastObject];
+    IGMemberBpDataObj *lastBp=[self.bpDataArray lastObject];
     if(!lastBp)
         return @[];
     
-    NSString *date=[lastBp.mearsureTime substringToIndex:10];
+    NSString *date=[lastBp.measureTime substringToIndex:10];
     
     NSMutableArray *bpDayData=[NSMutableArray array];
-    for(IGBpDataDetailObj *bp in self.bpDataArray)
+    for(IGMemberBpDataObj *bp in self.bpDataArray)
     {
-        NSString *bpDate=[bp.mearsureTime substringToIndex:10];
+        NSString *bpDate=[bp.measureTime substringToIndex:10];
         if([bpDate isEqualToString:date])
         {
             [bpDayData addObject:bp];
@@ -166,11 +168,11 @@
 
 -(NSArray *)p_bpDataAWeek
 {
-    IGBpDataDetailObj *lastBp=[self.bpDataArray lastObject];
+    IGMemberBpDataObj *lastBp=[self.bpDataArray lastObject];
     if(!lastBp)
         return @[];
     
-    NSString *endDateStr=[lastBp.mearsureTime substringToIndex:10];
+    NSString *endDateStr=[lastBp.measureTime substringToIndex:10];
     endDateStr=[endDateStr stringByAppendingString:@" 23:59:59"];
     
     NSDateFormatter *dateForm=[[NSDateFormatter alloc] init];
@@ -181,9 +183,9 @@
     NSDate *startDate=[endDate dateByAddingTimeInterval:-weekInterval];
     
     NSMutableArray *bpWeekData=[NSMutableArray array];
-    for(IGBpDataDetailObj *bp in self.bpDataArray)
+    for(IGMemberBpDataObj *bp in self.bpDataArray)
     {
-        NSString *bpDateStr=bp.mearsureTime;
+        NSString *bpDateStr=bp.measureTime;
         NSDate *bpDate=[dateForm dateFromString:bpDateStr];
         NSComparisonResult result=[startDate compare:bpDate];
         if(result==NSOrderedAscending)

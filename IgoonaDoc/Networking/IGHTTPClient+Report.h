@@ -8,6 +8,8 @@
 
 #import "IGHTTPClient.h"
 
+@class IGMemberReportDataObj;
+
 @interface IGHTTPClient (Report)
 
 /**提交报告*/
@@ -19,5 +21,9 @@
  请求智能报告内容
  */
 -(void)requestForAutoReportContentWithTaskId:(NSString*)taskId finishHandler:(void(^)(BOOL success, NSInteger errorCode, NSDictionary *autoReportDic))handler;
+
+
+/**donelist中，根据taskId 获取报告内容*/
+-(void)requestForReportDetailWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL success,  NSInteger errCode,IGMemberReportDataObj *report))finishHandler;
 
 @end

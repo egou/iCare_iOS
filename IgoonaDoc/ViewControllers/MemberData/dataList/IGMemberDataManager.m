@@ -7,7 +7,7 @@
 //
 
 #import "IGMemberDataManager.h"
-#import "IGMemberDataEntity.h"
+#import "IGHTTPClient+UserData.h"
 #import "IGMemberDataObj.h"
 
 @interface IGMemberDataManager()
@@ -33,9 +33,10 @@
 }
 
 -(void)pullToRefreshData{
-    [IGMemberDataEntity requestForDataWithMemberId:self.memberId
+    [IGHTTPCLIENT requestForDataWithMemberId:self.memberId
                                         startIndex:0
-                                     finishHandler:^(BOOL sucess, NSArray *data, NSInteger total) {
+                                     finishHandler:^(BOOL sucess, NSInteger errCode, NSArray *data, NSInteger total) {
+                                       
                                          if(sucess){
                                              self.dataList=data;
                                              self.hasLoadedAll=self.dataList.count>=total?YES:NO;
@@ -49,7 +50,7 @@
     
     NSInteger startNum=self.dataList.count;
     
-    [IGMemberDataEntity requestForDataWithMemberId:self.memberId startIndex:startNum finishHandler:^(BOOL sucess, NSArray *data, NSInteger total) {
+    [IGHTTPCLIENT requestForDataWithMemberId:self.memberId startIndex:startNum finishHandler:^(BOOL sucess,NSInteger errCode ,NSArray *data, NSInteger total) {
         
         if(sucess){
             
@@ -85,31 +86,35 @@
             NSString *endDateTime=data.dTime;
             NSString *startDateTime=[self p_dateTime:endDateTime BeforeDays:28];
             
-            [IGMemberDataEntity requestForBpDataDetailWithId:data.dRefId
+            [IGHTTPCLIENT requestForBpDataDetailWithId:data.dRefId
                                                     memberId:self.memberId
                                                    startDate:[startDateTime substringToIndex:10]
                                                      endDate:[endDateTime substringToIndex:10]
-                                               finishHandler:^(BOOL success, NSArray *bpData) {
+                                               finishHandler:^(BOOL success,NSInteger errCode, NSArray *bpData) {
                                                    [self.delegate dataManager:self didReceivedDataSuccess:success dataSummary:data data:bpData];
                                                }];
         }
             break;
             
         case 2:{
-            [IGMemberDataEntity requestForEkgDataDetailWithID:data.dRefId
-                                                finishHandler:^(BOOL success, NSData *ekgData) {
+            [IGHTTPCLIENT requestForEkgDataDetailWithID:data.dRefId
+                                                finishHandler:^(BOOL success,NSInteger errCode, IGMemberEkgDataObj *ekgData) {
                                                     [self.delegate dataManager:self didReceivedDataSuccess:success dataSummary:data data:ekgData];
                                                 }];
         }
             break;
         case 3:{
-            [IGMemberDataEntity requestForReportDetailWithId:data.dRefId finishHandler:^(BOOL success, IGReportContentObj *report) {
+            [IGHTTPCLIENT requestForReportDetailWithId:data.dRefId finishHandler:^(BOOL success,NSInteger errCode, IGMemberReportDataObj *report) {
                 [self.delegate dataManager:self didReceivedDataSuccess:success dataSummary:data data:report];
             }];
         }
             break;
             
         case 4:{
+            [IGHTTPCLIENT requestForABPMDataDetailWithId:data.dRefId finishHandler:^(BOOL success, NSInteger errCode, NSArray *ABPMData) {
+                [self.delegate dataManager:self didReceivedDataSuccess:success dataSummary:data data:ABPMData];
+            }];
+            
             
         }
             

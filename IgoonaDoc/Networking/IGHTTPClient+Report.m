@@ -7,6 +7,7 @@
 //
 
 #import "IGHTTPClient+Report.h"
+#import "IGMemberReportDataObj.h"
 
 @implementation IGHTTPClient (Report)
 
@@ -54,6 +55,50 @@
            handler(NO, IGErrorNetworkProblem,nil);
        }];
 
+    
+}
+
+
+-(void)requestForReportDetailWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSInteger, IGMemberReportDataObj *))finishHandler{
+    
+    [self GET:@"php/report.php"
+   parameters:@{@"action":@"get_user_report",
+                @"taskId":taskId}
+     progress:nil
+      success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+          
+          
+          
+          
+          if(IGRespSuccess){
+              IGMemberReportDataObj *report=[IGMemberReportDataObj new];
+              
+              
+              report.rId=IG_SAFE_STR(responseObject[@"id"]);
+              report.rMemberId=IG_SAFE_STR(responseObject[@"member_id"]);
+              report.rSourceType=[responseObject[@"source_type"] integerValue];
+              report.rSourceRefId=IG_SAFE_STR(responseObject[@"reference_id"]);
+              
+              report.rHeartRate=[responseObject[@"heart_rate"] integerValue];
+              
+              report.rHealthLevel=[responseObject[@"health_level"] integerValue];
+              report.rSuggestion=responseObject[@"suggestion"];
+              report.rTime=responseObject[@"time"];
+              report.rProblems=responseObject[@"problems"];
+              
+              finishHandler(YES,0,report);
+              
+              
+          }else{
+              NSInteger errCode=[responseObject[@"reason"] integerValue];
+              finishHandler(NO,errCode,nil);
+          }
+
+          
+          
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          finishHandler(NO,IGErrorNetworkProblem,nil);
+      }];
     
 }
 

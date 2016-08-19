@@ -34,7 +34,7 @@
 -(void)dataManager:(IGMemberDataManager *)dataManager didLoadedMoreSuccess:(BOOL)success;
 
 /**
- @param dataType 1血压计 2心电仪 3报告 4通知
+ @param dataType 1血压计 2心电仪 3报告 4血压24
  */
 -(void)dataManager:(IGMemberDataManager *)dataManager didReceivedDataSuccess:(BOOL)success dataSummary:(IGMemberDataObj*)dataSummary data:(id)data;
 @end
