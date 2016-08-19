@@ -1,15 +1,15 @@
 //
-//  IGToDoListInteractor.m
+//  IGTaskListInteractor.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/30.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGToDoListInteractor.h"
+#import "IGTaskListInteractor.h"
 #import "IGTaskObj.h"
 
-@implementation IGToDoListInteractor
+@implementation IGTaskListInteractor
 
 -(void)requestToChangeToWorkStatus:(NSInteger)status finishHandler:(void (^)(BOOL))handler{
     [IGHTTPCLIENT GET:@"php/doctor.php"

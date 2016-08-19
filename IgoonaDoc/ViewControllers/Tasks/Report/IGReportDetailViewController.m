@@ -14,7 +14,10 @@
 #import "IGSingleSelectionTableViewController.h"
 #import "IGMemberDataViewController.h"
 
-#import "IGTaskRequestEntity.h"
+
+#import "IGHTTPClient+Task.h"
+#import "IGHTTPClient+Report.h"
+
 #import "IGMemberDataEntity.h"
 
 #import "IGEkgDataV2ViewController.h"
@@ -113,21 +116,23 @@
     
     
     [SVProgressHUD show];
-    [IGTaskRequestEntity requestToSubmitReportWithContentInfo:reportInfo finishHandler:^(BOOL success) {
-        [SVProgressHUD dismissWithCompletion:^{
-            if(success){
-                //发送状态改变给服务器，不用管结果
-                [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId completed:YES finishHandler:nil];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
-            }else{
-                
-                [SVProgressHUD showInfoWithStatus:@"提交报告失败"];
-            }
-
-        }];
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToSubmitReportWithContentInfo:reportInfo finishHandler:^(BOOL success, NSInteger errorCode) {
+       [SVProgressHUD dismissWithCompletion:^{
+           if(success){
+               //发送状态改变给服务器，不用管结果
+               [IGHTTPCLIENT requestToExitTask:wSelf.taskInfo.tId completed:YES finishHandler:^(BOOL success, NSInteger errorCode) {
+                  //do nothing
+               }];
+               
+               [self.navigationController popViewControllerAnimated:YES];
+               [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
+               
+           }else{
+               
+               [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+           }
+       }];
     }];
     
 }
@@ -139,20 +144,16 @@
     [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [ac addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [SVProgressHUD show];
-        
-        [IGTaskRequestEntity requestToExitTask:self.taskInfo.tId
-                                     completed:NO
-                                 finishHandler:^(BOOL success) {
-                                     [SVProgressHUD dismissWithCompletion:^{
-                                         if(success){
-                                             [self.navigationController popViewControllerAnimated:YES];
-                                         }else{
-                                             [SVProgressHUD showInfoWithStatus:@"放弃任务失败"];
-                                         }
-
-                                     }];
-                                 }];
-        
+        IGGenWSelf;
+        [IGHTTPCLIENT requestToExitTask:wSelf.taskInfo.tId completed:NO finishHandler:^(BOOL success, NSInteger errorCode) {
+            [SVProgressHUD dismissWithCompletion:^{
+                if(success){
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+                }
+            }];
+        }];
     }]];
 
     [self presentViewController:ac animated:YES completion:nil];

@@ -1,5 +1,5 @@
 //
-//  IGToDoListViewController.h
+//  IGTaskListViewController.h
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IGToDoListViewController : UITableViewController
+@interface IGTaskListViewController : UITableViewController
 
 @end
 

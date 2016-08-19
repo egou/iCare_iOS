@@ -1,5 +1,5 @@
 //
-//  IGToDoListInteractor.h
+//  IGTaskListInteractor.h
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/30.
@@ -12,7 +12,7 @@
  */
 @class IGTaskObj;
 
-@interface IGToDoListInteractor : NSObject
+@interface IGTaskListInteractor : NSObject
 
 /**
  请求切换工作状态

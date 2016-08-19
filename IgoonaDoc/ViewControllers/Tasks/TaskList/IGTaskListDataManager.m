@@ -1,21 +1,21 @@
 //
-//  IGToDoListDataManager.m
+//  IGTaskListDataManager.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/30.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGToDoListDataManager.h"
+#import "IGTaskListDataManager.h"
 #import "IGTaskObj.h"
-#import "IGToDoListInteractor.h"
+#import "IGTaskListInteractor.h"
 #import "JPUSHService.h"
 #import "TWMessageBarManager.h"
 
-@interface IGToDoListDataManager()
+@interface IGTaskListDataManager()
 
 
-@property (nonatomic,strong) IGToDoListInteractor *dataInteractor;
+@property (nonatomic,strong) IGTaskListInteractor *dataInteractor;
 
 @property (nonatomic,strong,readwrite) NSArray *toDoListArray;
 @property (nonatomic,assign,readwrite) BOOL hasLoadedAll;
@@ -26,7 +26,7 @@
 @end
 
 
-@implementation IGToDoListDataManager
+@implementation IGTaskListDataManager
 -(instancetype)init
 {
     if(self=[super init])
@@ -49,11 +49,11 @@
 }
 
 #pragma mark - getter & setter
--(IGToDoListInteractor*)dataInteractor
+-(IGTaskListInteractor*)dataInteractor
 {
     if(!_dataInteractor)
     {
-        _dataInteractor=[[IGToDoListInteractor alloc] init];
+        _dataInteractor=[[IGTaskListInteractor alloc] init];
     }
     
     return _dataInteractor;

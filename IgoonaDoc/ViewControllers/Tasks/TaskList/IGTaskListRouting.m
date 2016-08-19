@@ -1,12 +1,12 @@
 //
-//  IGToDoListRouting.m
+//  IGTaskListRouting.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/4/17.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGToDoListRouting.h"
+#import "IGTaskListRouting.h"
 
 #import "IGMoreStuffViewController.h"
 #import "IGViewControllerTransitioning.h"
@@ -21,11 +21,11 @@
 #import "IGTaskObj.h"
 
 
-@interface IGToDoListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
+@interface IGTaskListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
 
 @end
 
-@implementation IGToDoListRouting
+@implementation IGTaskListRouting
 
 -(void)transToMoreStuffView{
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];

@@ -1,5 +1,5 @@
 //
-//  IGToDoListDataManager.h
+//  IGTaskListDataManager.h
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/30.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol IGToDoListDataManagerDelegate;
+@protocol IGTaskListDataManagerDelegate;
 
 
 
@@ -18,9 +18,9 @@
      3整理所有数据
      4转换工作状态
  */
-@interface IGToDoListDataManager : NSObject
+@interface IGTaskListDataManager : NSObject
 
-@property (nonatomic,weak) id<IGToDoListDataManagerDelegate> delegate;
+@property (nonatomic,weak) id<IGTaskListDataManagerDelegate> delegate;
 
 @property (nonatomic,strong,readonly) NSArray *toDoListArray;   //目前所有待办
 @property (nonatomic,assign,readonly) BOOL hasLoadedAll;        //没有更多待办
@@ -40,11 +40,11 @@
 
 
 @class IGTaskObj;
-@protocol IGToDoListDataManagerDelegate <NSObject>
+@protocol IGTaskListDataManagerDelegate <NSObject>
 
--(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager*)manager;
--(void)toDoListDataManager:(IGToDoListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGTaskListDataManager*)manager;
+-(void)toDoListDataManager:(IGTaskListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
+-(void)toDoListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
 
 
 /**
@@ -56,10 +56,10 @@
  
  如果成功，且task为report，则智能报告内容在reportInfo里
  */
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
+-(void)toDoListDataManager:(IGTaskListDataManager *)manager didReceiveHandlingRequestResult:(NSInteger)statusCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
 
 /*任务状态发生变化**/
--(void)toDoListDataManagerdidChangedTaskStatus:(IGToDoListDataManager *)manager;
+-(void)toDoListDataManagerdidChangedTaskStatus:(IGTaskListDataManager *)manager;
 
 @end
 

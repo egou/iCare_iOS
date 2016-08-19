@@ -1,15 +1,15 @@
 //
-//  IGToDoListViewCell.m
+//  IGTaskListViewCell.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/4/18.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGToDoListViewCell.h"
+#import "IGTaskListViewCell.h"
 #import "IGTaskObj.h"
 
-@interface IGToDoListViewCell()
+@interface IGTaskListViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *customContainerView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIV;
@@ -21,7 +21,7 @@
 @end
 
 
-@implementation IGToDoListViewCell
+@implementation IGTaskListViewCell
 -(void)awakeFromNib{
     self.backgroundColor=nil;
     self.contentView.backgroundColor=nil;

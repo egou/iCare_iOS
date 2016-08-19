@@ -1,43 +1,43 @@
 //
-//  IGToDoListViewController.m
+//  IGTaskListViewController.m
 //  IgoonaDoc
 //
 //  Created by porco on 16/3/19.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
-#import "IGToDoListViewController.h"
-#import "IGToDoListViewCell.h"
+#import "IGTaskListViewController.h"
+#import "IGTaskListViewCell.h"
 #import "IGTaskObj.h"
 
 
-#import "IGToDoListDataManager.h"
-#import "IGToDoListRouting.h"
+#import "IGTaskListDataManager.h"
+#import "IGTaskListRouting.h"
 
 #import "MJRefresh.h"
 
-@interface IGToDoListViewController ()<IGToDoListDataManagerDelegate>
+@interface IGTaskListViewController ()<IGTaskListDataManagerDelegate>
 
 @property (nonatomic,strong) NSArray<IGTaskObj*>* toDoListCopyArray;  //仅仅为副本
 
-@property (nonatomic,strong) IGToDoListRouting *routing;
-@property (nonatomic,strong) IGToDoListDataManager  *dataManager;
+@property (nonatomic,strong) IGTaskListRouting *routing;
+@property (nonatomic,strong) IGTaskListDataManager  *dataManager;
 
 @property (nonatomic,strong) UILabel *noDataLabel;
 @end
 
-@implementation IGToDoListViewController
+@implementation IGTaskListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 
     //routing
-    self.routing=[[IGToDoListRouting alloc] init];
+    self.routing=[[IGTaskListRouting alloc] init];
     self.routing.routingOwner=self;
     
     //data manager
-    self.dataManager=[[IGToDoListDataManager alloc] init];
+    self.dataManager=[[IGTaskListDataManager alloc] init];
     self.dataManager.delegate=self;
     
     [self p_initUI];
@@ -85,7 +85,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IGToDoListViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGToDoListViewCell"];
+    IGTaskListViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"IGTaskListViewCell"];
     cell.toDoData=self.toDoListCopyArray[indexPath.row];
     return cell;
 }
@@ -110,7 +110,7 @@
 
 #pragma mark - data manager delegate
 
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
+-(void)toDoListDataManager:(IGTaskListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
     [self.tableView.mj_header endRefreshing];
     if(success){
         [self p_reloadData];
@@ -120,7 +120,7 @@
     }
 }
 
--(void)toDoListDataManager:(IGToDoListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
+-(void)toDoListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
     [self.tableView.mj_footer endRefreshing];
     if(success){
         [self p_reloadData];
@@ -132,7 +132,7 @@
 }
 
 
--(void)toDoListDataManagerDidChangeWorkStatus:(IGToDoListDataManager *)manager{
+-(void)toDoListDataManagerDidChangeWorkStatus:(IGTaskListDataManager *)manager{
     
     [SVProgressHUD dismissWithCompletion:^{
         if(manager.isWorking){
@@ -151,7 +151,7 @@
 //2不存在
 //3处理中
 //4处理完毕
--(void)toDoListDataManager:(IGToDoListDataManager *)manager
+-(void)toDoListDataManager:(IGTaskListDataManager *)manager
 didReceiveHandlingRequestResult:(NSInteger)statusCode
                   taskInfo:(IGTaskObj *)taskInfo
                 reportInfo:(NSDictionary *)reportInfo{
@@ -200,7 +200,7 @@ didReceiveHandlingRequestResult:(NSInteger)statusCode
 }
 
 
--(void)toDoListDataManagerdidChangedTaskStatus:(IGToDoListDataManager *)manager{
+-(void)toDoListDataManagerdidChangedTaskStatus:(IGTaskListDataManager *)manager{
     [self p_reloadData];
 }
 

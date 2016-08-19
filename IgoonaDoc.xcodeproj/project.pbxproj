@@ -117,6 +117,13 @@
 		6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A21CE4DF6600E60694 /* IGFinancialDetailDataManager.m */; };
 		6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A51CE4E24700E60694 /* IGPatientServicesViewCell.m */; };
 		6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4A81CE4E25B00E60694 /* IGPatientServicesDataManager.m */; };
+		6B4E11501D66AE6F008419A7 /* IGHTTPClient+Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E114F1D66AE6F008419A7 /* IGHTTPClient+Task.m */; };
+		6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */; };
+		6B4E11621D66E330008419A7 /* IGTaskListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */; };
+		6B4E11631D66E330008419A7 /* IGTaskListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */; };
+		6B4E11641D66E330008419A7 /* IGTaskListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */; };
+		6B4E11651D66E330008419A7 /* IGTaskListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */; };
+		6B4E11661D66E330008419A7 /* IGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11611D66E330008419A7 /* IGTaskListViewController.m */; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; };
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; };
@@ -164,7 +171,6 @@
 		6BBF66851D65ECE1000FEF9F /* IGHTTPClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66841D65ECE1000FEF9F /* IGHTTPClient+Login.m */; };
 		6BBF66AE1D660367000FEF9F /* IGAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF668E1D660367000FEF9F /* IGAgreementViewController.m */; };
 		6BBF66AF1D660367000FEF9F /* IGTaskNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66901D660367000FEF9F /* IGTaskNavigationController.m */; };
-		6BBF66B01D660367000FEF9F /* IGTaskRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66921D660367000FEF9F /* IGTaskRequestEntity.m */; };
 		6BBF66B11D660367000FEF9F /* IGAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66951D660367000FEF9F /* IGAudioManager.m */; };
 		6BBF66B21D660367000FEF9F /* IGMsgDetailDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66971D660367000FEF9F /* IGMsgDetailDataManager.m */; };
 		6BBF66B31D660367000FEF9F /* IGMsgDetailInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66991D660367000FEF9F /* IGMsgDetailInteractor.m */; };
@@ -172,11 +178,6 @@
 		6BBF66B51D660367000FEF9F /* IGMsgDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF669D1D660367000FEF9F /* IGMsgDetailViewController.m */; };
 		6BBF66B61D660367000FEF9F /* IGReportDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */; };
 		6BBF66B71D660367000FEF9F /* IGReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A21D660367000FEF9F /* IGReportDetailViewController.m */; };
-		6BBF66B81D660367000FEF9F /* IGToDoListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A51D660367000FEF9F /* IGToDoListDataManager.m */; };
-		6BBF66B91D660367000FEF9F /* IGToDoListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A71D660367000FEF9F /* IGToDoListInteractor.m */; };
-		6BBF66BA1D660367000FEF9F /* IGToDoListRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66A91D660367000FEF9F /* IGToDoListRouting.m */; };
-		6BBF66BB1D660367000FEF9F /* IGToDoListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66AB1D660367000FEF9F /* IGToDoListViewCell.m */; };
-		6BBF66BC1D660367000FEF9F /* IGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF66AD1D660367000FEF9F /* IGToDoListViewController.m */; };
 		6BDC05DC1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */; };
 		6BFBA0261CB7EE220087B569 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */; };
 		6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFBA0291CB7EE5E0087B569 /* FMDatabase.m */; };
@@ -455,6 +456,20 @@
 		6B28F4A51CE4E24700E60694 /* IGPatientServicesViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientServicesViewCell.m; sourceTree = "<group>"; };
 		6B28F4A71CE4E25B00E60694 /* IGPatientServicesDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPatientServicesDataManager.h; sourceTree = "<group>"; };
 		6B28F4A81CE4E25B00E60694 /* IGPatientServicesDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientServicesDataManager.m; sourceTree = "<group>"; };
+		6B4E114E1D66AE6F008419A7 /* IGHTTPClient+Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Task.h"; sourceTree = "<group>"; };
+		6B4E114F1D66AE6F008419A7 /* IGHTTPClient+Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Task.m"; sourceTree = "<group>"; };
+		6B4E11541D66AF98008419A7 /* IGHTTPClient+Report.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Report.h"; sourceTree = "<group>"; };
+		6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Report.m"; sourceTree = "<group>"; };
+		6B4E11581D66E330008419A7 /* IGTaskListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListDataManager.h; sourceTree = "<group>"; };
+		6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListDataManager.m; sourceTree = "<group>"; };
+		6B4E115A1D66E330008419A7 /* IGTaskListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListInteractor.h; sourceTree = "<group>"; };
+		6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListInteractor.m; sourceTree = "<group>"; };
+		6B4E115C1D66E330008419A7 /* IGTaskListRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListRouting.h; sourceTree = "<group>"; };
+		6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListRouting.m; sourceTree = "<group>"; };
+		6B4E115E1D66E330008419A7 /* IGTaskListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListViewCell.h; sourceTree = "<group>"; };
+		6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListViewCell.m; sourceTree = "<group>"; };
+		6B4E11601D66E330008419A7 /* IGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskListViewController.h; sourceTree = "<group>"; };
+		6B4E11611D66E330008419A7 /* IGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskListViewController.m; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
 		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
@@ -549,8 +564,6 @@
 		6BBF668E1D660367000FEF9F /* IGAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAgreementViewController.m; sourceTree = "<group>"; };
 		6BBF668F1D660367000FEF9F /* IGTaskNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskNavigationController.h; sourceTree = "<group>"; };
 		6BBF66901D660367000FEF9F /* IGTaskNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskNavigationController.m; sourceTree = "<group>"; };
-		6BBF66911D660367000FEF9F /* IGTaskRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskRequestEntity.h; sourceTree = "<group>"; };
-		6BBF66921D660367000FEF9F /* IGTaskRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskRequestEntity.m; sourceTree = "<group>"; };
 		6BBF66941D660367000FEF9F /* IGAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGAudioManager.h; sourceTree = "<group>"; };
 		6BBF66951D660367000FEF9F /* IGAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGAudioManager.m; sourceTree = "<group>"; };
 		6BBF66961D660367000FEF9F /* IGMsgDetailDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMsgDetailDataManager.h; sourceTree = "<group>"; };
@@ -565,16 +578,6 @@
 		6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportDetailViewCell.m; sourceTree = "<group>"; };
 		6BBF66A11D660367000FEF9F /* IGReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportDetailViewController.h; sourceTree = "<group>"; };
 		6BBF66A21D660367000FEF9F /* IGReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportDetailViewController.m; sourceTree = "<group>"; };
-		6BBF66A41D660367000FEF9F /* IGToDoListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListDataManager.h; sourceTree = "<group>"; };
-		6BBF66A51D660367000FEF9F /* IGToDoListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListDataManager.m; sourceTree = "<group>"; };
-		6BBF66A61D660367000FEF9F /* IGToDoListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListInteractor.h; sourceTree = "<group>"; };
-		6BBF66A71D660367000FEF9F /* IGToDoListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListInteractor.m; sourceTree = "<group>"; };
-		6BBF66A81D660367000FEF9F /* IGToDoListRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListRouting.h; sourceTree = "<group>"; };
-		6BBF66A91D660367000FEF9F /* IGToDoListRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListRouting.m; sourceTree = "<group>"; };
-		6BBF66AA1D660367000FEF9F /* IGToDoListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewCell.h; sourceTree = "<group>"; };
-		6BBF66AB1D660367000FEF9F /* IGToDoListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewCell.m; sourceTree = "<group>"; };
-		6BBF66AC1D660367000FEF9F /* IGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGToDoListViewController.h; sourceTree = "<group>"; };
-		6BBF66AD1D660367000FEF9F /* IGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGToDoListViewController.m; sourceTree = "<group>"; };
 		6BDC05DA1CFB3318006D96E8 /* UIViewController+PortraitOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PortraitOrientation.h"; sourceTree = "<group>"; };
 		6BDC05DB1CFB3318006D96E8 /* UIViewController+PortraitOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PortraitOrientation.m"; sourceTree = "<group>"; };
 		6BFBA0251CB7EE220087B569 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -796,6 +799,10 @@
 				6BBF66811D65E847000FEF9F /* IGHTTPClient+Version.m */,
 				6BBF66831D65ECE1000FEF9F /* IGHTTPClient+Login.h */,
 				6BBF66841D65ECE1000FEF9F /* IGHTTPClient+Login.m */,
+				6B4E114E1D66AE6F008419A7 /* IGHTTPClient+Task.h */,
+				6B4E114F1D66AE6F008419A7 /* IGHTTPClient+Task.m */,
+				6B4E11541D66AF98008419A7 /* IGHTTPClient+Report.h */,
+				6B4E11551D66AF98008419A7 /* IGHTTPClient+Report.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -906,9 +913,9 @@
 		6B0001F21C9D221800085229 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF668B1D660367000FEF9F /* Tasks */,
 				6B0001F31C9D221800085229 /* IGRootViewController.h */,
 				6B0001F41C9D221800085229 /* IGRootViewController.m */,
+				6BBF668B1D660367000FEF9F /* Tasks */,
 				6B0001F51C9D221800085229 /* Login */,
 				6B87C0081CD4C3B80050495B /* MemberData */,
 				6BA60EE41CD70DDD00E39D54 /* Menu */,
@@ -1184,6 +1191,23 @@
 			path = TWMessageBarManager;
 			sourceTree = "<group>";
 		};
+		6B4E11571D66E330008419A7 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				6B4E11581D66E330008419A7 /* IGTaskListDataManager.h */,
+				6B4E11591D66E330008419A7 /* IGTaskListDataManager.m */,
+				6B4E115A1D66E330008419A7 /* IGTaskListInteractor.h */,
+				6B4E115B1D66E330008419A7 /* IGTaskListInteractor.m */,
+				6B4E115C1D66E330008419A7 /* IGTaskListRouting.h */,
+				6B4E115D1D66E330008419A7 /* IGTaskListRouting.m */,
+				6B4E115E1D66E330008419A7 /* IGTaskListViewCell.h */,
+				6B4E115F1D66E330008419A7 /* IGTaskListViewCell.m */,
+				6B4E11601D66E330008419A7 /* IGTaskListViewController.h */,
+				6B4E11611D66E330008419A7 /* IGTaskListViewController.m */,
+			);
+			path = TaskList;
+			sourceTree = "<group>";
+		};
 		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,14 +1395,12 @@
 		6BBF668B1D660367000FEF9F /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF668C1D660367000FEF9F /* agreement */,
 				6BBF668F1D660367000FEF9F /* IGTaskNavigationController.h */,
 				6BBF66901D660367000FEF9F /* IGTaskNavigationController.m */,
-				6BBF66911D660367000FEF9F /* IGTaskRequestEntity.h */,
-				6BBF66921D660367000FEF9F /* IGTaskRequestEntity.m */,
+				6BBF668C1D660367000FEF9F /* agreement */,
+				6B4E11571D66E330008419A7 /* TaskList */,
 				6BBF66931D660367000FEF9F /* MsgDetail */,
 				6BBF669E1D660367000FEF9F /* Report */,
-				6BBF66A31D660367000FEF9F /* ToDoList */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1418,23 +1440,6 @@
 				6BBF66A21D660367000FEF9F /* IGReportDetailViewController.m */,
 			);
 			path = Report;
-			sourceTree = "<group>";
-		};
-		6BBF66A31D660367000FEF9F /* ToDoList */ = {
-			isa = PBXGroup;
-			children = (
-				6BBF66A41D660367000FEF9F /* IGToDoListDataManager.h */,
-				6BBF66A51D660367000FEF9F /* IGToDoListDataManager.m */,
-				6BBF66A61D660367000FEF9F /* IGToDoListInteractor.h */,
-				6BBF66A71D660367000FEF9F /* IGToDoListInteractor.m */,
-				6BBF66A81D660367000FEF9F /* IGToDoListRouting.h */,
-				6BBF66A91D660367000FEF9F /* IGToDoListRouting.m */,
-				6BBF66AA1D660367000FEF9F /* IGToDoListViewCell.h */,
-				6BBF66AB1D660367000FEF9F /* IGToDoListViewCell.m */,
-				6BBF66AC1D660367000FEF9F /* IGToDoListViewController.h */,
-				6BBF66AD1D660367000FEF9F /* IGToDoListViewController.m */,
-			);
-			path = ToDoList;
 			sourceTree = "<group>";
 		};
 		6BFBA0271CB7EE5E0087B569 /* fmdb */ = {
@@ -1590,8 +1595,6 @@
 				2C008DAD1CAF760F00ECE4B5 /* MJRefreshBackStateFooter.m in Sources */,
 				6BFBA0381CB7EE5E0087B569 /* FMResultSet.m in Sources */,
 				6B0002251C9D221900085229 /* UIWebView+AFNetworking.m in Sources */,
-				6BBF66BB1D660367000FEF9F /* IGToDoListViewCell.m in Sources */,
-				6BBF66BC1D660367000FEF9F /* IGToDoListViewController.m in Sources */,
 				6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */,
 				6B1325871CE8C34200C2A8C3 /* IGInvitedCustomerDetailObj.m in Sources */,
 				2C008DAF1CAF760F00ECE4B5 /* MJRefreshNormalHeader.m in Sources */,
@@ -1610,6 +1613,7 @@
 				6B0002231C9D221900085229 /* UIProgressView+AFNetworking.m in Sources */,
 				2C008DAB1CAF760F00ECE4B5 /* MJRefreshBackGifFooter.m in Sources */,
 				2C008DAA1CAF760F00ECE4B5 /* MJRefreshAutoStateFooter.m in Sources */,
+				6B4E11651D66E330008419A7 /* IGTaskListViewCell.m in Sources */,
 				6B033D441CC2A2B900CD87DC /* IGViewControllerTransitioning.m in Sources */,
 				6B00020E1C9D221900085229 /* AFSecurityPolicy.m in Sources */,
 				6B0D94AA1CE2382B00C5BA6D /* IGIncomeMembersViewCell.m in Sources */,
@@ -1631,13 +1635,13 @@
 				6B7A35B51CE376F9007BC42A /* IGIncomeMembersLv2DataManager.m in Sources */,
 				6B00018D1C9D1E9500085229 /* AppDelegate.m in Sources */,
 				6BA60F011CD70DDD00E39D54 /* IGDoneListViewCell.m in Sources */,
+				6B4E11661D66E330008419A7 /* IGTaskListViewController.m in Sources */,
 				6B00021E1C9D221900085229 /* AFImageDownloader.m in Sources */,
 				6B032E0A1CC1493A0027DDAD /* IGSignupViewController.m in Sources */,
 				6B0002161C9D221900085229 /* MASViewAttribute.m in Sources */,
 				6B0002151C9D221900085229 /* MASLayoutConstraint.m in Sources */,
 				6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
-				6BBF66B81D660367000FEF9F /* IGToDoListDataManager.m in Sources */,
 				6BA60F041CD70DDD00E39D54 /* IGMyInformationViewController.m in Sources */,
 				6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1648,10 +1652,12 @@
 				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */,
+				6B4E11501D66AE6F008419A7 /* IGHTTPClient+Task.m in Sources */,
 				6BA60F051CD70DDD00E39D54 /* IGMyPatientsViewController.m in Sources */,
 				2C008DA41CAF760F00ECE4B5 /* MJRefreshBackFooter.m in Sources */,
 				6B13257B1CE8B2DB00C2A8C3 /* IGInvitedCustomersViewController.m in Sources */,
 				6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */,
+				6B4E11641D66E330008419A7 /* IGTaskListRouting.m in Sources */,
 				6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */,
 				6B0002171C9D221900085229 /* MASViewConstraint.m in Sources */,
 				6B00018A1C9D1E9500085229 /* main.m in Sources */,
@@ -1672,13 +1678,14 @@
 				6BA60F061CD70DDD00E39D54 /* IGMyTeamViewCell.m in Sources */,
 				6B00022A1C9D221900085229 /* IGFirstLoadingViewController.m in Sources */,
 				6BA60F071CD70DDD00E39D54 /* IGMyTeamViewController.m in Sources */,
-				6BBF66B91D660367000FEF9F /* IGToDoListInteractor.m in Sources */,
 				6B0D94921CE22D3A00C5BA6D /* KxMenu.m in Sources */,
+				6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */,
 				6BBF66B31D660367000FEF9F /* IGMsgDetailInteractor.m in Sources */,
 				6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */,
 				6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */,
 				6B87C0251CD4CD7E0050495B /* IGMemberDataViewController.m in Sources */,
 				6BA60F101CD759BF00E39D54 /* IGDocMemberObj.m in Sources */,
+				6B4E11621D66E330008419A7 /* IGTaskListDataManager.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
 				6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */,
@@ -1699,7 +1706,6 @@
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,
 				6B87C0381CD501210050495B /* IGBPChartManager.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
-				6BBF66BA1D660367000FEF9F /* IGToDoListRouting.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6BBF66AF1D660367000FEF9F /* IGTaskNavigationController.m in Sources */,
 				6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */,
@@ -1709,6 +1715,7 @@
 				6BFBA0351CB7EE5E0087B569 /* FMDatabaseAdditions.m in Sources */,
 				6B0002131C9D221900085229 /* MASConstraint.m in Sources */,
 				6BBF66851D65ECE1000FEF9F /* IGHTTPClient+Login.m in Sources */,
+				6B4E11631D66E330008419A7 /* IGTaskListInteractor.m in Sources */,
 				2C506B971CD1E2CC00B61BB3 /* IGReportCategoryObj.m in Sources */,
 				6BA60F021CD70DDD00E39D54 /* IGDoneListViewController.m in Sources */,
 				6B13257E1CE8B36000C2A8C3 /* IGInvitedCustomersViewCell.m in Sources */,
@@ -1733,7 +1740,6 @@
 				6BFBA0361CB7EE5E0087B569 /* FMDatabasePool.m in Sources */,
 				6BFBA03D1CB7EEE60087B569 /* IGLocalDataManager.m in Sources */,
 				6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */,
-				6BBF66B01D660367000FEF9F /* IGTaskRequestEntity.m in Sources */,
 				2C008DA31CAF760F00ECE4B5 /* MJRefreshAutoFooter.m in Sources */,
 				6B00021A1C9D221900085229 /* View+MASAdditions.m in Sources */,
 				6BBF667C1D65E211000FEF9F /* IGErrorInfo.m in Sources */,

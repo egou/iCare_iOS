@@ -1,5 +1,5 @@
 //
-//  IGToDoListViewCell.h
+//  IGTaskListViewCell.h
 //  IgoonaDoc
 //
 //  Created by porco on 16/4/18.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class IGTaskObj;
-@interface IGToDoListViewCell: UITableViewCell
+@interface IGTaskListViewCell: UITableViewCell
 
 @property (nonatomic,strong) IGTaskObj *toDoData;
 
