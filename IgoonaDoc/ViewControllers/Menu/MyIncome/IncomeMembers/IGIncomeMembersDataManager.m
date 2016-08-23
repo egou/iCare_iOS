@@ -7,7 +7,7 @@
 //
 
 #import "IGIncomeMembersDataManager.h"
-#import "IGMyIncomeRequestEntity.h"
+#import "IGHTTPClient+Doctor.h"
 
 @interface IGIncomeMembersDataManager()
 
@@ -30,7 +30,7 @@
 
 
 -(void)pullToRefresh{
-    [IGMyIncomeRequestEntity requestForIncomeMembersWithStartNum:0 finishHandler:^(BOOL success, NSArray *incomeInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForIncomeMembersWithStartNum:0 finishHandler:^(BOOL success, NSInteger errCode, NSArray *incomeInfo, NSInteger total) {
         if(success){
             self.memberList=incomeInfo;
             self.hasLoadedAll=incomeInfo.count>=total?YES:NO;
@@ -43,7 +43,7 @@
 -(void)pullToLoadMore{
     NSInteger start=self.memberList.count;
     
-    [IGMyIncomeRequestEntity requestForIncomeMembersWithStartNum:start finishHandler:^(BOOL success, NSArray *incomeInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForIncomeMembersWithStartNum:start finishHandler:^(BOOL success, NSInteger errCode, NSArray *incomeInfo, NSInteger total) {
         if(success){
             self.memberList=[self.memberList arrayByAddingObjectsFromArray:incomeInfo];
             self.hasLoadedAll=incomeInfo.count>=total?YES:NO;

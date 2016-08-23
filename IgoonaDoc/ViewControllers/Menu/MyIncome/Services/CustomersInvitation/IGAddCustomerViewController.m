@@ -7,9 +7,8 @@
 //
 
 #import "IGAddCustomerViewController.h"
-#import "IGMyIncomeRequestEntity.h"
 #import "IGInvitedCustomerDetailObj.h"
-
+#import "IGHTTPClient+Member.h"
 #import "IGRegularExpression.h"
 
 @interface IGAddCustomerViewController()
@@ -98,21 +97,23 @@
     customer.cWeight=[weight integerValue];
     
     [SVProgressHUD show];
-    
-    [IGMyIncomeRequestEntity requestToInviteCustomer:customer finishHandler:^(BOOL success, NSString *invitationId,BOOL sent) {
-        if(success){
-            
-            if(!sent)
-                [SVProgressHUD showInfoWithStatus:@"邀请成功，请确认对方号码是否正确"];
-            else{
-                [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
-                [self.navigationController popViewControllerAnimated:YES];
+    [IGHTTPCLIENT requestToInviteCustomer:customer finishHandler:^(BOOL success, NSInteger errCode, NSString *invitationId, BOOL sent) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
                 
+                if(!sent)
+                    [SVProgressHUD showInfoWithStatus:@"邀请成功，请确认对方号码是否正确"];
+                else{
+                    [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                }
+                
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
             }
-            
-        }else{
-             [SVProgressHUD showInfoWithStatus:@"邀请失败"];
-        }
+
+        }];
     }];
     
 }

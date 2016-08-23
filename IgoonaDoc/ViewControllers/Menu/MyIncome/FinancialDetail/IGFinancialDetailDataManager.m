@@ -8,7 +8,7 @@
 
 #import "IGFinancialDetailDataManager.h"
 
-#import "IGMyIncomeRequestEntity.h"
+#import "IGHTTPClient+Doctor.h"
 
 @interface IGFinancialDetailDataManager()
 
@@ -31,8 +31,7 @@
 
 
 -(void)pullToRefresh{
-    
-    [IGMyIncomeRequestEntity requestForFinancialDetailWithStartNum:0 finishHandler:^(BOOL success, NSArray *financialInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForFinancialDetailWithStartNum:0 finishHandler:^(BOOL success, NSInteger errCode, NSArray *financialInfo, NSInteger total) {
         if(success){
             self.financialList=financialInfo;
             self.hasLoadedAll=financialInfo.count>=total?YES:NO;
@@ -44,8 +43,7 @@
 
 -(void)pullToLoadMore{
     NSInteger start=self.financialList.count;
-    
-    [IGMyIncomeRequestEntity requestForFinancialDetailWithStartNum:start finishHandler:^(BOOL success, NSArray *financialInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForFinancialDetailWithStartNum:start finishHandler:^(BOOL success, NSInteger errCode, NSArray *financialInfo, NSInteger total) {
         if(success){
             self.financialList=[self.financialList arrayByAddingObjectsFromArray:financialInfo];
             self.hasLoadedAll=financialInfo.count>=total?YES:NO;

@@ -7,8 +7,8 @@
 //
 
 #import "IGChangePhoneNumViewController.h"
-#import "IGMyInformationRequestEntity.h"
 #import "IGRegularExpression.h"
+#import "IGHTTPClient+Login.h"
 
 @interface IGChangePhoneNumViewController()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumTF;
@@ -59,16 +59,16 @@
     
     
     [SVProgressHUD show];
-    [IGMyInformationRequestEntity requestToChangePhoneNum:phoneNum confirmationNum:confirmNum finishHandler:^(BOOL success) {
-        
+    [IGHTTPCLIENT requestToChangePhoneNum:phoneNum confirmationNum:confirmNum finishHandler:^(BOOL success, NSInteger errorCode) {
         if(success){
             MYINFO.username=phoneNum;
             
             [SVProgressHUD showSuccessWithStatus:@"修改手机号成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [SVProgressHUD showInfoWithStatus:@"修改失败" ];
+            [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
         }
+
     }];
     
 }
@@ -83,13 +83,16 @@
     }
     
     [SVProgressHUD show];
-    [IGMyInformationRequestEntity requestToSendConfirmationNumToPhone:phoneNum finishHandler:^(BOOL success) {
-        if(success){
-            [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
-            [self p_startConfirmationNumTimer];
-        }else{
-            [SVProgressHUD showInfoWithStatus:@"获取验证码失败"];
-        }
+    [IGHTTPCLIENT requestToSendConfirmationNumToChangePhoneNum:phoneNum finishHandler:^(BOOL success, NSInteger errorCode) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                [SVProgressHUD showSuccessWithStatus:@"获取验证码成功"];
+                [self p_startConfirmationNumTimer];
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+            };
+
+        }];
     }];
 }
 

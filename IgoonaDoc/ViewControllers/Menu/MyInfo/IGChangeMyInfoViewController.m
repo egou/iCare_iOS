@@ -11,9 +11,10 @@
 #import "IGCityInfoObj.h"
 
 #import "IGSingleSelectionTableViewController.h"
-#import "IGMyInformationRequestEntity.h"
-
 #import "IGChangeMyPhotoViewController.h"
+
+#import "IGHTTPClient+Doctor.h"
+#import "IGHTTPClient+City.h"
 
 
 @interface IGChangeMyInfoViewController()<UITextFieldDelegate>
@@ -62,25 +63,25 @@
 -(void)onSaveBtn:(id)sender{
     //检验合法性
     NSString *trimmedName=[self.detailInfo.dName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if(!trimmedName.length>0){
+    if(!(trimmedName.length>0)){
         [SVProgressHUD showInfoWithStatus:@"姓名不得为空"];
         return;
     }
     
-    if(!self.detailInfo.dCityId.length>0){
+    if(!(self.detailInfo.dCityId.length>0)){
         [SVProgressHUD showInfoWithStatus:@"城市不得为空"];
         return;
     }
     
     NSString *trimmedHospital=[self.detailInfo.dName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if(!trimmedHospital.length>0){
+    if(!(trimmedHospital.length>0)){
         [SVProgressHUD showInfoWithStatus:@"医院名称不得为空"];
         return;
     }
     
     
     [SVProgressHUD show];
-    [IGMyInformationRequestEntity requestToChangeMyInfo:self.detailInfo finishHandler:^(BOOL success) {
+    [IGHTTPCLIENT requestToChangeMyInfo:self.detailInfo finishHandler:^(BOOL success, NSInteger errCode) {
         if(success){
             
             //头像
@@ -89,9 +90,10 @@
             [SVProgressHUD showSuccessWithStatus:@"编辑信息成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [SVProgressHUD showInfoWithStatus:@"编辑信息失败"];
+            [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
         }
     }];
+    
 }
 
 - (IBAction)onMaleBtn:(id)sender {
@@ -184,11 +186,13 @@
         NSString *provinceId=self.detailInfo.dProvinceId;
         if(provinceId.length>0){
             [SVProgressHUD show];
-            [IGMyInformationRequestEntity requestForAllCitiesOfProvince:provinceId finishHandler:^(NSArray *allCities) {
+            
+            [IGHTTPCLIENT requestForAllCitiesOfProvince:provinceId finishHandler:^(BOOL success, NSInteger errCode, NSArray *allCities) {
+    
                 [SVProgressHUD dismissWithCompletion:^{
                     
                 
-                    if(allCities){
+                    if(success){
                         
                         if(allCities.count==0){
                             //直辖市之类的
@@ -224,7 +228,7 @@
                         
                     }else{
                   
-                        [SVProgressHUD showInfoWithStatus:@"获取城市失败"];
+                        [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
                     }
                 }];
             }];

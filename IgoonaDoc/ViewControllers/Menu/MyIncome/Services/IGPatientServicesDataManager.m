@@ -8,7 +8,7 @@
 
 #import "IGPatientServicesDataManager.h"
 
-#import "IGMyIncomeRequestEntity.h"
+#import "IGHTTPClient+Doctor.h"
 
 @interface IGPatientServicesDataManager()
 
@@ -31,8 +31,7 @@
 
 
 -(void)pullToRefresh{
-    
-    [IGMyIncomeRequestEntity requestForPatientServicesWithStartNum:0 finishHandler:^(BOOL success, NSArray *servicesInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForPatientServicesWithStartNum:0 finishHandler:^(BOOL success, NSInteger errCode, NSArray *servicesInfo, NSInteger total) {
         if(success){
             self.servicesList=servicesInfo;
             self.hasLoadedAll=servicesInfo.count>=total?YES:NO;
@@ -45,8 +44,7 @@
 
 -(void)pullToLoadMore{
     NSInteger start=self.servicesList.count;
-    
-    [IGMyIncomeRequestEntity requestForPatientServicesWithStartNum:start finishHandler:^(BOOL success, NSArray *servicesInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForPatientServicesWithStartNum:start finishHandler:^(BOOL success, NSInteger errCode, NSArray *servicesInfo, NSInteger total) {
         if(success){
             self.servicesList=[self.servicesList arrayByAddingObjectsFromArray:servicesInfo];
             self.hasLoadedAll=servicesInfo.count>=total?YES:NO;

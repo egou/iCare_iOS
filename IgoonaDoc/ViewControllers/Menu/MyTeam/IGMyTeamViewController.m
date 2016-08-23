@@ -11,7 +11,9 @@
 #import "IGDocMemberObj.h"
 #import "MJRefresh.h"
 
-#import "IGMyTeamRequestEntity.h"
+#import "IGHTTPClient+Login.h"
+#import "IGHTTPClient+Doctor.h"
+
 
 @interface IGMyTeamViewController ()
 
@@ -78,27 +80,32 @@
         
         
         if(docInfo.dStatus==2){//重发邀请
-            [IGMyTeamRequestEntity requestToReInviteAssistant:docInfo.dId finishHandler:^(BOOL success) {
-                
-                [SVProgressHUD showInfoWithStatus:success?@"发送成功":@"发送失败"];
-                
+            [IGHTTPCLIENT requestToReInviteAssistant:docInfo.dId finishHandler:^(BOOL success, NSInteger errCode) {
+                [SVProgressHUD dismissWithCompletion:^{
+                    
+                    if(success){
+                        [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+                    }else{
+                        [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+                    }
+                    [SVProgressHUD showInfoWithStatus:success?@"发送成功":@"发送失败"];
+                }];
             }];
-            
             
         }else{//删除
         
-            [IGMyTeamRequestEntity requestToDeleteAssistant:docInfo.dId finishHandler:^(BOOL success) {
-
-              
-                [SVProgressHUD showInfoWithStatus:success?@"删除成功":@"删除失败"];
-                
-                //此处应删除相应数据
-                if(success){
-                    NSMutableArray *mMemberList=[self.memberList mutableCopy];
-                    [mMemberList removeObject:docInfo];
-                    self.memberList=[mMemberList copy];
-                    [self.tableView reloadData];
-                }
+            [IGHTTPCLIENT requestToDeleteAssistant:docInfo.dId finishHandler:^(BOOL success, NSInteger errCode) {
+                [SVProgressHUD dismissWithCompletion:^{
+                    if(success){
+                        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+                        NSMutableArray *mMemberList=[self.memberList mutableCopy];
+                        [mMemberList removeObject:docInfo];
+                        self.memberList=[mMemberList copy];
+                        [self.tableView reloadData];
+                    }else{
+                        [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+                    }
+                }];
             }];
         }
         
@@ -133,19 +140,19 @@
     }
     
     //pull to refresh
-    
-    __weak typeof(self) wSelf=self;
+    IGGenWSelf;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        [IGMyTeamRequestEntity requestForTeamInfoFinishHandler:^(BOOL success, NSArray *teamInfo) {
+        [IGHTTPCLIENT requestForTeamInfoFinishHandler:^(BOOL success, NSInteger errCode, NSArray *teamInfo) {
             [wSelf.tableView.mj_header endRefreshing];
             
             if(success){
                 wSelf.memberList=teamInfo;
                 [wSelf.tableView reloadData];
             }else{
-                [SVProgressHUD showInfoWithStatus:@"获取信息失败"];
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
             }
+
         }];
         
     }];

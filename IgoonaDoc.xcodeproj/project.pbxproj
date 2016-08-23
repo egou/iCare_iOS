@@ -99,6 +99,9 @@
 		6B1584CB1CB130EC009C4EAD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CA1CB130EC009C4EAD /* CoreTelephony.framework */; };
 		6B1584CD1CB130F2009C4EAD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */; };
 		6B1584D11CB13151009C4EAD /* jpush-ios-2.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */; };
+		6B1B0E681D6C8ABF00F30F65 /* IGHTTPClient+City.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B0E671D6C8ABF00F30F65 /* IGHTTPClient+City.m */; };
+		6B1B0E6B1D6C978E00F30F65 /* IGHTTPClient+Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B0E6A1D6C978E00F30F65 /* IGHTTPClient+Member.m */; };
+		6B1B0E6E1D6C9B2200F30F65 /* IGHTTPClient+Finance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B0E6D1D6C9B2200F30F65 /* IGHTTPClient+Finance.m */; };
 		6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77E81D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m */; };
 		6B1C77F21D28F2BE0057FB50 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B1C77EA1D28F2BE0057FB50 /* SVProgressAnimatedView.m */; };
 		6B1C77F31D28F2BE0057FB50 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6B1C77EC1D28F2BE0057FB50 /* SVProgressHUD.bundle */; };
@@ -125,7 +128,6 @@
 		6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11721D67272F008419A7 /* IGMessageImageViewController.m */; };
 		6B4E11781D67272F008419A7 /* IGMessageToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11741D67272F008419A7 /* IGMessageToolBar.m */; };
 		6B4E11791D67272F008419A7 /* IGRecordingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11761D67272F008419A7 /* IGRecordingHUDView.m */; };
-		6B4E117C1D676253008419A7 /* IGHTTPClient+Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E117B1D676253008419A7 /* IGHTTPClient+Version.m */; };
 		6B4E117F1D676275008419A7 /* IGHTTPClient+UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E117E1D676275008419A7 /* IGHTTPClient+UserData.m */; };
 		6B4E11891D67632D008419A7 /* IGMemberBpDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11821D67632D008419A7 /* IGMemberBpDataObj.m */; };
 		6B4E118A1D67632D008419A7 /* IGMemberDataObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11841D67632D008419A7 /* IGMemberDataObj.m */; };
@@ -148,10 +150,8 @@
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; };
 		6B697D2D1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */; };
-		6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */; };
 		6B6A6EB51CF1830D00E8AEFD /* NSNull+PRJsonNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */; };
 		6B6DA7B91CDEEE1700DB5CBF /* IGDocInfoDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */; };
-		6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */; };
 		6B6DA7C11CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */; };
 		6B6DA7C41CDF512700DB5CBF /* IGCityInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6DA7C31CDF512700DB5CBF /* IGCityInfoObj.m */; };
 		6B74233F1CE0EEA8002D2B4D /* IGAddAssistantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */; };
@@ -171,10 +171,8 @@
 		6BA60F051CD70DDD00E39D54 /* IGMyPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EF61CD70DDD00E39D54 /* IGMyPatientsViewController.m */; };
 		6BA60F061CD70DDD00E39D54 /* IGMyTeamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EF91CD70DDD00E39D54 /* IGMyTeamViewCell.m */; };
 		6BA60F071CD70DDD00E39D54 /* IGMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60EFB1CD70DDD00E39D54 /* IGMyTeamViewController.m */; };
-		6BA60F0D1CD7575D00E39D54 /* IGMyTeamRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F0C1CD7575D00E39D54 /* IGMyTeamRequestEntity.m */; };
 		6BA60F101CD759BF00E39D54 /* IGDocMemberObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F0F1CD759BF00E39D54 /* IGDocMemberObj.m */; };
 		6BA60F141CD768CF00E39D54 /* IGMyIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F131CD768CF00E39D54 /* IGMyIncomeViewController.m */; };
-		6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F161CD7690800E39D54 /* IGMyIncomeRequestEntity.m */; };
 		6BA60F1A1CD76A0800E39D54 /* IGIncomeObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */; };
 		6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */; };
 		6BBF667C1D65E211000FEF9F /* IGErrorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF667B1D65E211000FEF9F /* IGErrorInfo.m */; };
@@ -432,6 +430,12 @@
 		6B1584CC1CB130F2009C4EAD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6B1584CF1CB13151009C4EAD /* jpush-ios-2.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.0.a"; sourceTree = "<group>"; };
 		6B1584D01CB13151009C4EAD /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6B1B0E661D6C8ABF00F30F65 /* IGHTTPClient+City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+City.h"; sourceTree = "<group>"; };
+		6B1B0E671D6C8ABF00F30F65 /* IGHTTPClient+City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+City.m"; sourceTree = "<group>"; };
+		6B1B0E691D6C978E00F30F65 /* IGHTTPClient+Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Member.h"; sourceTree = "<group>"; };
+		6B1B0E6A1D6C978E00F30F65 /* IGHTTPClient+Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Member.m"; sourceTree = "<group>"; };
+		6B1B0E6C1D6C9B2200F30F65 /* IGHTTPClient+Finance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IGHTTPClient+Finance.h"; sourceTree = "<group>"; };
+		6B1B0E6D1D6C9B2200F30F65 /* IGHTTPClient+Finance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IGHTTPClient+Finance.m"; sourceTree = "<group>"; };
 		6B1C77E71D28F2BE0057FB50 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		6B1C77E81D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		6B1C77E91D28F2BE0057FB50 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -527,14 +531,10 @@
 		6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGPatientInfoObj.m; sourceTree = "<group>"; };
 		6B697D2B1CD8F5B400A12CE1 /* IGMyPatientsDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsDataManager.h; sourceTree = "<group>"; };
 		6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsDataManager.m; sourceTree = "<group>"; };
-		6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsRequestEntity.h; sourceTree = "<group>"; };
-		6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyPatientsRequestEntity.m; sourceTree = "<group>"; };
 		6B6A6EB31CF1830D00E8AEFD /* NSNull+PRJsonNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+PRJsonNull.h"; sourceTree = "<group>"; };
 		6B6A6EB41CF1830D00E8AEFD /* NSNull+PRJsonNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+PRJsonNull.m"; sourceTree = "<group>"; };
 		6B6DA7B71CDEEE1700DB5CBF /* IGDocInfoDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDocInfoDetailObj.h; sourceTree = "<group>"; };
 		6B6DA7B81CDEEE1700DB5CBF /* IGDocInfoDetailObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDocInfoDetailObj.m; sourceTree = "<group>"; };
-		6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyInformationRequestEntity.h; sourceTree = "<group>"; };
-		6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyInformationRequestEntity.m; sourceTree = "<group>"; };
 		6B6DA7BF1CDF0DB800DB5CBF /* IGChangeMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGChangeMyInfoViewController.h; sourceTree = "<group>"; };
 		6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGChangeMyInfoViewController.m; sourceTree = "<group>"; };
 		6B6DA7C21CDF512700DB5CBF /* IGCityInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCityInfoObj.h; sourceTree = "<group>"; };
@@ -572,14 +572,10 @@
 		6BA60EF91CD70DDD00E39D54 /* IGMyTeamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyTeamViewCell.m; sourceTree = "<group>"; };
 		6BA60EFA1CD70DDD00E39D54 /* IGMyTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyTeamViewController.h; sourceTree = "<group>"; };
 		6BA60EFB1CD70DDD00E39D54 /* IGMyTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyTeamViewController.m; sourceTree = "<group>"; };
-		6BA60F0B1CD7575D00E39D54 /* IGMyTeamRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyTeamRequestEntity.h; sourceTree = "<group>"; };
-		6BA60F0C1CD7575D00E39D54 /* IGMyTeamRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyTeamRequestEntity.m; sourceTree = "<group>"; };
 		6BA60F0E1CD759BF00E39D54 /* IGDocMemberObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGDocMemberObj.h; sourceTree = "<group>"; };
 		6BA60F0F1CD759BF00E39D54 /* IGDocMemberObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGDocMemberObj.m; sourceTree = "<group>"; };
 		6BA60F121CD768CF00E39D54 /* IGMyIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyIncomeViewController.h; sourceTree = "<group>"; };
 		6BA60F131CD768CF00E39D54 /* IGMyIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyIncomeViewController.m; sourceTree = "<group>"; };
-		6BA60F151CD7690800E39D54 /* IGMyIncomeRequestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyIncomeRequestEntity.h; sourceTree = "<group>"; };
-		6BA60F161CD7690800E39D54 /* IGMyIncomeRequestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMyIncomeRequestEntity.m; sourceTree = "<group>"; };
 		6BA60F181CD76A0800E39D54 /* IGIncomeObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGIncomeObj.h; sourceTree = "<group>"; };
 		6BA60F191CD76A0800E39D54 /* IGIncomeObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGIncomeObj.m; sourceTree = "<group>"; };
 		6BA60F1C1CD76C5800E39D54 /* IGMyIncomeDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyIncomeDataManager.h; sourceTree = "<group>"; };
@@ -838,6 +834,12 @@
 				6B4E117B1D676253008419A7 /* IGHTTPClient+Version.m */,
 				6B4E117D1D676275008419A7 /* IGHTTPClient+UserData.h */,
 				6B4E117E1D676275008419A7 /* IGHTTPClient+UserData.m */,
+				6B1B0E661D6C8ABF00F30F65 /* IGHTTPClient+City.h */,
+				6B1B0E671D6C8ABF00F30F65 /* IGHTTPClient+City.m */,
+				6B1B0E691D6C978E00F30F65 /* IGHTTPClient+Member.h */,
+				6B1B0E6A1D6C978E00F30F65 /* IGHTTPClient+Member.m */,
+				6B1B0E6C1D6C9B2200F30F65 /* IGHTTPClient+Finance.h */,
+				6B1B0E6D1D6C9B2200F30F65 /* IGHTTPClient+Finance.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1366,12 +1368,12 @@
 			children = (
 				6BA60EEE1CD70DDD00E39D54 /* IGMoreStuffViewController.h */,
 				6BA60EEF1CD70DDD00E39D54 /* IGMoreStuffViewController.m */,
+				6BA60EF11CD70DDD00E39D54 /* MyInfo */,
+				6BA60EF71CD70DDD00E39D54 /* MyTeam */,
+				6BA60EF41CD70DDD00E39D54 /* MyPatients */,
+				6BA60F111CD768CF00E39D54 /* MyIncome */,
 				6BA60EE51CD70DDD00E39D54 /* DoneList */,
 				6BA60EF01CD70DDD00E39D54 /* IgoonaInfo */,
-				6BA60EF11CD70DDD00E39D54 /* MyInfo */,
-				6BA60EF41CD70DDD00E39D54 /* MyPatients */,
-				6BA60EF71CD70DDD00E39D54 /* MyTeam */,
-				6BA60F111CD768CF00E39D54 /* MyIncome */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1405,8 +1407,6 @@
 				6BA60EF31CD70DDD00E39D54 /* IGMyInformationViewController.m */,
 				6B6DA7BF1CDF0DB800DB5CBF /* IGChangeMyInfoViewController.h */,
 				6B6DA7C01CDF0DB800DB5CBF /* IGChangeMyInfoViewController.m */,
-				6B6DA7BC1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.h */,
-				6B6DA7BD1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m */,
 				6B1325691CE8725900C2A8C3 /* ChangeMyPhoto */,
 				6B13256E1CE8725900C2A8C3 /* ChangePassword */,
 				6B13256F1CE8725900C2A8C3 /* ChangePhoneNum */,
@@ -1423,8 +1423,6 @@
 				6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */,
 				6B697D2B1CD8F5B400A12CE1 /* IGMyPatientsDataManager.h */,
 				6B697D2C1CD8F5B400A12CE1 /* IGMyPatientsDataManager.m */,
-				6B697D2E1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.h */,
-				6B697D2F1CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m */,
 				6B0C119D1CDA2B83004EFE11 /* IGPatientDetailViewController.h */,
 				6B0C119E1CDA2B83004EFE11 /* IGPatientDetailViewController.m */,
 			);
@@ -1440,8 +1438,6 @@
 				6B74233E1CE0EEA8002D2B4D /* IGAddAssistantViewController.m */,
 				6BA60EF81CD70DDD00E39D54 /* IGMyTeamViewCell.h */,
 				6BA60EF91CD70DDD00E39D54 /* IGMyTeamViewCell.m */,
-				6BA60F0B1CD7575D00E39D54 /* IGMyTeamRequestEntity.h */,
-				6BA60F0C1CD7575D00E39D54 /* IGMyTeamRequestEntity.m */,
 			);
 			path = MyTeam;
 			sourceTree = "<group>";
@@ -1453,8 +1449,6 @@
 				6BA60F131CD768CF00E39D54 /* IGMyIncomeViewController.m */,
 				6BA60F1C1CD76C5800E39D54 /* IGMyIncomeDataManager.h */,
 				6BA60F1D1CD76C5800E39D54 /* IGMyIncomeDataManager.m */,
-				6BA60F151CD7690800E39D54 /* IGMyIncomeRequestEntity.h */,
-				6BA60F161CD7690800E39D54 /* IGMyIncomeRequestEntity.m */,
 				6B0D94941CE231C100C5BA6D /* IncomeMembers */,
 				6B0D94931CE231C100C5BA6D /* FinancialDetail */,
 				6B0D94951CE231C100C5BA6D /* Services */,
@@ -1568,7 +1562,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = IG;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Porco;
 				TargetAttributes = {
 					6B0001841C9D1E9500085229 = {
@@ -1674,7 +1668,6 @@
 				6B1325771CE872AA00C2A8C3 /* IGChangePhoneNumViewController.m in Sources */,
 				6BBF66821D65E847000FEF9F /* IGHTTPClient+Version.m in Sources */,
 				6B0D94981CE2321600C5BA6D /* IGIncomeMembersViewController.m in Sources */,
-				6B697D301CD8F61700A12CE1 /* IGMyPatientsRequestEntity.m in Sources */,
 				6B28F4A91CE4E25B00E60694 /* IGPatientServicesDataManager.m in Sources */,
 				6BA60F1E1CD76C5800E39D54 /* IGMyIncomeDataManager.m in Sources */,
 				6B4E11B91D676F71008419A7 /* IGBPChartManager.m in Sources */,
@@ -1719,11 +1712,11 @@
 				6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */,
 				6B4E11C11D676F71008419A7 /* IGEkgSmoothFilter.m in Sources */,
 				2C008DAC1CAF760F00ECE4B5 /* MJRefreshBackNormalFooter.m in Sources */,
+				6B1B0E681D6C8ABF00F30F65 /* IGHTTPClient+City.m in Sources */,
 				6B1C77F51D28F2BE0057FB50 /* SVRadialGradientLayer.m in Sources */,
 				6B0002311C9D250B00085229 /* IGDoctorInformation.m in Sources */,
 				6BBF66B11D660367000FEF9F /* IGAudioManager.m in Sources */,
 				6B76D7691CEB6779007D150A /* IGForgetPasswordViewController.m in Sources */,
-				6B6DA7BE1CDEF2AB00DB5CBF /* IGMyInformationRequestEntity.m in Sources */,
 				6B0002101C9D221900085229 /* AFURLResponseSerialization.m in Sources */,
 				6B28F4A31CE4DF6600E60694 /* IGFinancialDetailDataManager.m in Sources */,
 				6B4E11501D66AE6F008419A7 /* IGHTTPClient+Task.m in Sources */,
@@ -1756,10 +1749,10 @@
 				6BA60F071CD70DDD00E39D54 /* IGMyTeamViewController.m in Sources */,
 				6B0D94921CE22D3A00C5BA6D /* KxMenu.m in Sources */,
 				6B4E11561D66AF98008419A7 /* IGHTTPClient+Report.m in Sources */,
-				6BA60F171CD7690800E39D54 /* IGMyIncomeRequestEntity.m in Sources */,
 				6B4E11BC1D676F71008419A7 /* IGMemberDataManager.m in Sources */,
 				6B7A53D61CF49C38009FF2B7 /* IGIgoonaInfoViewController.m in Sources */,
 				6BA60F101CD759BF00E39D54 /* IGDocMemberObj.m in Sources */,
+				6B1B0E6E1D6C9B2200F30F65 /* IGHTTPClient+Finance.m in Sources */,
 				6B4E11621D66E330008419A7 /* IGTaskListDataManager.m in Sources */,
 				6B0002111C9D221900085229 /* AFURLSessionManager.m in Sources */,
 				2C506B941CD1C19900B61BB3 /* IGSingleSelectionTableViewController.m in Sources */,
@@ -1780,6 +1773,7 @@
 				6B7A53DC1CF4ABB1009FF2B7 /* IGInviteDoctroViewController.m in Sources */,
 				2C008DA61CAF760F00ECE4B5 /* MJRefreshFooter.m in Sources */,
 				2C008DB21CAF760F00ECE4B5 /* MJRefreshConst.m in Sources */,
+				6B1B0E6B1D6C978E00F30F65 /* IGHTTPClient+Member.m in Sources */,
 				6BFBA0341CB7EE5E0087B569 /* FMDatabase.m in Sources */,
 				6BBF66AF1D660367000FEF9F /* IGTaskNavigationController.m in Sources */,
 				6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */,
@@ -1794,11 +1788,9 @@
 				6BBF66B61D660367000FEF9F /* IGReportDetailViewCell.m in Sources */,
 				2C008DAE1CAF760F00ECE4B5 /* MJRefreshGifHeader.m in Sources */,
 				6B0002201C9D221900085229 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				6BA60F0D1CD7575D00E39D54 /* IGMyTeamRequestEntity.m in Sources */,
 				6B87C03B1CD501980050495B /* IGBpDataDetailObj.m in Sources */,
 				2C008DA71CAF760F00ECE4B5 /* MJRefreshHeader.m in Sources */,
 				6B4E11BD1D676F71008419A7 /* IGMemberDataViewCell.m in Sources */,
-				6B4E117C1D676253008419A7 /* IGHTTPClient+Version.m in Sources */,
 				6B4E118F1D6763AF008419A7 /* IGABPMObj.m in Sources */,
 				6B0002291C9D221900085229 /* IGSaveInfoCheckBox.m in Sources */,
 				6B1C77F11D28F2BE0057FB50 /* SVIndefiniteAnimatedView.m in Sources */,

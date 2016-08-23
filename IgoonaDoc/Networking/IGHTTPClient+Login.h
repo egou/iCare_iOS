@@ -7,6 +7,7 @@
 //
 
 #import "IGHTTPClient.h"
+#import "IGDocInfoDetailObj.h"
 
 @interface IGHTTPClient (Login)
 
@@ -50,4 +51,35 @@
 
 
 
+
+
+
+
+/**
+ 邀请助手
+ */
+-(void)requestToAddAssistantWithPhoneNum:(NSString *)phoneNum
+                                    name:(NSString *)name
+                           finishHandler:(void(^)(BOOL success,NSInteger errCode))finishHandler;
+
+/**
+ 重新邀请助手
+ */
+-(void)requestToReInviteAssistant:(NSString*)docId
+                    finishHandler:(void(^)(BOOL success,NSInteger errCode))finishHandler;
+
+
+
+/**邀请医生*/
+-(void)requestToInviteDoctorWithDocInfo:(IGDocInfoDetailObj*)docInfo
+                          finishHandler:(void(^)(BOOL success,NSInteger errCode,NSString *inviteId))finishHanlder;
+
+/**邀请代理*/
+-(void)requestToInviteAgencyWithPhoneNum:(NSString*)phoneNum
+                                    name:(NSString*)name
+                           finishHandler:(void(^)(BOOL success,NSInteger errCode,NSString *inviteId))finishHanlder;
+
+/**重新邀请医生/代理*/
+-(void)requestToReInviteDocOrAgency:(NSString*)inviteId
+                      finishHandler:(void(^)(BOOL success,NSInteger errCode))finishHandler;
 @end

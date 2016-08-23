@@ -10,10 +10,11 @@
 #import "IGDocInfoDetailObj.h"
 
 #import "IGSingleSelectionTableViewController.h"
-#import "IGMyInformationRequestEntity.h"
+#import "IGHTTPClient+City.h"
+#import "IGHTTPClient+Login.h"
+
 #import "IGCityInfoObj.h"
 
-#import "IGMyIncomeRequestEntity.h"
 #import "IGRegularExpression.h"
 
 @interface IGInviteDoctroViewController()<UITextFieldDelegate>
@@ -88,19 +89,19 @@
     }
     
     NSString *provinceId=self.detailInfo.dProvinceId;
-    if(!provinceId.length>0){
+    if(!(provinceId.length>0)){
         [SVProgressHUD showInfoWithStatus:@"请选择省级"];
         return;
     }
     
     NSString *cityId=self.detailInfo.dCityId;
-    if(!cityId.length>0){
+    if(!(cityId.length>0)){
         [SVProgressHUD showInfoWithStatus:@"请选择市区"];
         return;
     }
     
     NSString *hospital=self.hospitalTF.text;
-    if(!hospital.length>0){
+    if(!(hospital.length>0)){
         [SVProgressHUD showInfoWithStatus:@"请填写医院"];
         return;
     }
@@ -108,21 +109,19 @@
     
     
     [SVProgressHUD show];
-    [IGMyIncomeRequestEntity requestToInviteDoctorWithDocInfo:self.detailInfo finishHandler:^(NSInteger resultCode, NSString *inviteId) {
+    [IGHTTPCLIENT requestToInviteDoctorWithDocInfo:self.detailInfo finishHandler:^(BOOL success, NSInteger errCode, NSString *inviteId) {
         
-        if(resultCode==1){
-            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            return ;
-        }
-    
-        
-        if(resultCode==2){
-            [SVProgressHUD showInfoWithStatus:@"该用户已注册"];
-            return;
-        }
-        
-        [SVProgressHUD showInfoWithStatus:@"邀请失败"];
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+            }
+            
+        }];
+
     }];
 }
 
@@ -196,9 +195,9 @@
         NSString *provinceId=self.detailInfo.dProvinceId;
         if(provinceId.length>0){
             [SVProgressHUD show];
-            [IGMyInformationRequestEntity requestForAllCitiesOfProvince:provinceId finishHandler:^(NSArray *allCities) {
+            [IGHTTPCLIENT requestForAllCitiesOfProvince:provinceId finishHandler:^(BOOL success, NSInteger errCode, NSArray *allCities) {
                 [SVProgressHUD dismissWithCompletion:^{
-                    if(allCities){
+                    if(success){
                         
                         if(allCities.count==0){
                             //直辖市之类的
@@ -234,11 +233,10 @@
                         
                     }else{
                         
-                        [SVProgressHUD showInfoWithStatus:@"获取城市失败"];
+                        [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
                     }
+                    
                 }];
-                
-                
             }];
         }else{
             [SVProgressHUD showInfoWithStatus:@"请先选择省份"];

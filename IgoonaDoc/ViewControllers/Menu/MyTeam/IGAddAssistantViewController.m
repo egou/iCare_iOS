@@ -8,7 +8,8 @@
 
 #import "IGAddAssistantViewController.h"
 #import "IGRegularExpression.h"
-#import "IGMyTeamRequestEntity.h"
+
+#import "IGHTTPClient+Login.h"
 
 @interface IGAddAssistantViewController()
 
@@ -52,17 +53,19 @@
     
     [SVProgressHUD show];
     
-    [IGMyTeamRequestEntity requestToAddAssistantWithPhoneNum:phoneNum name:name finishHandler:^(BOOL success) {
-        
-        if(success){
-            
-            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        }else{
-            [SVProgressHUD showInfoWithStatus:@"邀请失败"];
-        }
+    [IGHTTPCLIENT requestToAddAssistantWithPhoneNum:phoneNum name:name finishHandler:^(BOOL success, NSInteger errCode) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                
+                [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+            }
+        }];
     }];
+    
 }
 
 

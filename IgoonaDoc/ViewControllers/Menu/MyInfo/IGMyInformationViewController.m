@@ -8,7 +8,7 @@
 
 #import "IGMyInformationViewController.h"
 #import "IGDocInfoDetailObj.h"
-#import "IGMyInformationRequestEntity.h"
+#import "IGHTTPClient+Doctor.h"
 
 #import "IGChangeMyInfoViewController.h"
 #import "MJRefresh.h"
@@ -46,17 +46,18 @@
     }
         
     //pull to refresh
-    __weak typeof(self) wSelf=self;
+    IGGenWSelf;
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [IGMyInformationRequestEntity requestForMyDetailInfoWithFinishHandler:^(IGDocInfoDetailObj *info) {
+        
+        [IGHTTPCLIENT requestForMyDetailInfoWithFinishHandler:^(BOOL success, NSInteger errCode, IGDocInfoDetailObj *info) {
             [wSelf.tableView.mj_header endRefreshing];
-            if(info){
+            if(success){
                 wSelf.detailInfo=info;
                 wSelf.detailInfo.dIconId=MYINFO.iconId;
                 [wSelf p_reloadAllData];
-                self.navigationItem.rightBarButtonItem.enabled=YES;
+                wSelf.navigationItem.rightBarButtonItem.enabled=YES;
             }else{
-                [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
             }
         }];
         

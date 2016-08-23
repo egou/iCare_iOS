@@ -7,9 +7,10 @@
 //
 
 #import "IGChangePasswordViewController.h"
-#import "IGMyInformationRequestEntity.h"
 #import "IGRegularExpression.h"
 #import "IGUserDefaults.h"
+
+#import "IGHTTPClient+Login.h"
 
 @interface IGChangePasswordViewController()
 @property (weak, nonatomic) IBOutlet UITextField *oldPwdTF;
@@ -54,8 +55,7 @@
     }
     
     [SVProgressHUD show];
-    [IGMyInformationRequestEntity requestToChangePasswordWithOldPassword:oldPwd newPassword:newPwd1 finishHandler:^(BOOL success) {
-     
+    [IGHTTPCLIENT requestToChangePasswordWithOldPassword:oldPwd newPassword:newPwd1 finishHandler:^(BOOL success, NSInteger errorCode) {
         if(success){
             
             MYINFO.password=newPwd1;
@@ -69,8 +69,9 @@
             [self.navigationController popViewControllerAnimated:YES];
             
         }else{
-            [SVProgressHUD showInfoWithStatus:@"修改密码失败"];
+            [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
         }
+
     }];
     
 }

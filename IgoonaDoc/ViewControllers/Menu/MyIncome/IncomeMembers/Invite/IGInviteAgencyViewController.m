@@ -7,8 +7,9 @@
 //
 
 #import "IGInviteAgencyViewController.h"
-#import "IGMyIncomeRequestEntity.h"
+
 #import "IGRegularExpression.h"
+#import "IGHTTPClient+Login.h"
 
 @interface IGInviteAgencyViewController ()
 
@@ -50,21 +51,16 @@
     
     
     [SVProgressHUD show];
-    [IGMyIncomeRequestEntity requestToInviteAgencyWithPhoneNum:phoneNum name:name finishHandler:^(NSInteger resultCode, NSString *inviteId) {
-     
-        if(resultCode==1){
-            [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            return ;
-        }
+    [IGHTTPCLIENT requestToInviteAgencyWithPhoneNum:phoneNum name:name finishHandler:^(BOOL success, NSInteger errCode, NSString *inviteId) {
         
-        
-        if(resultCode==2){
-            [SVProgressHUD showInfoWithStatus:@"该用户已注册"];
-            return;
-        }
-        
-        [SVProgressHUD showInfoWithStatus:@"邀请失败"];
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+            }
+            
+        }];
     }];
     
 

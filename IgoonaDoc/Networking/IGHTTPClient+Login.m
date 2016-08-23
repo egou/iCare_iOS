@@ -254,4 +254,128 @@
     
 }
 
+
+-(void)requestToAddAssistantWithPhoneNum:(NSString *)phoneNum name:(NSString *)name finishHandler:(void (^)(BOOL, NSInteger))finishHandler{
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"invite_assistant",
+                        @"userId":phoneNum,
+                        @"name":name}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                  
+                  if(IGRespSuccess){
+                      
+                      finishHandler(YES,0);
+                      
+                  }else{
+                      NSInteger errorCode=[responseObject[@"reason"] integerValue];
+                      finishHandler(NO,errorCode);
+                  }
+                  
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,IGErrorNetworkProblem);
+              }];
+
+}
+
+
+-(void)requestToReInviteAssistant:(NSString *)docId finishHandler:(void (^)(BOOL, NSInteger))finishHandler{
+    [IGHTTPCLIENT GET:@"php/login.php"
+           parameters:@{@"action":@"invite_assistant",
+                        @"id":docId}
+             progress:nil
+              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                  
+                  if(IGRespSuccess){
+                      
+                      finishHandler(YES,0);
+                      
+                  }else{
+                      NSInteger errorCode=[responseObject[@"reason"] integerValue];
+                      finishHandler(NO,errorCode);
+                  }
+                  
+                  
+              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                  finishHandler(NO,IGErrorNetworkProblem);
+              }];
+}
+
+
+
+-(void)requestToInviteDoctorWithDocInfo:(IGDocInfoDetailObj*)docInfo finishHandler:(void(^)(BOOL success,NSInteger errCode,NSString *inviteId))finishHanlder{
+    [self GET:@"php/login.php"
+   parameters:@{@"action":@"invite_doctor",
+                @"userId":docInfo.dPhoneNum,
+                @"name":docInfo.dName,
+                @"isMale":@(docInfo.dGender),
+                @"level":@(docInfo.dLevel),
+                @"city":docInfo.dCityId,
+                @"hospital":docInfo.dHospitalName}
+     progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+         NSLog(@"%@",responseObject);
+         if(IGRespSuccess){
+             
+             NSString* inviteId=responseObject[@"invite_id"];
+             finishHanlder(YES,0,inviteId);
+             
+         }else{
+              NSInteger errorCode=[responseObject[@"reason"] integerValue];
+             finishHanlder(NO,errorCode,nil);
+        }
+         
+         
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         finishHanlder(NO,IGErrorNetworkProblem,nil);
+    }];
+
+}
+
+
+-(void)requestToInviteAgencyWithPhoneNum:(NSString*)phoneNum name:(NSString*)name finishHandler:(void(^)(BOOL success,NSInteger errCode,NSString *inviteId))finishHanlder{
+    [self GET:@"php/login.php"
+   parameters:@{@"action":@"invite_doctor",
+                @"userId":phoneNum,
+                @"name":name}
+     progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary* responseObject) {
+         NSLog(@"%@",responseObject);
+         if(IGRespSuccess){
+             
+             NSString* inviteId=responseObject[@"invite_id"];
+             finishHanlder(YES,0,inviteId);
+             
+         }else{
+             NSInteger errorCode=[responseObject[@"reason"] integerValue];
+             finishHanlder(NO,errorCode,nil);
+        }
+         
+         
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         finishHanlder(NO,IGErrorNetworkProblem,nil);
+     }];
+    
+}
+
+
+-(void)requestToReInviteDocOrAgency:(NSString*)inviteId finishHandler:(void(^)(BOOL success,NSInteger errCode))finishHandler{
+    [self GET:@"php/login.php"
+   parameters:@{@"action":@"invite_doctor",
+                @"doctorId":inviteId}
+     progress:nil
+      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          
+          if(IGRespSuccess){
+              finishHandler(YES,0);
+          }else{
+              NSInteger errorCode=[responseObject[@"reason"] integerValue];
+              finishHandler(NO,errorCode);
+          }
+          
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          finishHandler(NO,IGErrorNetworkProblem);
+      }];
+    
+}
+
 @end

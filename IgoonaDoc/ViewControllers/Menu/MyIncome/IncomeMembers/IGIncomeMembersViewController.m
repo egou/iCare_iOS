@@ -14,7 +14,8 @@
 #import "IGIncomeMembersLv2ViewController.h"
 
 #import "MJRefresh.h"
-#import "IGMyIncomeRequestEntity.h"
+#import "IGHTTPClient+Login.h"
+
 
 @interface IGIncomeMembersViewController ()<IGIncomeMembersDataManagerDelegate>
 
@@ -84,9 +85,13 @@
     cell.onReInviteBtnHanlder=^(IGIncomeMembersViewCell* cell){
         NSLog(@"reinvite,%@",member.mId);
         [SVProgressHUD show];
-        [IGMyIncomeRequestEntity requestToReInviteDocOrAgency:member.mId finishHandler:^(BOOL success) {
-          
-            [SVProgressHUD showInfoWithStatus:success?@"邀请成功":@"邀请失败"];
+        [IGHTTPCLIENT requestToReInviteDocOrAgency:member.mId finishHandler:^(BOOL success, NSInteger errCode) {
+            [SVProgressHUD dismissWithCompletion:^{
+                if(success)
+                    [SVProgressHUD showSuccessWithStatus:@"邀请成功"];
+                else
+                    [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+            }];
         }];
     };
     

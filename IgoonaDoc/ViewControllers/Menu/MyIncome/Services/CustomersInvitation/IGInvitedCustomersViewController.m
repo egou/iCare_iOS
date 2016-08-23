@@ -9,12 +9,13 @@
 #import "IGInvitedCustomersViewController.h"
 #import "IGInvitedCustomersViewCell.h"
 
-#import "IGMyIncomeRequestEntity.h"
 #import "IGInvitedCustomerObj.h"
 
 #import "MJRefresh.h"
 
 #import "IGAddCustomerViewController.h"
+#import "IGHTTPClient+Doctor.h"
+#import "IGHTTPClient+Member.h"
 
 @interface IGInvitedCustomersViewController()
 
@@ -66,14 +67,16 @@
     [cell setInvitedCustomerInfo:customer];
     cell.onReSendBtnHandler=^(IGInvitedCustomersViewCell* cell){
         [SVProgressHUD show];
-        [IGMyIncomeRequestEntity requestToReInvitedCustomer:customer.cId finishHandler:^(BOOL success) {
-          
+        [IGHTTPCLIENT requestToReInvitedCustomer:customer.cId finishHandler:^(BOOL success, NSInteger errCode) {
             
-            if(success){
-                [SVProgressHUD showSuccessWithStatus:@"重发成功"];
-            }else{
-                [SVProgressHUD showInfoWithStatus:@"重发失败"];
-            }
+            [SVProgressHUD dismissWithCompletion:^{
+                if(success){
+                    [SVProgressHUD showSuccessWithStatus:@"重发成功"];
+                }else{
+                    [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+                }
+            }];
+            
         }];
     };
     
@@ -99,17 +102,18 @@
     
     
     //pull
-    
-    __weak typeof(self) wSelf=self;
+    IGGenWSelf;
     
     self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [IGMyIncomeRequestEntity requestForInvitedCustomersFinishHandler:^(NSArray *customersInfo) {
+        
+        [IGHTTPCLIENT requestForInvitedCustomersFinishHandler:^(BOOL success, NSInteger errCode, NSArray *customersInfo) {
+            
             [wSelf.tableView.mj_header endRefreshing];
             if(customersInfo){
                 wSelf.customersList=customersInfo;
                 [wSelf.tableView reloadData];
             }else{
-                [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
             }
         }];
     }];

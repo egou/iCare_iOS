@@ -7,7 +7,7 @@
 //
 
 #import "IGMyIncomeDataManager.h"
-#import "IGMyIncomeRequestEntity.h"
+#import "IGHTTPClient+Finance.h"
 
 @interface IGMyIncomeDataManager()
 
@@ -30,7 +30,7 @@
 
 
 -(void)pullToRefresh{
-    [IGMyIncomeRequestEntity requestForMyIncomeWithStartNum:0 finishHandler:^(BOOL success, NSArray *incomeInfo,NSInteger total) {
+    [IGHTTPCLIENT requestForMyIncomeWithStartNum:0 finishHandler:^(BOOL success, NSInteger errCode, NSArray *incomeInfo, NSInteger total) {
         if(success){
             self.incomeList=incomeInfo;
             self.hasLoadedAll=incomeInfo.count>=total?YES:NO;
@@ -41,7 +41,7 @@
 
 -(void)pullToLoadMore{
     NSInteger start=self.incomeList.count;
-    [IGMyIncomeRequestEntity requestForMyIncomeWithStartNum:start finishHandler:^(BOOL success, NSArray *incomeInfo, NSInteger total) {
+    [IGHTTPCLIENT requestForMyIncomeWithStartNum:start finishHandler:^(BOOL success, NSInteger errCode, NSArray *incomeInfo, NSInteger total) {
         if(success){
             self.incomeList=[self.incomeList arrayByAddingObjectsFromArray:incomeInfo];
             self.hasLoadedAll=incomeInfo.count>=total?YES:NO;

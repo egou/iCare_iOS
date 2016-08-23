@@ -7,8 +7,10 @@
 //
 
 #import "IGMyPatientsDataManager.h"
-#import "IGMyPatientsRequestEntity.h"
 #import "IGPatientInfoObj.h"
+
+#import "IGHTTPClient+Member.h"
+#import "IGHTTPClient+Doctor.h"
 
 @interface IGMyPatientsDataManager()
 
@@ -29,7 +31,7 @@
 
 
 -(void)pullToRefresh{
-    [IGMyPatientsRequestEntity requestForMyPatientsWithStartNum:0 finishHandler:^(BOOL success, NSArray *patients,NSInteger total) {
+    [IGHTTPCLIENT requestForMyPatientsWithStartNum:0 finishHandler:^(BOOL success, NSInteger errCode, NSArray *patients, NSInteger total) {
         if(success){
             self.patientsList=patients;
             self.hasLoadedAll=patients.count>=total?YES:NO;
@@ -40,8 +42,8 @@
 
 -(void)pullToLoadMore{
     NSInteger start=self.patientsList.count;
-    [IGMyPatientsRequestEntity requestForMyPatientsWithStartNum:start finishHandler:^(BOOL success, NSArray *patients,NSInteger total) {
-
+    [IGHTTPCLIENT requestForMyPatientsWithStartNum:start finishHandler:^(BOOL success, NSInteger errCode, NSArray *patients, NSInteger total) {
+        
         if(success){
             self.patientsList=[self.patientsList arrayByAddingObjectsFromArray:patients];
             self.hasLoadedAll=patients.count>=total?YES:NO;
@@ -55,7 +57,7 @@
 -(void)selectRowAtIndex:(NSInteger)row{
     IGPatientInfoObj *pInfo=self.patientsList[row];
     
-    [IGMyPatientsRequestEntity requestForPatientDetailInfoWithPatientId:pInfo.pId finishHandler:^(BOOL success, IGPatientDetailInfoObj *detailInfo) {
+    [IGHTTPCLIENT requestForPatientDetailInfoWithPatientId:pInfo.pId finishHandler:^(BOOL success, NSInteger errCode, IGPatientDetailInfoObj *detailInfo) {
         [self.delegate dataManager:self didGotPatientDetailInfo:detailInfo];
     }];
 }
