@@ -18,6 +18,7 @@
 
 #import "IGMessageViewController.h"
 #import "IGReportDetailViewController.h"
+#import "IGIgoonaInfoViewController.h"
 
 #import "IGTaskObj.h"
 
@@ -109,9 +110,9 @@
             [self.routingOwner.navigationController pushViewController:doneListVC animated:YES];
         }
         
+        //关于我好了
         if(event==IGMoreStuffEventTouchIgoonaInfo){
-            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MoreStuff" bundle:nil];
-            UIViewController *infoVC=[sb instantiateViewControllerWithIdentifier:@"IGIgoonaInfoViewController"];
+            IGIgoonaInfoViewController *infoVC=[IGIgoonaInfoViewController new];
             [self.routingOwner.navigationController pushViewController:infoVC animated:YES];
         }
         

@@ -1,8 +1,8 @@
 //
 //  IGAgreementViewController.h
-//  IgoonaDoc
+//  iHeart
 //
-//  Created by porco on 16/5/23.
+//  Created by porco on 16/7/23.
 //  Copyright © 2016年 Porco. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 @interface IGAgreementViewController : UIViewController
 
-@property (nonatomic,copy) void(^agreeSuccessHandler)(IGAgreementViewController* vc);
+@property (nonatomic,copy) void(^didAgreeHandler)(IGAgreementViewController* vc);
 
 @end

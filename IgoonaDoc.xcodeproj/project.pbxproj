@@ -146,6 +146,7 @@
 		6B4E11C11D676F71008419A7 /* IGEkgSmoothFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B21D676F71008419A7 /* IGEkgSmoothFilter.m */; };
 		6B4E11C21D676F71008419A7 /* IGEkgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B41D676F71008419A7 /* IGEkgView.m */; };
 		6B4E11C31D676F71008419A7 /* IGReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4E11B71D676F71008419A7 /* IGReportViewController.m */; };
+		6B4F5D611D6D4A7D0056438E /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6B4F5D601D6D4A7D0056438E /* agreement.txt */; };
 		6B5A02D51CD6789A00BDA92D /* IGTaskObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */; };
 		6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D211CD8F26200A12CE1 /* IGMyPatientsViewCell.m */; };
 		6B697D2A1CD8F43000A12CE1 /* IGPatientInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B697D291CD8F43000A12CE1 /* IGPatientInfoObj.m */; };
@@ -523,6 +524,7 @@
 		6B4E11B41D676F71008419A7 /* IGEkgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGEkgView.m; sourceTree = "<group>"; };
 		6B4E11B61D676F71008419A7 /* IGReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportViewController.h; sourceTree = "<group>"; };
 		6B4E11B71D676F71008419A7 /* IGReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportViewController.m; sourceTree = "<group>"; };
+		6B4F5D601D6D4A7D0056438E /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
 		6B5A02D31CD6789A00BDA92D /* IGTaskObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGTaskObj.h; sourceTree = "<group>"; };
 		6B5A02D41CD6789A00BDA92D /* IGTaskObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGTaskObj.m; sourceTree = "<group>"; };
 		6B697D201CD8F26100A12CE1 /* IGMyPatientsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGMyPatientsViewCell.h; sourceTree = "<group>"; };
@@ -776,6 +778,7 @@
 				6B032DE31CC11FC90027DDAD /* Utility */,
 				6B0001881C9D1E9500085229 /* Supporting Files */,
 				6B1584D21CB1315C009C4EAD /* Frameworks */,
+				6B4F5D5C1D6D4A610056438E /* resources */,
 			);
 			path = IgoonaDoc;
 			sourceTree = "<group>";
@@ -1320,6 +1323,14 @@
 			path = report;
 			sourceTree = "<group>";
 		};
+		6B4F5D5C1D6D4A610056438E /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B4F5D601D6D4A7D0056438E /* agreement.txt */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		6B76D7641CEB604F007D150A /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -1640,6 +1651,7 @@
 				6B0002071C9D221900085229 /* Login.storyboard in Resources */,
 				6B033D411CC2895900CD87DC /* MoreStuff.storyboard in Resources */,
 				6BFBA0391CB7EE5E0087B569 /* Info.plist in Resources */,
+				6B4F5D611D6D4A7D0056438E /* agreement.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

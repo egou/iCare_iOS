@@ -9,7 +9,7 @@
 #import "IGIgoonaInfoViewController.h"
 
 @interface IGIgoonaInfoViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic)  UITextView *textView;
 
 @end
 
@@ -20,33 +20,44 @@
     // Do any additional setup after loading the view.
     
 
+    self.automaticallyAdjustsScrollViewInsets=NO;
+    
+    [self p_initAdditionalUI ];
+}
+
+
+-(void)onBackBtn:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+-(void)p_initAdditionalUI{
+    self.view.backgroundColor=IGUI_NormalBgColor;
     
     //nav
     self.navigationItem.title=@"关于我好了";
     self.navigationItem.hidesBackButton=YES;
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
-
+    
     //textview
-    self.textView.dataDetectorTypes=UIDataDetectorTypeAll;
+    self.textView=[UITextView new];
+    [self.view addSubview:self.textView];
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(64, 0, 0, 0));
+    }];
+    
+    self.textView.font=[UIFont systemFontOfSize:16.];
+    self.textView.editable=NO;
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *agreeURL=[[NSBundle mainBundle] URLForResource:@"agreement" withExtension:@"txt"];
+        NSData *agreeData=[[NSData alloc] initWithContentsOfURL:agreeURL];
+        NSString *agreeStr=[[NSString alloc] initWithData:agreeData  encoding:NSUTF8StringEncoding];
+        self.textView.text=agreeStr;
+        self.textView.dataDetectorTypes=UIDataDetectorTypePhoneNumber|UIDataDetectorTypeLink|UIDataDetectorTypeAddress;
+    });
 }
-
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [self.textView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-}
-
--(void)onBackBtn:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
