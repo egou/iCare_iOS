@@ -157,11 +157,16 @@
     textView.editable=NO;
     textView.dataDetectorTypes=UIDataDetectorTypePhoneNumber|UIDataDetectorTypeLink;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *agreementText=[self p_loadAgreementFromFile];
-        NSMutableAttributedString *agreement=[[NSMutableAttributedString alloc] initWithString:agreementText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.]}];
-        textView.attributedText=agreement;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableAttributedString *agreement=[[NSMutableAttributedString alloc] initWithString:agreementText attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.]}];
+            textView.attributedText=agreement;
+        });
     });
+    
     
 }
 

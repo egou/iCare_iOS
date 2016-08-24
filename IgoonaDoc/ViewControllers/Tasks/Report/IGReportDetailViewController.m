@@ -15,11 +15,14 @@
 #import "IGMemberDataViewController.h"
 
 
+
 #import "IGHTTPClient+Task.h"
 #import "IGHTTPClient+Report.h"
 #import "IGHTTPClient+UserData.h"
 
 #import "IGEkgDataV2ViewController.h"
+#import "IGBpDataOnceViewController.h"
+#import "IGABPMDataViewController.h"
 
 @interface IGReportDetailViewController ()
 
@@ -51,34 +54,69 @@
     
     NSInteger dataType=[self.autoReportDic[@"source_type"] integerValue];
     NSString *dataRefId=self.autoReportDic[@"reference_id"];
-                         
-    if(dataType==1){    //心电仪数据
-        
+    
+    if(dataType==1){//心电
         [SVProgressHUD show];
-
-        [IGHTTPCLIENT requestForEkgDataDetailWithID:dataRefId finishHandler:^(BOOL success,NSInteger errCode, IGMemberEkgDataObj *ekgData) {
+        IGGenWSelf;
+        [IGHTTPCLIENT requestForEkgDataDetailWithID:dataRefId finishHandler:^(BOOL success, NSInteger errCode,IGMemberEkgDataObj *ekgData) {
             [SVProgressHUD dismissWithCompletion:^{
                 
                 if(success){
                     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-                    IGEkgDataV2ViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
-                    vc.data=ekgData;
-                    [self.navigationController pushViewController:vc animated:YES];
+                    IGEkgDataV2ViewController *ekgVC=[sb instantiateViewControllerWithIdentifier:@"IGEkgDataV2ViewController"];
+                    ekgVC.data=ekgData;
+                    [wSelf.navigationController pushViewController:ekgVC animated:YES];
                     
                 }else{
-                    [SVProgressHUD showInfoWithStatus:@"获取数据失败"];
+                    [SVProgressHUD showInfoWithStatus:@"加载数据失败"];
                 }
                 
             }];
-
         }];
-      
-        return;
     }
     
-    if(dataType==2){
+    if(dataType==2) {//血压
+        [SVProgressHUD show];
+        IGGenWSelf;
+        [IGHTTPCLIENT requestForBpDataDetailWithId:dataRefId memberId:@"" startDate:@"" endDate:@"" finishHandler:^(BOOL success, NSInteger errCode, NSArray *bpData) {
+            
+            [SVProgressHUD dismissWithCompletion:^{
+                
+                if(success&&bpData.count>0){
+                    IGBpDataOnceViewController* bpVC=[IGBpDataOnceViewController new];
+                    bpVC.bpData= bpData.firstObject;
+                    
+                    [wSelf.navigationController pushViewController:bpVC animated:YES];
+                }else{
+                    [SVProgressHUD showInfoWithStatus:@"加载数据失败"];
+                }
+                
+            }];
+            
+        }];
         
-        return;
+        
+    }
+    
+    if(dataType==3){//动态血压
+        [SVProgressHUD show];
+        IGGenWSelf;
+        [IGHTTPCLIENT requestForABPMDataDetailWithId:dataRefId finishHandler:^(BOOL success, NSInteger errCode, NSArray *ABPMData) {
+            
+            [SVProgressHUD dismissWithCompletion:^{
+                if(success) {
+                    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
+                    IGABPMDataViewController *ABPMVC=[sb instantiateViewControllerWithIdentifier:@"IGABPMDataViewController"];
+                    
+                    ABPMVC.ABPMItems=ABPMData;
+                    
+                    [wSelf.navigationController pushViewController:ABPMVC animated:YES];
+                }else{
+                    [SVProgressHUD showInfoWithStatus:@"加载数据失败"];
+                }
+            }];
+        }];
+        
     }
     
 }

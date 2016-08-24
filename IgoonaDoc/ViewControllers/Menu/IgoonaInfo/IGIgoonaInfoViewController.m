@@ -51,12 +51,16 @@
     self.textView.editable=NO;
     
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *agreeURL=[[NSBundle mainBundle] URLForResource:@"agreement" withExtension:@"txt"];
         NSData *agreeData=[[NSData alloc] initWithContentsOfURL:agreeURL];
         NSString *agreeStr=[[NSString alloc] initWithData:agreeData  encoding:NSUTF8StringEncoding];
-        self.textView.text=agreeStr;
-        self.textView.dataDetectorTypes=UIDataDetectorTypePhoneNumber|UIDataDetectorTypeLink|UIDataDetectorTypeAddress;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.textView.text=agreeStr;
+            self.textView.dataDetectorTypes=UIDataDetectorTypePhoneNumber|UIDataDetectorTypeLink|UIDataDetectorTypeAddress;
+
+        });
+        
     });
 }
 

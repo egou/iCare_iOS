@@ -1508,10 +1508,10 @@
 		6BBF669E1D660367000FEF9F /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF669F1D660367000FEF9F /* IGReportDetailViewCell.h */,
-				6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */,
 				6BBF66A11D660367000FEF9F /* IGReportDetailViewController.h */,
 				6BBF66A21D660367000FEF9F /* IGReportDetailViewController.m */,
+				6BBF669F1D660367000FEF9F /* IGReportDetailViewCell.h */,
+				6BBF66A01D660367000FEF9F /* IGReportDetailViewCell.m */,
 			);
 			path = Report;
 			sourceTree = "<group>";
