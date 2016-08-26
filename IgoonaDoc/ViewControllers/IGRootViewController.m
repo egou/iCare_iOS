@@ -41,7 +41,7 @@
 -(void)startLoading
 {
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    IGFirstLoadingViewController* loadingVC=[sb instantiateViewControllerWithIdentifier:@"IGFirstLoadingViewControllerID"];
+    IGFirstLoadingViewController* loadingVC=[sb instantiateViewControllerWithIdentifier:@"IGFirstLoadingViewController"];
     loadingVC.delegate=self;
     
     [self addChildViewController:loadingVC];
@@ -61,7 +61,7 @@
     UIViewController *curVC=[self.childViewControllers firstObject];
     
     UIStoryboard *sb=[UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    UIViewController *loginVC=[sb instantiateViewControllerWithIdentifier:@"IGLoginViewControllerID"];
+    UIViewController *loginVC=[sb instantiateViewControllerWithIdentifier:@"IGLoginViewController"];
 
     [self addChildViewController:loginVC];
     

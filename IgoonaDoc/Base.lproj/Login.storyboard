@@ -29,7 +29,7 @@
         <!--First Loading View Controller-->
         <scene sceneID="m6I-rh-822">
             <objects>
-                <viewController storyboardIdentifier="IGFirstLoadingViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wzL-DJ-p8q" customClass="IGFirstLoadingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IGFirstLoadingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wzL-DJ-p8q" customClass="IGFirstLoadingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rqr-l2-Uox"/>
                         <viewControllerLayoutGuide type="bottom" id="aSR-e8-tLk"/>
@@ -80,7 +80,7 @@
         <!--绑定手机-->
         <scene sceneID="8nG-4T-tOh">
             <objects>
-                <viewController storyboardIdentifier="IGSignupViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6bu-kD-059" customClass="IGSignupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IGSignupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6bu-kD-059" customClass="IGSignupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BKS-l6-ab6"/>
                         <viewControllerLayoutGuide type="bottom" id="bLa-Dl-qUR"/>
@@ -286,7 +286,7 @@
         <!--Login View Controller-->
         <scene sceneID="cym-TA-5lR">
             <objects>
-                <viewController storyboardIdentifier="IGLoginViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xMj-Ao-yHF" customClass="IGLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IGLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xMj-Ao-yHF" customClass="IGLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KAS-IA-Mdv"/>
                         <viewControllerLayoutGuide type="bottom" id="5v9-7y-q2J"/>
