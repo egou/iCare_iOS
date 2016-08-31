@@ -27,16 +27,11 @@
     
     int min=1000;
     int max=-1000;
-    int avgCt = 10;
+    int avgCt = 8;
     int start = 0;
     int end=dataLen;
     for(int i = 0; i<dataLen; ++i){
         int v = values[i]&0xFF;
-        if(v==0 && i>end*2/3)
-        {
-            end=i-1;
-            break;
-        }
         v-=128;
         for(int j = 0; j<avgCt; ++j) {
             if (i+j <dataLen) {
@@ -74,7 +69,7 @@
     int avgThr = (avg*5)/end;
     if( avgThr>max/2)avgThr=max/2;
     avg=avgThr/5;
-    if(avg == 0)avg=1;
+    if(avg == 0)avg=5;
     for(int i = 2; i<end-5; ++i){
         if(intV3[i]>avg && (intV3[i]>intV3[i-1] ||(intV3[i]==intV3[i-1] && intV3[i]>intV3[i-2])) && intV3[i]>intV3[i+1]){
             min = 0;
@@ -83,25 +78,39 @@
             }
             if(min<0 && intV3[i]-min>=avgThr) {
                 intV4[i] = intV[i];
-                int w = MIN(5, i);
+                int w = MIN(20, i);
+                int baseV = 100;
                 for (int k = 0; k < w; ++k) {
-                    if (intV3[i - k] > avg) intV4[i - k] = intV[i - k];
-                    else break;
+                    int idx = i - k;
+                    if (intV3[idx]>1) intV4[idx] = intV[idx];
+                    else {
+                        baseV = intV4[idx];
+                        break;
+                    }
                 }
                 int s = 0;
-                for (int k = 1; k <= 10; ++k) {
+                for (int k = 1; k <= 8; ++k) {
                     int idx = i + k;
                     if (idx == end) {
                         break;
                     }
                     intV4[idx] = intV[idx];
                 }
-                i += 10;
+                i += 8;
+                w=MIN(end-i, 8);
+                for(int k = w-1; k>0; k--){
+                    int a = 0;
+                    for(int n=0; n<=k; n++){
+                        a+=intV[i+n];
+                    }
+                    a/=(k+1);
+                    intV4[i+k] = a;
+                }
+                i+=8;
             }
         }
     }
-    
-    
+
     uint8_t finalRawData[dataLen];
     for(int i=0;i<dataLen;i++){
         finalRawData[i]= (intV4[i]+128)&0xff;
