@@ -208,7 +208,7 @@
     
     if(MYINFO.type==10||MYINFO.type==11){
         IGGenWSelf;
-        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:[NSBundle mainBundle]];
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:[NSBundle mainBundle]];
         IGTaskNavigationController *taskNC=[sb instantiateViewControllerWithIdentifier:@"IGTaskNavigationController"];
         taskNC.modalTransitionStyle=UIModalTransitionStyleCrossDissolve;
         taskNC.logoutHandler=^(IGTaskNavigationController* nc){

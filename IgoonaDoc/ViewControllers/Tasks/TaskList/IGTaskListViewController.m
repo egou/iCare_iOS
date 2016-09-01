@@ -110,7 +110,7 @@
 
 #pragma mark - data manager delegate
 
--(void)taskListDataManager:(IGTaskListDataManager *)manager didRefreshToDoListSuccess:(BOOL)success{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didRefreshTaskListSuccess:(BOOL)success{
     [self.tableView.mj_header endRefreshing];
     if(success){
         [self p_reloadData];
@@ -120,7 +120,7 @@
     }
 }
 
--(void)taskListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didLoadMoreTaskListSuccess:(BOOL)success{
     [self.tableView.mj_footer endRefreshing];
     if(success){
         [self p_reloadData];
@@ -152,7 +152,7 @@
 
 
 
--(void)taskListDataManager:(IGTaskListDataManager *)manager shouldHandleTaskSuccess:(BOOL)success errCode:(NSInteger)errCode taskInfo:(IGTaskObj *)taskInfo reportInfo:(NSDictionary *)reportInfo{
+-(void)taskListDataManager:(IGTaskListDataManager *)manager shouldHandleTaskSuccess:(BOOL)success errCode:(NSInteger)errCode taskInfo:(IGTaskObj *)taskInfo reportInfo:(IGMemberReportDataObj*)reportInfo{
 
     [SVProgressHUD dismissWithCompletion:^{
         
@@ -165,6 +165,7 @@
             }
             
             if(taskInfo.tType==2){
+                
                 
                 //报告
                 [self.routing transToReportDetailViewWithTaskInfo:taskInfo autoReport:reportInfo];

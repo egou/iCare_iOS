@@ -50,7 +50,7 @@
 }
 
 -(void)onMsgHistoryBtn:(id)sender{
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
     IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
     
     msgVC.memberId=self.detailInfo.pId;

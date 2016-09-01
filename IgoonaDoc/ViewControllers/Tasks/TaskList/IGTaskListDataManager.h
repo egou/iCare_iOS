@@ -40,18 +40,19 @@
 
 
 @class IGTaskObj;
+@class IGMemberReportDataObj;
 @protocol IGTaskListDataManagerDelegate <NSObject>
 
 -(void)taskListDataManager:(IGTaskListDataManager*)manager didChangeWorkStatusSuccess:(BOOL)success;
 
--(void)taskListDataManager:(IGTaskListDataManager*)manager didRefreshToDoListSuccess:(BOOL)success;
--(void)taskListDataManager:(IGTaskListDataManager *)manager didLoadMoreToDoListSuccess:(BOOL)success;
+-(void)taskListDataManager:(IGTaskListDataManager*)manager didRefreshTaskListSuccess:(BOOL)success;
+-(void)taskListDataManager:(IGTaskListDataManager *)manager didLoadMoreTaskListSuccess:(BOOL)success;
 
 
 /**
  如果成功，且task为report，则智能报告内容在reportInfo里
  */
--(void)taskListDataManager:(IGTaskListDataManager *)manager shouldHandleTaskSuccess:(BOOL)success errCode:(NSInteger)errCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(NSDictionary*)reportInfo;
+-(void)taskListDataManager:(IGTaskListDataManager *)manager shouldHandleTaskSuccess:(BOOL)success errCode:(NSInteger)errCode taskInfo:(IGTaskObj*)taskInfo reportInfo:(IGMemberReportDataObj*)reportInfo;
 
 
 /*任务状态发生变化**/

@@ -74,7 +74,7 @@
             
             [self saveIconsWithTasks:tasks];
         }
-        [self.delegate taskListDataManager:self didRefreshToDoListSuccess:success];
+        [self.delegate taskListDataManager:self didRefreshTaskListSuccess:success];
     }];
     
 }
@@ -91,11 +91,11 @@
                 
                 [self saveIconsWithTasks:tasks];
             }
-            [self.delegate taskListDataManager:self didLoadMoreToDoListSuccess:success];
+            [self.delegate taskListDataManager:self didLoadMoreTaskListSuccess:success];
         }];
         
     }else{
-        [self.delegate taskListDataManager:self didLoadMoreToDoListSuccess:NO];
+        [self.delegate taskListDataManager:self didLoadMoreTaskListSuccess:NO];
     }
 }
 
@@ -110,7 +110,7 @@
            
             if(success&&todo.tType==2){
                 //如果请求处理报告成功，则还需一步
-                [IGHTTPCLIENT requestForAutoReportContentWithTaskId:todo.tId finishHandler:^(BOOL success, NSInteger errorCode, NSDictionary *autoReportDic) {
+                [IGHTTPCLIENT requestForAutoReportContentWithTaskId:todo.tId finishHandler:^(BOOL success, NSInteger errorCode, IGMemberReportDataObj *autoReportDic) {
                     
                     [wSelf.delegate taskListDataManager:wSelf shouldHandleTaskSuccess:success errCode:errorCode taskInfo:todo reportInfo:autoReportDic];
                     
@@ -179,9 +179,9 @@
     
     //2处理中,3完成,1未处理
     
-     NSMutableArray *mTodoList= [self.taskListArray mutableCopy];
+     NSMutableArray *mTaskList= [self.taskListArray mutableCopy];
     __block BOOL newTask=YES;   //判断是否为新任务
-    [mTodoList enumerateObjectsUsingBlock:^(IGTaskObj* t, NSUInteger idx, BOOL * _Nonnull stop) {
+    [mTaskList enumerateObjectsUsingBlock:^(IGTaskObj* t, NSUInteger idx, BOOL * _Nonnull stop) {
         if([t.tId isEqualToString:task.tId]){
             t.tStatus=task.tStatus;
             newTask=NO;
@@ -194,11 +194,11 @@
     
     //如果是新任务，则插到最前面
     if(newTask&&task.tStatus!=3){
-        [mTodoList insertObject:task atIndex:0];
+        [mTaskList insertObject:task atIndex:0];
     }
     
-    [mTodoList removeObjectsInArray:finishedTasks];
-    self.taskListArray=[mTodoList copy];
+    [mTaskList removeObjectsInArray:finishedTasks];
+    self.taskListArray=[mTaskList copy];
     
     [self.delegate taskListDataManagerdidChangedTaskStatus:self];
 }

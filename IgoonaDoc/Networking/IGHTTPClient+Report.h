@@ -20,7 +20,7 @@
 /**
  请求智能报告内容
  */
--(void)requestForAutoReportContentWithTaskId:(NSString*)taskId finishHandler:(void(^)(BOOL success, NSInteger errorCode, NSDictionary *autoReportDic))handler;
+-(void)requestForAutoReportContentWithTaskId:(NSString*)taskId finishHandler:(void(^)(BOOL success, NSInteger errorCode, IGMemberReportDataObj *autoReportDic))handler;
 
 
 /**donelist中，根据taskId 获取报告内容*/

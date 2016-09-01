@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class IGTaskObj;
+@class IGMemberReportDataObj;
 
 @interface IGTaskListRouting : NSObject
 
@@ -21,7 +22,7 @@
 
 
 -(void)transToMsgDetailViewWithTaskInfo:(IGTaskObj*)taskInfo;
--(void)transToReportDetailViewWithTaskInfo:(IGTaskObj*)taskInfo autoReport:(NSDictionary*)autoReport;
+-(void)transToReportDetailViewWithTaskInfo:(IGTaskObj*)taskInfo autoReport:(IGMemberReportDataObj*)autoReport;
 
 
 @end

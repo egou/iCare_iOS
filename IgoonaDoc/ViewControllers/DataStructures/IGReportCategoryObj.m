@@ -42,6 +42,16 @@
     return _allCategories;
 }
 
+
++(NSArray*)allEkgCategoriesInfo{
+    
+    return [[self allCategoriesInfo] subarrayWithRange:NSMakeRange(4, [self allCategoriesInfo].count-4)];
+}
+
+
+
+
+
 -(instancetype)initWithId:(NSInteger)objId name:(NSString *)name type:(NSInteger)type index:(NSInteger)index valueType:(NSInteger)valueType{
     if(self=[super init]){
         self.cId=objId;

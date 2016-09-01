@@ -17,10 +17,13 @@
 #import "IGMyIncomeViewController.h"
 
 #import "IGMessageViewController.h"
-#import "IGReportDetailViewController.h"
+#import "IGBpReportTaskViewController.h"
+#import "IGEkgReportTaskViewController.h"
 #import "IGIgoonaInfoViewController.h"
 
 #import "IGTaskObj.h"
+#import "IGMemberReportDataObj.h"
+
 
 
 @interface IGTaskListRouting()<IGMoreStuffViewControllerDelegate,UIViewControllerTransitioningDelegate>
@@ -44,7 +47,7 @@
 
 -(void)transToMsgDetailViewWithTaskInfo:(IGTaskObj *)taskInfo{
 
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
     IGMessageViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
     vc.memberId=taskInfo.tMemberId;
     vc.memberName=taskInfo.tMemberName;
@@ -56,13 +59,31 @@
 
 }
 
--(void)transToReportDetailViewWithTaskInfo:(IGTaskObj *)taskInfo autoReport:(NSDictionary *)autoReport{
+-(void)transToReportDetailViewWithTaskInfo:(IGTaskObj *)taskInfo autoReport:(IGMemberReportDataObj*)autoReport{
     
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
-    IGReportDetailViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGReportDetailViewController"];
-    vc.taskInfo=taskInfo;
-    vc.autoReportDic=autoReport;
-    [self.routingOwner.navigationController pushViewController:vc animated:YES];
+    NSLog(@"%@",autoReport);
+    
+    
+    if(autoReport.rSourceType==1){//ekg
+        
+        IGEkgReportTaskViewController *reportVC=[IGEkgReportTaskViewController new];
+        reportVC.taskInfo=taskInfo;
+        reportVC.reportContent=autoReport;
+        [self.routingOwner.navigationController pushViewController:reportVC animated:YES];
+    }
+    
+    
+    
+    
+    if(autoReport.rSourceType==2||autoReport.rSourceType==3){//bp
+        
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
+        IGBpReportTaskViewController *reportVC=[sb instantiateViewControllerWithIdentifier:@"IGBpReportTaskViewController"];
+        reportVC.taskInfo=taskInfo;
+        reportVC.reportContent=autoReport;
+        [self.routingOwner.navigationController pushViewController:reportVC animated:YES];
+        
+    }
 
 }
 
@@ -105,7 +126,7 @@
         
         //已办记事
         if(event==IGMoreStuffEventTouchHistoryTasks){
-            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+            UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
             UIViewController *doneListVC=[sb instantiateViewControllerWithIdentifier:@"IGDoneListViewController"];
             [self.routingOwner.navigationController pushViewController:doneListVC animated:YES];
         }

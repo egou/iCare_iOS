@@ -35,7 +35,7 @@
 
 
 
--(void)requestForAutoReportContentWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSInteger, NSDictionary *))handler{
+-(void)requestForAutoReportContentWithTaskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSInteger, IGMemberReportDataObj *))handler{
     
     [self  GET:@"php/report.php"
     parameters:@{@"action":@"get_task_report",
@@ -44,7 +44,22 @@
        success:^(NSURLSessionDataTask * task, NSDictionary* responseObject) {
 
            if(IGRespSuccess){
-               handler(YES,0, responseObject);
+               
+               IGMemberReportDataObj *report=[IGMemberReportDataObj new];
+               
+               report.rId=IG_SAFE_STR(responseObject[@"id"]);
+//               report.rMemberId=IG_SAFE_STR(responseObject[@"member_id"]);
+               report.rSourceType=[responseObject[@"source_type"] integerValue];
+               report.rSourceRefId=IG_SAFE_STR(responseObject[@"reference_id"]);
+               
+               report.rHeartRate=[responseObject[@"heart_rate"] integerValue];
+               
+               report.rHealthLevel=[responseObject[@"health_level"] integerValue];
+               report.rSuggestion=responseObject[@"suggestion"];
+               report.rTime=responseObject[@"time"];
+               report.rProblems=responseObject[@"problems"];
+               
+               handler(YES,0,report);
                
            }else{
                NSInteger errorCode=[responseObject[@"reason"] integerValue];

@@ -71,7 +71,7 @@
     
     IGTaskObj *task=self.dataManager.allTasksArray[indexPath.row];
     if(task.tType==1){  //求助
-        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"ToDoList" bundle:nil];
+        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
         IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
         
         msgVC.memberId=task.tMemberId;

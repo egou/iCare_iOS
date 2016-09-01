@@ -13,10 +13,11 @@
 +(instancetype)objWithId:(NSInteger)objId name:(NSString*)name type:(NSInteger)type index:(NSInteger)index valueType:(NSInteger)valueType;
 
 +(NSArray*)allCategoriesInfo;
++(NSArray *)allEkgCategoriesInfo;
 
 @property (nonatomic, assign) NSInteger cId;
 @property (nonatomic, copy) NSString *cName;
-@property (nonatomic, assign) NSInteger cType;  //所属类型 bp OR ekg
+@property (nonatomic, assign) NSInteger cType;  //所属类型 1bp  2ekg
 @property (nonatomic, assign) NSInteger cIndex; //在所属类中的索引
 @property (nonatomic, assign) NSInteger cValueType; //值类型， 0 int  1 bool
 
