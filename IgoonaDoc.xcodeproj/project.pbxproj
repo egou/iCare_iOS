@@ -110,6 +110,7 @@
 		6B1C78071D28F8530057FB50 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C78001D28F8240057FB50 /* Charts.framework */; };
 		6B1C78081D28F8530057FB50 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1C78001D28F8240057FB50 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B2049CF1CF752140032297D /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2049CE1CF752140032297D /* TWMessageBarManager.m */; };
+		6B25EF871D79228200FC5D6C /* IGReportSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF861D79228200FC5D6C /* IGReportSuggestionViewController.m */; };
 		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; };
 		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; };
 		6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */; };
@@ -452,6 +453,8 @@
 		6B1C77F81D28F8230057FB50 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		6B2049CD1CF752140032297D /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
 		6B2049CE1CF752140032297D /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		6B25EF851D79228200FC5D6C /* IGReportSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportSuggestionViewController.h; sourceTree = "<group>"; };
+		6B25EF861D79228200FC5D6C /* IGReportSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportSuggestionViewController.m; sourceTree = "<group>"; };
 		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
 		6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailViewCell.m; sourceTree = "<group>"; };
 		6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailObj.h; sourceTree = "<group>"; };
@@ -1239,6 +1242,8 @@
 			children = (
 				6B3FADE71D78525100564830 /* IGEkgReportTaskViewController.h */,
 				6B3FADE81D78525100564830 /* IGEkgReportTaskViewController.m */,
+				6B25EF851D79228200FC5D6C /* IGReportSuggestionViewController.h */,
+				6B25EF861D79228200FC5D6C /* IGReportSuggestionViewController.m */,
 			);
 			path = Ekg;
 			sourceTree = "<group>";
@@ -1720,6 +1725,7 @@
 				6B0D94AA1CE2382B00C5BA6D /* IGIncomeMembersViewCell.m in Sources */,
 				6BBF66B71D660367000FEF9F /* IGReportDetailViewController.m in Sources */,
 				6B0002191C9D221900085229 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				6B25EF871D79228200FC5D6C /* IGReportSuggestionViewController.m in Sources */,
 				6B4E11771D67272F008419A7 /* IGMessageImageViewController.m in Sources */,
 				6B032DFC1CC125190027DDAD /* IGMsgDetailObj.m in Sources */,
 				6B28F4A61CE4E24700E60694 /* IGPatientServicesViewCell.m in Sources */,

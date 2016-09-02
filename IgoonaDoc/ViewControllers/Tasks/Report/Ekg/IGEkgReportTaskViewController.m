@@ -15,6 +15,8 @@
 #import "IGHTTPClient+Task.h"
 
 #import "IGEkgDataV2ViewController.h"
+#import "IGReportSuggestionViewController.h"
+#import "IGSingleSelectionTableViewController.h"
 
 
 @interface IGEkgReportTaskViewController()
@@ -169,7 +171,122 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSInteger section=indexPath.section;
+    NSInteger row=indexPath.row;
     
+    if(section==0){
+        IGSingleSelectionTableViewController *vc=[IGSingleSelectionTableViewController new];
+        vc.allItems=@[@"正常",@"异常",@"高危"];
+        vc.selectedIndex=self.healthLevel-1;
+        
+        vc.selectionHandler=^(IGSingleSelectionTableViewController* ssTVC,NSInteger selectedRow){
+            [ssTVC.navigationController popViewControllerAnimated:YES];
+            self.healthLevel=selectedRow+1;
+            [self.tableView reloadData];
+        };
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    
+    
+    if(section==1){
+        
+        IGReportCategoryObj *category= [IGReportCategoryObj allEkgCategoriesInfo][row];
+        NSInteger categoryId=category.cId;
+        
+        if(category.cValueType==1){
+            //BOOL value
+            
+            NSInteger problemId= [self.problemsDic[@(categoryId)] integerValue];
+            
+            //选择/反选
+            if(problemId){
+                
+                self.problemsDic[@(categoryId)]=@0;
+                
+            }else{
+                
+                __block NSInteger pId=0;
+                [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* p, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if(p.vCategory==categoryId){
+                        pId=p.vId;
+                        *stop=YES;
+                    }
+                }];
+                self.problemsDic[@(categoryId)]=@(pId);
+                
+            }
+            
+            [self.tableView reloadData];
+            
+            
+        }else{
+            
+            NSMutableArray *problems=[NSMutableArray array];
+            [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* p, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(p.vCategory==categoryId){
+                    [problems addObject:p];
+                }
+            }];
+            
+            //没有index为0项，插入‘无’选项
+            IGReportProblemObj *firstProblem=[problems firstObject];
+            if(firstProblem.vIndex!=0){
+                IGReportProblemObj *emptyProblem=[IGReportProblemObj objWithId:0 name:@"无" category:categoryId index:0];
+                [problems insertObject:emptyProblem atIndex:0];
+            }
+            
+            //当前选中的问题
+            NSMutableArray *problemNames=[NSMutableArray array];
+            __block NSInteger curProblemRow=-1;
+            
+            NSInteger curProblemVal=[self.problemsDic[@(categoryId)] integerValue];
+            [problems enumerateObjectsUsingBlock:^(IGReportProblemObj* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [problemNames addObject:obj.vName];
+                if(obj.vId==curProblemVal){
+                    curProblemRow=idx;
+                }
+            }];
+            
+            IGSingleSelectionTableViewController *vc=[IGSingleSelectionTableViewController new];
+            vc.allItems=problemNames;
+            vc.selectedIndex=curProblemRow;
+            vc.selectionHandler=^(IGSingleSelectionTableViewController* ssTVC,NSInteger selectedRow){
+                [ssTVC.navigationController popViewControllerAnimated:YES];
+                
+                IGReportProblemObj *p=problems[selectedRow];
+                self.problemsDic[@(categoryId)]=@(p.vId);
+                [self.tableView reloadData];
+            };
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
+        
+        
+        return;
+    }
+    
+    
+    
+    if(section==2){
+        
+        IGReportSuggestionViewController *suggestionVC=[IGReportSuggestionViewController new];
+        suggestionVC.suggestion=self.suggestions;
+        IGGenWSelf;
+        suggestionVC.onBackHandler=^(IGReportSuggestionViewController* vc, NSString *suggestion){
+            [vc.navigationController popViewControllerAnimated:YES];
+            
+            wSelf.suggestions=suggestion;
+            [wSelf.tableView reloadData];
+        };
+        
+        
+        [self.navigationController pushViewController:suggestionVC animated:YES];
+        return;
+    }
 }
 
 
