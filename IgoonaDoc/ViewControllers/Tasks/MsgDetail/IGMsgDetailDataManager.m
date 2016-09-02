@@ -135,16 +135,7 @@
     }
 }
 
--(void)tapToExitTaskFinished:(BOOL)finished{
-    [IGHTTPCLIENT requestToExitTask:self.taskId completed:finished finishHandler:^(BOOL success, NSInteger errorCode) {
-        [self.delegate dataManager:self didExitTaskSuccess:success taskCompleted:finished];
-        //任务完成通知
-        if(success&&finished){
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskId}];
-        }
 
-    }];
-}
 
 
 #pragma mark - private methods

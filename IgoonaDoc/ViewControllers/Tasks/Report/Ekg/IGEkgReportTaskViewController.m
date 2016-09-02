@@ -13,17 +13,22 @@
 
 #import "IGHTTPClient+UserData.h"
 #import "IGHTTPClient+Task.h"
+#import "IGHTTPClient+Report.h"
 
 #import "IGEkgDataV2ViewController.h"
 #import "IGReportSuggestionViewController.h"
 #import "IGSingleSelectionTableViewController.h"
 
+#import "IGMessageViewController.h"
+#import "IGReportTaskMessageNavManager.h"
 
 @interface IGEkgReportTaskViewController()
 
 @property (nonatomic,assign) NSInteger healthLevel;
 @property (nonatomic,strong) NSMutableDictionary *problemsDic;
 @property (nonnull, copy) NSString *suggestions;
+
+@property (nonatomic,assign) BOOL hasContact;
 
 @end
 
@@ -65,11 +70,70 @@
 }
 
 -(void)onCancelBtn:(id)sender{
-    [self p_exitTaskCompleted:NO];
+    [self p_cancelTask];
 }
 
 -(void)onCompleteBtn:(id)sender{
-    [self p_exitTaskCompleted:YES];
+    
+    
+    if(self.hasContact){
+      
+        [self p_completeTask];
+        
+    }else{
+        
+        UIAlertAction *contactAction=[UIAlertAction actionWithTitle:@"联系" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [SVProgressHUD show];
+            IGGenWSelf;
+            [IGHTTPCLIENT requestToStartSessionWithMemberId:self.taskInfo.tMemberId taskId:self.taskInfo.tId finishHandler:^(BOOL success, NSInteger errCode) {
+                [SVProgressHUD dismissWithCompletion:^{
+                    if(success){
+                        
+                        //已联系
+                        wSelf.hasContact=YES;
+                        
+                        
+                        //enter msg view
+                        
+                        UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
+                        IGMessageViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
+                        vc.memberId=wSelf.taskInfo.tMemberId;
+                        vc.memberName=wSelf.taskInfo.tMemberName;
+                        vc.memberIconId=wSelf.taskInfo.tMemberIconId;
+                        vc.msgReadOnly=NO;
+                        vc.taskId=wSelf.taskInfo.tId;
+                        
+                        vc.navigationItemManager=[IGReportTaskMessageNavManager new];
+                        [vc.navigationItemManager constructNavigationItemsOfViewController:vc];
+                        
+                        [wSelf.navigationController pushViewController:vc animated:YES];
+                        
+                        
+                        
+                    }else{
+                        [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+                    }
+                }];
+                
+            }];
+            
+            
+            
+        }];
+        
+        UIAlertAction *exitAction=[UIAlertAction actionWithTitle:@"不了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self p_completeTask];
+        }];
+        
+        
+        
+        UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"需要联系病粉吗" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [ac addAction:exitAction];
+        [ac addAction:contactAction];
+        [self presentViewController:ac animated:YES completion:nil];
+        
+    }
 }
 
 
@@ -422,16 +486,14 @@
 }
 
 
--(void)p_exitTaskCompleted:(BOOL)completed{
-    NSString *alertTitle=completed?@"确认该任务已经完成":@"您要放弃该任务吗";
-    
-    UIAlertController *ac=[UIAlertController alertControllerWithTitle:alertTitle message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
-    [ac addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
-    [ac addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+-(void)p_cancelTask{
+    UIAlertAction *cancelAction=[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *confirmAction=[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
         [SVProgressHUD show];
         IGGenWSelf;
-        [IGHTTPCLIENT requestToExitTask:wSelf.taskInfo.tId completed:completed finishHandler:^(BOOL success, NSInteger errorCode) {
+        [IGHTTPCLIENT requestToExitTask:wSelf.taskInfo.tId completed:NO finishHandler:^(BOOL success, NSInteger errorCode) {
             [SVProgressHUD dismissWithCompletion:^{
                 if(success){
                     [self.navigationController popViewControllerAnimated:YES];
@@ -440,11 +502,64 @@
                 }
             }];
         }];
-    }]];
+    }];
     
+    UIAlertController *ac=[UIAlertController alertControllerWithTitle:@"您要放弃该任务吗" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [ac addAction:cancelAction];
+    [ac addAction:confirmAction];
     [self presentViewController:ac animated:YES completion:nil];
+
+}
+
+-(void)p_completeTask{
+    
+    //get all problems(not include default value)
+    
+    NSMutableArray *problems=[NSMutableArray array];
+    [self.problemsDic enumerateKeysAndObjectsUsingBlock:^(NSNumber* categoryId, NSNumber* value, BOOL * _Nonnull stop) {
+        
+        //value!=0 && value.index!=0
+        
+        if(value.intValue!=0){
+            
+            [[IGReportProblemObj allProblemsInfo] enumerateObjectsUsingBlock:^(IGReportProblemObj* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if(value.integerValue==obj.vId&&obj.vIndex!=0){
+                    [problems addObject:value];
+                    *stop=YES;
+                }
+            }];
+        }
+    }];
     
     
+    NSDictionary *reportInfo=@{@"id":self.reportContent.rId,
+                               @"taskId":self.taskInfo.tId,
+                               @"memberId":self.taskInfo.tMemberId,
+                               @"healthLevel":@(self.healthLevel),
+                               @"problems":problems,
+                               @"suggestion":self.suggestions};
+    
+    
+    [SVProgressHUD show];
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToSubmitReportWithContentInfo:reportInfo finishHandler:^(BOOL success, NSInteger errorCode) {
+        [SVProgressHUD dismissWithCompletion:^{
+            if(success){
+                //发送状态改变给服务器，不用管结果
+                [IGHTTPCLIENT requestToExitTask:wSelf.taskInfo.tId completed:YES finishHandler:^(BOOL success, NSInteger errorCode) {
+                    //do nothing
+                }];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"kTaskFinishedNotification" object:nil userInfo:@{@"taskId":self.taskInfo.tId}];
+                
+            }else{
+                
+                [SVProgressHUD showInfoWithStatus:IGERR(errorCode)];
+            }
+        }];
+    }];
+
 }
 
 @end

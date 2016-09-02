@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IGNavigationItemManagerInterface.h"
 
 @interface IGMessageViewController : UIViewController
+
+@property (nonatomic,strong) id<IGNavigationItemManagerInterface> navigationItemManager;
+
 
 @property (nonatomic,copy) NSString *memberId;
 @property (nonatomic,copy) NSString *memberName;

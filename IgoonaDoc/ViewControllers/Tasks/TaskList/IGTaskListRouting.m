@@ -16,7 +16,10 @@
 #import "IGMyTeamViewController.h"
 #import "IGMyIncomeViewController.h"
 
+
 #import "IGMessageViewController.h"
+#import "IGMessageTaskNavManager.h"
+
 #import "IGBpReportTaskViewController.h"
 #import "IGEkgReportTaskViewController.h"
 #import "IGIgoonaInfoViewController.h"
@@ -55,6 +58,9 @@
     vc.msgReadOnly=NO;
     vc.taskId=taskInfo.tId;
 
+    vc.navigationItemManager=[IGMessageTaskNavManager new];
+    [vc.navigationItemManager constructNavigationItemsOfViewController:vc];
+    
     [self.routingOwner.navigationController pushViewController:vc animated:YES];
 
 }

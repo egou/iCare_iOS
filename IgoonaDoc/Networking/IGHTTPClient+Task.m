@@ -172,4 +172,28 @@
     
 }
 
+
+-(void)requestToStartSessionWithMemberId:(NSString *)memberId taskId:(NSString *)taskId finishHandler:(void (^)(BOOL, NSInteger))finishHandler{
+    [self GET:@"php/task.php"
+   parameters:@{@"action":@"start_doctor_session",
+                @"memberId":memberId,
+                @"taskId":taskId}
+     progress:nil
+      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         
+          if(IGRespSuccess){
+              finishHandler(YES,0);
+          }else{
+              NSInteger errCode= [responseObject[@"reason"] integerValue];
+              finishHandler(NO,errCode);
+          }
+          
+          
+      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+          finishHandler(NO,IGErrorNetworkProblem);
+      }];
+    
+    
+}
+
 @end

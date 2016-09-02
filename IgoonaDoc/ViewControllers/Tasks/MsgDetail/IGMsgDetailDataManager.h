@@ -31,7 +31,6 @@
 -(void)sendTextMsg:(NSString*)textMsg;
 -(void)sendAudioMsg:(NSData*)audioMsg duration:(NSInteger)duration;
 
--(void)tapToExitTaskFinished:(BOOL)finished;
 
 @end
 
@@ -46,6 +45,4 @@
  */
 -(void)dataManager:(IGMsgDetailDataManager *)manager didSendMsgSuccess:(BOOL)success msgType:(NSInteger)msgType;
 
-
--(void)dataManager:(IGMsgDetailDataManager *)manager didExitTaskSuccess:(BOOL)success taskCompleted:(BOOL)completed;
 @end

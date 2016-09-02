@@ -42,4 +42,10 @@
                              memberId:(NSString*)memberId
                                 isOld:(BOOL)isOld
                         finishHandler:(void(^)(BOOL success, NSInteger errCode,NSArray *tasks,NSInteger total))finishHandler;
+
+
+/**医生发起对话*/
+-(void)requestToStartSessionWithMemberId:(NSString*)memberId
+                                  taskId:(NSString*)taskId
+                           finishHandler:(void(^)(BOOL success, NSInteger errCode))finishHandler;
 @end

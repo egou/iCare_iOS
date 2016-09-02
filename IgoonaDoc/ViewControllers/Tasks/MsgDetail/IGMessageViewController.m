@@ -134,25 +134,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)onDataBtn:(id)sender{
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"MemberData" bundle:nil];
-    IGMemberDataViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMemberDataViewController"];
-    vc.memberId=self.memberId;
-    vc.memberName=self.memberName;
-    [self.navigationController pushViewController:vc animated:YES];
-
-}
-
--(void)onCompleteBtn:(id)sender{
-    [SVProgressHUD show];
-    [self.dataManager tapToExitTaskFinished:YES];
-}
-
--(void)onCancelBtn:(id)sender{
-    [SVProgressHUD show];
-    [self.dataManager tapToExitTaskFinished:NO];
-}
-
 
 - (IBAction)onMsgTypeBtn:(id)sender {
     
@@ -304,15 +285,7 @@
     
 }
 
--(void)dataManager:(IGMsgDetailDataManager *)manager didExitTaskSuccess:(BOOL)success taskCompleted:(BOOL)completed{
-    
-    if(success){
-        [SVProgressHUD dismiss];
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        [SVProgressHUD showInfoWithStatus:@"未知错误"];
-    }
-}
+
 #pragma mark - audio manager delegate
 -(void)audioManager:(IGAudioManager *)audioManager didFinishRecordingSuccess:(BOOL)success WithAudioData:(NSData *)data duration:(NSInteger)duration{
     
@@ -339,19 +312,6 @@
 
 -(void)p_loadAdditionalView
 {
-    //nav
-    self.navigationItem.title=@"病粉有求";
-    
-    self.navigationItem.hidesBackButton=YES;
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"资料" style:UIBarButtonItemStylePlain target:self action:@selector(onDataBtn:)];
-    
-    
-    UIBarButtonItem *completeItem=[[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(onCompleteBtn:)];
-    UIBarButtonItem *cancelItem=[[UIBarButtonItem alloc] initWithTitle:@"放弃" style:UIBarButtonItemStylePlain target:self action:@selector(onCancelBtn:)];
-    
-    self.navigationItem.rightBarButtonItems=@[completeItem,cancelItem];
-    
-    
     //recording HUD
     
     self.recordingHUDView=[IGRecordingHUDView HUDView];

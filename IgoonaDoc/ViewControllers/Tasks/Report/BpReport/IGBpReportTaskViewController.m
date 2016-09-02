@@ -18,6 +18,9 @@
 #import "IGEkgDataV2ViewController.h"
 #import "IGABPMDataViewController.h"
 
+#import "IGMessageViewController.h"
+#import "IGReportTaskMessageNavManager.h"
+
 @interface IGBpReportTaskViewController()
 
 @property (weak, nonatomic) IBOutlet UILabel *healthLvLabel;
@@ -127,7 +130,36 @@
 }
 
 -(void)onContactBtn:(id)sender{
-    NSLog(@"contact");
+    
+    [SVProgressHUD show];
+    IGGenWSelf;
+    [IGHTTPCLIENT requestToStartSessionWithMemberId:self.taskInfo.tMemberId taskId:self.taskInfo.tId finishHandler:^(BOOL success, NSInteger errCode) {
+       [SVProgressHUD dismissWithCompletion:^{
+           if(success){
+               
+               UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
+               IGMessageViewController *vc=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
+               vc.memberId=wSelf.taskInfo.tMemberId;
+               vc.memberName=wSelf.taskInfo.tMemberName;
+               vc.memberIconId=wSelf.taskInfo.tMemberIconId;
+               vc.msgReadOnly=NO;
+               vc.taskId=wSelf.taskInfo.tId;
+               
+               vc.navigationItemManager=[IGReportTaskMessageNavManager new];
+               [vc.navigationItemManager constructNavigationItemsOfViewController:vc];
+               
+               [wSelf.navigationController pushViewController:vc animated:YES];
+
+               
+               
+           }else{
+               [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+           }
+       }];
+    
+    }];
+    
+    
 }
 
 #pragma mark - tableViewDelegate & dataSource
