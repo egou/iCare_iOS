@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 
 #import "IGMessageViewController.h"
+#import "IGCompletedMessageTaskNavManager.h"
 
 #import "IGReportViewController.h"
 #import "IGMemberReportDataObj.h"
@@ -78,6 +79,10 @@
         msgVC.memberIconId=[IGLOCALMANAGER loadIconIdWithPatientId:task.tMemberId];
         msgVC.memberName=task.tMemberName;
         msgVC.msgReadOnly=YES;
+        
+        msgVC.navigationItemManager=[IGCompletedMessageTaskNavManager new];
+        [msgVC.navigationItemManager constructNavigationItemsOfViewController:msgVC];
+        
         
         [self.navigationController pushViewController:msgVC animated:YES];
         

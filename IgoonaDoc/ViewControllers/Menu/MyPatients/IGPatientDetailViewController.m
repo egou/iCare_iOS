@@ -11,7 +11,11 @@
 #import "IGTaskObj.h"
 
 #import "IGMemberDataViewController.h"
+
 #import "IGMessageViewController.h"
+#import "IGContactMyPatientMessageNavManager.h"
+
+#import "IGHTTPClient+Task.h"
 
 @interface IGPatientDetailViewController()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -49,17 +53,43 @@
     [self.navigationController pushViewController:dataVC animated:YES];
 }
 
--(void)onMsgHistoryBtn:(id)sender{
-    UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
-    IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
+-(void)onContactBtn:(id)sender{
     
-    msgVC.memberId=self.detailInfo.pId;
-    msgVC.memberName=self.detailInfo.pName;
-    msgVC.memberIconId=self.detailInfo.pIconIdx;
-    msgVC.msgReadOnly=YES;
+    [SVProgressHUD show];
+    IGGenWSelf;
     
-    [self.navigationController pushViewController:msgVC animated:YES];
-}
+    [IGHTTPCLIENT requestToStartSessionWithMemberId:self.detailInfo.pId taskId:@"0" finishHandler:^(BOOL success, NSInteger errCode, NSString *taskId) {
+        [SVProgressHUD dismissWithCompletion:^{
+           
+            if(success){
+                
+                UIStoryboard *sb=[UIStoryboard storyboardWithName:@"TaskList" bundle:nil];
+                IGMessageViewController *msgVC=[sb instantiateViewControllerWithIdentifier:@"IGMessageViewController"];
+                
+                msgVC.memberId=wSelf.detailInfo.pId;
+                msgVC.memberName=wSelf.detailInfo.pName;
+                msgVC.memberIconId=wSelf.detailInfo.pIconIdx;
+                msgVC.taskId=taskId;
+                
+                msgVC.navigationItemManager=[IGContactMyPatientMessageNavManager new];
+                [msgVC.navigationItemManager constructNavigationItemsOfViewController:msgVC];
+                
+                
+                [wSelf.navigationController pushViewController:msgVC animated:YES];
+
+                
+                
+            }else{
+                [SVProgressHUD showInfoWithStatus:IGERR(errCode)];
+            }
+            
+        }];
+    }];
+    
+    
+    
+    
+    }
 
 
 #pragma mark - private methods
@@ -73,7 +103,7 @@
     self.navigationItem.leftBarButtonItem=backItem;
 
     UIBarButtonItem *dataItem=[[UIBarButtonItem alloc] initWithTitle:@"数据" style:UIBarButtonItemStylePlain target:self action:@selector(onDataBtn:)];
-    UIBarButtonItem *msgItem=[[UIBarButtonItem alloc] initWithTitle:@"互动" style:UIBarButtonItemStylePlain target:self action:@selector(onMsgHistoryBtn:)];
+    UIBarButtonItem *msgItem=[[UIBarButtonItem alloc] initWithTitle:@"互动" style:UIBarButtonItemStylePlain target:self action:@selector(onContactBtn:)];
     
     self.navigationItem.rightBarButtonItems=@[msgItem,dataItem];
     

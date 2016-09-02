@@ -86,7 +86,7 @@
             
             [SVProgressHUD show];
             IGGenWSelf;
-            [IGHTTPCLIENT requestToStartSessionWithMemberId:self.taskInfo.tMemberId taskId:self.taskInfo.tId finishHandler:^(BOOL success, NSInteger errCode) {
+            [IGHTTPCLIENT requestToStartSessionWithMemberId:self.taskInfo.tMemberId taskId:self.taskInfo.tId finishHandler:^(BOOL success, NSInteger errCode, NSString *taskId) {
                 [SVProgressHUD dismissWithCompletion:^{
                     if(success){
                         
