@@ -47,5 +47,11 @@
 /**医生发起对话*/
 -(void)requestToStartSessionWithMemberId:(NSString*)memberId
                                   taskId:(NSString*)taskId
-                           finishHandler:(void(^)(BOOL success, NSInteger errCode))finishHandler;
+                           finishHandler:(void(^)(BOOL success, NSInteger errCode, NSString *taskId))finishHandler;
+
+/**医生结束对话*/
+-(void)requestToEndSessionWithMemberId:(NSString*)memberId
+                                taskId:(NSString*)taskId
+                         finishHandler:(void(^)(BOOL success, NSInteger errCode))finishHandler;
+
 @end

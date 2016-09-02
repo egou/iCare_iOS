@@ -113,6 +113,8 @@
 		6B25EF871D79228200FC5D6C /* IGReportSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF861D79228200FC5D6C /* IGReportSuggestionViewController.m */; };
 		6B25EF8F1D79734D00FC5D6C /* IGMessageTaskNavManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF8E1D79734D00FC5D6C /* IGMessageTaskNavManager.m */; };
 		6B25EF921D797CF100FC5D6C /* IGReportTaskMessageNavManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF911D797CF100FC5D6C /* IGReportTaskMessageNavManager.m */; };
+		6B25EF951D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF941D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.m */; };
+		6B25EF981D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25EF971D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.m */; };
 		6B28F4981CE4DB1800E60694 /* IGFinancialDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */; };
 		6B28F49D1CE4DBA900E60694 /* IGFinancialDetailObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49C1CE4DBA900E60694 /* IGFinancialDetailObj.m */; };
 		6B28F4A01CE4DDCD00E60694 /* IGPatientServiceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28F49F1CE4DDCD00E60694 /* IGPatientServiceObj.m */; };
@@ -460,6 +462,10 @@
 		6B25EF8E1D79734D00FC5D6C /* IGMessageTaskNavManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGMessageTaskNavManager.m; sourceTree = "<group>"; };
 		6B25EF901D797CF100FC5D6C /* IGReportTaskMessageNavManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGReportTaskMessageNavManager.h; sourceTree = "<group>"; };
 		6B25EF911D797CF100FC5D6C /* IGReportTaskMessageNavManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGReportTaskMessageNavManager.m; sourceTree = "<group>"; };
+		6B25EF931D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGContactMyPatientMessageNavManager.h; sourceTree = "<group>"; };
+		6B25EF941D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGContactMyPatientMessageNavManager.m; sourceTree = "<group>"; };
+		6B25EF961D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGCompletedMessageTaskNavManager.h; sourceTree = "<group>"; };
+		6B25EF971D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGCompletedMessageTaskNavManager.m; sourceTree = "<group>"; };
 		6B28F4961CE4DB1800E60694 /* IGFinancialDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailViewCell.h; sourceTree = "<group>"; };
 		6B28F4971CE4DB1800E60694 /* IGFinancialDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGFinancialDetailViewCell.m; sourceTree = "<group>"; };
 		6B28F49B1CE4DBA900E60694 /* IGFinancialDetailObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGFinancialDetailObj.h; sourceTree = "<group>"; };
@@ -1237,6 +1243,10 @@
 				6B25EF8E1D79734D00FC5D6C /* IGMessageTaskNavManager.m */,
 				6B25EF901D797CF100FC5D6C /* IGReportTaskMessageNavManager.h */,
 				6B25EF911D797CF100FC5D6C /* IGReportTaskMessageNavManager.m */,
+				6B25EF931D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.h */,
+				6B25EF941D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.m */,
+				6B25EF961D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.h */,
+				6B25EF971D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.m */,
 			);
 			path = MsgNavItemManager;
 			sourceTree = "<group>";
@@ -1726,6 +1736,7 @@
 				6B4E11B91D676F71008419A7 /* IGBPChartManager.m in Sources */,
 				2C008DB31CAF760F00ECE4B5 /* UIScrollView+MJExtension.m in Sources */,
 				6B0D94A71CE2358300C5BA6D /* IGIncomeMemeberObj.m in Sources */,
+				6B25EF951D798E2400FC5D6C /* IGContactMyPatientMessageNavManager.m in Sources */,
 				6B0002231C9D221900085229 /* UIProgressView+AFNetworking.m in Sources */,
 				2C008DAB1CAF760F00ECE4B5 /* MJRefreshBackGifFooter.m in Sources */,
 				2C008DAA1CAF760F00ECE4B5 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1762,6 +1773,7 @@
 				6B697D221CD8F26200A12CE1 /* IGMyPatientsViewCell.m in Sources */,
 				6B0002121C9D221900085229 /* MASCompositeConstraint.m in Sources */,
 				6BA60F041CD70DDD00E39D54 /* IGMyInformationViewController.m in Sources */,
+				6B25EF981D79951E00FC5D6C /* IGCompletedMessageTaskNavManager.m in Sources */,
 				6B4E11BE1D676F71008419A7 /* IGMemberDataViewController.m in Sources */,
 				6BA60EFF1CD70DDD00E39D54 /* IGDoneListDataManager.m in Sources */,
 				6B4E11C11D676F71008419A7 /* IGEkgSmoothFilter.m in Sources */,

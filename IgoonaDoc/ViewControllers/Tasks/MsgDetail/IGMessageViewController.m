@@ -81,9 +81,6 @@
     if(self.msgReadOnly){
         self.barHeightLC.constant=0;
         self.bottomBarView.clipsToBounds=YES;
-        
-        self.navigationItem.rightBarButtonItems=nil;
-        self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_back"] style:UIBarButtonItemStylePlain target:self action:@selector(onBackBtn:)];
     }
 }
 
@@ -130,10 +127,6 @@
 
 
 #pragma mark - events
--(void)onBackBtn:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 - (IBAction)onMsgTypeBtn:(id)sender {
     
